@@ -45,7 +45,7 @@ Or just unzip [bitcoin-transactions.zip](http://www.peersm.com/bitcoin-transacti
 
 ## Use
 
-See example.js, Bitcoin Gold transaction 118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97 was created with this module and mined in block 501249, see https://btgexp.com/tx/118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97
+See [example.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example.js), Bitcoin Gold transaction 118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97 was created with this module and mined in block 501249, see https://btgexp.com/tx/118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97
 
 We will follow this transaction for our examples, the previous transaction was [2a38e1dee239985c427db146f364cac7cfdfcc845fdfe2051f070284b3284587](https://btgexp.com/tx/2a38e1dee239985c427db146f364cac7cfdfcc845fdfe2051f070284b3284587)
 
