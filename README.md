@@ -11,7 +11,7 @@ This is a nightmare for quite a lot of people since syncing a full node can take
 
 And this does not help the network since even if you succeed to sync from home most likely you will run a non efficient full node
 
-In addition many people lost everything by using malware wallets trying to get their 'free' coins, and apparently their are some common misunderstanding with the addresses format, please see the section below
+In addition many people lost everything by using malware wallets trying to get their 'free' coins, and apparently there are some common misunderstanding with the addresses format, please see the section below
 
 And finally, if you succeeded to sync you can prune after but you still need to run constantly the bitcoin software
 
@@ -62,13 +62,13 @@ We will follow this transaction for our examples, the previous transaction was [
 	addr is the address where to spend the output
 	amount is the amount the address will receive
 
-You can get all those information simply from a blockchain explorer, in case of a transactions with many outputs, to get the index of your output just copy/paste from the site and look at the line number for your output (don't forget that it starts from 0, the first output index is then 0 not 1)
+You can get all those information simply from a blockchain explorer, in case of a transaction with many outputs, to get the index of your output just copy/paste from the site and look at the line number for your output (don't forget that it starts from 0, the first output index is 0 not 1)
 
 	amount+dev fees+network fees=prevamount
 	
 You will get a summary of everything at the end of the command, the ``create`` command does check the transaction again after it has been created, you must get at the end the message 'Transaction verified', if not something went wrong
 
-Most likely if you get 'Bad transaction' this is because you made a mistake with the private key, or are trying to spend something that does not belong to you, if this happens and everything looks correct, please report (but never send to us your private keys of course)
+Most likely if you get 'Bad transaction' this is because you made a mistake with the private key, or are trying to spend something that does not belong to you, if this happens and everything looks correct, please report (but never send to us your private keys)
 
 ### Decode transaction
 
@@ -84,7 +84,7 @@ Once you are sure that everything is correct, you can send your transaction to t
 
 	node tx.js BTG send e1476d44747800000000000000000000e1000000977f40960200000001874528b38402071f05e2df5f84ccdfcfc7ca64f346b17d425c9839e2dee1382a210000006a473044022041c150bdbc22245efb3d4bef0ecaa9a0e1b8bb86ce5d0b7436da0a6529bf3cd502204dbd45864711b914e99baeb0c6c5a42ba37ad195679ffc63d32350a6e22a506a4121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff02f9d90e00000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac05260000000000001976a9145b79a9d29a34f2f284ecdd33009ffa5e0252b68988ac00000000
 	
-Some addresses of nodes are hard coded, they don't belong to us and we can't say how long they will work, so if you want to use a specific node, do ``node tx.js BTG send <tx> A.B.C.D where A.B.C.D`` is the IP address of the node
+Some addresses of nodes are hard coded, they don't belong to us and we can't say how long they will work, so if you want to use a specific node, do ``node tx.js BTG send <tx> A.B.C.D`` where A.B.C.D is the IP address of the node
 	
 Before sending your transaction it's a good idea too to check the network by doing ``node tx.js BTG testconnect`` or ``node tx.js BTG testconnect A.B.C.D``
 	
@@ -106,7 +106,7 @@ However, if you want to move your bitcoins "from bitcoin core to bitcoin gold" (
 	
 where prevxxx refers very exactly to the same that you can see in a bitcoin core explorer like https://blockchain.info before block 491407 (same transaction id, same address, same amount, same index) and privkey is the private key corresponding to your bitcoin core address
 	
-and addr can be a bitcoin address too that will be converted in a bitcoin gold address as you will see in the output of the command
+and addr can be a bitcoin address too that will be converted into a bitcoin gold address as you will see in the output of the command
 	
 You can convert before if you like the prevaddr and addr from a bitcoin core one to a bitcoin gold one but this is of no use, the create command will work with the original bitcoin addresses
 
