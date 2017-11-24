@@ -15,6 +15,8 @@ In addition many people lost everything by using malware wallets trying to get t
 
 And finally, if you succeeded to sync you can prune after but you still need to run constantly the bitcoin software
 
+Given the size of the blockchain and number of different networks, at a certain point of time it will become impossible for people to run the full sw for each one just to have their wallet synced and be able to send transactions
+
 ## Implementation and Code
 
 This module is using [elliptic](https://github.com/indutny/elliptic) and [bs58](https://github.com/cryptocoinjs/bs58)
@@ -30,6 +32,8 @@ This module is secure, it does not send anything outside (except the transaction
 Unlike bitcoin-cli this modules allows you to manage your fees too, do not go below 1000 satoshis for the network fees or your transaction will not be accepted by the network
 
 There are development fees of 0.78% that are added to each transaction that you broadcast and paid to the address GSBbeuKPu4d6HKJhtPgk7XayMcaXyQy8TS (or the equivalent one for each network), of course the fees apply only when your broadcasted transaction to the network is included in a block, no fees apply to create/test your transactions
+
+Most likely people will not like the dev fees (see https://github.com/BTCGPU/BTCGPU/issues/226#issuecomment-346798767) but since you can adjust the high network fees that you can't decide with bitcoin-cli for example you can compensate
 
 This module is not trivial, the bitcoin protocol and formats do not make things easy, it is not recommended (neither authorized by the license) to try to modify anything, if you send wrong transactions to the network at best you will be immediately banned by the nodes for one day and at worse you could send transactions that could spend your funds at a wrong place
 
@@ -48,6 +52,8 @@ Or just unzip [bitcoin-transactions.zip](http://www.peersm.com/bitcoin-transacti
 See [example.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example.js), Bitcoin Gold transaction 118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97 was created with this module and mined in block 501249, see https://btgexp.com/tx/118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97
 
 We will follow this transaction for our examples, the previous transaction was [2a38e1dee239985c427db146f364cac7cfdfcc845fdfe2051f070284b3284587](https://btgexp.com/tx/2a38e1dee239985c427db146f364cac7cfdfcc845fdfe2051f070284b3284587)
+
+Please note that the initial transaction was at 1% fees which are now 0.78% as stated above in the released version
 
 ### Create transactions
 
