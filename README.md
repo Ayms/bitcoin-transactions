@@ -17,6 +17,10 @@ And finally, if you succeeded to sync you can prune after but you still need to 
 
 Given the size of the blockchain and number of different networks, at a certain point of time it will become impossible for people to run the full sw for each one just to have their wallet synced and be able to send transactions
 
+And it is crazy to let wallet sw manage your keys
+
+Then even if the restart of this module was inspired by the current bitcoin gold situation it is intended for the long term
+
 ## Implementation and Code
 
 This module is using [elliptic](https://github.com/indutny/elliptic) and [bs58](https://github.com/cryptocoinjs/bs58)
