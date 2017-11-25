@@ -78,13 +78,13 @@ You can get all those information simply from a blockchain explorer, in case of 
 	
 You will get a summary of everything at the end of the command, the ``create`` command does check the transaction again after it has been created, you must get at the end the message 'Transaction verified', if not something went wrong
 
-<b>WARNING: since this module allows you to decide for the network fees there are no mechanisms to refund back to your address if you make a mistake with the amounts</b>
+<b>WARNING: since this module allows you to decide for the network fees there are no mechanisms to refund you back to your address if you make a mistake with the amounts</b>
 
 <b>For example if prevamount is 1.05 and you put an amount of 0.05 thinking that you will only spend this, then you will send 0.05 to you, 0.00039000 as dev fees and 0.99961 as network fees (!!), so don't do this, there are warnings in the code to prevent this</b>
 
-<b>This will probably change in the future and you will be able to send to different addresses if people request it, but this increases too the risk of mistake then for now the module simply spends one output to one address</b>
+<b>This will probably change in the future and you will be able to spend to different addresses if people request it, but this increases too the risk to make mistakes, then for now the module simply spends one output to one address</b>
 
-Most likely if you get 'Bad transaction' this is because you made a mistake with the private key, or are trying to spend something that does not belong to you, if this happens and everything looks correct, please report (but never send to us your private keys)
+Most likely if you get 'Bad transaction' this is because you made a mistake with the private key, or are trying to spend something that does not belong to you, if this happens and everything looks correct, please report (<b>but never send to us/advertise your private keys, remove them and post the logs</b>)
 
 ### Decode transaction
 
