@@ -80,7 +80,7 @@ You will get a summary of everything at the end of the command, the ``create`` c
 
 <b>WARNING: since this module allows you to decide for the network fees there are no mechanisms to refund you back to your address if you make a mistake with the amounts</b>
 
-<b>For example if prevamount is 1.05 and you put an amount of 0.05 thinking that you will only spend this, then you will send 0.05 to you, 0.00039000 as dev fees and 0.99961 as network fees (!!), so don't do this, there are warnings in the code to prevent this</b>
+<b>For example if prevamount is 1.05 and you put an amount of 0.05 thinking that you will only spend this, then you will send 0.05 to the recipient address, 0.00039000 as dev fees and 0.99961 as network fees (!!), so don't do this, there are warnings in the code to prevent this</b>
 
 <b>This will probably change in the future and you will be able to spend to different addresses if people request it, but this increases too the risk to make mistakes, then for now the module simply spends one output to one address</b>
 
