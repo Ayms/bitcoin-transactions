@@ -37,9 +37,10 @@ var OP_CHECK_MULTISIG='ae';
 var OP_CODESEPARATORS='ab';
 var OP_FORK='b689';
 var P2SH_NON_STANDARD=new Buffer(OP_0+OP_DROP+OP_DEPTH+OP_0+OP_EQUAL,'hex');
-var FEES=450;
+var FEES=250;
 var SATO=100000000; //1 BTC = 100000000 satoshis
 var SATO_=8500;
+var S_=128;
 //BTC default
 var VERSION=1;
 var VERSION_='BTC';
@@ -787,10 +788,12 @@ Tx.prototype.finalize=function(tx) {
 	console.log('----- Transaction hash: '+this.hash.toString('hex'));
 	if (!boo) {
 		var prevscriptPubkey=[];
+		var fees_=this.fees;
+		var length_=this.tx.length;
 		console.log('Transaction body:\n'+tx.toString('hex'));
 		console.log('Complete transaction:\n'+this.tx.toString('hex'));
 		console.log('Size '+this.tx.length+' bytes');
-		console.log('Network Fees: '+this.fees+' - '+(this.fees/this.tx.length).toFixed(2)+' satoshis/byte');
+		console.log('Network Fees: '+fees_+' - '+(fees_/length_).toFixed(2)+' satoshis/byte');
 		console.log('Dev Fees: '+this.s);
 		console.log('------------- Check - deserialize ');
 		var tx_check=new Tx();
@@ -805,6 +808,11 @@ Tx.prototype.finalize=function(tx) {
 		var tx_verify=new Tx();
 		tx_verify.verify(tx,prevscriptPubkey);
 		console.log('------------- End Check - verify ');
+		if (fees_>FEES*length_) {
+			console.log('---- WARNING !!!!!!!!!!!!!!! ----- Network fees look very high, probably you did not choose the correct amount, please make sure that amount+dev fees+network fees=prevamount');
+		} else if (fees_<0) {
+			console.log('---- WARNING !!!!!!!!!!!!!!! ----- Network fees are incorrect, probably you did not choose the correct amount, please make sure that amount+dev fees+network fees=prevamount');
+		};
 	};
 };
 
@@ -869,7 +877,7 @@ var Send=function(data,ip,port) {
 			console.log('Sent version to '+addr);
 		});
 		client.on('data',function(d) {
-			console.log('------ Answer receiced from '+addr);
+			console.log('------ Answer receiced from '+addr+' '+d.toString('hex'));
 			if (d.toString('hex').indexOf(TX_VERACK.toString('hex'))!==-1) {
 				console.log('-------- Verack received - completing handshake with '+addr);
 				if (!data) {
@@ -910,7 +918,14 @@ if (process.argv) {
 				//node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey= addr= amount=
 				case 'create': 
 					console.log('Creating transaction to send '+parseFloat(args[6])+' (without fees) to '+args[5]+' from output number '+parseInt(args[3])+' with amount '+parseFloat(args[2])+' owned by '+args[1]+' in transaction '+args[0]);
-					new Tx([[[args[0],args[1],parseFloat(args[2])],parseInt(args[3]),null,null,null,[args[4]]]],[[args[5],parseFloat(args[6]),'p2pkh']],null);break;
+					if (parseInt(args[2]*SATO)<SATO_) {
+						console.log("Amount to be spent can't be less than "+SATO_);
+					} else if ((Math.max(parseInt(args[6]*SATO*((S_+1)/S_)),(parseInt(args[6]*SATO)+SATO_)))>parseInt(args[2]*SATO)) {
+						console.log("---- WARNING !!!!!!!!!!!!!!! ----- Probably you did not choose the correct amount, please make sure that amount+dev fees+network fees=prevamount, the amount can't be superior to "+((Math.max(parseInt(args[2]*SATO)*(S_/(S_+1)),SATO_))/SATO).toFixed(8));
+					} else {
+						new Tx([[[args[0],args[1],parseFloat(args[2])],parseInt(args[3]),null,null,null,[args[4]]]],[[args[5],parseFloat(args[6]),'p2pkh']],null);
+					};
+					break;
 				case 'decode': var tx=new Tx();tx.deserialize(args[0]);delete tx.fees;console.log(tx);break;
 				case 'testconnect':Send(null,args[0]);break;
 				case 'send': Send(args[0],args[1]);break;
