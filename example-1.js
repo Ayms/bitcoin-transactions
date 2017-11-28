@@ -1,4 +1,4 @@
-
+https://btgexp.com/tx/118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97
 
 node tx.js BTG create prevtx=2a38e1dee239985c427db146f364cac7cfdfcc845fdfe2051f070284b3284587 prevaddr=GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo prevamount=0.00993305 previndex=33 privkey=privkey addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB amount=0.00973305
 
@@ -7,9 +7,6 @@ Version BTG
 Creating transaction to send 0.00973305 (without fees) to GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB from output number 33 with amount 0.00993305 owned by GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo in transaction 2a38e1dee239985c427db146f364cac7cfdfcc845fdfe2051f070284b3284587
 ----- Serialize for hash
 Address corresponding to private key is GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
-*/
-
-//This is the result and the important part, check the fees too
 
 ----- Transaction hash: 118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97
 Transaction body:
@@ -20,9 +17,6 @@ Size 249 bytes
 Network Fees: 10267 - 41.23 satoshis/byte
 Dev Fees: 9733
 
-//create command continues to verify again the transaction
-
-/*
 ------------- Check - deserialize
 { input:
    [ { hash: '2a38e1dee239985c427db146f364cac7cfdfcc845fdfe2051f070284b3284587',
