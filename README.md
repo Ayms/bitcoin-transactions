@@ -53,11 +53,11 @@ Or just unzip [bitcoin-transactions.zip](http://www.peersm.com/bitcoin-transacti
 
 ## Use
 
-See [example1.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example1.js), Bitcoin Gold transaction 118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97 was created with this module and mined in block 501249, see https://btgexp.com/tx/118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97
+See [example-1.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-1.js), Bitcoin Gold transaction 118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97 was created with this module and mined in block 501249, see https://btgexp.com/tx/118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97
 
 Please note that the initial transaction was at 1% fees which are now 0.78% as stated above in the released version (with a minimum of 0.00008500)
 
-[example1.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example1.js) is now deprecated, please see [example2.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example2.js) for the new format and transaction https://btgexp.com/tx/cc9684a4243999d1a1fc21c7ad7dbd1b3462bb1fb29614ed16b4d2763ab12bd4
+[example-1.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-1.js) is now deprecated, please see [example-2.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-2.js) for the new format and transaction https://btgexp.com/tx/cc9684a4243999d1a1fc21c7ad7dbd1b3462bb1fb29614ed16b4d2763ab12bd4
 
 We will follow this transaction for our examples, the previous transaction was [d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206](https://btgexp.com/tx/d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206)
 
@@ -89,7 +89,7 @@ But this is easy to make mistakes, then we have added the ``testamount`` feature
 
 Then you should use ``0.00988776`` in the ``amount`` parameter of the ``create`` command
 
-#### You have decided to spend 0.005 with 0.0001001 fees like example2, do:
+#### You have decided to spend 0.005 with 0.0001001 fees like example-2, do:
 
 	node tx.js BTG testamount prevamount=0.00998277 fees=0.00001001 amount=0.005
 
@@ -101,13 +101,13 @@ Then you should use ``0.00988776`` in the ``amount`` parameter of the ``create``
 	
 You will spend 0.005, pay ``0.00001001+0.00008500`` as fees and get back 0.00488776 on your initial address
 
-As you can see in [example2.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example2.js) since the numbers are rounded and checked again by the ``create`` command there can be a the end a difference of 0.00000001 with that numbers as network fees
+As you can see in [example-2.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-2.js) since the numbers are rounded and checked again by the ``create`` command there can be a the end a difference of 0.00000001 with that numbers as network fees
 
 Transactions are usually ~250 bytes, current rate for fees on Bitcoin is 250 satoshis per byte, which represents more than 0.00060000 fees by transaction and is very exaggerated, you can lower quite a lot your fees with this module but it is not advised to go below 1000 satoshis
 
 ### Create transactions
 
-Once the numbers are correct you can create the example2 transaction:
+Once the numbers are correct you can create the example-2 transaction:
 
 `node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo prevamount=0.00998277 previndex=31 privkey=privkey addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB amount=0.005 fees=0.00001001`
 	
