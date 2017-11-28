@@ -33,9 +33,9 @@ This module is secure, it does not send anything outside (except the transaction
 
 ## Fees
 
-Unlike bitcoin-cli this modules allows you to manage your fees too, do not go below 1000 satoshis for the network fees or your transaction will not be accepted by the network
+Unlike bitcoin-cli this modules allows you to manage your fees too, do not go below 1000 satoshis for the network fees or your transaction might not be accepted by the network
 
-There are development fees of 0.78% that are added to each transaction that you broadcast and paid to the address GSBbeuKPu4d6HKJhtPgk7XayMcaXyQy8TS (or the equivalent one for each network), of course the fees apply only when your broadcasted transaction to the network is included in a block, no fees apply to create/test your transactions
+There are development fees of 0.78% (with a minimum of 0.00008500) that are added to each transaction that you broadcast and paid to the address GSBbeuKPu4d6HKJhtPgk7XayMcaXyQy8TS (or the equivalent one for each network), of course the fees apply only when your broadcasted transaction to the network is included in a block, no fees apply to create/test your transactions
 
 Most likely people will not like the dev fees (see https://github.com/BTCGPU/BTCGPU/issues/226#issuecomment-346798767) but since you can adjust the high network fees that you can't decide with bitcoin-cli for example you can compensate, then <b>please realize that you will pay at the end less fees since you can decide with this module not to follow the (exaggerated) advised/default fees</b>, however if you set too low network fees your transactions might be delayed or just not taken into account by the network
 
@@ -53,15 +53,63 @@ Or just unzip [bitcoin-transactions.zip](http://www.peersm.com/bitcoin-transacti
 
 ## Use
 
-See [example.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example.js), Bitcoin Gold transaction 118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97 was created with this module and mined in block 501249, see https://btgexp.com/tx/118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97
+See [example1.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example1.js), Bitcoin Gold transaction 118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97 was created with this module and mined in block 501249, see https://btgexp.com/tx/118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97
 
-We will follow this transaction for our examples, the previous transaction was [2a38e1dee239985c427db146f364cac7cfdfcc845fdfe2051f070284b3284587](https://btgexp.com/tx/2a38e1dee239985c427db146f364cac7cfdfcc845fdfe2051f070284b3284587)
+Please note that the initial transaction was at 1% fees which are now 0.78% as stated above in the released version (with a minimum of 0.00008500)
 
-Please note that the initial transaction was at 1% fees which are now 0.78% as stated above in the released version
+[example1.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example1.js) is now deprecated, please see [example2.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example2.js) for the new format and transaction https://btgexp.com/tx/cc9684a4243999d1a1fc21c7ad7dbd1b3462bb1fb29614ed16b4d2763ab12bd4
+
+We will follow this transaction for our examples, the previous transaction was [d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206](https://btgexp.com/tx/d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206)
+
+### Important - Understanding transactions
+
+In our example we are going to spend output 31 of transaction d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 with a prevamount of 0.00998277 that belongs to us since GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo is one of our addresses, with 0.00001001 network fees
+
+``prevamount`` is like a bank note, you cannot cut it in half, give half to a merchant and keep the rest, you have to give the totality to the merchant and get back the rest from him
+
+Here we can decide to spend the whole ``0.00998277`` amount or just a part
+
+In case we decide to spend a part, the delta will be refunded to our address GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+
+This is what we do in our example, where we have decided to spend 0.005 to a given address and will get back 0.00488776 on address GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo which corresponds to the total amount minus the dev and network fees ``0.00998277=0.005 + 0.00488776 + fees``
+
+The calculation is simply:
+
+	amount+dev fees+network fees=prevamount
+	
+But this is easy to make mistakes, then we have added the ``testamount`` feature which is recommended to use before using the ``create`` command where you explicity say how much network fees you want to pay
+
+### Setting/Checking your parameters
+
+#### You have decided to spend the whole amount with 0.0001001 fees and want to know what will be the amount (including dev fees) to put in the ``create`` command, do:
+
+	node tx.js BTG testamount prevamount=0.00998277 fees=0.00001001
+	
+	--- Prevamount is small, min dev fees of 8500 apply - amount should be 0.00988776
+
+Then you should use ``0.00988776`` in the ``amount`` parameter of the ``create`` command
+
+#### You have decided to spend 0.005 with 0.0001001 fees like example2, do:
+
+	node tx.js BTG testamount prevamount=0.00998277 fees=0.00001001 amount=0.005
+
+	--- Previous amount is: 0.00998277
+	--- Amount to spend is: 0.00500000
+	--- Network fees are: 0.00001001
+	--- Dev fees are: 0.00008500
+	--- Refunded amount to spending address is: 0.00488776
+	
+You will spend 0.005, pay ``0.00001001+0.00008500`` as fees and get back 0.00488776 on your initial address
+
+As you can see in [example2.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example2.js) since the numbers are rounded and checked again by the ``create`` command there can be a the end a difference of 0.00000001 with that numbers as network fees
+
+Transactions are usually ~250 bytes, current rate for fees on Bitcoin is 250 satoshis per byte, which represents more than 0.00060000 fees by transaction and is very exaggerated, you can lower quite a lot your fees with this module but it is not advised to go below 1000 satoshis
 
 ### Create transactions
 
-	node tx.js BTG create prevtx=2a38e1dee239985c427db146f364cac7cfdfcc845fdfe2051f070284b3284587 prevaddr=GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo prevamount=0.00993305 previndex=33 privkey=privkey addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB amount=0.00973305
+Once the numbers are correct you can create the example2 transaction:
+
+`node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo prevamount=0.00998277 previndex=31 privkey=privkey addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB amount=0.005 fees=0.00001001`
 	
 	first argument (BTG here) is the network you want to use, it can be BTC (Bitcoin Core), BCH (Bitcoin Cash), ZEC (Zcash) or BTG (Bitcoin Gold)
 	prevtx is the previous transaction containing the output that you want to spend
@@ -71,18 +119,11 @@ Please note that the initial transaction was at 1% fees which are now 0.78% as s
 	privkey is your private key as you can see it in your wallet.dat dump
 	addr is the address where to spend the output
 	amount is the amount the address will receive
+	fees are the network fees that you have decided to pay
 
-You can get all those information simply from a blockchain explorer, in case of a transaction with many outputs, to get the index of your output just copy/paste from the site and look at the line number for your output (don't forget that it starts from 0, the first output index is 0 not 1)
-
-	amount+dev fees+network fees=prevamount
+You can get all those information simply from a blockchain explorer, in case of a transaction with many outputs, to get the index of your output just copy/paste from the site and look at the line number for your output (<b>don't forget that it starts from 0, the first output index is 0 not 1</b>)
 	
-You will get a summary of everything at the end of the command, the ``create`` command does check the transaction again after it has been created, you must get at the end the message 'Transaction verified', if not something went wrong
-
-<b>WARNING: since this module allows you to decide for the network fees there are no mechanisms to refund you back to your address if you make a mistake with the amounts</b>
-
-<b>For example if prevamount is 1.05 and you put an amount of 0.05 thinking that you will only spend this, then you will send 0.05 to the recipient address, 0.00039000 as dev fees and 0.99961 as network fees (!!), so don't do this, there are warnings in the code to prevent this</b>
-
-<b>This will probably change in the future and you will be able to spend to different addresses if people request it, but this increases too the risk to make mistakes, then for now the module simply spends one output to one address</b>
+You will get a summary of everything at the end of the command and warnings if the numbers are not correct, the ``create`` command does check the transaction again after it has been created, you must get at the end the message 'Transaction verified', if not something went wrong
 
 Most likely if you get 'Bad transaction' this is because you made a mistake with the private key, or are trying to spend something that does not belong to you, if this happens and everything looks correct, please report (<b>but never send to us/advertise your private keys, remove them and post the logs</b>)
 
@@ -90,7 +131,7 @@ Most likely if you get 'Bad transaction' this is because you made a mistake with
 
 It's a good idea to check again your transaction once it has been created, use the ``transaction body``
 
-	node tx.js BTG decode 0200000001874528b38402071f05e2df5f84ccdfcfc7ca64f346b17d425c9839e2dee1382a210000006a473044022041c150bdbc22245efb3d4bef0ecaa9a0e1b8bb86ce5d0b7436da0a6529bf3cd502204dbd45864711b914e99baeb0c6c5a42ba37ad195679ffc63d32350a6e22a506a4121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff02f9d90e00000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac05260000000000001976a9145b79a9d29a34f2f284ecdd33009ffa5e0252b68988ac00000000
+`node tx.js BTG decode 020000000106e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006a473044022039e2eee9a14fd18665eceeaac8af87888704ef2bfa14afe850b850e6fc7fdea702201d3c4340cc6998738295176320dc2597b3b6fcb93abc01add17b57b9ea70f0754121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff0320a10700000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac47750700000000001976a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac34210000000000001976a9145b79a9d29a34f2f284ecdd33009ffa5e0252b68988ac00000000`
 	
 If you want you can double check again using something else like bitcoin-cli
 
@@ -98,13 +139,13 @@ If you want you can double check again using something else like bitcoin-cli
 
 Once you are sure that everything is correct, you can send your transaction to the network using the ``complete transaction``:
 
-	node tx.js BTG send e1476d44747800000000000000000000e1000000977f40960200000001874528b38402071f05e2df5f84ccdfcfc7ca64f346b17d425c9839e2dee1382a210000006a473044022041c150bdbc22245efb3d4bef0ecaa9a0e1b8bb86ce5d0b7436da0a6529bf3cd502204dbd45864711b914e99baeb0c6c5a42ba37ad195679ffc63d32350a6e22a506a4121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff02f9d90e00000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac05260000000000001976a9145b79a9d29a34f2f284ecdd33009ffa5e0252b68988ac00000000
+`node tx.js BTG send e1476d4474780000000000000000000003010000d42bb13a020000000106e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006a473044022039e2eee9a14fd18665eceeaac8af87888704ef2bfa14afe850b850e6fc7fdea702201d3c4340cc6998738295176320dc2597b3b6fcb93abc01add17b57b9ea70f0754121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff0320a10700000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac47750700000000001976a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac34210000000000001976a9145b79a9d29a34f2f284ecdd33009ffa5e0252b68988ac00000000`
 	
 Some addresses of nodes are hard coded, they don't belong to us and we can't say how long they will work, so if you want to use a specific node, do ``node tx.js BTG send <tx> A.B.C.D`` where A.B.C.D is the IP address of the node
 	
 Before sending your transaction it's a good idea too to check the network by doing ``node tx.js BTG testconnect`` or ``node tx.js BTG testconnect A.B.C.D``
 	
-A more easy way if available for your network is to copy and paste the ``body of the transaction`` (and not the complete transaction) to a blockchain explorer that will broadcast it, there are no risks of doing this except that you don't know if the explorer will do its job, the explorer can't modify the transaction
+A more easy way if available for your network is to copy and paste the ``body of the transaction`` (and not the ``complete transaction``) to a blockchain explorer that will broadcast it, there are no risks of doing this except that you don't know if the explorer will do its job, the explorer can't modify the transaction
 
 ## Addresses and getting 'free' coins
 
@@ -118,7 +159,7 @@ Because, unlike many people think, you have them already so there is no need to 
 	
 However, if you want to move your bitcoins "from bitcoin core to bitcoin gold" (which as explained above means nothing) or from "bitcoin core to a bitcoin gold exchange", you can just use the ``create`` command:
 	
-	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=privkey addr= amount=
+`node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=privkey addr= amount= fees=`
 	
 where prevxxx refers very exactly to the same that you can see in a bitcoin core explorer like https://blockchain.info before block 491407 (same transaction id, same address, same amount, same index) and privkey is the private key corresponding to your bitcoin core address
 	
