@@ -967,7 +967,7 @@ var testamount=function(args) {
 				};
 			};
 			if (fees<MIN_SATO_) {
-				console.log('--- WARNING the network fees are lower that the minimum '+MIN_SATO);
+				console.log('--- WARNING the network fees are lower that the minimum '+MIN_SATO_);
 			};
 		};
 		if (amount) {
@@ -979,7 +979,7 @@ var testamount=function(args) {
 				console.log('--- WARNING the refunded amount is very low for future transactions');
 			};
 			if (fees<MIN_SATO_) {
-				console.log('--- WARNING the network fees are lower that the minimum '+MIN_SATO);
+				console.log('--- WARNING the network fees are lower that the minimum '+MIN_SATO_);
 			};
 			write(prevamount,amount,fees,s,refunded);
 		};
