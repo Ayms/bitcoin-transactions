@@ -119,7 +119,7 @@ Transactions are usually ~250 bytes, current rate for fees on Bitcoin is 250 sat
 
 ### Create transactions
 
-Once the numbers are correct you can create the example-2 transaction:
+Once the numbers are correct you can create your transaction:
 
 `node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo prevamount=0.00998277 previndex=31 privkey=privkey addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00001001 amount=0.005 `
 	
