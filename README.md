@@ -99,7 +99,7 @@ But this is easy to make mistakes, then we have added the ``testamount`` feature
 	
 	--- Prevamount is small, min dev fees of 8500 apply - amount should be 0.00988776
 
-Then you should use ``0.00988776`` in the ``amount`` parameter of the ``create`` command
+Then you should use ``0.00988776`` in the ``amount`` parameter of the ``create`` command or use the ``create`` command without the ``amount`` parameter as explained in the "easy way" section above
 
 #### You have decided to spend 0.005 with 0.0001001 fees like example-2, do:
 
