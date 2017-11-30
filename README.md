@@ -61,6 +61,18 @@ Please note that the initial transaction was at 1% fees which are now 0.78% as s
 
 We will follow this transaction for our examples, the previous transaction was [d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206](https://btgexp.com/tx/d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206)
 
+### The easy way
+
+Once you know this module (if not please read what follows), most likely you will do:
+
+	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey= addr= fees=
+	
+	node tx.js BTG send <complete transaction> <IP>
+	
+The module will calculate the amount to be spent according to the fees and advise if the numbers are not coherent:
+
+	amount+dev fees+network fees=prevamount
+
 ### Important - Understanding transactions
 
 In our example we are going to spend output 31 of transaction d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 with a prevamount of 0.00998277 that belongs to us since GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo is one of our addresses, with 0.00001001 network fees

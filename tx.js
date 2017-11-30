@@ -951,25 +951,26 @@ var testamount=function(args) {
 				tmp=prevamount-s-fees;
 				if (tmp<0) {
 					console.log('--- Prevamount is too small to allow fees');
+					amount=null;
 				} else {
 					console.log('--- Prevamount is small, min dev fees of '+SATO_+' apply - amount should be '+big_satoshis(tmp));
+					amount=tmp;
 				};
 			} else {
 				s=prevamount-fees-advised;
 				if (!amount) {
 					console.log('--- With your network fees the advised amount is: '+big_satoshis(advised));
+					amount=advised;
 				} else {
 					console.log('--- Amount too high - With your network fees the advised amount is: '+big_satoshis(advised));
+					amount=null;
 				};
-				write(prevamount,advised,fees,s);
 			};
 			if (fees<MIN_SATO_) {
 				console.log('--- WARNING the network fees are lower that the minimum '+MIN_SATO);
 			};
-			if (amount) {
-				amount=null;
-			};
-		} else {
+		};
+		if (amount) {
 			refunded=prevamount-amount-fees-s;
 			if (refunded<MIN_SATO_) {
 				s+=refunded;
@@ -988,17 +989,17 @@ var testamount=function(args) {
 
 var create=function(args) {
 	var prevamount=parseFloat(args[2]);
-	var fees=parseFloat(args[7]);
-	var amount=parseFloat(args[6]);
-	console.log('Creating transaction to send '+parseFloat(args[6])+' (without fees) to '+args[5]+' from output number '+parseInt(args[3])+' with amount '+parseFloat(args[2])+' owned by '+args[1]+' in transaction '+args[0]);
+	var fees=parseFloat(args[6]);
+	var amount=parseFloat(args[7])||null;
 	var res=testamount([prevamount,fees,amount]);
 	if (!res[0]) {
 		console.log('Something is wrong with your numbers, please check them with the testamount command');
 	} else {
+		amount=amount||big_satoshis(res[0]);
 		if (!res[2]) {
-			new Tx([[[args[0],args[1],parseFloat(args[2])],parseInt(args[3]),null,null,null,[args[4]]]],[[args[5],parseFloat(args[6]),'p2pkh']],null);
+			new Tx([[[args[0],args[1],prevamount],parseInt(args[3]),null,null,null,[args[4]]]],[[args[5],amount,'p2pkh']],null);
 		} else {
-			new Tx([[[args[0],args[1],parseFloat(args[2])],parseInt(args[3]),null,null,null,[args[4]]]],[[args[5],parseFloat(args[6]),'p2pkh'],[args[1],big_satoshis(res[2]),'p2pkh']],null);
+			new Tx([[[args[0],args[1],prevamount],parseInt(args[3]),null,null,null,[args[4]]]],[[args[5],amount,'p2pkh'],[args[1],big_satoshis(res[2]),'p2pkh']],null);
 		};
 	};
 };
@@ -1025,7 +1026,7 @@ if (process.argv) {
 					//node tx.js BTG testamount prevamount= fee= amount=(optional)
 					testamount(args);break;
 				case 'create': 
-					//node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey= addr= amount= fee=
+					//node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey= addr= fee= amount=(optional)
 					create(args);break;
 				case 'decode': var tx=new Tx();tx.deserialize(args[0]);delete tx.fees;console.log(tx);break;
 					//node tx.js BTG testconnect/send IP
