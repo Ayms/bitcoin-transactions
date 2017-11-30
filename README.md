@@ -121,7 +121,7 @@ Transactions are usually ~250 bytes, current rate for fees on Bitcoin is 250 sat
 
 Once the numbers are correct you can create the example-2 transaction:
 
-`node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo prevamount=0.00998277 previndex=31 privkey=privkey addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB amount=0.005 fees=0.00001001`
+`node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo prevamount=0.00998277 previndex=31 privkey=privkey addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00001001 amount=0.005 `
 	
 	first argument (BTG here) is the network you want to use, it can be BTC (Bitcoin Core), BCH (Bitcoin Cash), ZEC (Zcash) or BTG (Bitcoin Gold)
 	prevtx is the previous transaction containing the output that you want to spend
@@ -171,8 +171,8 @@ Because, unlike many people think, you have them already so there is no need to 
 	
 However, if you want to move your bitcoins "from bitcoin core to bitcoin gold" (which as explained above means nothing) or from "bitcoin core to a bitcoin gold exchange", you can just use the ``create`` command:
 	
-`node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=privkey addr= amount= fees=`
-	
+`node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=privkey addr= fees= amount=(optional)`
+
 where prevxxx refers very exactly to the same that you can see in a bitcoin core explorer like https://blockchain.info before block 491407 (same transaction id, same address, same amount, same index) and privkey is the private key corresponding to your bitcoin core address
 	
 and addr can be a bitcoin address too that will be converted into a bitcoin gold address as you will see in the output of the command
