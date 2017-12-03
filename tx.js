@@ -56,6 +56,7 @@ var p2sh=new Buffer('05','hex');
 var PORT=8333;
 var LASTBLOCK=500000;
 var PROTOCOL=70015;
+var NOSEGWIT='1';
 
 var version_=function(v) {
 	if (v==='BTC') {
@@ -71,6 +72,7 @@ var version_=function(v) {
 		PORT=8233;
 		LASTBLOCK=223500;
 		PROTOCOL=170002;
+		NOSEGWIT='t1';
 	} else if (v==='BTG') {
 		VERSION=2;
 		SIGHASH_FORKID=0x00000040;
@@ -83,6 +85,7 @@ var version_=function(v) {
 		PORT=8338;
 		LASTBLOCK=500000;
 		PROTOCOL=70016;
+		NOSEGWIT='G';
 	} else if (v==='BCH') {
 		VERSION=1; //TODO
 		SIGHASH_FORKID=0x00000040;
@@ -845,8 +848,9 @@ var decode_simple=function(message) {
 		buf=new Buffer(buf,'hex');
 		var command=buf.slice(0,12).toString();
 		console.log(command);
-		switch (command) {
-			case 'reject': var l=buf.slice(12,16).readUInt32LE();buf=buf.slice(20);console.log(buf.toString());break;
+		if (command.indexOf('reject')!==-1) {
+			buf=buf.slice(20);
+			console.log(buf.toString());
 		};
 	});
 };
@@ -992,6 +996,9 @@ var create=function(args) {
 	var fees=parseFloat(args[6]);
 	var amount=parseFloat(args[7])||null;
 	var res=testamount([prevamount,fees,amount]);
+	if (args[5].substr(0,1)!==NOSEGWIT) {
+		throw "Do not use P2SH or SEGWIT/BIP141 addresses";
+	};
 	if (!res[0]) {
 		console.log('Something is wrong with your numbers, please check them with the testamount command');
 	} else {

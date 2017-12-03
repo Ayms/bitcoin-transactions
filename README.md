@@ -61,11 +61,17 @@ Please note that the initial transaction was at 1% fees which are now 0.78% as s
 
 We will follow this transaction for our examples, the previous transaction was [d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206](https://btgexp.com/tx/d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206)
 
+### Warning about addresses
+
+<b>Many wallets provide by default P2SH segwit/BIP141 addresses</b>
+
+<b>Do not use them with this module for now, use standard P2PKH addresses (starting with a 1 for Bitcoin and Bitcoin Cash, by a G for Bitcoin gold and by t1 for Zcash)</b>
+
 ### The easy way
 
 Once you know this module (if not please read what follows), most likely you will do:
 
-	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey= addr= fees=
+	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey= addr= fees=0.00001001
 	
 	node tx.js BTG send <complete transaction> <IP>
 	
