@@ -37,7 +37,7 @@ Unlike bitcoin-cli this modules allows you to manage your fees too, do not go be
 
 There are development fees of 0.78% (with a minimum of 0.00008500) that are added to each transaction that you broadcast and paid to the address GSBbeuKPu4d6HKJhtPgk7XayMcaXyQy8TS (or the equivalent one for each network), of course the fees apply only when your broadcasted transaction to the network is included in a block, no fees apply to create/test your transactions
 
-Most likely people will not like the dev fees (see https://github.com/BTCGPU/BTCGPU/issues/226#issuecomment-346798767) but since you can adjust the high network fees that you can't decide with bitcoin-cli for example you can compensate, then <b>please realize that you will pay at the end less fees since you can decide with this module not to follow the (exaggerated) advised/default fees</b>, however if you set too low network fees your transactions might be delayed or just not taken into account by the network
+Most likely people will not like the dev fees (see https://github.com/BTCGPU/BTCGPU/issues/226#issuecomment-346798767) but since you can adjust the high network fees that you can't decide with bitcoin-cli for example you can compensate, then <b>please realize that you will pay at the end less fees for small amounts since you can decide with this module not to follow the (exaggerated) advised/default fees</b>, however if you set too low network fees your transactions might be delayed or just not taken into account by the network
 
 This module is not trivial, the bitcoin protocol and formats do not make things easy, it is not recommended (neither authorized by the license) to try to modify anything, if you send wrong transactions to the network at best you will be immediately banned by the nodes for one day and at worse you could send transactions that could spend your funds at a wrong place
 
@@ -61,7 +61,7 @@ Please note that the initial transaction was at 1% fees which are now 0.78% as s
 
 We will follow this transaction for our examples, the previous transaction was [d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206](https://btgexp.com/tx/d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206)
 
-### Warning about addresses
+### Important Warning about addresses
 
 <b>Many wallets provide by default P2SH segwit/BIP141 addresses</b>
 
@@ -184,6 +184,8 @@ where prevxxx refers very exactly to the same that you can see in a bitcoin core
 and addr can be a bitcoin address too that will be converted into a bitcoin gold address as you will see in the output of the command
 	
 You can convert before if you like the prevaddr and addr from a bitcoin core one to a bitcoin gold one but this is of no use, the create command will work with the original bitcoin addresses
+
+<b>Again, if you do this, never use P2SH or Segwit/BIP141 addresses for the destination and the origin</b>
 
 ## Double check again
 
