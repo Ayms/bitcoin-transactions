@@ -185,6 +185,8 @@ and addr can be a bitcoin address too that will be converted into a bitcoin gold
 	
 You can convert before if you like the prevaddr and addr from a bitcoin core one to a bitcoin gold one but this is of no use, the create command will work with the original bitcoin addresses
 
+If this explanation is unclear, please see the example given [here](https://github.com/BTCGPU/BTCGPU/issues/213#issuecomment-350449253)
+
 <b>Again, if you do this, never use P2SH or Segwit/BIP141 addresses for the destination and the origin</b>
 
 ## Double check again
