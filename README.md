@@ -179,7 +179,7 @@ However, if you want to move your bitcoins "from bitcoin core to bitcoin gold" (
 	
 `node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=privkey addr= fees= amount=(optional)`
 
-where prevxxx refers very exactly to the same that you can see in a bitcoin core explorer like https://blockchain.info before block 491407 (same transaction id, same address, same amount, same index) and privkey is the private key corresponding to your bitcoin core address
+where prev[tx,addr,amount,index] refers very exactly to the same that you can see in a bitcoin core explorer like https://blockchain.info before block 491407 (same transaction id, same address, same amount, same index) and privkey is the private key corresponding to your bitcoin core address
 	
 and addr can be a bitcoin address too that will be converted into a bitcoin gold address as you will see in the output of the command
 	
