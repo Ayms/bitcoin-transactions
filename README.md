@@ -1,7 +1,7 @@
 bitcoin-transactions
 ===
 
-Bitcoin transactions made simple, create and send by your own your Bitcoin, Bitcoin Cash, Bitcoin Gold, Zcash, etc transactions, manage your keys and do not disclose them to dubious wallets software
+Bitcoin transactions made simple for standard or multisig wallets, create and send by your own your Bitcoin, Bitcoin Cash, Bitcoin Gold, Zcash, etc transactions, manage your keys and do not disclose them to dubious wallets software
 
 ## Rationale
 
@@ -73,7 +73,7 @@ Multisig transactions/wallets (and why it's a very bad idea to use them) is expl
 
 <b>Many wallets provide by default P2SH segwit/BIP141 addresses</b>
 
-<b>Do not use them with this module for now, use standard P2PKH addresses (starting with a 1 for Bitcoin and Bitcoin Cash, by a G for Bitcoin gold and by t1 for Zcash) or standard P2SH addresses (starting with a 3 for Bitcoin and Bitcoin Cash, by a A for Bitcoin gold and by t3 for Zcash) for multisig wallets (note that it is not possible to differentiate a segwit address from a normal P2SH one, so, again, make sure that your are not using segwit addresse)</b>
+<b>Do not use them with this module for now, use standard P2PKH addresses (starting with a 1 for Bitcoin and Bitcoin Cash, by a G for Bitcoin gold and by t1 for Zcash) or standard P2SH addresses (starting with a 3 for Bitcoin and Bitcoin Cash, by a A for Bitcoin gold and by t3 for Zcash) for multisig wallets (note that it is not possible to differentiate a segwit address from a normal P2SH one, so, again, make sure that your are not using segwit address)</b>
 
 While using this module if you make a mistake with the parameters the transaction might look valid but will just be rejected by the network, so there is no impact, <b>except if you make a mistake with the destination address, nobody can check this, then make sure that the destination address is one that you master</b>
 
