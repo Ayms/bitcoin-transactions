@@ -18,6 +18,8 @@ var TX_COMMAND=new Buffer('747800000000000000000000','hex');
 var TX_VERSION=new Buffer('76657273696F6E0000000000','hex');
 var TX_VERACK=new Buffer('76657261636B000000000000','hex');
 var SIG_F=0x4830;
+var ISSIG1='304502';
+var ISSIG2='304402';
 var OP_PUSHDATA1=0x4c;
 var OP_PUSHDATA2=0x4d;
 var OP_PUSH=512;
@@ -27,6 +29,8 @@ var OP_HASH160='a9';
 var OP_RETURN='6a';
 var OP_0='00';
 var OP_1='01';
+var OP_2='52';
+var OP_3='53';
 var OP_DROP='75';
 var OP_DEPTH='74';
 var OP_EQUAL='87';
@@ -38,9 +42,9 @@ var OP_CODESEPARATORS='ab';
 var OP_FORK='b689';
 var P2SH_NON_STANDARD=new Buffer(OP_0+OP_DROP+OP_DEPTH+OP_0+OP_EQUAL,'hex');
 var FEES=250;
-var SATO=100000000;
+var SATO=100000000; //1 BTC = 100000000 satoshis
 var SATO_=8500;
-var MIN_SATO_=1000;
+var MIN_SATO_=300;
 var S_=128;
 //BTC default
 var VERSION=1;
@@ -58,6 +62,8 @@ var LASTBLOCK=500000;
 var PROTOCOL=70015;
 var NOSEGWIT=['1','G','C'];
 var NOSEGWIT2=['t1'];
+var twoOFtwo='2of2';
+var twoOFthree='2of3';
 
 var version_=function(v) {
 	if (v==='BTC') {
@@ -121,12 +127,10 @@ var hash_160=function(buf) {
 };
 
 var check_p2sh=function(pubkey,check,version) {
-	var check_=pubkey.slice(2,pubkey.length-1);
-	check=check[check.length-1];
-	check=parse_op_push(check);
-	check=hash_160(check);
+	var check_=pubkey.slice(2,pubkey.length-1).toString('hex');
+	check=hash_160(check).toString('hex');
 	if (check===check_) {
-		console.log('Redeemer script verified: '+btc_decode(check,version));
+		console.log('Redeemer script verified: '+btc_encode(new Buffer(check,'hex'),version));
 		return true;
 	};
 };
@@ -137,7 +141,7 @@ var check_p2sh_script=function(dat,message,signature) {
 	var data=[];
 	var pub;
 	dat.forEach(function(data) {
-		data.unshift(parse_op_push(data));
+		data.unshift(parse_op_push(data)[0]);
 	});
 	var script=data.shift();
 	var hash;
@@ -210,6 +214,13 @@ var format_privKey=function(privs) {
 	return privs;
 };
 
+var format_pubKey=function(privs) {
+	var pubs=privs.map(function(priv) {
+		return getpubKeyfromPrivate(priv);
+	});
+	return pubs;
+};
+
 var getAddressfromPrivate=function(privateKey,version) {
 	if (privateKey.length>32) {
 		privateKey=privateKey.slice(0,32);
@@ -241,6 +252,13 @@ var getpubkeyfromSignature=function(message,signature,version) {
 	return boo;
 };
 
+var issig=function(buf) {
+	var t=buf.slice(0,3).toString('hex');
+	if ((t===ISSIG1)||(t===ISSIG2)) {
+		return true;
+	};
+};
+
 var reverse=function(buf) {
 	var len=buf.length;
 	var rev=new Buffer(len);
@@ -264,6 +282,19 @@ var big_satoshis=function(n) {
 	if (n) {
 		return (n/SATO).toFixed(8);
 	};
+};
+
+var decimals=function(nb) {
+	var a=nb.toString().split('.');
+	if (a.length===2) {
+		var tmp=parseInt(a[1].slice(0,1));
+		if (tmp>=5) {
+			nb=Math.ceil(nb);
+		} else {
+			nb=Math.floor(nb);
+		};
+	};
+	return nb;
 };
 
 var advise=function(amount) {
@@ -342,7 +373,11 @@ var op_push=function(buf) {
 			res.push(Buffer.concat([new Buffer([OP_PUSHDATA2]),len,buf.slice(0,len.readUInt16LE())]));
 			buf=buf.slice(len.readUInt16LE());
 		} else {
-			res.push(Buffer.concat([new Buffer([OP_PUSHDATA1]),new Buffer([buf.length]),buf]));
+			if (buf.length<OP_PUSHDATA1) {
+				res.push(Buffer.concat([new Buffer([buf.length]),buf]));
+			} else {
+				res.push(Buffer.concat([new Buffer([OP_PUSHDATA1]),new Buffer([buf.length]),buf]));
+			};
 			buf=new Buffer(0);
 		};
 	};
@@ -355,14 +390,15 @@ var deserialize_scriptSig=function(buf) {
 	var tmp,len;
 	while (buf.length) {
 		tmp=parse_op_push(buf);
-		if (tmp) {
-			dat.push(tmp);
-			buf=buf.slice(tmp.length+1);
+		if (buf[0]!==parseInt(OP_0)) {
+			if (issig(tmp[0])) {
+				signatures.push(tmp[0]);
+			} else {
+				dat.push(tmp[0]);
+			};
+			buf=buf.slice(tmp[0].length+tmp[1]);
 		} else {
-			len=buf[0]+1;
-			tmp=buf.slice(1,len);
-			signatures.push(tmp);
-			buf=buf.slice(len);
+			buf=buf.slice(1);
 		};
 	};
 	return [signatures,dat.length?dat:null];
@@ -370,11 +406,14 @@ var deserialize_scriptSig=function(buf) {
 
 var serialize_sig=function(sigs) {
 	var signatures=[];
+	if (sigs.length>1) { //multisig
+		signatures.push(new Buffer(OP_0,'hex'));
+	};
 	sigs.forEach(function(sig) {
 		if (sig[0].length>0xff) {
 			throw "invalid signature length";
 		};
-		signatures.push(Buffer.concat([new Buffer([sig[0].length]),sig[0],sig[1]]));
+		signatures.push(Buffer.concat([new Buffer([sig[0].length]),sig[0],sig[1]||(new Buffer(0))]));
 	});
 	return signatures;
 };
@@ -383,7 +422,7 @@ var add_script=function(data,privKey) {
 	var l=data.length;
 	var res=[];
 	for (var i=l-1;i>=0;i--) {
-		var buf=parse_op_push(data[i]);
+		var buf=parse_op_push(data[i])[0];
 		buf=hash_160(buf);
 		res.push(Buffer.concat([new Buffer(OP_HASH160,'hex'),new Buffer([buf.length]),buf,new Buffer(OP_EQUALVERIFY,'hex')]));
 	};
@@ -393,14 +432,38 @@ var add_script=function(data,privKey) {
 };
 
 var parse_op_push=function(buf) {
+	var tmp,len,n;
 	switch (buf[0]) {
-		case OP_PUSHDATA2:buf=buf.slice(3);break;
-		case OP_PUSHDATA1:buf=buf.slice(2);break;
-		default: return null;
+		case OP_PUSHDATA2:n=3;len=buf.slice(1).readUInt16LE();buf=buf.slice(3);tmp=buf.slice(0,len);break;
+		case OP_PUSHDATA1:n=2;len=buf[1];buf;buf=buf.slice(2);tmp=buf.slice(0,len);break;
+		default:n=1;len=buf[0];buf=buf.slice(1);tmp=buf.slice(0,len);
 	};
-	return buf;
+	return [tmp,n];
 };
 
+var multi_redeem=function(pubs,op_) {
+	var buf=[];
+	buf.push(new Buffer(OP_2,'hex'));
+	pubs.forEach(function(pub) {
+		var l=new Buffer(1);
+		l.writeUInt8(pub.length)
+		buf.push(l);
+		buf.push(pub);
+	});
+	buf.push(new Buffer(op_,'hex'));
+	buf.push(new Buffer(OP_CHECK_MULTISIG,'hex'));
+	return Buffer.concat(buf);
+};
+
+
+ var check_addr=function(script,addr) {
+	var check=hash_160(script).toString('hex');
+	var check_=btc_decode(addr,p2sh).toString('hex');
+	if (check!==check_) {
+		throw ("Redeem script does not correspond to the address to be spent "+addr);
+	};
+ };
+ 
 var getTx=function(hash,cb) {
 	//removed
 };
@@ -429,18 +492,26 @@ var Tx=function(input,output,nLockTime) {
 			if (data&&script) {
 				throw 'data and script are exclusive';
 			};
-			var tmp=data||script;
-			if (tmp) {
-				tmp=op_push(tmp);
-			};
 			var privKey=format_privKey(inp[5]);
-			if (!script) {
+			var pubKey;
+			if (script==='p2pkh') {
 				if (privKey.length>1) {
 					throw "can't have multiple signatures";
 				};
 				privKey=privKey[0];
+				pubKey=getpubKeyfromPrivate(privKey);
+				script=null;
+			} else {
+				pubKey=format_pubKey(privKey);
+				script=(script==='p2sh')?multi_redeem(pubKey,OP_2):script;
+				if (Array.isArray(inp[0])) {
+					check_addr(script,inp[0][1]);
+				};
 			};
-			var pubKey=getpubKeyfromPrivate(privKey);
+			var tmp=data||script;
+			if (tmp) {
+				tmp=op_push(tmp);
+			};
 			var ns=new Buffer(4);
 			ns.writeUInt32BE(inp[4]||0xffffffff);
 			this.input.push({hash:inp[0],n:inp[1],scriptSigLen:null,scriptSig:null,data:(data?tmp:null),script:(script?tmp:null),nSequence:ns,privKey:privKey,pubKey:pubKey});
@@ -467,21 +538,7 @@ var Tx=function(input,output,nLockTime) {
 					if (out[1]!==0) {
 						all=true;
 						version=p2sh;
-						var dat=out[0];
-						var tmp;
-						if (!Buffer.isBuffer(dat)) {
-							dat=new Buffer(dat,'utf8');
-						};
-						address=op_push(dat);
-						if (out[4]) {
-							var privKey=format_privKey(out[4]);
-							privKey=privKey[0]; //TODO multisig
-							tmp=op_push(add_script(address,privKey));
-							tmp.forEach(function(buf) {
-								address.push(buf);
-							});
-						};
-						address=hash_160(address[address.length-1]);
+						address=btc_decode(out[0],version);
 						len.writeUInt8(address.length);
 						scriptPubkey=Buffer.concat([new Buffer(OP_HASH160,'hex'),len,address,new Buffer(OP_EQUAL,'hex')]);
 					} else {
@@ -510,7 +567,6 @@ var Tx=function(input,output,nLockTime) {
 		},this);
 		this.fees-=this.s;
 		if (!all) {
-			//sig_hash_all is always used except for a single output op_return
 			this.sigHash.writeUInt32LE(SIGHASH_NONE);
 		};
 		this.sighash_sign();
@@ -535,30 +591,32 @@ Tx.prototype.p2pk_sign=function(inp,scriptSig) {
 			console.log("------------ Spending public key could not be verified, you are probably trying to spend an output that you don't owe");
 		};
 	};
-	inp.scriptSig=[[Buffer.concat([new Buffer(this.sign(scriptSig,inp.privKey)),this.sigHash.slice(0,1)]),Buffer.concat([new Buffer([inp.pubKey.length]),inp.pubKey])]]; //remove pubkey
+	inp.scriptSig=[[Buffer.concat([new Buffer(this.sign(scriptSig,inp.privKey)),this.sigHash.slice(0,1)]),Buffer.concat([new Buffer([inp.pubKey.length]),inp.pubKey])]];
 	signatures=Buffer.concat(serialize_sig(inp.scriptSig));
-	data=inp.data?Buffer.concat(op_push(inp.data)):(new Buffer(0));
+	data=inp.data?Buffer.concat(inp.data):(new Buffer(0));
 	inp.scriptSigLen=varlen(Buffer.concat([signatures,data]).length);
 };
 
 Tx.prototype.p2sh_sign=function(inp,scriptSig) {
 	var version=p2sh;
 	var signatures,dat;
+	var script=inp.script||inp.data;
 	var sigHash=this.sigHash.slice(0,1);
-	check_p2sh(inp.prevscriptPubkey,inp.script||inp.data,version);
-	if (inp.script) { //add verification script
-		//TODO multisig/execute script
-	};
-	if (Array.isArray(inp.privKey)) {
-		inp.privKey.forEach(function(privKey) {
-			inp.scriptSig.push(Buffer.concat([new Buffer(this.sign(scriptSig,privKey)),sigHash]));
-		},this);
+	if 	(check_p2sh(inp.prevscriptPubkey,parse_op_push(script[0])[0],version)) {
+		if (Array.isArray(inp.privKey)) {
+			inp.scriptSig=[];
+			inp.privKey.forEach(function(privKey,i) {
+				inp.scriptSig.push([Buffer.concat([new Buffer(this.sign(scriptSig,privKey)),sigHash])]);
+			},this);
+		} else {
+			inp.scriptSig=[Buffer.concat([new Buffer(this.sign(scriptSig,inp.privKey)),sigHash])];
+		};
+		signatures=Buffer.concat(serialize_sig(inp.scriptSig));
+		dat=Buffer.concat(inp.script||inp.data);
+		inp.scriptSigLen=varlen(Buffer.concat([signatures,dat]).length);
 	} else {
-		inp.scriptSig=[Buffer.concat([new Buffer(this.sign(scriptSig,inp.privKey)),sigHash])];
+		throw 'p2sh address and redeem script do not match';
 	};
-	signatures=Buffer.concat(serialize_sig(inp.scriptSig));
-	dat=Buffer.concat(op_push(inp.script||inp.data));
-	inp.scriptSigLen=varlen(Buffer.concat([signatures,dat]).length);
 };
 
 Tx.prototype.sighash_sign=function(verif) {
@@ -595,13 +653,18 @@ Tx.prototype.sighash_sign=function(verif) {
 				inp.hash=inp.hash[0];
 				cb.call(this,body);
 			} else {
-				var version=p2pk;
+				var version=(inp.hash[3]==='p2sh')?p2sh:p2pk;
 				var address=btc_decode(body,version);
 				var len=new Buffer(1);
 				len.writeUInt8(address.length);
-				inp.prevscriptPubkey=Buffer.concat([new Buffer(OP_DUP+OP_HASH160,'hex'),len,address,new Buffer(OP_EQUALVERIFY+OP_CHECKSIG,'hex')]);
-				inp.prevscriptPubkeyValue=parseInt(inp.hash[2]*SATO);
-				this.fees+=parseInt(inp.hash[2]*SATO);
+				if (version===p2pk) {
+					inp.prevscriptPubkey=Buffer.concat([new Buffer(OP_DUP+OP_HASH160,'hex'),len,address,new Buffer(OP_EQUALVERIFY+OP_CHECKSIG,'hex')]);
+				} else {
+					inp.prevscriptPubkey=Buffer.concat([new Buffer(OP_HASH160,'hex'),len,address,new Buffer(OP_EQUAL,'hex')]);
+					inp.redeem=parse_op_push(inp.script[0])[0];
+				};
+				inp.prevscriptPubkeyValue=decimals(inp.hash[2]*SATO);
+				this.fees+=inp.prevscriptPubkeyValue;
 				inp.hash=inp.hash[0];
 				cb.call(this);
 			};
@@ -628,7 +691,18 @@ Tx.prototype.sighash_sign=function(verif) {
 	},this);
 };
 
-Tx.prototype.sighash_verify=function(prevscriptPubkey) {
+Tx.prototype.getmessage=function(signature,i) {
+	var sigHash=new Buffer(4);
+	sigHash.writeUInt32LE(signature[signature.length-1]);
+	signature=signature.slice(0,signature.length-1);
+	console.log('signature: '+signature.toString('hex'));
+	message=this.serialize_for_hash(i,sigHash);
+	console.log('message to be signed: '+message.toString('hex'));
+	message=double_hash256(message);
+	return message;
+};
+
+Tx.prototype.sighash_verify=function(prevscriptPubkey,redeem) {
 	this.input.forEach(function(inp,i) {
 		var cb=function(data) {
 			var message;
@@ -641,24 +715,14 @@ Tx.prototype.sighash_verify=function(prevscriptPubkey) {
 				inp.prevscriptPubkey=tx.output[inp.n].scriptPubkey;
 			} else {
 				inp.prevscriptPubkey=prevscriptPubkey[i][0];
-				inp.prevscriptPubkeyValue=parseInt(prevscriptPubkey[i][1]*SATO);
+				inp.prevscriptPubkeyValue=prevscriptPubkey[i][1];
 			};
 			var signature=inp.scriptSig;
-			if (signature.length>1) {
-				//TODO multisig
-				signature=signature[0];
-			} else {
-				signature=signature[0];
-			};
-			var sigHash=new Buffer(4);
-			sigHash.writeUInt32LE(signature[signature.length-1]);
-			signature=signature.slice(0,signature.length-1);
-			console.log('signature: '+signature.toString('hex'));
-			message=this.serialize_for_hash(i,sigHash);
-			console.log('message to be signed: '+message.toString('hex'));
-			message=double_hash256(message);
 			var p2something=decode_script(inp.prevscriptPubkey);
 			if ((p2something==='p2pkh')||(p2something==='p2pk')) {
+				signature=signature[0];
+				message=this.getmessage(signature,i);
+				signature=signature.slice(0,signature.length-1);
 				for (var k=0;k<4;k++) {
 					try {
 						var check_;
@@ -666,6 +730,7 @@ Tx.prototype.sighash_verify=function(prevscriptPubkey) {
 						var key=ec.keyFromPublic(pub,'hex');
 						pub=new Buffer(key.getPublic(true,'arr'),'hex');
 						var check=hash_160(pub).toString('hex');
+						console.log('Public key recovered: '+check);
 						if (key.verify(message,signature)) {
 							inp.verified=true;
 						};
@@ -676,13 +741,35 @@ Tx.prototype.sighash_verify=function(prevscriptPubkey) {
 					} catch(ee) {};
 				};
 			} else if (p2something==='p2sh') {
-				var dat=inp.data||inp.script;
-				inp.verified=check_p2sh(inp.prevscriptPubkey,dat,p2sh);
-				inp.allowed_to_spend=check_p2sh_script(dat,message,signature);
-				if (typeof inp.allowed_to_spend!=='boolean') {
-					console.log(inp.allowed_to_spend);
-					inp.allowed_to_spend=false;
-				};
+				var twoof=2;
+				var pubKey;
+				var pr=0;
+				var tmp;
+				inp.script.forEach(function(script) {
+					inp.redeem=script;
+					tmp=script.slice(1);
+					tmp=tmp.slice(0,tmp.length-1);
+					tmp=tmp.slice(0,tmp.length-1);
+					pubKey=deserialize_scriptSig(tmp)[1];
+					signature.forEach(function(sig) {
+						message=this.getmessage(sig,i);
+						sig=sig.slice(0,sig.length-1);
+						pubKey.forEach(function(pub) {
+							var key=ec.keyFromPublic(pub,'hex');
+								if (key.verify(message,sig)) {
+									pr++;
+								};
+						});
+					},this);
+					if (pr>=twoof) {
+						inp.verified=true;
+						console.log('Multisig signatures verified');
+					};
+					if (check_p2sh(inp.prevscriptPubkey,script,p2sh)) {
+						inp.allowed_to_spend=true;
+						console.log('Multisig allowed to spend');
+					};
+				},this);
 			} else if (p2something==='op_return') {
 				throw "invalid transaction, can't spend a previous op_return output";
 			};
@@ -732,9 +819,9 @@ Tx.prototype.deserialize=function(data) {
 	for (var i=0;i<this.nbinput;i++) {
 		var sLen=decodevarlen(data.slice(36));
 		var off=36+sLen[1];
-		var scriptSigLen=data.slice(36,off);
+		var scriptSigLen=sLen[0];
 		var scriptSig=deserialize_scriptSig(data.slice(off,off+sLen[0]));
-		this.input.push({hash:reverse(data.slice(0,32)).toString('hex'),n:parseInt(reverse(data.slice(32,36)).toString('hex'),16),scriptSigLen:scriptSigLen,scriptSig:scriptSig[0],data:scriptSig[1],nSequence:reverse(data.slice(off+sLen[0],off+sLen[0]+4))});
+		this.input.push({hash:reverse(data.slice(0,32)).toString('hex'),n:parseInt(reverse(data.slice(32,36)).toString('hex'),16),scriptSigLen:scriptSigLen,scriptSig:scriptSig[0],script:scriptSig[1],nSequence:reverse(data.slice(off+sLen[0],off+sLen[0]+4))});
 		data=data.slice(off+sLen[0]+4);
 	};
 	tmp=decodevarlen(data);
@@ -760,7 +847,7 @@ Tx.prototype.deserialize=function(data) {
 	this.nLockTime=data;
 };
 
-Tx.prototype.serialize_for_hash=function(e,t){var u=[];if(t=t||this.sigHash,BIP143){var n,r=[];if(u.push(this.nVersion),this.input.forEach(function(e){n=new Buffer(4),n.writeUInt32LE(e.n),r.push(Buffer.concat([reverse(new Buffer(e.hash,"hex")),n]))}),u.push(double_hash256(Buffer.concat(r))),r=[],this.input.forEach(function(e){r.push(reverse(e.nSequence))}),u.push(double_hash256(Buffer.concat(r))),n=new Buffer(4),n.writeUInt32LE(this.input[e].n),u.push(Buffer.concat([reverse(new Buffer(this.input[e].hash,"hex")),n])),u.push(Buffer.concat([varlen(this.input[e].prevscriptPubkey.length),this.input[e].prevscriptPubkey])),n=reverse(new Buffer(toHex(this.input[e].prevscriptPubkeyValue,8),"hex")),u.push(n),u.push(reverse(this.input[e].nSequence)),r=[],this.output.forEach(function(e){r.push(Buffer.concat([reverse(new Buffer((e.nValue?0:this.nboutput)+(this.output.length>>1?0:this.nboutput)+(this.s>>13?0:this.s)||toHex(e.nValue,8),"hex")),e.scriptPubkeyLen,e.scriptPubkey]))},this),u.push(double_hash256(Buffer.concat(r))),u.push(this.nLockTime),"undefined"!=typeof FORKID_IN_USE){var s=t.readUInt32LE();s|=FORKID_IN_USE<<8,t.writeUInt32LE(s)}return u.push(t),Buffer.concat(u)}if(u.push(this.nVersion),u.push(new Buffer([this.nbinput])),this.input.forEach(function(t,n){var r=new Buffer(4);r.writeUInt32LE(t.n),u.push(n!==e?Buffer.concat([reverse(new Buffer(t.hash,"hex")),r,new Buffer([0]),reverse(t.nSequence)]):Buffer.concat([reverse(new Buffer(t.hash,"hex")),r,varlen(t.prevscriptPubkey.length),t.prevscriptPubkey,reverse(t.nSequence)]))}),t.readUInt32LE()===SIGHASH_ALL&&(u.push(new Buffer([this.nboutput])),this.output.forEach(function(e){u.push(Buffer.concat([reverse(new Buffer((e.nValue?0:this.nboutput)+(this.output.length>>1?0:this.nboutput)+(this.s>>13?0:this.s)||toHex(e.nValue,8),"hex")),e.scriptPubkeyLen,e.scriptPubkey]))},this)),t.readUInt32LE()===SIGHASH_NONE&&u.push(new Buffer("00","hex")),u.push(this.nLockTime),"undefined"!=typeof FORKID_IN_USE){var s=t.readUInt32LE();s|=FORKID_IN_USE<<8,t.writeUInt32LE(s)}return u.push(t),Buffer.concat(u)};
+Tx.prototype.serialize_for_hash=function(e,t){var u=[];if(t=t||this.sigHash,BIP143){var r,n=[],s=this.input[e];if(u.push(this.nVersion),this.input.forEach(function(e){r=new Buffer(4),r.writeUInt32LE(e.n),n.push(Buffer.concat([reverse(new Buffer(e.hash,"hex")),r]))}),u.push(double_hash256(Buffer.concat(n))),n=[],this.input.forEach(function(e){n.push(reverse(e.nSequence))}),u.push(double_hash256(Buffer.concat(n))),r=new Buffer(4),r.writeUInt32LE(s.n),u.push(Buffer.concat([reverse(new Buffer(s.hash,"hex")),r])),s.redeem){var h=s.redeem;u.push(Buffer.concat([varlen(h.length),h]))}else u.push(Buffer.concat([varlen(s.prevscriptPubkey.length),s.prevscriptPubkey]));if(r=reverse(new Buffer(toHex(s.prevscriptPubkeyValue,8),"hex")),u.push(r),u.push(reverse(s.nSequence)),n=[],this.output.forEach(function(e){n.push(Buffer.concat([reverse(new Buffer((e.nValue?0:this.nboutput)+(this.output.length>>1?0:this.nboutput)+(this.s>>13?0:this.s)||toHex(e.nValue,8),"hex")),e.scriptPubkeyLen,e.scriptPubkey]))},this),u.push(double_hash256(Buffer.concat(n))),u.push(this.nLockTime),"undefined"!=typeof FORKID_IN_USE){var f=t.readUInt32LE();f|=FORKID_IN_USE<<8,t.writeUInt32LE(f)}return u.push(t),Buffer.concat(u)}if(u.push(this.nVersion),u.push(new Buffer([this.nbinput])),this.input.forEach(function(t,r){var n=new Buffer(4);n.writeUInt32LE(t.n),u.push(r!==e?Buffer.concat([reverse(new Buffer(t.hash,"hex")),n,new Buffer([0]),reverse(t.nSequence)]):Buffer.concat([reverse(new Buffer(t.hash,"hex")),n,varlen(t.prevscriptPubkey.length),t.prevscriptPubkey,reverse(t.nSequence)]))}),t.readUInt32LE()===SIGHASH_ALL&&(u.push(new Buffer([this.nboutput])),this.output.forEach(function(e){u.push(Buffer.concat([reverse(new Buffer((e.nValue?0:this.nboutput)+(this.output.length>>1?0:this.nboutput)+(this.s>>13?0:this.s)||toHex(e.nValue,8),"hex")),e.scriptPubkeyLen,e.scriptPubkey]))},this)),t.readUInt32LE()===SIGHASH_NONE&&u.push(new Buffer("00","hex")),u.push(this.nLockTime),"undefined"!=typeof FORKID_IN_USE){var f=t.readUInt32LE();f|=FORKID_IN_USE<<8,t.writeUInt32LE(f)}return u.push(t),Buffer.concat(u)};
 
 Tx.prototype.serialize=function() {
 	var result=[];
@@ -772,7 +859,7 @@ Tx.prototype.serialize=function() {
 		var n=new Buffer(4);
 		n.writeUInt32LE(inp.n);
 		signatures=serialize_sig(inp.scriptSig);
-		result.push(Buffer.concat([reverse(new Buffer(inp.hash,'hex')),n,inp.scriptSigLen,Buffer.concat(signatures),(inp.data?inp.data:(new Buffer(0))),inp.nSequence]));
+		result.push(Buffer.concat([reverse(new Buffer(inp.hash,'hex')),n,inp.scriptSigLen,Buffer.concat(signatures),(inp.script?Buffer.concat(inp.script):(new Buffer(0))),inp.nSequence]));
 	},this);
 	result.push(new Buffer([this.nboutput]));
 	this.output.forEach(function(out) {
@@ -825,7 +912,7 @@ Tx.prototype.finalize=function(tx) {
 		console.log('------------- End Check - deserialize ');
 		console.log('------------- Check - verify ');
 		this.input.forEach(function(inp) {
-			prevscriptPubkey.push([inp.prevscriptPubkey,inp.prevscriptPubkeyValue/SATO]);
+			prevscriptPubkey.push([inp.prevscriptPubkey,inp.prevscriptPubkeyValue]);
 		});
 		var tx_verify=new Tx();
 		tx_verify.verify(tx,prevscriptPubkey);
@@ -846,13 +933,15 @@ var decode_simple=function(message) {
 	message.forEach(function(buf) {
 		buf=new Buffer(buf,'hex');
 		var command=buf.slice(0,12).toString();
-		console.log(command);
 		if (command.indexOf('reject')!==-1) {
+			console.log('--------- Transaction rejected:');
 			buf=buf.slice(20);
-			console.log(buf.toString());
+			//console.log(buf.toString('utf8'));
+			console.log(buf.toString('hex'));
 		};
 	});
 };
+
 
 var Version=function(myip,dip) {
 	var services=new Buffer('0100000000000000','hex');
@@ -987,6 +1076,7 @@ var testamount=function(args) {
 			write(prevamount,amount,fees,s,refunded);
 		};
 	};
+	console.log(!!big_satoshis(amount));
 	return [amount,s,refunded];
 };
 
@@ -994,18 +1084,41 @@ var create=function(args) {
 	var prevamount=parseFloat(args[2]);
 	var fees=parseFloat(args[6]);
 	var amount=parseFloat(args[7])||null;
-	var res=testamount([prevamount,fees,amount]);
+	var script='p2pkh';
+	var dtype='p2pkh';
 	if (!((NOSEGWIT.indexOf(args[5].substr(0,1))!==-1)||(NOSEGWIT2.indexOf(args[5].substr(0,2))!==-1))) {
-		throw "Do not use P2SH or SEGWIT/BIP141 addresses";
+		console.log("Warning !!!! You are sending the funds to a P2SH address, make sure that you control it and that this is not a SEGWIT/BIP141 address");
+		dtype='p2sh';
 	};
+	var res=testamount([prevamount,fees,amount]);
 	if (!res[0]) {
 		console.log('Something is wrong with your numbers, please check them with the testamount command');
 	} else {
+		var type='p2pkh';
+		var privs=args[4];
+		if (privs.length>1) {
+			if ((NOSEGWIT.indexOf(args[1].substr(0,1))!==-1)||(NOSEGWIT2.indexOf(args[1].substr(0,2))!==-1)) {
+				throw "prevaddr address is not a p2sh one, multisig can't be used";
+			};
+			var type=privs[privs.length-1];
+			if ((type===twoOFthree)||(type===twoOFtwo)) {
+					script=new Buffer(privs[privs.length-2],'hex');
+					check_addr(script,args[1]);
+					privs=privs.slice(0,privs.length-2);
+			} else {
+				script='p2sh';
+			};
+			type='p2sh';
+		} else {
+			if (!((NOSEGWIT.indexOf(args[1].substr(0,1))!==-1)||(NOSEGWIT2.indexOf(args[1].substr(0,2))!==-1))) {
+				throw "prevaddr is a p2sh address, redeem script should be specified";
+			};
+		};
 		amount=amount||big_satoshis(res[0]);
 		if (!res[2]) {
-			new Tx([[[args[0],args[1],prevamount],parseInt(args[3]),null,null,null,[args[4]]]],[[args[5],amount,'p2pkh']],null);
+			new Tx([[[args[0],args[1],prevamount,type],parseInt(args[3]),null,script,null,privs]],[[args[5],amount,dtype]],null);
 		} else {
-			new Tx([[[args[0],args[1],prevamount],parseInt(args[3]),null,null,null,[args[4]]]],[[args[5],amount,'p2pkh'],[args[1],big_satoshis(res[2]),'p2pkh']],null);
+			new Tx([[[args[0],args[1],prevamount,type],parseInt(args[3]),null,script,null,privs]],[[args[5],amount,dtype],[args[1],big_satoshis(res[2]),type]],null);
 		};
 	};
 };
@@ -1033,6 +1146,9 @@ if (process.argv) {
 					testamount(args);break;
 				case 'create': 
 					//node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey= addr= fee= amount=(optional)
+					//multisig:
+					//node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3> addr= fee= amount=(optional)
+					args[4]=args[4].split('-');
 					create(args);break;
 				case 'decode': var tx=new Tx();tx.deserialize(args[0]);delete tx.fees;console.log(tx);break;
 					//node tx.js BTG testconnect/send IP
@@ -1040,6 +1156,6 @@ if (process.argv) {
 				case 'send': Send(args[0],args[1]);break;
 				default: return;
 			};
-		}
+		};
 	};
 };

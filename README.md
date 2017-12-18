@@ -5,9 +5,9 @@ Bitcoin transactions made simple, create and send by your own your Bitcoin, Bitc
 
 ## Rationale
 
-This module is equivalent to bitcoin-cli for some features but much more simple to use. To use bitcoin-cli you need to run the full bitcoin software, sync with the network and then sync your wallet.
+This module is equivalent to bitcoin-cli for some features but much more simple to use. To use bitcoin-cli "the easy way" you need to run the full bitcoin software, sync with the network and then sync your wallet.
 
-This is a nightmare for quite a lot of people since syncing a full node can take 10 days and most likely will fail at the end, at this time of writing people are still desperately trying to sync bitcoin gold two weeks after the launch
+This is a nightmare for quite a lot of people since syncing a full node can take 10 days and most likely will fail at the end
 
 And this does not help the network since even if you succeed to sync from home most likely you will run a non efficient full node
 
@@ -19,7 +19,7 @@ Given the size of the blockchain and number of different networks, at a certain 
 
 And it is crazy to let wallet sw manage your keys
 
-Then even if the restart of this module was inspired by the current bitcoin gold situation it is intended for the long term
+Then even if the restart of this module was inspired by the epic bitcoin gold launch it is intended for the long term
 
 ## Implementation and Code
 
@@ -27,19 +27,19 @@ This module is using [elliptic](https://github.com/indutny/elliptic) and [bs58](
 
 The code is provided in clear so you can check it but please read the specific conditions of the license
 
-This module was started a year ago, the intent was at that time to make non trivial transactions, then was stopped, the basic intent now is to allow you to make simply your transactions (for example to send your mined coins to an exchange)
+This module was started a year ago, the intent was at that time to make non trivial transactions, then was stopped, the basic intent now is to allow you to make simply your transactions (for example to send your mined coins to an exchange or to send your BTx to BTy)
 
 This module is secure, it does not send anything outside (except the transactions when you request it) and does not get anything from the outside, therefore your keys are just managed by you locally
 
 ## Fees
 
-Unlike bitcoin-cli this modules allows you to manage your fees too, do not go below 1000 satoshis for the network fees or your transaction might not be accepted by the network
+Unlike bitcoin-cli this modules allows you to manage your fees too, do not go below ~1 satoshi per byte for the network fees or your transaction will not be accepted by the network
 
 There are development fees of 0.78% (with a minimum of 0.00008500) that are added to each transaction that you broadcast and paid to the address GSBbeuKPu4d6HKJhtPgk7XayMcaXyQy8TS (or the equivalent one for each network), of course the fees apply only when your broadcasted transaction to the network is included in a block, no fees apply to create/test your transactions
 
 Most likely people will not like the dev fees (see https://github.com/BTCGPU/BTCGPU/issues/226#issuecomment-346798767) but since you can adjust the high network fees that you can't decide with bitcoin-cli for example you can compensate, then <b>please realize that you will pay at the end less fees for small amounts since you can decide with this module not to follow the (exaggerated) advised/default fees</b>, however if you set too low network fees your transactions might be delayed or just not taken into account by the network
 
-This module is not trivial, the bitcoin protocol and formats do not make things easy, it is not recommended (neither authorized by the license) to try to modify anything, if you send wrong transactions to the network at best you will be immediately banned by the nodes for one day and at worse you could send transactions that could spend your funds at a wrong place
+This module is not trivial at all, the bitcoin protocol and formats do not make things easy, it is not recommended (neither authorized by the license) to try to modify anything, if you send wrong transactions to the network at best you will be immediately banned by the nodes for one day and at worse you could send transactions that could spend your funds at a wrong place
 
 Should this project be funded the fees will be removed and full open source license will apply
 
@@ -57,33 +57,57 @@ See [example-1.js](https://github.com/Ayms/bitcoin-transactions/blob/master/exam
 
 Please note that the initial transaction was at 1% fees which are now 0.78% as stated above in the released version (with a minimum of 0.00008500)
 
+#### Standard wallets
+
 [example-1.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-1.js) is now deprecated, please see [example-2.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-2.js) for the new format and transaction https://btgexp.com/tx/cc9684a4243999d1a1fc21c7ad7dbd1b3462bb1fb29614ed16b4d2763ab12bd4
 
 We will follow this transaction for our examples, the previous transaction was [d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206](https://btgexp.com/tx/d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206)
 
-### Important Warning about addresses
+#### Multisig wallets
+
+See [example-3.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-3.js) for "Two of two" and "Two of three" transactions examples
+
+Multisig transactions/wallets (and why it's a very bad idea to use them) is explained [here(TODO)]() 
+
+### Important Warning
 
 <b>Many wallets provide by default P2SH segwit/BIP141 addresses</b>
 
-<b>Do not use them with this module for now, use standard P2PKH addresses (starting with a 1 for Bitcoin and Bitcoin Cash, by a G for Bitcoin gold and by t1 for Zcash)</b>
+<b>Do not use them with this module for now, use standard P2PKH addresses (starting with a 1 for Bitcoin and Bitcoin Cash, by a G for Bitcoin gold and by t1 for Zcash) or standard P2SH addresses (starting with a 3 for Bitcoin and Bitcoin Cash, by a A for Bitcoin gold and by t3 for Zcash) for multisig wallets (note that it is not possible to differentiate a segwit address from a normal P2SH one, so, again, make sure that your are not using segwit addresse)</b>
+
+While using this module if you make a mistake with the parameters the transaction might look valid but will just be rejected by the network, so there is no impact, <b>except if you make a mistake with the destination address, nobody can check this, then make sure that the destination address is one that you master</b>
+
+<b>If you have just as little as a slight shadow of a doubt while creating a transaction and looking at the outcome, please don't send it, email us or post an issue (WITHOUT YOUR PRIVATE KEYS)</b>
+
+<b>Before this, please do some work and check precisely what you did, common mistakes are related to wrong private keys and/or wrong redeem script or prevamount for multisig, or fees too low, or amount to be spent on a destination address too low (referenced as "dust" if below 546 Satoshis)</b>
 
 ### The easy way
 
 Once you know this module (if not please read what follows), most likely you will do:
 
-	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey= addr= fees=0.00001001
+#### Standard wallets
+
+	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey= addr= fees=0.00000300
+	
+	node tx.js BTG send <complete transaction> <IP>
+	
+#### Multisig wallets
+
+	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3> addr= fee=0.00000500
 	
 	node tx.js BTG send <complete transaction> <IP>
 	
 The module will calculate the amount to be spent according to the fees and advise if the numbers are not coherent:
 
 	amount+dev fees+network fees=prevamount
+	
+You can adjust the fees if you like according to the size of the transaction instead of using 0.00000300 or 0.00000500
 
 ### Important - Understanding transactions
 
 In our example we are going to spend output 31 of transaction d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 with a prevamount of 0.00998277 that belongs to us since GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo is one of our addresses, with 0.00001001 network fees
 
-``prevamount`` is like a bank note, you cannot cut it in half, give half to a merchant and keep the rest, you have to give the totality to the merchant and get back the rest from him
+``prevamount`` is like a bank note, you cannot cut it in half, give half to a merchant and keep the rest, you have to give the totality to the merchant (here the network) and get back the rest from him
 
 Here we can decide to spend the whole ``0.00998277`` amount or just a part
 
@@ -96,6 +120,8 @@ The calculation is simply:
 	amount+dev fees+network fees=prevamount
 	
 But this is easy to make mistakes, then we have added the ``testamount`` feature which is recommended to use before using the ``create`` command where you explicity say how much network fees you want to pay
+
+Same applies for multisig transactions, the delta, if any, will be refunded to your multisig address as you can see in [example-3.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-3.js)
 
 ### Setting/Checking your parameters
 
@@ -121,11 +147,13 @@ You will spend 0.005, pay ``0.00001001+0.00008500`` as fees and get back 0.00488
 
 As you can see in [example-2.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-2.js) since the numbers are rounded and checked again by the ``create`` command there can be a the end a difference of 0.00000001 with that numbers as network fees
 
-Transactions are usually ~250 bytes, current rate for fees on Bitcoin is 250 satoshis per byte, which represents more than 0.00060000 fees by transaction and is very exaggerated, you can lower quite a lot your fees with this module but it is not advised to go below 1000 satoshis
+For multisig wallets, that's the same and both examples can be seen in [example-3.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-3.js)
 
 ### Create transactions
 
 Once the numbers are correct you can create your transaction:
+
+#### Standard wallets
 
 `node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo prevamount=0.00998277 previndex=31 privkey=privkey addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00001001 amount=0.005 `
 	
@@ -140,10 +168,18 @@ Once the numbers are correct you can create your transaction:
 	fees are the network fees that you have decided to pay
 
 You can get all those information simply from a blockchain explorer, in case of a transaction with many outputs, to get the index of your output just copy/paste from the site and look at the line number for your output (<b>don't forget that it starts from 0, the first output index is 0 not 1</b>)
-	
-You will get a summary of everything at the end of the command and warnings if the numbers are not correct, the ``create`` command does check the transaction again after it has been created, you must get at the end the message 'Transaction verified', if not something went wrong
 
-Most likely if you get 'Bad transaction' this is because you made a mistake with the private key, or are trying to spend something that does not belong to you, if this happens and everything looks correct, please report (<b>but never send to us/advertise your private keys, remove them and post the logs</b>)
+#### Multisig wallets
+
+`node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3> addr= fee= amount=(optional)`
+
+The arguments are the same than before except privkey where priv1 and priv2 are the two private keys required to spend your coins on your multisig address, redeem is the redeem script, 2of2 or 2of3 is the multisig scheme corresponding to your address
+
+This can look complicate but is not so much, to retrieve those parameters from your wallet, you can look at this tutorial [How to extract Bitcoin Gold from a 2fa Electrum Wallet [STEP BY STEP]](https://bitcointalk.org/index.php?topic=2550529.0)
+	
+You will get a summary of everything at the end of the command and warnings if the numbers are not correct, the ``create`` command does check the transaction again after it has been created, <b>you must get at the end the message 'Transaction verified', if not something went wrong</b>
+
+Most likely if you get 'Bad transaction' this is because you made a mistake with the private key(s) and/or the redeem script or prevamount in case of multisig, or you are trying to spend something that does not belong to you, if this happens and everything looks correct, please report (<b>but never send to us/advertise your private keys, remove them and post the logs</b>)
 
 ### Decode transaction
 
@@ -174,12 +210,18 @@ There are some tools existing to convert addresses, you might consider using the
 If we consider bitcoin gold, this module is not intended to push you to get your 'free' coins from bitcoin core
 	
 Because, unlike many people think, you have them already so there is no need to rush to 'convert' them, many people did not get their 'free' coins and just lost all what they had by using malware wallets
+
+That's why, even if there is zero technical reason for doing this, some advises to transfer first their bitcoins to another wallet before proceeding with such module
 	
 However, if you want to move your bitcoins "from bitcoin core to bitcoin gold" (which as explained above means nothing) or from "bitcoin core to a bitcoin gold exchange", you can just use the ``create`` command:
 	
 `node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=privkey addr= fees= amount=(optional)`
 
-where prev[tx,addr,amount,index] refers very exactly to the same that you can see in a bitcoin core explorer like https://blockchain.info before block 491407 (same transaction id, same address, same amount, same index) and privkey is the private key corresponding to your bitcoin core address
+or
+
+`node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3> addr= fee= amount=(optional)`
+
+where prev[tx,addr,amount,index] refers very exactly to the same that you can see in a bitcoin core explorer like https://blockchain.info before block 491407 (same transaction id, same address, same amount, same index) and privkey is the private key corresponding to your bitcoin core address or priv1-priv2-redeem corresponds to your multisig bitcoin address
 	
 and addr can be a bitcoin address too that will be converted into a bitcoin gold address as you will see in the output of the command
 	
