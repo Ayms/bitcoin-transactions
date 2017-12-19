@@ -47,7 +47,7 @@ var SATO_=8500;
 var MIN_SATO_=300;
 var S_=128;
 //BTC default
-var VERSION=1;
+var VERSION=2;
 var VERSION_='BTC';
 var SIGHASH_FORKID=0x00000000;
 var SIGHASH_1=new Buffer('5b79a9d29a34f2f284','hex');
@@ -92,7 +92,7 @@ var version_=function(v) {
 		LASTBLOCK=500000;
 		PROTOCOL=70016;
 	} else if (v==='BCH') {
-		VERSION=1; //TODO
+		VERSION=2;
 		SIGHASH_FORKID=0x00000040;
 		FORKID_IN_USE=0;
 		MAIN=0xE8F3E1E3;
