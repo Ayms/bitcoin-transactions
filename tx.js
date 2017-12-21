@@ -252,6 +252,19 @@ var getpubkeyfromSignature=function(message,signature,version) {
 	return boo;
 };
 
+var decode_redeem=function(script) {
+	var tmp;
+	script=new Buffer(script,'hex');
+	tmp=script.slice(1);//remove OP_2
+	tmp=tmp.slice(0,tmp.length-1);//remove checkmultisig
+	tmp=tmp.slice(0,tmp.length-1);//remove OP_2/OP_3
+	pubKey=deserialize_scriptSig(tmp)[1];
+	pubKey.forEach(function(key) {
+		console.log('Public Key: '+btc_encode(hash_160(key),p2pk)+' equivalent to bitcoin address '+btc_encode(hash_160(key),new Buffer('00','hex')));
+	});
+	console.log('To use the create command and to spend your multisig transaction you must find at least two private keys associated to those public keys');
+};
+
 var issig=function(buf) {
 	var t=buf.slice(0,3).toString('hex');
 	if ((t===ISSIG1)||(t===ISSIG2)) {
@@ -1154,6 +1167,7 @@ if (process.argv) {
 					//node tx.js BTG testconnect/send IP
 				case 'testconnect':Send(null,args[0]);break;
 				case 'send': Send(args[0],args[1]);break;
+				case 'decoderedeem':decode_redeem(args[0]);break;
 				default: return;
 			};
 		};
