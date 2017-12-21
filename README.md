@@ -21,6 +21,8 @@ And it is crazy to let wallet sw manage your keys
 
 Then even if the restart of this module was inspired by the epic bitcoin gold launch it is intended for the long term
 
+This is not coming from nowhere, neither a scam, you can read https://github.com/BTCGPU/BTCGPU/issues/238
+
 ## Implementation and Code
 
 This module is using [elliptic](https://github.com/indutny/elliptic) and [bs58](https://github.com/cryptocoinjs/bs58)
