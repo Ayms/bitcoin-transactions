@@ -104,6 +104,18 @@ var version_=function(v) {
 		PORT=8333;
 		LASTBLOCK=500000;
 		PROTOCOL=70015;
+	} else if (v==='BCD') {
+		VERSION=12;
+		SIGHASH_FORKID=0x00000000;
+		FORKID_IN_USE=0;
+		MAIN=0xD9B4DEBD;
+		VERSION_='BCD';
+		p2pk=new Buffer('00','hex');
+		p2sh=new Buffer('05','hex');
+		BIP143=false;
+		PORT=7117;
+		LASTBLOCK=500000;
+		PROTOCOL=70015;
 	} else {
 		throw "You forgot to mention the network version";
 	};
@@ -200,6 +212,11 @@ var privatekeyFromWIF=function(address) {
 	return btc_decode(address,new Buffer('80','hex')).slice(0,32);
 };
 
+var getPublicfromPrivate=function(priv) {
+	priv=privatekeyFromWIF(priv);
+	return new Buffer(ec.keyFromPrivate(priv).getPublic(true,'arr'),'hex').toString('hex');
+};
+
 var format_privKey=function(privs) {
 	privs=privs.map(function(privKey) {
 		if (!Buffer.isBuffer(privKey)) {
@@ -252,17 +269,20 @@ var getpubkeyfromSignature=function(message,signature,version) {
 	return boo;
 };
 
-var decode_redeem=function(script) {
+var decode_redeem=function(script,boo) {
 	var tmp;
 	script=new Buffer(script,'hex');
 	tmp=script.slice(1);//remove OP_2
 	tmp=tmp.slice(0,tmp.length-1);//remove checkmultisig
 	tmp=tmp.slice(0,tmp.length-1);//remove OP_2/OP_3
 	pubKey=deserialize_scriptSig(tmp)[1];
-	pubKey.forEach(function(key) {
-		console.log('Public Key: '+btc_encode(hash_160(key),p2pk)+' equivalent to bitcoin address '+btc_encode(hash_160(key),new Buffer('00','hex')));
-	});
-	console.log('To use the create command and to spend your multisig transaction you must find at least two private keys associated to those public keys');
+	if (!boo) {
+		pubKey.forEach(function(key) {
+			console.log('Public Key: '+btc_encode(hash_160(key),p2pk)+' equivalent to bitcoin address '+btc_encode(hash_160(key),new Buffer('00','hex')));
+		});
+		console.log('To use the create command and to spend your multisig transaction you must find at least two private keys associated to those public keys');
+	};
+	return pubKey;
 };
 
 var issig=function(buf) {
@@ -1114,10 +1134,30 @@ var create=function(args) {
 				throw "prevaddr address is not a p2sh one, multisig can't be used";
 			};
 			var type=privs[privs.length-1];
+			var order;
+			var tmp;
+			var pub;
+			var n=0;
 			if ((type===twoOFthree)||(type===twoOFtwo)) {
 					script=new Buffer(privs[privs.length-2],'hex');
 					check_addr(script,args[1]);
 					privs=privs.slice(0,privs.length-2);
+					tmp=new Array(privs.length);
+					order=decode_redeem(script,true);
+					order.forEach(function(pubkey) {
+						pubkey=pubkey.toString('hex');
+						for (var i=0;i<privs.length;i++) {
+							pub=getPublicfromPrivate(privs[i]);
+							if (pub===pubkey) {
+								tmp[n]=privs[i];
+								n++;
+								break;
+							};
+						};
+					});
+					if (tmp[0]) {
+						privs=tmp;
+					};
 			} else {
 				script='p2sh';
 			};
