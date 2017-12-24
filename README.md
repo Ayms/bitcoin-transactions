@@ -91,13 +91,13 @@ Once you know this module (if not please read what follows), most likely you wil
 
 	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey= addr= fees=0.00000300
 	
-	node tx.js BTG send <complete transaction> <IP>
+	node tx.js BTG send <complete transaction> btg.suprnova.cc or paste the <body> in https://btgexplorer.com/tx/send
 	
 #### Multisig wallets
 
 	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3> addr= fee=0.00000500
 	
-	node tx.js BTG send <complete transaction> <IP>
+	node tx.js BTG send <complete transaction> btg.suprnova.cc or paste the <body> in https://btgexplorer.com/tx/send
 	
 The module will calculate the amount to be spent according to the fees and advise if the numbers are not coherent:
 
