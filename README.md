@@ -5,7 +5,7 @@ Bitcoin transactions made simple for standard or multisig wallets, create and se
 
 ## Rationale
 
-This module is equivalent to bitcoin-cli for some features but much more simple to use. To use bitcoin-cli "the easy way" you need to run the full bitcoin software, sync with the network and then sync your wallet.
+This module is equivalent to bitcoin-cli for some features but much more simple to use. To use bitcoin-cli you need to run the full bitcoin software, sync with the network and then sync your wallet.
 
 This is a nightmare for quite a lot of people since syncing a full node can take 10 days and most likely will fail at the end
 
@@ -14,6 +14,8 @@ And this does not help the network since even if you succeed to sync from home m
 In addition many people lost everything by using malware wallets trying to get their 'free' coins, and apparently there are some common misunderstanding with the addresses format, please see the section below
 
 And finally, if you succeeded to sync you can prune after but you still need to run constantly the bitcoin software
+
+The whole purpose of this module is to allow you to make transactions without having to run and sync a full node
 
 Given the size of the blockchain and number of different networks, at a certain point of time it will become impossible for people to run the full sw for each one just to have their wallet synced and be able to send transactions
 
@@ -35,7 +37,7 @@ This module is secure, it does not send anything outside (except the transaction
 
 ## Tests
 
-This module has been tested for Bitcoin Gold (see below and https://github.com/Ayms/bitcoin-transactions/issues/5) and Bitcoin Cash (see https://github.com/Ayms/bitcoin-transactions/issues/4) for now, we are pretty confident that it works for the other networks (and more globally for any network reusing the bitcoin core code) but it needs to be tested
+This module has been tested for Bitcoin Gold (see below and https://github.com/Ayms/bitcoin-transactions/issues/5) and Bitcoin Cash (see https://github.com/Ayms/bitcoin-transactions/issues/4 and [example-4.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-4.js)) for now, we are pretty confident that it works for the other networks (and more globally for any network reusing the bitcoin core code) but it needs to be tested
 
 ## Fees
 
@@ -103,7 +105,7 @@ Once you know this module (if not please read what follows), most likely you wil
 	
 #### Multisig wallets
 
-	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3> addr= fee=0.00000500
+	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3 or 2of4> addr= fee=0.00000500
 	
 	node tx.js BTG send <complete transaction> btg.suprnova.cc or paste the <body> in https://btgexplorer.com/tx/send
 	
@@ -183,7 +185,7 @@ You can get all those information simply from a blockchain explorer, in case of 
 
 `node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3 or 2of4> addr= fee= amount=(optional)`
 
-The arguments are the same than before except privkey where priv1 and priv2 are the two private keys required to spend your coins on your multisig address, redeem is the redeem script, 2of2 or 2of3 is the multisig scheme corresponding to your address
+The arguments are the same than before except privkey where priv1 and priv2 are the two private keys required to spend your coins on your multisig address, redeem is the redeem script, 2of2 or 2of3 or 2of4 is the multisig scheme corresponding to your address
 
 To find what are the public keys included in the redeem script, please run:
 
@@ -193,7 +195,7 @@ To find what are the public keys included in the redeem script, please run:
 	Public Key: GLbb8AJPnpbwaFxHJAH6UggaB6e4u1CtFQ equivalent to bitcoin address 13kfi2ySoxzeVnezNDcz3vLgFvrDrpL1qW
 	Public Key: GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo equivalent to bitcoin address 19u1s2qbnQ46z35svfN8S8PWMgFZ1vqpxz
 
-Then you need to find at least two private keys corresponding to two of those public keys, to retrieve them (and the redeem script first) from your wallet, you can look at this tutorial [How to extract Bitcoin Gold from a 2fa Electrum Wallet [STEP BY STEP]](https://bitcointalk.org/index.php?topic=2550529.0)
+Then you need to find at least two private keys corresponding to two of those public keys, to retrieve them (and the redeem script first) from your wallet, you can look at the first part of this tutorial [How to extract Bitcoin Gold from a 2fa Electrum Wallet [STEP BY STEP]](https://bitcointalk.org/index.php?topic=2550529.0) but of course you don't need to run a full node
 
 This can look complicate but is not so much
 	
@@ -239,7 +241,7 @@ However, if you want to move your bitcoins "from bitcoin core to bitcoin gold" (
 
 or
 
-`node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3> addr= fee= amount=(optional)`
+`node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3 or 2of4> addr= fee= amount=(optional)`
 
 where prev[tx,addr,amount,index] refers very exactly to the same that you can see in a bitcoin core explorer like https://blockchain.info before block 491407 (same transaction id, same address, same amount, same index) and privkey is the private key corresponding to your bitcoin core address or priv1-priv2-redeem corresponds to your multisig bitcoin address
 	
