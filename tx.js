@@ -60,6 +60,7 @@ var p2sh=new Buffer('05','hex');
 var PORT=8333;
 var LASTBLOCK=500000;
 var PROTOCOL=70015;
+var D=8;
 var NOSEGWIT=['1','G','C'];
 var NOSEGWIT2=['t1'];
 var twoOFtwo='2of2';
@@ -118,6 +119,7 @@ var version_=function(v) {
 		LASTBLOCK=500000;
 		PROTOCOL=70015;
 		SATO=10000000;
+		D=7;
 	} else {
 		throw "You forgot to mention the network version";
 	};
@@ -315,7 +317,7 @@ var toHex=function(val,len) {
 
 var big_satoshis=function(n) {
 	if (n) {
-		return (n/SATO).toFixed(8);
+		return (n/SATO).toFixed(D);
 	};
 };
 

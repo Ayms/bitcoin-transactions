@@ -181,6 +181,13 @@ Once the numbers are correct you can create your transaction:
 
 You can get all those information simply from a blockchain explorer, in case of a transaction with many outputs, to get the index of your output just copy/paste from the site and look at the line number for your output (<b>don't forget that it starts from 0, the first output index is 0 not 1</b>)
 
+###Specific case of BCD
+
+
+One BTC will become 10 BCDs, it just means that amount, prevamount and fees are multiply by 10, then they have now 7 decimals instead of 8 (so amount, prevamount or fees of 0.00001234 become 0.0001234 in the create command)
+
+This is just a display representation and does not change anything else, please see [example-6.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-6.js) that you can compare with [example-2.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-2.js)
+
 #### Multisig wallets
 
 `node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3 or 2of4> addr= fee= amount=(optional)`
