@@ -6,7 +6,7 @@ node tx.js BCD create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496
 
 //output same as example2.js
 
-node index.js BCD testamount prevamount=0.0998277 fees=0.0001001 amount=0.05
+node tx.js BCD testamount prevamount=0.0998277 fees=0.0001001 amount=0.05
 
 /*
 Version BCD
