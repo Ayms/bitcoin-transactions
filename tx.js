@@ -64,6 +64,7 @@ var NOSEGWIT=['1','G','C'];
 var NOSEGWIT2=['t1'];
 var twoOFtwo='2of2';
 var twoOFthree='2of3';
+var twoOFfour='2of4';
 
 var version_=function(v) {
 	if (v==='BTC') {
@@ -116,6 +117,7 @@ var version_=function(v) {
 		PORT=7117;
 		LASTBLOCK=500000;
 		PROTOCOL=70015;
+		SATO=10000000;
 	} else {
 		throw "You forgot to mention the network version";
 	};
@@ -1133,12 +1135,12 @@ var create=function(args) {
 			if ((NOSEGWIT.indexOf(args[1].substr(0,1))!==-1)||(NOSEGWIT2.indexOf(args[1].substr(0,2))!==-1)) {
 				throw "prevaddr address is not a p2sh one, multisig can't be used";
 			};
-			var type=privs[privs.length-1];
+			type=privs[privs.length-1];
 			var order;
 			var tmp;
 			var pub;
 			var n=0;
-			if ((type===twoOFthree)||(type===twoOFtwo)) {
+			if ((type===twoOFthree)||(type===twoOFtwo)||(type===twoOFfour)) {
 					script=new Buffer(privs[privs.length-2],'hex');
 					check_addr(script,args[1]);
 					privs=privs.slice(0,privs.length-2);

@@ -1,7 +1,7 @@
 bitcoin-transactions
 ===
 
-Bitcoin transactions made simple for standard or multisig wallets, create and send by your own your Bitcoin, Bitcoin Cash, Bitcoin Gold, Zcash, etc transactions, manage your keys and do not disclose them to dubious wallets software
+Bitcoin transactions made simple for standard or multisig wallets, create and send by your own your Bitcoin, Bitcoin Cash, Bitcoin Gold, Bitcoin Diamond, Zcash (to come Litecoin, others, suggestions welcome) transactions, manage your keys and do not disclose them to dubious wallets software
 
 ## Rationale
 
@@ -33,6 +33,10 @@ This module was started a year ago, the intent was at that time to make non triv
 
 This module is secure, it does not send anything outside (except the transactions when you request it) and does not get anything from the outside, therefore your keys are just managed by you locally
 
+## Tests
+
+This module has been tested for Bitcoin Gold (see below and https://github.com/Ayms/bitcoin-transactions/issues/5) and Bitcoin Cash (see https://github.com/Ayms/bitcoin-transactions/issues/4) for now, we are pretty confident that it works for the other networks (and more globally for any network reusing the bitcoin core code) but it needs to be tested
+
 ## Fees
 
 Unlike bitcoin-cli this modules allows you to manage your fees too, do not go below ~1 satoshi per byte for the network fees or your transaction will not be accepted by the network
@@ -44,6 +48,8 @@ Most likely people will not like the dev fees (see https://github.com/BTCGPU/BTC
 This module is not trivial at all, the bitcoin protocol and formats do not make things easy, it is not recommended (neither authorized by the license) to try to modify anything, if you send wrong transactions to the network at best you will be immediately banned by the nodes for one day and at worse you could send transactions that could spend your funds at a wrong place
 
 Should this project be funded the fees will be removed and full open source license will apply
+
+<b>Please note that due to rounding issues there is always a satoshi floating around that will go to the network, this is a minor issue that we will not correct in order not to change all of our test vectors</b>
 
 ## Installation
 
@@ -68,6 +74,8 @@ We will follow this transaction for our examples, the previous transaction was [
 #### Multisig wallets
 
 See [example-3.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-3.js) for "Two of two" and "Two of three" transactions examples
+
+And see [example-4.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-4.js) for a "Two of four" example
 
 Multisig transactions/wallets (and why it's a very bad idea to use them) is explained [here(TODO)]() 
 
@@ -173,7 +181,7 @@ You can get all those information simply from a blockchain explorer, in case of 
 
 #### Multisig wallets
 
-`node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3> addr= fee= amount=(optional)`
+`node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3 or 2of4> addr= fee= amount=(optional)`
 
 The arguments are the same than before except privkey where priv1 and priv2 are the two private keys required to spend your coins on your multisig address, redeem is the redeem script, 2of2 or 2of3 is the multisig scheme corresponding to your address
 
@@ -250,10 +258,6 @@ If for any reason you don't trust this project then it's easy to use bitcoin-cli
 ## Signatures
 
 The most complicate part is to generate correct signatures for the transactions, this is the only part of the code that is slightly minified which does not impact anything in terms of security
-
-## Warning
-
-This module has been tested for Bitcoin Gold only for now, we are pretty confident that it works for the other networks (and more globally for any network reusing the bitcoin core code) but it needs to be tested
 
 ## License
 
