@@ -1,7 +1,7 @@
 bitcoin-transactions
 ===
 
-Bitcoin transactions made simple for standard or multisig wallets, create and send by your own your Bitcoin, Bitcoin Cash, Bitcoin Gold, Bitcoin Diamond, Zcash (to come Litecoin, others, suggestions welcome) transactions, manage your keys and do not disclose them to dubious wallets software
+Bitcoin transactions made simple for standard or multisig wallets, create and send by your own your Bitcoin, Bitcoin Cash, Bitcoin Gold, Bitcoin Diamond, Zcash, Litecoin transactions, manage your keys and do not disclose them to dubious wallets software
 
 ## Rationale
 
@@ -35,9 +35,21 @@ This module was started a year ago, the intent was at that time to make non triv
 
 This module is secure, it does not send anything outside (except the transactions when you request it) and does not get anything from the outside, therefore your keys are just managed by you locally
 
-## Tests
+## Supported coins
 
-This module has been tested for Bitcoin Gold (see below and https://github.com/Ayms/bitcoin-transactions/issues/5) and Bitcoin Cash (see https://github.com/Ayms/bitcoin-transactions/issues/4 and [example-4.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-4.js)) for now, we are pretty confident that it works for the other networks (and more globally for any network reusing the bitcoin core code) but it needs to be tested
+Bitcoin Gold "BTG" (see below and https://github.com/Ayms/bitcoin-transactions/issues/5)
+
+Bitcoin Cash "BCH" (see https://github.com/Ayms/bitcoin-transactions/issues/4 and [example-4.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-4.js))
+
+Bitcoin Core "BTC" (see https://github.com/Ayms/bitcoin-transactions/blob/master/verify.txt)
+
+Zcash "ZEC" (see https://github.com/Ayms/bitcoin-transactions/blob/master/verify.txt)
+
+Litecoin "LTC" (see https://github.com/Ayms/bitcoin-transactions/blob/master/verify.txt)
+
+Bitcoin Diamond "BCD" assuming that this project is serious (see https://github.com/eveybcd/BitcoinDiamond/issues/2)
+
+More to come...
 
 ## Fees
 
@@ -48,8 +60,6 @@ There are development fees of 0.78% (with a minimum of 0.00008500) that are adde
 Most likely people will not like the dev fees (see https://github.com/BTCGPU/BTCGPU/issues/226#issuecomment-346798767) but since you can adjust the high network fees that you can't decide with bitcoin-cli for example you can compensate, then <b>please realize that you will pay at the end less fees for small amounts since you can decide with this module not to follow the (exaggerated) advised/default fees</b>, however if you set too low network fees your transactions might be delayed or just not taken into account by the network
 
 This module is not trivial at all, the bitcoin protocol and formats do not make things easy, it is not recommended (neither authorized by the license) to try to modify anything, if you send wrong transactions to the network at best you will be immediately banned by the nodes for one day and at worse you could send transactions that could spend your funds at a wrong place
-
-Should this project be funded the fees will be removed and full open source license will apply
 
 <b>Please note that due to rounding issues there is always a satoshi floating around that will go to the network, this is a minor issue that we will not correct in order not to change all of our test vectors</b>
 
@@ -85,7 +95,7 @@ Multisig transactions/wallets (and why it's a very bad idea to use them) is expl
 
 <b>Many wallets provide by default P2SH segwit/BIP141 addresses</b>
 
-<b>Do not use them with this module for now, use standard P2PKH addresses (starting with a 1 for Bitcoin and Bitcoin Cash, by a G for Bitcoin gold and by t1 for Zcash) or standard P2SH addresses (starting with a 3 for Bitcoin and Bitcoin Cash, by a A for Bitcoin gold and by t3 for Zcash) for multisig wallets (note that it is not possible to differentiate a segwit address from a normal P2SH one, so, again, make sure that your are not using segwit address)</b>
+<b>Do not use them with this module for now, use standard P2PKH addresses (starting with a 1 for Bitcoin and Bitcoin Cash, by a G for Bitcoin gold and by t1 for Zcash) or standard P2SH addresses (starting with a 3 for Bitcoin and Bitcoin Cash, by a A for Bitcoin gold and by t3 for Zcash) for multisig wallets (note that it is not possible to differentiate a segwit address from a normal P2SH one, so, again, make sure that your are not using segwit addresses)</b>
 
 While using this module if you make a mistake with the parameters the transaction might look valid but will just be rejected by the network, so there is no impact, <b>except if you make a mistake with the destination address, nobody can check this, then make sure that the destination address is one that you master</b>
 
@@ -169,7 +179,7 @@ Once the numbers are correct you can create your transaction:
 
 `node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo prevamount=0.00998277 previndex=31 privkey=privkey addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00001001 amount=0.005 `
 	
-	first argument (BTG here) is the network you want to use, it can be BTC (Bitcoin Core), BCH (Bitcoin Cash), ZEC (Zcash) or BTG (Bitcoin Gold)
+	first argument (BTG here) is the network you want to use, please see the "supported coins" section above
 	prevtx is the previous transaction containing the output that you want to spend
 	prevaddr is the address where was sent the output that you want to spend (then one of yours)
 	prevamount is the amount of the output that you want to spend

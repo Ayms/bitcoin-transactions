@@ -120,6 +120,19 @@ var version_=function(v) {
 		PROTOCOL=70015;
 		SATO=10000000;
 		D=7;
+	} else if (v==='LTC') {
+		VERSION=2;
+		SIGHASH_FORKID=0x00000000;
+		FORKID_IN_USE=0;
+		MAIN=0xDBB6C0FB;
+		VERSION_='LTC';
+		p2pk=new Buffer('30','hex');
+		p2sh=new Buffer('32','hex');
+		//secret key B0 instead 80
+		BIP143=false;
+		PORT=9333;
+		LASTBLOCK=1340000;
+		PROTOCOL=70015;
 	} else {
 		throw "You forgot to mention the network version";
 	};
@@ -1212,6 +1225,7 @@ if (process.argv) {
 				case 'testconnect':Send(null,args[0]);break;
 				case 'send': Send(args[0],args[1]);break;
 				case 'decoderedeem':decode_redeem(args[0]);break;
+				case 'verify':new Tx().verify(args[0],[[new Buffer(args[1],'hex'),args[2]]]);break;
 				default: return;
 			};
 		};
