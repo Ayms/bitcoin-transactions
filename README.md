@@ -267,7 +267,7 @@ You can convert before if you like the prevaddr and addr from a bitcoin core one
 
 If this explanation is unclear, please see the example given [here](https://github.com/BTCGPU/BTCGPU/issues/213#issuecomment-350449253)
 
-<b>Again, if you do this, never use P2SH or Segwit/BIP141 addresses for the destination and the origin</b>
+<b>Again, if you do this, never use Segwit/BIP141 addresses for the destination and the origin</b>
 
 ## Double check again
 
