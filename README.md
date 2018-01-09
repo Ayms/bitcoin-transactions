@@ -71,6 +71,18 @@ Create a bitcoin-transactions directory, install elliptic and bs58 with npm in n
 
 Or just unzip [bitcoin-transactions.zip](http://www.peersm.com/bitcoin-transactions.zip) (137 kB)
 
+	For Windows users that are not used to the command line tools:
+	
+	Install nodejs using the above link
+	
+	Unzip [bitcoin-transactions.zip](http://www.peersm.com/bitcoin-transactions.zip) somewhere (let's say C:/Users/Me)
+	
+	[key Windows]+[X], then "execute" and enter cmd, this will open the console
+	
+	cd /Users/Me/bitcoin-transactions
+	
+	Now you can enter the commands (please see below): node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey= addr= fees= amount=
+
 ## Use
 
 See [example-1.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-1.js), Bitcoin Gold transaction 118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97 was created with this module and mined in block 501249, see https://btgexp.com/tx/118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97
@@ -239,7 +251,7 @@ Before sending your transaction it's a good idea too to check the network by doi
 	
 A more easy way if available for your network is to copy and paste the ``body of the transaction`` (and not the ``complete transaction``) to a blockchain explorer that will broadcast it, there are no risks of doing this except that you don't know if the explorer will do its job, the explorer can't modify the transaction
 
-## Addresses and getting 'free' coins
+## Claiming your coins - Addresses and getting 'free' coins
 
 The addresses between the different networks are the same, it always ends up with the hash of your public key and is encoded in a specficic way for each network, but they still are the same
 	
