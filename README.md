@@ -49,7 +49,7 @@ Litecoin "LTC" (see https://github.com/Ayms/bitcoin-transactions/blob/master/ver
 
 Bitcoin Diamond "BCD" assuming that this project is serious (see https://github.com/eveybcd/BitcoinDiamond/issues/2)
 
-More to come...
+More to come
 
 ## Fees
 
@@ -136,6 +136,12 @@ The module will calculate the amount to be spent according to the fees and advis
 	amount+dev fees+network fees=prevamount
 	
 You can adjust the fees if you like according to the size of the transaction instead of using 0.00000300 or 0.00000500
+
+### "Advanced use" - Multiple inputs
+
+The previous method requires to perform one transaction per output to be spent, this can be a kind of painful and you are paying more network fees (this does not change anything for the dev fees), you might want to merge different outputs to a single destination address in one transaction (so you can spend it later with only one transaction too)
+
+See the "Multiple inputs" section below
 
 ### Important - Understanding transactions
 
@@ -288,6 +294,28 @@ If for any reason you don't trust this project then it's easy to use bitcoin-cli
 ## Signatures
 
 The most complicate part is to generate correct signatures for the transactions, this is the only part of the code that is slightly minified which does not impact anything in terms of security
+
+<b>The rationale for this is that we have noticed that some people are trying to cheat with the dev fees, if you don't like them, don't use this module, and modifying anything can be quite dangerous, should this continue we might consider a much higher rate for the dev fees and replace the code in clear by an obscure obfuscated one</b>
+
+## Multiple inputs
+
+`node tx.js BTG create prevtx=tx1:tx2:...:txn prevaddr=addr1:addr2:...:addrn prevamount=amount1:amount2:...:amountn previndex=index1:index2:...:indexn privkey=privkey1:privkey2:...:privkeyn addr=<destination address> fees=0.00000600`
+
+You can put the ``amount=`` parameter (but we believe that it's quite stupid), then the delta will be refunded to addr1
+
+To simplify, if prevaddr and/or index are always the same (and why not amount), you can do:
+
+`node tx.js BTG create prevtx=tx1:tx2:...:txn prevaddr=addr1 prevamount=amount1:amount2:...:amountn previndex=index1 privkey=privkey1 addr=<destination address> fees=0.00000600`
+
+### Multisig wallets
+
+This works the same `privkey=privkey1:privkey2:...:privkeyn` where each privkeyi is priv1-priv2-redeem-<2of2 or 2of3 or 2of4>
+
+You can mix standard inputs and multisig ones, see all the examples in [multiinputs.js](https://github.com/Ayms/bitcoin-transactions/blob/master/multiinputs.js)
+
+Don't forget to adjust the fees according to the size of your transaction
+
+<b>This has not been extensively tested for now even if we are confident that this is working well, so please check very closely the outcome before sending the transaction, most likely it will only be rejected if there is an issue but again check the destination addresses</b>
 
 ## License
 
