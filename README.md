@@ -11,7 +11,7 @@ This is a nightmare for quite a lot of people since syncing a full node can take
 
 And this does not help the network since even if you succeed to sync from home most likely you will run a non efficient full node
 
-In addition many people lost everything by using malware wallets trying to get their 'free' coins, and apparently there are some common misunderstanding with the addresses format, please see the section below
+<b>In addition many people lost everything by using malware wallets trying to get their 'free' coins, and apparently there are some common misunderstanding with the addresses format, please see the [Claiming your coins (BCH, BTG, BCD) - Adresses and getting "free" coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins---addresses-and-getting-free-coins)</b>
 
 And finally, if you succeeded to sync you can prune after but you still need to run constantly the bitcoin software
 
@@ -123,13 +123,21 @@ Once you know this module (if not please read what follows), most likely you wil
 
 	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey= addr= fees=0.00000300
 	
-	node tx.js BTG send <complete transaction> btg.suprnova.cc or paste the <body> in https://btgexplorer.com/tx/send
+	node tx.js BTG send <complete transaction> btg.suprnova.cc
+	
+	or
+	
+	paste the <body> in https://btgexplorer.com/tx/send
 	
 #### Multisig wallets
 
 	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3 or 2of4> addr= fee=0.00000500
 	
-	node tx.js BTG send <complete transaction> btg.suprnova.cc or paste the <body> in https://btgexplorer.com/tx/send
+	node tx.js BTG send <complete transaction> btg.suprnova.cc
+	
+	or
+	
+	paste the <body> in https://btgexplorer.com/tx/send
 	
 The module will calculate the amount to be spent according to the fees and advise if the numbers are not coherent:
 
@@ -141,7 +149,7 @@ You can adjust the fees if you like according to the size of the transaction ins
 
 The previous method requires to perform one transaction per output to be spent, this can be a kind of painful and you are paying more network fees (this does not change anything for the dev fees), you might want to merge different outputs to a single destination address in one transaction (so you can spend it later with only one transaction too)
 
-See the "Multiple inputs" section below
+See the [Multiple inputs](https://github.com/Ayms/bitcoin-transactions#multiple-inputs) section below
 
 ### Important - Understanding transactions
 
@@ -257,19 +265,19 @@ Before sending your transaction it's a good idea too to check the network by doi
 	
 A more easy way if available for your network is to copy and paste the ``body of the transaction`` (and not the ``complete transaction``) to a blockchain explorer that will broadcast it, there are no risks of doing this except that you don't know if the explorer will do its job, the explorer can't modify the transaction
 
-## Claiming your coins - Addresses and getting 'free' coins
+## Claiming your coins (BCH,BTG,BCD) - Addresses and getting 'free' coins
 
 The addresses between the different networks are the same, it always ends up with the hash of your public key and is encoded in a specficic way for each network, but they still are the same
 	
 There are some tools existing to convert addresses, you might consider using the very excellent [Ayms/bitcoin-wallets](https://github.com/Ayms/bitcoin-wallets) module to create your wallet and/or convert addresses
 	
-If we consider bitcoin gold, this module is not intended to push you to get your 'free' coins from bitcoin core
+This module is not intended to push you to get your 'free' coins from bitcoin core
 	
 Because, unlike many people think, you have them already so there is no need to rush to 'convert' them, many people did not get their 'free' coins and just lost all what they had by using malware wallets
 
-That's why, even if there is zero technical reason for doing this, some advises to transfer first their bitcoins to another wallet before proceeding with such module
+That's why, even if there are zero technical reason for doing this, some people advise to transfer first their bitcoins to another wallet before proceeding with such module
 	
-However, if you want to move your bitcoins "from bitcoin core to bitcoin gold" (which as explained above means nothing) or from "bitcoin core to a bitcoin gold exchange", you can just use the ``create`` command:
+However, if you want to move your bitcoins "from bitcoin core to BCH, BTG or BCD" (which as explained above means nothing) or from "bitcoin core to a bitcoin gold exchange", you can just use the ``create`` command:
 	
 `node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=privkey addr= fees= amount=(optional)`
 
@@ -277,9 +285,9 @@ or
 
 `node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3 or 2of4> addr= fee= amount=(optional)`
 
-where prev[tx,addr,amount,index] refers very exactly to the same that you can see in a bitcoin core explorer like https://blockchain.info before block 491407 (same transaction id, same address, same amount, same index) and privkey is the private key corresponding to your bitcoin core address or priv1-priv2-redeem corresponds to your multisig bitcoin address
+where prev[tx,addr,amount,index] refers very exactly to the same that you can see in a bitcoin core explorer like https://blockchain.info before block 491407 (<b>same transaction id, same address, same amount, same index</b>) and privkey is the private key corresponding to your bitcoin core address or priv1-priv2-redeem corresponds to your multisig bitcoin address
 	
-and addr can be a bitcoin address too that will be converted into a bitcoin gold address as you will see in the output of the command
+and addr can be a bitcoin address too that will be converted into a BCH, BTG or BCD address as you will see in the output of the command
 	
 You can convert before if you like the prevaddr and addr from a bitcoin core one to a bitcoin gold one but this is of no use, the create command will work with the original bitcoin addresses
 
@@ -301,11 +309,15 @@ The most complicate part is to generate correct signatures for the transactions,
 
 `node tx.js BTG create prevtx=tx1:tx2:...:txn prevaddr=addr1:addr2:...:addrn prevamount=amount1:amount2:...:amountn previndex=index1:index2:...:indexn privkey=privkey1:privkey2:...:privkeyn addr=<destination address> fees=0.00000600`
 
-You can put the ``amount=`` parameter (but we believe that it's quite stupid), then the delta will be refunded to addr1
+You can put the ``amount=`` parameter (but we believe that it's quite stupid even if included in our examples), then the delta will be refunded to addr1
 
 To simplify, if prevaddr and/or index are always the same (and why not amount), you can do:
 
 `node tx.js BTG create prevtx=tx1:tx2:...:txn prevaddr=addr1 prevamount=amount1:amount2:...:amountn previndex=index1 privkey=privkey1 addr=<destination address> fees=0.00000600`
+
+or
+
+`node tx.js BTG create prevtx=tx1:tx2:...:txn prevaddr=addr1 prevamount=amount1 previndex=index1 privkey=privkey1 addr=<destination address> fees=0.00000600`
 
 ### Multisig wallets
 
