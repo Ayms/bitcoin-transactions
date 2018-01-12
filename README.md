@@ -113,6 +113,12 @@ The module will calculate the amount to be spent according to the fees and advis
 	
 You can adjust the fees if you like according to the size of the transaction instead of using 0.00000300 or 0.00000500
 
+## "Advanced use" - Multiple inputs
+
+The previous method requires to perform one transaction per output to be spent, this can be a kind of painful and you are paying more network fees (this does not change anything for the dev fees), you might want to merge different outputs to a single destination address in one transaction (so you can spend it later with only one transaction too)
+
+See the [Multiple inputs](https://github.com/Ayms/bitcoin-transactions#multiple-inputs) section below
+
 ## Use
 
 See [example-1.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-1.js), Bitcoin Gold transaction 118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97 was created with this module and mined in block 501249, see https://btgexp.com/tx/118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97
@@ -144,12 +150,6 @@ While using this module if you make a mistake with the parameters the transactio
 <b>If you have just as little as a slight shadow of a doubt while creating a transaction and looking at the outcome, please don't send it, email us or post an issue (WITHOUT YOUR PRIVATE KEYS)</b>
 
 <b>Before this, please do some work and check precisely what you did, common mistakes are related to wrong private keys and/or wrong redeem script or prevamount for multisig, or fees too low, or amount to be spent on a destination address too low (referenced as "dust" if below 546 Satoshis)</b>
-
-### "Advanced use" - Multiple inputs
-
-The previous method requires to perform one transaction per output to be spent, this can be a kind of painful and you are paying more network fees (this does not change anything for the dev fees), you might want to merge different outputs to a single destination address in one transaction (so you can spend it later with only one transaction too)
-
-See the [Multiple inputs](https://github.com/Ayms/bitcoin-transactions#multiple-inputs) section below
 
 ### Important - Understanding transactions
 
