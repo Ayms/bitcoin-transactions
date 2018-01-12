@@ -82,6 +82,36 @@ Or just unzip [bitcoin-transactions.zip](http://www.peersm.com/bitcoin-transacti
 	cd /Users/Me/bitcoin-transactions
 	
 	Now you can enter the commands (please see below): node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey= addr= fees= amount=
+	
+## The easy way
+
+Once you know this module (if not please read what follows), most likely you will do:
+
+### Standard wallets
+
+	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey= addr= fees=0.00000300
+	
+	node tx.js BTG send <complete transaction> btg.suprnova.cc
+	
+	or
+	
+	paste the <body> in https://btgexplorer.com/tx/send
+	
+### Multisig wallets
+
+	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3 or 2of4> addr= fee=0.00000500
+	
+	node tx.js BTG send <complete transaction> btg.suprnova.cc
+	
+	or
+	
+	paste the <body> in https://btgexplorer.com/tx/send
+	
+The module will calculate the amount to be spent according to the fees and advise if the numbers are not coherent:
+
+	amount+dev fees+network fees=prevamount
+	
+You can adjust the fees if you like according to the size of the transaction instead of using 0.00000300 or 0.00000500
 
 ## Use
 
@@ -114,36 +144,6 @@ While using this module if you make a mistake with the parameters the transactio
 <b>If you have just as little as a slight shadow of a doubt while creating a transaction and looking at the outcome, please don't send it, email us or post an issue (WITHOUT YOUR PRIVATE KEYS)</b>
 
 <b>Before this, please do some work and check precisely what you did, common mistakes are related to wrong private keys and/or wrong redeem script or prevamount for multisig, or fees too low, or amount to be spent on a destination address too low (referenced as "dust" if below 546 Satoshis)</b>
-
-### The easy way
-
-Once you know this module (if not please read what follows), most likely you will do:
-
-#### Standard wallets
-
-	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey= addr= fees=0.00000300
-	
-	node tx.js BTG send <complete transaction> btg.suprnova.cc
-	
-	or
-	
-	paste the <body> in https://btgexplorer.com/tx/send
-	
-#### Multisig wallets
-
-	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3 or 2of4> addr= fee=0.00000500
-	
-	node tx.js BTG send <complete transaction> btg.suprnova.cc
-	
-	or
-	
-	paste the <body> in https://btgexplorer.com/tx/send
-	
-The module will calculate the amount to be spent according to the fees and advise if the numbers are not coherent:
-
-	amount+dev fees+network fees=prevamount
-	
-You can adjust the fees if you like according to the size of the transaction instead of using 0.00000300 or 0.00000500
 
 ### "Advanced use" - Multiple inputs
 
