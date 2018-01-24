@@ -1,7 +1,7 @@
 bitcoin-transactions
 ===
 
-Claim your coins and manage them by yourself: Bitcoin transactions made simple for standard or multisig wallets, create and send by your own your Bitcoin, Bitcoin Cash, Bitcoin Gold, Bitcoin Diamond, Zcash, Litecoin transactions, manage your keys and do not disclose them to dubious wallets software
+Claim your coins and manage them by yourself: Bitcoin transactions made simple for standard or multisig wallets, create and send by your own your Bitcoin, Bitcoin Cash, Bitcoin Gold, Bitcoin Diamond, Super Bitcoin, Bitcore, Zcash, Litecoin, DOGE, Dash transactions, manage your keys and do not disclose them to dubious wallets software
 
 ## Rationale
 
@@ -43,9 +43,9 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 Bitcoin Gold "BTG" - btg.suprnova.cc  - see below and https://github.com/Ayms/bitcoin-transactions/issues/5
 
-Bitcoin Cash "BCH" - bch.suprnova.cc - see https://github.com/Ayms/bitcoin-transactions/issues/4 and [example-4.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-4.js) and https://github.com/Ayms/bitcoin-transactions#specific-case-of-bch for the new address format
+Bitcoin Cash "BCH" - bch.suprnova.cc - see https://github.com/Ayms/bitcoin-transactions/issues/4 and [example-4.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-4.js) and [Specific case of BCH](https://github.com/Ayms/bitcoin-transactions#specific-case-of-bch) for the new address format
 
-Bitcoin Diamond "BCD" - Unknown (kept secret by the project for now) - please read https://github.com/Ayms/bitcoin-transactions#specific-case-of-bcd
+Bitcoin Diamond "BCD" - Unknown (kept secret by the project for now) - please read [Specific case of BCD](https://github.com/Ayms/bitcoin-transactions#specific-case-of-bcd)
 
 Super Bitcoin "SBTC" - Unknown (kept secret by the project for now)
 
