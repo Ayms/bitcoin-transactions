@@ -1,7 +1,7 @@
 bitcoin-transactions
 ===
 
-Bitcoin transactions made simple for standard or multisig wallets, create and send by your own your Bitcoin, Bitcoin Cash, Bitcoin Gold, Bitcoin Diamond, Zcash, Litecoin transactions, manage your keys and do not disclose them to dubious wallets software
+Claim your coins and manage them by yourself: Bitcoin transactions made simple for standard or multisig wallets, create and send by your own your Bitcoin, Bitcoin Cash, Bitcoin Gold, Bitcoin Diamond, Zcash, Litecoin transactions, manage your keys and do not disclose them to dubious wallets software
 
 ## Rationale
 
@@ -37,17 +37,31 @@ This module is secure, it does not send anything outside (except the transaction
 
 ## Supported coins
 
-Bitcoin Gold "BTG" (see below and https://github.com/Ayms/bitcoin-transactions/issues/5)
+Please see below the supported coins and acronym to be used, as well as full nodes where to send your transactions, and use/tests cases
 
-Bitcoin Cash "BCH" (see https://github.com/Ayms/bitcoin-transactions/issues/4 and [example-4.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-4.js))
+### Forked coins
 
-Bitcoin Core "BTC" (see https://github.com/Ayms/bitcoin-transactions/blob/master/verify.txt)
+Bitcoin Gold "BTG" - btg.suprnova.cc  - see below and https://github.com/Ayms/bitcoin-transactions/issues/5
 
-Zcash "ZEC" (see https://github.com/Ayms/bitcoin-transactions/blob/master/verify.txt)
+Bitcoin Cash "BCH" - bch.suprnova.cc - see https://github.com/Ayms/bitcoin-transactions/issues/4 and [example-4.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-4.js) and https://github.com/Ayms/bitcoin-transactions#specific-case-of-bch for the new address format
 
-Litecoin "LTC" (see https://github.com/Ayms/bitcoin-transactions/blob/master/verify.txt)
+Bitcoin Diamond "BCD" - Unknown (kept secret by the project for now) - please read https://github.com/Ayms/bitcoin-transactions#specific-case-of-bcd
 
-Bitcoin Diamond "BCD" assuming that this project is serious (see https://github.com/eveybcd/BitcoinDiamond/issues/2)
+Super Bitcoin "SBTC" - Unknown (kept secret by the project for now)
+
+Bitcore "BTX" - btx.suprnova.cc
+
+### Legacy coins
+
+Bitcoin Core "BTC" - bitcoin.sipa.be - see https://github.com/Ayms/bitcoin-transactions/blob/master/verify.txt
+
+Zcash "ZEC" - mainnet.z.cash - see https://github.com/Ayms/bitcoin-transactions/blob/master/verify.txt
+
+Litecoin "LTC" - ltc.suprnova.cc - see https://github.com/Ayms/bitcoin-transactions/blob/master/verify.txt
+
+Dogecoin "DOGE" - 5.135.158.86 (not official)
+
+Dash "DASH" - dash.suprnova.cc
 
 More to come
 
@@ -55,9 +69,9 @@ More to come
 
 Unlike bitcoin-cli this modules allows you to manage your fees too, do not go below ~1 satoshi per byte for the network fees or your transaction will not be accepted by the network
 
-There are development fees of 0.78% (with a minimum of 0.00008500) that are added to each transaction that you broadcast and paid to the address GSBbeuKPu4d6HKJhtPgk7XayMcaXyQy8TS (or the equivalent one for each network), of course the fees apply only when your broadcasted transaction to the network is included in a block, no fees apply to create/test your transactions
+There are development fees of ~1.5% (with a minimum of 0.00017000) that are added to each transaction that you broadcast, of course the fees apply only when your broadcasted transaction to the network is included in a block, no fees apply to create/test your transactions
 
-Most likely people will not like the dev fees (see https://github.com/BTCGPU/BTCGPU/issues/226#issuecomment-346798767) but since you can adjust the high network fees that you can't decide with bitcoin-cli for example you can compensate, then <b>please realize that you will pay at the end less fees for small amounts since you can decide with this module not to follow the (exaggerated) advised/default fees</b>, however if you set too low network fees your transactions might be delayed or just not taken into account by the network
+If you don't like the dev fees then please do not use this module but please realize that you can adjust the network fees to compensate
 
 This module is not trivial at all, the bitcoin protocol and formats do not make things easy, it is not recommended (neither authorized by the license) to try to modify anything, if you send wrong transactions to the network at best you will be immediately banned by the nodes for one day and at worse you could send transactions that could spend your funds at a wrong place
 
@@ -89,23 +103,23 @@ Once you know this module (if not please read what follows), most likely you wil
 
 ### Standard wallets
 
-	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey= addr= fees=0.00000300
+	node tx.js <acronym> create prevtx= prevaddr= prevamount= previndex= privkey= addr= fees=0.00000300
 	
-	node tx.js BTG send <complete transaction> btg.suprnova.cc
+	node tx.js <acronym> send <complete transaction> <advised full node above>
 	
 	or
 	
-	paste the <body> in https://btgexplorer.com/tx/send
+	paste the <body> in an explorer (example: https://btgexplorer.com/tx/send)
 	
 ### Multisig wallets
 
-	node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3 or 2of4> addr= fee=0.00000500
+	node tx.js <acronym> create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3 or 2of4> addr= fee=0.00000500
 	
-	node tx.js BTG send <complete transaction> btg.suprnova.cc
+	node tx.js <acronym> send <complete transaction> <advised full node above>
 	
 	or
 	
-	paste the <body> in https://btgexplorer.com/tx/send
+	paste the <body> in an explorer (example: https://btgexplorer.com/tx/send)
 	
 The module will calculate the amount to be spent according to the fees and advise if the numbers are not coherent:
 
@@ -123,7 +137,7 @@ See the [Multiple inputs](https://github.com/Ayms/bitcoin-transactions#multiple-
 
 See [example-1.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-1.js), Bitcoin Gold transaction 118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97 was created with this module and mined in block 501249, see https://btgexp.com/tx/118d6160c8ae2465835ad41908a154cd9be6c78ca4012f79edbf65ca96407f97
 
-Please note that the initial transaction was at 1% fees which are now 0.78% as stated above in the released version (with a minimum of 0.00008500)
+Please note that the examples do not reflect the current dev fees
 
 #### Standard wallets
 
@@ -221,7 +235,15 @@ You can get all those information simply from a blockchain explorer, in case of 
 
 One BTC will become 10 BCDs, it just means that amount, prevamount and fees are multiply by 10, then they have now 7 decimals instead of 8 (so amount, prevamount or fees of 0.00001234 become 0.0001234 in the create command)
 
-This is just a display representation and does not change anything else, please see [example-6.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-6.js) that you can compare with [example-2.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-2.js)
+This is just a marketing representation and does not change anything else, please see [example-6.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-6.js) that you can compare with [example-2.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-2.js)
+
+See https://github.com/eveybcd/BitcoinDiamond/issues/2 also
+
+#### Specific case of BCH
+
+The BCH address format did change recently, this does not really make any difference for this module but we have updated the address format except that we have not yet included the cashaddress format that we have implemented in the very excellent [cashaddres](https://github.com/Ayms/cashaddress) module
+
+Should you want this module to be merged here please post an issue
 
 #### Multisig wallets
 
@@ -259,16 +281,16 @@ Once you are sure that everything is correct, you can send your transaction to t
 
 `node tx.js BTG send e1476d4474780000000000000000000003010000d42bb13a020000000106e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006a473044022039e2eee9a14fd18665eceeaac8af87888704ef2bfa14afe850b850e6fc7fdea702201d3c4340cc6998738295176320dc2597b3b6fcb93abc01add17b57b9ea70f0754121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff0320a10700000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac47750700000000001976a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac34210000000000001976a9145b79a9d29a34f2f284ecdd33009ffa5e0252b68988ac00000000`
 	
-Some addresses of nodes are hard coded, they don't belong to us and we can't say how long they will work, so if you want to use a specific node, do ``node tx.js BTG send <tx> A.B.C.D`` where A.B.C.D is the IP address of the node
-	
+Some addresses of nodes are hard coded, they don't belong to us and we can't say how long they will work, so if you want to use a specific node, do ``node tx.js BTG send <tx> A.B.C.D`` where A.B.C.D is the IP address of the node (please see the recommended full nodes [above](https://github.com/Ayms/bitcoin-transactions#supported-coins))
+
 Before sending your transaction it's a good idea too to check the network by doing ``node tx.js BTG testconnect`` or ``node tx.js BTG testconnect A.B.C.D``
 	
 A more easy way if available for your network is to copy and paste the ``body of the transaction`` (and not the ``complete transaction``) to a blockchain explorer that will broadcast it, there are no risks of doing this except that you don't know if the explorer will do its job, the explorer can't modify the transaction
 
-## Claiming your coins (BCH,BTG,BCD) - Addresses and getting 'free' coins
+## Claiming your coins (BCH,BTG,BCD,SBTC) - Addresses and getting 'free' coins
 
 The addresses between the different networks are the same, it always ends up with the hash of your public key and is encoded in a specficic way for each network, but they still are the same
-	
+
 There are some tools existing to convert addresses, you might consider using the very excellent [Ayms/bitcoin-wallets](https://github.com/Ayms/bitcoin-wallets) module to create your wallet and/or convert addresses
 	
 This module is not intended to push you to get your 'free' coins from bitcoin core
@@ -341,6 +363,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Related projects :
 
+* [Ayms/cashaddress](https://github.com/Ayms/cashaddress)
 * [Ayms/bitcoin-wallets](https://github.com/Ayms/bitcoin-wallets)
 * [Ayms/zcash-wallets](https://github.com/Ayms/zcash-wallets)
 * [Ayms/bittorrent-nodeid](https://github.com/Ayms/bittorrent-nodeid)

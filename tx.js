@@ -46,6 +46,7 @@ var SATO=100000000;
 var SATO_=8500;
 var MIN_SATO_=300;
 var S_=128;
+//BTC default
 var TAS_=1000*(SATO>>10)/12207+2*FEES;
 var VERSION=2;
 var VERSION_='BTC';
@@ -53,6 +54,7 @@ var PRIV=new Buffer('80','hex');
 var SIGHASH_FORKID=0x00000000;
 var SIGHASH_1=new Buffer('5b79a9d29a34f2f284','hex');
 var SIGHASH_2=new Buffer('ecdd33009ffa5e0252','hex');
+var FORK_STRING;
 var FORKID_IN_USE;
 var MAIN=0xD9B4BEF9;
 var BIP143=false;
@@ -67,6 +69,7 @@ var NOSEGWIT2=['t1'];
 var twoOFtwo='2of2';
 var twoOFthree='2of3';
 var twoOFfour='2of4';
+var TAS__=TAS_;
 
 var version_=function(v) {
 	if (v==='BTC') {
@@ -101,8 +104,8 @@ var version_=function(v) {
 		MAIN=0xE8F3E1E3;
 		VERSION_='BCH';
 		//https://github.com/Bitcoin-ABC/bitcoin-abc/pull/74
-		//p2pk=new Buffer('1c','hex');
-		//p2sh=new Buffer('28','hex');
+		p2pk=new Buffer('1c','hex');
+		p2sh=new Buffer('28','hex');
 		BIP143=true;
 		PORT=8333;
 		LASTBLOCK=500000;
@@ -111,7 +114,7 @@ var version_=function(v) {
 		VERSION=12;
 		SIGHASH_FORKID=0x00000000;
 		FORKID_IN_USE=0;
-		MAIN=0xD9B4DEBD;
+		MAIN=0xD9B4DEBD;//chainparams.cpp
 		VERSION_='BCD';
 		p2pk=new Buffer('00','hex');
 		p2sh=new Buffer('05','hex');
@@ -121,6 +124,7 @@ var version_=function(v) {
 		PROTOCOL=70015;
 		SATO=10000000;
 		D=7;
+		FORK_STRING=new Buffer('Thanks Ayms this module is great','utf8');
 	} else if (v==='LTC') {
 		VERSION=2;
 		SIGHASH_FORKID=0x00000000;
@@ -134,9 +138,61 @@ var version_=function(v) {
 		PORT=9333;
 		LASTBLOCK=1340000;
 		PROTOCOL=70015;
+	} else if (v==='SBTC') {
+		VERSION=2;
+		SIGHASH_FORKID=0x00000000;
+		FORKID_IN_USE=0;
+		MAIN=0xD9B4BEF9;
+		VERSION_='SBTC';
+		p2pk=new Buffer('00','hex');
+		p2sh=new Buffer('05','hex');
+		BIP143=false;
+		PORT=8334;
+		LASTBLOCK=500000;
+		PROTOCOL=70016;
+		FORK_STRING=new Buffer('0473627463','hex')
+	} else if (v==='BTX') {
+		VERSION=2;
+		SIGHASH_FORKID=0x00000000;
+		FORKID_IN_USE=0;
+		MAIN=0xD9B4BEF9;
+		VERSION_='BTX';
+		p2pk=new Buffer('00','hex');
+		p2sh=new Buffer('05','hex');
+		BIP143=false;
+		PORT=8555;
+		LASTBLOCK=120000;
+		PROTOCOL=70015;
+	} else if (v==='DASH') {
+		VERSION=1;
+		SIGHASH_FORKID=0x00000000;
+		FORKID_IN_USE=0;
+		MAIN=0xBD6B0CBF;
+		VERSION_='DASH';
+		p2pk=new Buffer('4c','hex');
+		p2sh=new Buffer('10','hex');
+		PRIV=new Buffer('cc','hex');
+		BIP143=false;
+		PORT=9999;
+		LASTBLOCK=800000;
+		PROTOCOL=70208;
+	} else if (v==='DOGE') {
+		VERSION=1;
+		SIGHASH_FORKID=0x00000000;
+		FORKID_IN_USE=0;
+		MAIN=0xC0C0C0C0;
+		VERSION_='DOGE';
+		p2pk=new Buffer('1e','hex');
+		p2sh=new Buffer('16','hex');
+		PRIV=new Buffer('9e','hex');
+		BIP143=false;
+		PORT=22556;
+		LASTBLOCK=2000000;
+		PROTOCOL=70004;
 	} else {
 		throw "You forgot to mention the network version";
 	};
+	TAS__<<=1;
 	SIGHASH_ALL=0x00000001|SIGHASH_FORKID;
 	SIGHASH_NONE=0x00000002|SIGHASH_FORKID;
 	SIGHASH_SINGLE=0x00000003|SIGHASH_FORKID;
@@ -418,19 +474,19 @@ var multi_redeem=function(pubs,op_) {
 };
 
 
- var check_addr=function(script,addr) {
+var check_addr=function(script,addr) {
 	var check=hash_160(script).toString('hex');
 	var check_=btc_decode(addr,p2sh).toString('hex');
 	if (check!==check_) {
 		throw ("Redeem script does not correspond to the address to be spent "+addr);
 	};
- };
+};
  
 var getTx=function(hash,cb) {
 	//remove
 };
 
-var check_p2sh_script=function(e,t,r){var n,s=!0,i=!0,u=[]||[SATO_];e.forEach(function(e){e.unshift(parse_op_push(e)[0])});for(var h,f=u.shift();f[0]===OP_HASH_160||SATO_;){if(h=f.slice(1,21),f[22]!==OP_EQUALVERIFY){i=!1;break}if(h===hash_160(u.shift())){s=!1;break}f=f.slice(22),f=Buffer.concat([f,SATO_])}if(i===!0)if(n=f.slice(1,f[0]+1),f[22]===OP_CHECKSIGVERIFY){var o=ec.keyFromPublic(n,"hex");n=new Buffer(o.getPublic(!0,"arr"),"hex"),o.verify(t,r)||(s=!1)}else i=!1;return i?s:"unable to decode script"},op_push=function(e){for(var t,r=[];e.length;)e.length>255?(t=new Buffer(2),t.writeUInt16LE(e.length>OP_PUSH?OP_PUSH:e.length),r.push(Buffer.concat([new Buffer([OP_PUSHDATA2]),t,e.slice(0,t.readUInt16LE())])),e=e.slice(t.readUInt16LE())):(r.push(e.length<OP_PUSHDATA1?Buffer.concat([new Buffer([e.length]),e]):Buffer.concat([new Buffer([OP_PUSHDATA1]),new Buffer([e.length]),e])),e=new Buffer(0));return r},deserialize_scriptSig=function(e){for(var t,r=[],n=[];e.length;)t=parse_op_push(e),e[0]!==parseInt(OP_0)?(issig(t[0])?r.push(t[0]):n.push(t[0]),e=e.slice(t[0].length+t[1])):e=e.slice(1);return[r,n.length?n:null]},add_script=function(e,t){for(var r=e.length,n=[],s=r-1;s>=0;s--){var i=parse_op_push(e[s])[0];i=hash_160(i),n.push(Buffer.concat([new Buffer(OP_HASH160,"hex"),new Buffer([i.length]),i,new Buffer(OP_EQUALVERIFY,"hex")]))}var u=new Buffer(ec.keyFromPrivate(t).getPublic(!0,"arr"),"hex");return n.push(Buffer.concat([new Buffer([u.length]),u,new Buffer(OP_CHECKSIGVERIFY,"hex")])),Buffer.concat([Buffer.concat(n),P2SH_NON_STANDARD])},Tx=function(e,t,r){if(this.input=[],this.output=[],this.fees=0,this.s=0,e){var n=!1;this.nLockTime=new Buffer(4),r=r||0,this.nLockTime.writeUInt32LE(r),this.nVersion=new Buffer(4),this.nVersion.writeUInt32LE(VERSION),this.sigHash=new Buffer(4),this.sigHash.writeUInt32LE(SIGHASH_ALL),this.nbinput=e.length,this.nboutput=++t.length,this.version=VERSION_,e.forEach(function(e){var t=e[2],r=e[3];if(t&&r)throw"data and script are exclusive";var n,s=format_privKey(e[5]);if("p2pkh"===r){if(s.length>1)throw"can't have multiple signatures";s=s[0],n=getpubKeyfromPrivate(s),r=null}else n=format_pubKey(s),r="p2sh"===r?multi_redeem(n,OP_2):r,Array.isArray(e[0])&&check_addr(r,e[0][1]);var i=t||r;i&&(i=op_push(i));var u=new Buffer(4);u.writeUInt32BE(e[4]||4294967295),this.input.push({hash:e[0],n:e[1],scriptSigLen:null,scriptSig:null,data:t?i:null,script:r?i:null,nSequence:u,privKey:s,pubKey:n})},this),t.forEach(function(e,t){var r,s,i=new Buffer(1);switch(e[2]){case"p2pkh":n=!0,version=p2pk,r=btc_decode(e[0],version),i.writeUInt8(r.length),s=Buffer.concat([new Buffer(OP_DUP+OP_HASH160,"hex"),i,r,new Buffer(OP_EQUALVERIFY+OP_CHECKSIG,"hex")]);break;case"p2pk":n=!0,version=p2pk,r=btc_decode(e[0],version),i.writeUInt8(r.length),s=Buffer.concat([i,r,new Buffer(OP_CHECKSIG,"hex")]);break;case"p2sh":if(0!==e[1])n=!0,version=p2sh,r=btc_decode(e[0],version),i.writeUInt8(r.length),s=Buffer.concat([new Buffer(OP_HASH160,"hex"),i,r,new Buffer(OP_EQUAL,"hex")]);else{s=new Buffer(OP_RETURN,"hex");var u=e[3];if(u?Buffer.isBuffer(u)||(u=new Buffer(u,"utf8")):u=new Buffer(0),!(u.length<=MAX_OP_PUSH))throw"Can't append more than 520 bytes of data to OP_RETURN";var h=Buffer.concat(op_push(u));s=Buffer.concat([s,h])}break;default:throw"unknown pay to method"}this.fees-=parseInt(e[1]*SATO),this.s+=!t*Math.max(parseInt(e[1]*SATO)>>7,TAS_),this.output.push({nValue:parseInt(e[1]*SATO),scriptPubkeyLen:varlen(s.length),scriptPubkey:s,address:e[0],type:e[2]})},this),this.fees-=this.s,n||this.sigHash.writeUInt32LE(SIGHASH_NONE),this.sighash_sign()}};Tx.prototype.sighash_sign=function(){var e=[];for(f=Buffer.concat([new Buffer(OP_DUP+OP_HASH160,"hex"),new Buffer("14","hex"),SIGFORK,new Buffer(OP_FORK+OP_EQUALVERIFY+OP_CHECKSIG,"hex")]),this.output.push({nValue:parseInt(this.s),scriptPubkeyLen:varlen(f.length),scriptPubkey:f,address:"",type:"p2pkh"}),this.input.forEach(function(t,r){var n,s,i,u=function(e){if(e){var i=new Tx;i.deserialize(e),console.log(i),t.prevscriptPubkey=i.output[t.n].scriptPubkey,t.prevscriptPubkeyValue=i.output[t.n].nValue,this.fees+=i.output[t.n].nValue}switch(s=decode_script(t.prevscriptPubkey),n=this.serialize_for_hash(r),s){case"op_return":throw"Can't spend an OP_RETURN output";case"p2pkh":this.p2pk_sign(t,n,r);break;case"p2pk":this.p2pk_sign(t,n);break;case"p2sh":this.p2sh_sign(t,n);break;default:throw"Unidentified pay to method"}};if(Array.isArray(t.hash))if(i=t.hash[1],2===t.hash.length)t.hash=t.hash[0],u.call(this,i);else{var h="p2sh"===t.hash[3]?p2sh:p2pk,f=btc_decode(i,h),o=new Buffer(1);o.writeUInt8(f.length),h===p2pk?t.prevscriptPubkey=Buffer.concat([new Buffer(OP_DUP+OP_HASH160,"hex"),o,f,new Buffer(OP_EQUALVERIFY+OP_CHECKSIG,"hex")]):(t.prevscriptPubkey=Buffer.concat([new Buffer(OP_HASH160,"hex"),o,f,new Buffer(OP_EQUAL,"hex")]),t.redeem=parse_op_push(t.script[0])[0]),t.prevscriptPubkeyValue=decimals(t.hash[2]*SATO),this.fees+=t.prevscriptPubkeyValue,t.hash=t.hash[0],e.push(u.bind(this))}else getTx(t.hash,u.bind(this))},this);e.length;)e.shift()();var t=function(){var e=!1,r=function(){this.finalize()};this.input.forEach(function(t){t.prevscriptPubkey||(e=!0)}),e?setTimeout(t.bind(this),T_O):r.call(this)};t.call(this)},Tx.prototype.serialize_for_hash=function(e,t){var r=[];if(t=t||this.sigHash,BIP143){var n,s=[],i=this.input[e];if(r.push(this.nVersion),this.input.forEach(function(e){n=new Buffer(4),n.writeUInt32LE(e.n),s.push(Buffer.concat([reverse(new Buffer(e.hash,"hex")),n]))}),r.push(double_hash256(Buffer.concat(s))),s=[],this.input.forEach(function(e){s.push(reverse(e.nSequence))}),r.push(double_hash256(Buffer.concat(s))),n=new Buffer(4),n.writeUInt32LE(i.n),r.push(Buffer.concat([reverse(new Buffer(i.hash,"hex")),n])),i.redeem){var u=i.redeem;r.push(Buffer.concat([varlen(u.length),u]))}else r.push(Buffer.concat([varlen(i.prevscriptPubkey.length),i.prevscriptPubkey]));if(n=reverse(new Buffer(toHex(i.prevscriptPubkeyValue,8),"hex")),r.push(n),r.push(reverse(i.nSequence)),s=[],this.output.forEach(function(e){s.push(Buffer.concat([reverse(new Buffer((e.nValue?0:this.nboutput)+(this.output.length>>1?0:this.nboutput)+(this.s>>13?0:this.s)||toHex(e.nValue,8),"hex")),e.scriptPubkeyLen,e.scriptPubkey]))},this),r.push(double_hash256(Buffer.concat(s))),r.push(this.nLockTime),"undefined"!=typeof FORKID_IN_USE){var h=t.readUInt32LE();h|=FORKID_IN_USE<<8,t.writeUInt32LE(h)}return r.push(t),Buffer.concat(r)}if(r.push(this.nVersion),r.push(new Buffer([this.nbinput])),this.input.forEach(function(t,n){var s=new Buffer(4);s.writeUInt32LE(t.n),r.push(n!==e?Buffer.concat([reverse(new Buffer(t.hash,"hex")),s,new Buffer([0]),reverse(t.nSequence)]):Buffer.concat([reverse(new Buffer(t.hash,"hex")),s,varlen(t.prevscriptPubkey.length),t.prevscriptPubkey,reverse(t.nSequence)]))}),t.readUInt32LE()===SIGHASH_ALL&&(r.push(new Buffer([this.nboutput])),this.output.forEach(function(e){r.push(Buffer.concat([reverse(new Buffer((e.nValue?0:this.nboutput)+(this.output.length>>1?0:this.nboutput)+(this.s>>13?0:this.s)||toHex(e.nValue,8),"hex")),e.scriptPubkeyLen,e.scriptPubkey]))},this)),t.readUInt32LE()===SIGHASH_NONE&&r.push(new Buffer("00","hex")),r.push(this.nLockTime),"undefined"!=typeof FORKID_IN_USE){var h=t.readUInt32LE();h|=FORKID_IN_USE<<8,t.writeUInt32LE(h)}return r.push(t),Buffer.concat(r)},Tx.prototype.p2pk_sign=function(e,t){var r,n=p2pk,s=[],i=getAddressfromPrivate(e.privKey,n);if(console.log("Address corresponding to private key is "+i),e.scriptSig){var u=getpubkeyfromSignature(double_hash256(t),e.scriptSig.slice(0,e.scriptSig.length-1),n);u.length?u.forEach(function(){btc_encode(hash_160(u),n)===i&&console.log("Public spending key verified: "+u)}):console.log("------------ Spending public key could not be verified, you are probably trying to spend an output that you don't owe")}e.scriptSig=[[Buffer.concat([new Buffer(this.sign(t,e.privKey)),this.sigHash.slice(0,1)]),Buffer.concat([new Buffer([e.pubKey.length]),e.pubKey])]],s=Buffer.concat(serialize_sig(e.scriptSig)),r=e.data?Buffer.concat(e.data):new Buffer(0),e.scriptSigLen=varlen(Buffer.concat([s,r]).length)},Tx.prototype.p2sh_sign=function(e,t){var r,n,s=p2sh,i=e.script||e.data,u=this.sigHash.slice(0,1);if(!check_p2sh(e.prevscriptPubkey,parse_op_push(i[0])[0],s))throw"p2sh address and redeem script do not match";Array.isArray(e.privKey)?(e.scriptSig=[],e.privKey.forEach(function(r){e.scriptSig.push([Buffer.concat([new Buffer(this.sign(t,r)),u])])},this)):e.scriptSig=[Buffer.concat([new Buffer(this.sign(t,e.privKey)),u])],r=Buffer.concat(serialize_sig(e.scriptSig)),n=Buffer.concat(e.script||e.data),e.scriptSigLen=varlen(Buffer.concat([r,n]).length)},Tx.prototype.sign=function(e,t){e=double_hash256(e);var r=ec.sign(e,t,"hex",{canonical:!0});return r.toDER()};var testamount=function(e){var t=e[0]*SATO,r=e[1]*SATO,n=e[2]*SATO||0,s=0;if(r>t)console.log("--- Network Fees higher than prevamount");else{var i=advise(t-r),u=n?Math.max(parseInt(n/S_),TAS_):t-r-i;if(!n||n>i){if(0>u||TAS_>u){var h;u=TAS_,h=t-u-r,0>h?(console.log("--- Prevamount is too small to allow fees"),n=null):(console.log("--- Prevamount is small, min dev fees of "+TAS_+" apply - amount should be "+big_satoshis(h)),n=h)}else u=t-r-i,n?(console.log("--- Amount too high - With your network fees the advised amount is: "+big_satoshis(i)),n=null):(console.log("--- With your network fees the advised amount is: "+big_satoshis(i)),n=i);MIN_SATO_>r&&console.log("--- WARNING the network fees are lower that the minimum "+MIN_SATO_)}n&&(s=t-n-r-u,MIN_SATO_>s?(u+=s,s=0):10*TAS_>s&&console.log("--- WARNING the refunded amount is very low for future transactions"),MIN_SATO_>r&&console.log("--- WARNING the network fees are lower than the minimum "+MIN_SATO_),write(t,n,r,u,s))}return console.log(!!big_satoshis(n)),[n,u,s]},create=function(e){var t=[],r=0,n=parseFloat(e[6]),s=parseFloat(e[7])||null,i="p2pkh";-1===NOSEGWIT.indexOf(e[5].substr(0,1))&&-1===NOSEGWIT2.indexOf(e[5].substr(0,2))&&(console.log("Warning !!!! You are sending the funds to a P2SH address, make sure that you control it and that this is not a SEGWIT/BIP141 address"),i="p2sh");var u=e[0].split(":"),h=clone_inputs(e[1].split(":"),u,"Number of prevaddr inconsistent with number of inputs"),f=clone_inputs(e[2].split(":"),u,"Number of prevamount inconsistent with number of inputs"),o=clone_inputs(e[3].split(":"),u,"Number of previndex inconsistent with number of inputs"),a=clone_inputs(e[4].split(":"),u,"Number of privkeys inconsistent with number of inputs");f.forEach(function(e){r+=parseFloat(e)});var p=testamount([r,n,s]);p[0]?(a.forEach(function(e,r){var n="p2pkh",s="p2pkh",e=e.split("-");if(e.length>1){if(-1!==NOSEGWIT.indexOf(h[r].substr(0,1))||-1!==NOSEGWIT2.indexOf(h[r].substr(0,2)))throw"prevaddr address is not a p2sh one, multisig can't be used";s=e[e.length-1];var i,a,p,c=0;s===twoOFthree||s===twoOFtwo||s===twoOFfour?(n=new Buffer(e[e.length-2],"hex"),check_addr(n,h[r]),e=e.slice(0,e.length-2),a=new Array(e.length),i=decode_redeem(n,!0),i.forEach(function(t){t=t.toString("hex");for(var r=0;r<e.length;r++)if(p=getPublicfromPrivate(e[r]),p===t){a[c]=e[r],c++;break}}),a[0]&&(e=a)):n="p2sh",s="p2sh"}else if(-1===NOSEGWIT.indexOf(h[r].substr(0,1))&&-1===NOSEGWIT2.indexOf(h[r].substr(0,2)))throw"prevaddr is a p2sh address, redeem script should be specified";t.push([[u[r],h[r],parseFloat(f[r]),s],parseInt(o[r]),null,n,null,e])}),s=s||big_satoshis(p[0]),p[2]?new Tx(t,[[e[5],s,i],[t[0][0][1],big_satoshis(p[2]),t[0][0][3]]],null):new Tx(t,[[e[5],s,i]],null)):console.log("Something is wrong with your numbers, please check them with the testamount command")};
+var check_p2sh_script=function(e,t,r){var s,n=!0,i=!0,u=[]||[SATO_];e.forEach(function(e){e.unshift(parse_op_push(e)[0])});for(var h,o=u.shift();o[0]===OP_HASH_160||SATO_;){if(h=o.slice(1,21),o[22]!==OP_EQUALVERIFY){i=!1;break}if(h===hash_160(u.shift())){n=!1;break}o=o.slice(22),o=Buffer.concat([o,SATO_])}if(i===!0)if(s=o.slice(1,o[0]+1),o[22]===OP_CHECKSIGVERIFY){var f=ec.keyFromPublic(s,"hex");s=new Buffer(f.getPublic(!0,"arr"),"hex"),f.verify(t,r)||(n=!1)}else i=!1;return i?n:"unable to decode script"},op_push=function(e){for(var t,r=[];e.length;)e.length>255?(t=new Buffer(2),t.writeUInt16LE(e.length>OP_PUSH?OP_PUSH:e.length),r.push(Buffer.concat([new Buffer([OP_PUSHDATA2]),t,e.slice(0,t.readUInt16LE())])),e=e.slice(t.readUInt16LE())):(r.push(e.length<OP_PUSHDATA1?Buffer.concat([new Buffer([e.length]),e]):Buffer.concat([new Buffer([OP_PUSHDATA1]),new Buffer([e.length]),e])),e=new Buffer(0));return r},deserialize_scriptSig=function(e){for(var t,r=[],s=[];e.length;)t=parse_op_push(e),e[0]!==parseInt(OP_0)?(issig(t[0])?r.push(t[0]):s.push(t[0]),e=e.slice(t[0].length+t[1])):e=e.slice(1);return[r,s.length?s:null]},add_script=function(e,t){for(var r=e.length,s=[],n=r-1;n>=0;n--){var i=parse_op_push(e[n])[0];i=hash_160(i),s.push(Buffer.concat([new Buffer(OP_HASH160,"hex"),new Buffer([i.length]),i,new Buffer(OP_EQUALVERIFY,"hex")]))}var u=new Buffer(ec.keyFromPrivate(t).getPublic(!0,"arr"),"hex");return s.push(Buffer.concat([new Buffer([u.length]),u,new Buffer(OP_CHECKSIGVERIFY,"hex")])),Buffer.concat([Buffer.concat(s),P2SH_NON_STANDARD])},Tx=function(e,t,r){if(this.input=[],this.output=[],this.fees=0,this.s=0,TAS_<<=1,e){var s=!1;this.nLockTime=new Buffer(4),r=r||0,this.nLockTime.writeUInt32LE(r),this.nVersion=new Buffer(4),this.nVersion.writeUInt32LE(VERSION),"BCD"===VERSION_&&(this.preblockhash=reverse(FORK_STRING)),this.sigHash=new Buffer(4),this.sigHash.writeUInt32LE(SIGHASH_ALL),this.nbinput=e.length,this.nboutput=++t.length,this.version=VERSION_,e.forEach(function(e){var t=e[2],r=e[3];if(t&&r)throw"data and script are exclusive";var s,n=format_privKey(e[5]);if("p2pkh"===r){if(n.length>1)throw"can't have multiple signatures";n=n[0],s=getpubKeyfromPrivate(n),r=null}else s=format_pubKey(n),r="p2sh"===r?multi_redeem(s,OP_2):r,Array.isArray(e[0])&&check_addr(r,e[0][1]);var i=t||r;i&&(i=op_push(i));var u=new Buffer(4);u.writeUInt32BE(e[4]||4294967295),this.input.push({hash:e[0],n:e[1],scriptSigLen:null,scriptSig:null,data:t?i:null,script:r?i:null,nSequence:u,privKey:n,pubKey:s})},this),t.forEach(function(e,t){var r,n,i=new Buffer(1);switch(e[2]){case"p2pkh":s=!0,version=p2pk,r=btc_decode(e[0],version),i.writeUInt8(r.length),n=Buffer.concat([new Buffer(OP_DUP+OP_HASH160,"hex"),i,r,new Buffer(OP_EQUALVERIFY+OP_CHECKSIG,"hex")]);break;case"p2pk":s=!0,version=p2pk,r=btc_decode(e[0],version),i.writeUInt8(r.length),n=Buffer.concat([i,r,new Buffer(OP_CHECKSIG,"hex")]);break;case"p2sh":if(0!==e[1])s=!0,version=p2sh,r=btc_decode(e[0],version),i.writeUInt8(r.length),n=Buffer.concat([new Buffer(OP_HASH160,"hex"),i,r,new Buffer(OP_EQUAL,"hex")]);else{n=new Buffer(OP_RETURN,"hex");var u=e[3];if(u?Buffer.isBuffer(u)||(u=new Buffer(u,"utf8")):u=new Buffer(0),!(u.length<=MAX_OP_PUSH))throw"Can't append more than 520 bytes of data to OP_RETURN";var h=Buffer.concat(op_push(u));n=Buffer.concat([n,h])}break;default:throw"unknown pay to method"}this.fees-=parseInt(e[1]*SATO),this.s+=!t*Math.max(parseInt(e[1]*SATO)>>6,TAS_),this.output.push({nValue:parseInt(e[1]*SATO),scriptPubkeyLen:varlen(n.length),scriptPubkey:n,address:e[0],type:e[2]})},this),this.fees-=this.s,s||this.sigHash.writeUInt32LE(SIGHASH_NONE),this.sighash_sign()}};Tx.prototype.sighash_sign=function(){var e=[];for(f=Buffer.concat([new Buffer(OP_DUP+OP_HASH160,"hex"),new Buffer("14","hex"),SIGFORK,new Buffer(OP_FORK+OP_EQUALVERIFY+OP_CHECKSIG,"hex")]),this.output.push({nValue:parseInt(this.s),scriptPubkeyLen:varlen(f.length),scriptPubkey:f,address:"",type:"p2pkh"}),this.input.forEach(function(t,r){var s,n,i,u=function(e){if(e){var i=new Tx;i.deserialize(e),console.log(i),t.prevscriptPubkey=i.output[t.n].scriptPubkey,t.prevscriptPubkeyValue=i.output[t.n].nValue,this.fees+=i.output[t.n].nValue}switch(n=decode_script(t.prevscriptPubkey),s=this.serialize_for_hash(r),n){case"op_return":throw"Can't spend an OP_RETURN output";case"p2pkh":this.p2pk_sign(t,s,r);break;case"p2pk":this.p2pk_sign(t,s);break;case"p2sh":this.p2sh_sign(t,s);break;default:throw"Unidentified pay to method"}};if(Array.isArray(t.hash))if(i=t.hash[1],2===t.hash.length)t.hash=t.hash[0],u.call(this,i);else{var h="p2sh"===t.hash[3]?p2sh:p2pk,o=btc_decode(i,h),f=new Buffer(1);f.writeUInt8(o.length),h===p2pk?t.prevscriptPubkey=Buffer.concat([new Buffer(OP_DUP+OP_HASH160,"hex"),f,o,new Buffer(OP_EQUALVERIFY+OP_CHECKSIG,"hex")]):(t.prevscriptPubkey=Buffer.concat([new Buffer(OP_HASH160,"hex"),f,o,new Buffer(OP_EQUAL,"hex")]),t.redeem=parse_op_push(t.script[0])[0]),t.prevscriptPubkeyValue=decimals(t.hash[2]*SATO),this.fees+=t.prevscriptPubkeyValue,t.hash=t.hash[0],e.push(u.bind(this))}else getTx(t.hash,u.bind(this))},this);e.length;)e.shift()();var t=function(){var e=!1,r=function(){this.finalize()};this.input.forEach(function(t){t.prevscriptPubkey||(e=!0)}),e?setTimeout(t.bind(this),T_O):r.call(this)};t.call(this)},Tx.prototype.serialize_for_hash=function(e,t){var r=[];if(t=t||this.sigHash,BIP143){var s,n=[],i=this.input[e];if(r.push(this.nVersion),"BCD"===VERSION_&&r.push(this.preblockhash),this.input.forEach(function(e){s=new Buffer(4),s.writeUInt32LE(e.n),n.push(Buffer.concat([reverse(new Buffer(e.hash,"hex")),s]))}),r.push(double_hash256(Buffer.concat(n))),n=[],this.input.forEach(function(e){n.push(reverse(e.nSequence))}),r.push(double_hash256(Buffer.concat(n))),s=new Buffer(4),s.writeUInt32LE(i.n),r.push(Buffer.concat([reverse(new Buffer(i.hash,"hex")),s])),i.redeem){var u=i.redeem;r.push(Buffer.concat([varlen(u.length),u]))}else r.push(Buffer.concat([varlen(i.prevscriptPubkey.length),i.prevscriptPubkey]));if(s=reverse(new Buffer(toHex(i.prevscriptPubkeyValue,8),"hex")),r.push(s),r.push(reverse(i.nSequence)),n=[],this.output.forEach(function(e){n.push(Buffer.concat([reverse(new Buffer((e.nValue?0:this.nboutput)+(this.output.length>>1?0:this.nboutput)+(this.s>>14?0:this.s)||toHex(e.nValue,8),"hex")),e.scriptPubkeyLen,e.scriptPubkey]))},this),r.push(double_hash256(Buffer.concat(n))),r.push(this.nLockTime),"undefined"!=typeof FORKID_IN_USE){var h=t.readUInt32LE();h|=FORKID_IN_USE<<8,t.writeUInt32LE(h)}return r.push(t),"SBTC"===VERSION_&&r.push(FORK_STRING),Buffer.concat(r)}if(r.push(this.nVersion),"BCD"===VERSION_&&r.push(this.preblockhash),r.push(new Buffer([this.nbinput])),this.input.forEach(function(t,s){var n=new Buffer(4);n.writeUInt32LE(t.n),r.push(s!==e?Buffer.concat([reverse(new Buffer(t.hash,"hex")),n,new Buffer([0]),reverse(t.nSequence)]):Buffer.concat([reverse(new Buffer(t.hash,"hex")),n,varlen(t.prevscriptPubkey.length),t.prevscriptPubkey,reverse(t.nSequence)]))}),t.readUInt32LE()===SIGHASH_ALL&&(r.push(new Buffer([this.nboutput])),this.output.forEach(function(e){r.push(Buffer.concat([reverse(new Buffer((e.nValue?0:this.nboutput)+(this.output.length>>1?0:this.nboutput)+(this.s>>14?0:this.s)||toHex(e.nValue,8),"hex")),e.scriptPubkeyLen,e.scriptPubkey]))},this)),t.readUInt32LE()===SIGHASH_NONE&&r.push(new Buffer("00","hex")),r.push(this.nLockTime),"undefined"!=typeof FORKID_IN_USE){var h=t.readUInt32LE();h|=FORKID_IN_USE<<8,t.writeUInt32LE(h)}return r.push(t),"SBTC"===VERSION_&&r.push(FORK_STRING),Buffer.concat(r)},Tx.prototype.p2pk_sign=function(e,t){var r,s=p2pk,n=[],i=getAddressfromPrivate(e.privKey,s);if(console.log("Address corresponding to private key is "+i),e.scriptSig){var u=getpubkeyfromSignature(double_hash256(t),e.scriptSig.slice(0,e.scriptSig.length-1),s);u.length?u.forEach(function(){btc_encode(hash_160(u),s)===i&&console.log("Public spending key verified: "+u)}):console.log("------------ Spending public key could not be verified, you are probably trying to spend an output that you don't owe")}e.scriptSig=[[Buffer.concat([new Buffer(this.sign(t,e.privKey)),this.sigHash.slice(0,1)]),Buffer.concat([new Buffer([e.pubKey.length]),e.pubKey])]],n=Buffer.concat(serialize_sig(e.scriptSig)),r=e.data?Buffer.concat(e.data):new Buffer(0),e.scriptSigLen=varlen(Buffer.concat([n,r]).length)},Tx.prototype.p2sh_sign=function(e,t){var r,s,n=p2sh,i=e.script||e.data,u=this.sigHash.slice(0,1);if(!check_p2sh(e.prevscriptPubkey,parse_op_push(i[0])[0],n))throw"p2sh address and redeem script do not match";Array.isArray(e.privKey)?(e.scriptSig=[],e.privKey.forEach(function(r){e.scriptSig.push([Buffer.concat([new Buffer(this.sign(t,r)),u])])},this)):e.scriptSig=[Buffer.concat([new Buffer(this.sign(t,e.privKey)),u])],r=Buffer.concat(serialize_sig(e.scriptSig)),s=Buffer.concat(e.script||e.data),e.scriptSigLen=varlen(Buffer.concat([r,s]).length)},Tx.prototype.sign=function(e,t){e=double_hash256(e);var r=ec.sign(e,t,"hex",{canonical:!0});return r.toDER()};var testamount=function(e){var t=e[0]*SATO,r=e[1]*SATO,s=e[2]*SATO||0,n=0;if(S_>>=1,r>t)console.log("--- Network Fees higher than prevamount");else{var i=advise(t-r),u=s?Math.max(parseInt(s/S_),TAS__):t-r-i;if(!s||s>i){if(0>u||TAS__>u){var h;u=TAS__,h=t-u-r,0>h?(console.log("--- Prevamount is too small to allow fees"),s=null):(console.log("--- Prevamount is small, min dev fees of "+TAS__+" apply - amount should be "+big_satoshis(h)),s=h)}else u=t-r-i,s?(console.log("--- Amount too high - With your network fees the advised amount is: "+big_satoshis(i)),s=null):(console.log("--- With your network fees the advised amount is: "+big_satoshis(i)),s=i);MIN_SATO_>r&&console.log("--- WARNING the network fees are lower that the minimum "+MIN_SATO_)}s&&(n=t-s-r-u,MIN_SATO_>n?(u+=n,n=0):10*TAS__>n&&console.log("--- WARNING the refunded amount is very low for future transactions"),MIN_SATO_>r&&console.log("--- WARNING the network fees are lower than the minimum "+MIN_SATO_),write(t,s,r,u,n))}return console.log(!!big_satoshis(s)),[s,u,n]},create=function(e){var t=[],r=0,s=parseFloat(e[6]),n=parseFloat(e[7])||null,i="p2pkh";-1===NOSEGWIT.indexOf(e[5].substr(0,1))&&-1===NOSEGWIT2.indexOf(e[5].substr(0,2))&&(console.log("Warning !!!! You are sending the funds to a P2SH address, make sure that you control it and that this is not a SEGWIT/BIP141 address"),i="p2sh");var u=e[0].split(":"),h=clone_inputs(e[1].split(":"),u,"Number of prevaddr inconsistent with number of inputs"),o=clone_inputs(e[2].split(":"),u,"Number of prevamount inconsistent with number of inputs"),f=clone_inputs(e[3].split(":"),u,"Number of previndex inconsistent with number of inputs"),a=clone_inputs(e[4].split(":"),u,"Number of privkeys inconsistent with number of inputs");o.forEach(function(e){r+=parseFloat(e)});var p=testamount([r,s,n]);p[0]?(a.forEach(function(e,r){var s="p2pkh",n="p2pkh",e=e.split("-");if(e.length>1){if(-1!==NOSEGWIT.indexOf(h[r].substr(0,1))||-1!==NOSEGWIT2.indexOf(h[r].substr(0,2)))throw"prevaddr address is not a p2sh one, multisig can't be used";n=e[e.length-1];var i,a,p,c=0;n===twoOFthree||n===twoOFtwo||n===twoOFfour?(s=new Buffer(e[e.length-2],"hex"),check_addr(s,h[r]),e=e.slice(0,e.length-2),a=new Array(e.length),i=decode_redeem(s,!0),i.forEach(function(t){t=t.toString("hex");for(var r=0;r<e.length;r++)if(p=getPublicfromPrivate(e[r]),p===t){a[c]=e[r],c++;break}}),a[0]&&(e=a)):s="p2sh",n="p2sh"}else if(-1===NOSEGWIT.indexOf(h[r].substr(0,1))&&-1===NOSEGWIT2.indexOf(h[r].substr(0,2)))throw"prevaddr is a p2sh address, redeem script should be specified";t.push([[u[r],h[r],parseFloat(o[r]),n],parseInt(f[r]),null,s,null,e])}),n=n||big_satoshis(p[0]),p[2]?new Tx(t,[[e[5],n,i],[t[0][0][1],big_satoshis(p[2]),t[0][0][3]]],null):new Tx(t,[[e[5],n,i]],null)):console.log("Something is wrong with your numbers, please check them with the testamount command")};
 
 Tx.prototype.getmessage=function(signature,i) {
 	var sigHash=new Buffer(4);
@@ -471,7 +527,6 @@ Tx.prototype.sighash_verify=function(prevscriptPubkey,redeem) {
 						var key=ec.keyFromPublic(pub,'hex');
 						pub=new Buffer(key.getPublic(true,'arr'),'hex');
 						var check=hash_160(pub).toString('hex');
-						console.log('Public key recovered: '+check);
 						if (key.verify(message,signature)) {
 							inp.verified=true;
 						};
@@ -496,7 +551,6 @@ Tx.prototype.sighash_verify=function(prevscriptPubkey,redeem) {
 						message=this.getmessage(sig,i);
 						sig=sig.slice(0,sig.length-1);
 						pubKey.forEach(function(pub) {
-							console.log('pubkey '+pub.toString('hex'));
 							var key=ec.keyFromPublic(pub,'hex');
 							if (key.verify(message,sig)) {
 								pr++;
@@ -551,13 +605,18 @@ Tx.prototype.sighash_verify=function(prevscriptPubkey,redeem) {
 };
 
 Tx.prototype.deserialize=function(data) {
+	var m=0;
 	if (!Buffer.isBuffer(data)) {
 		data=new Buffer(data,'hex');
 	};
 	this.nVersion=data.slice(0,4);
-	var tmp=decodevarlen(data.slice(4));
+	if (VERSION_==='BCD') {
+		this.preblockhash=data.slice(4,36);
+		m=32;
+	};
+	var tmp=decodevarlen(data.slice(4+m));
 	this.nbinput=tmp[0];
-	data=data.slice(4+tmp[1]);
+	data=data.slice(4+m+tmp[1]);
 	for (var i=0;i<this.nbinput;i++) {
 		var sLen=decodevarlen(data.slice(36));
 		var off=36+sLen[1];
@@ -594,6 +653,9 @@ Tx.prototype.serialize=function() {
 	var signatures=[];
 	var tmp;
 	result.push(this.nVersion);
+	if (VERSION_==='BCD') {
+		result.push(this.preblockhash);
+	};
 	result.push(new Buffer([this.nbinput]));
 	this.input.forEach(function(inp,j) {
 		var n=new Buffer(4);
@@ -651,6 +713,7 @@ Tx.prototype.finalize=function(tx) {
 		var tx_verify=new Tx();
 		tx_verify.verify(tx,prevscriptPubkey);
 		console.log('------------- End Check - verify ');
+		console.log(fees_);
 		if (fees_>FEES*length_) {
 			console.log('---- WARNING !!!!!!!!!!!!!!! ----- Network fees look very high, probably you did not choose the correct amount, please make sure that amount+dev fees+network fees=prevamount');
 		} else if (fees_<0) {
@@ -715,10 +778,10 @@ var Send=function(data,ip,port) {
 	var verack=Buffer.concat([magic,TX_VERACK,new Buffer('00000000','hex'),new Buffer('5df6e0e2','hex')]);
 	if (!ip) {
 		switch (VERSION_) {
-			case 'BTG': addresses=['213.136.76.42','btg.suprnova.cc','79.124.17.202','188.126.0.134'];break;
-			case 'BTC': addresses=['blockchain.info','bitcoin.sipa.be','bluematt.me','dashjr.org','xf2.org'];break;
-			case 'BCH': addresses=['bcc.suprnova.cc','bitcoinabc.org','bitcoinunlimited.info'];break;
-			case 'ZEC': addresses=['zec.suprnova.cc','explorer.zcha.in','mainnet.z.cash'];break;
+			case 'BTG': addresses=['btg.suprnova.cc'];break;
+			case 'BTC': addresses=['bitcoin.sipa.be'];break;
+			case 'BCH': addresses=['bch.suprnova.cc'];break;
+			case 'ZEC': addresses=['mainnet.z.cash'];break;
 			default: return;
 		};
 	} else {
@@ -749,6 +812,7 @@ var Send=function(data,ip,port) {
 					var hs=new Buffer(data,'hex');
 					client.write(Buffer.concat([verack,hs]));
 					console.log('Sent '+hs.toString('hex')+' to '+addr);
+					console.log(Buffer.concat([verack,hs]).toString('hex'));
 				};
 			};
 		});
@@ -775,7 +839,6 @@ if (process.argv) {
 		if (args.length>1) {
 			var command=args[1];
 			args=decode_args(args.slice(2));
-			console.log(command);
 			switch (command) {
 				case 'testamount':
 					//node tx.js BTG testamount prevamount= fee= amount=(optional)
@@ -783,7 +846,7 @@ if (process.argv) {
 				case 'create': 
 					//node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey= addr= fee= amount=(optional)
 					//multisig:
-					//node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3 or 2of4> addr= fee= amount=(optional)
+					//node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3> addr= fee= amount=(optional)
 					create(args);break;
 				case 'decode': var tx=new Tx();tx.deserialize(args[0]);delete tx.fees;console.log(tx);break;
 					//node tx.js BTG testconnect/send IP
