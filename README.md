@@ -241,7 +241,7 @@ See https://github.com/eveybcd/BitcoinDiamond/issues/2 also
 
 #### Specific case of BCH
 
-The BCH address format did change recently, this does not really make any difference for this module but we have updated the address format except that we have not yet included the cashaddress format that we have implemented in the very excellent [cashaddres](https://github.com/Ayms/cashaddress) module
+The BCH address format did change recently, this does not really make any difference for this module but we have updated the address format except that we have not yet included the cashaddress format that we have implemented in the very excellent [cashaddress](https://github.com/Ayms/cashaddress) module
 
 Should you want this module to be merged here please post an issue
 
@@ -299,7 +299,7 @@ Because, unlike many people think, you have them already so there is no need to 
 
 That's why, even if there are zero technical reason for doing this, some people advise to transfer first their bitcoins to another wallet before proceeding with such module
 	
-However, if you want to move your bitcoins "from bitcoin core to BCH, BTG or BCD" (which as explained above means nothing) or from "bitcoin core to a bitcoin gold exchange", you can just use the ``create`` command:
+However, if you want to move your bitcoins "from bitcoin core to BCH, BTG, BCD or SBTC" (which as explained above means nothing) or from "bitcoin core to a bitcoin X exchange", you can just use the ``create`` command:
 	
 `node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=privkey addr= fees= amount=(optional)`
 
