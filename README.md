@@ -233,11 +233,9 @@ You can get all those information simply from a blockchain explorer, in case of 
 
 #### Specific case of BCD
 
-One BTC will become 10 BCDs, it just means that amount, prevamount and fees are multiply by 10, then they have now 7 decimals instead of 8 (so amount, prevamount or fees of 0.00001234 become 0.0001234 in the create command)
+One BTC will become 10 BCDs, it just means that amount, prevamount and fees are multiplied by 10, then they have now 7 decimals instead of 8 (so amount, prevamount or fees of 0.00001234 become 0.0001234 in the create command)
 
 This is just a marketing representation and does not change anything else, please see [example-6.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-6.js) that you can compare with [example-2.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-2.js)
-
-See https://github.com/eveybcd/BitcoinDiamond/issues/2 also
 
 #### Specific case of BCH
 
