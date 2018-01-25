@@ -45,11 +45,13 @@ Bitcoin Gold "BTG" - btg.suprnova.cc  - see below and https://github.com/Ayms/bi
 
 Bitcoin Cash "BCH" - bch.suprnova.cc - see https://github.com/Ayms/bitcoin-transactions/issues/4 and [example-4.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-4.js) and [Specific case of BCH](https://github.com/Ayms/bitcoin-transactions#specific-case-of-bch) for the new address format
 
-Bitcoin Diamond "BCD" - Unknown (kept secret by the project for now) - please read [Specific case of BCD](https://github.com/Ayms/bitcoin-transactions#specific-case-of-bcd)
+Bitcoin Diamond "BCD" - seed1.dns.btcd.io or 139.198.190.221 or 121.201.13.117 - please read [Specific case of BCD](https://github.com/Ayms/bitcoin-transactions#specific-case-of-bcd) and see [bcd.js](https://github.com/Ayms/bitcoin-transactions/blob/master/bcd.js)
 
-Super Bitcoin "SBTC" - Unknown (kept secret by the project for now)
+Super Bitcoin "SBTC" - seed.superbtca.com
 
 Bitcore "BTX" - btx.suprnova.cc
+
+More to come ("candidates" list as soon as they put their full node code on github: Bitcoin Platinium, Lightning Bitcoin, Bitcoin God, Bitcoin Cash Plus, Bitcoin Uranium, Bitcoin Silver, Bitcoin X, Bitcoin Atom, Bitcoin Zobi, etc)
 
 ### Legacy coins
 
@@ -59,11 +61,9 @@ Zcash "ZEC" - mainnet.z.cash - see https://github.com/Ayms/bitcoin-transactions/
 
 Litecoin "LTC" - ltc.suprnova.cc - see https://github.com/Ayms/bitcoin-transactions/blob/master/verify.txt
 
-Dogecoin "DOGE" - 5.135.158.86 (not official)
+Dogecoin "DOGE" - 5.135.158.86
 
 Dash "DASH" - dash.suprnova.cc
-
-More to come
 
 ## Fees
 
