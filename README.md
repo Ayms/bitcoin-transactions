@@ -77,6 +77,8 @@ This module is not trivial at all, the bitcoin protocol and formats do not make 
 
 <b>Please note that due to rounding issues there is always a satoshi floating around that will go to the network, this is a minor issue that we will not correct in order not to change all of our test vectors</b>
 
+Should this project be funded we will remove the dev fees and put it fully open source
+
 ## Installation
 
 Install [nodejs for Windows,Mac,Linux](https://nodejs.org/en/download/package-manager/), usually this is easy
@@ -242,6 +244,10 @@ This is just a marketing representation and does not change anything else, pleas
 The BCH address format did change recently, this does not really make any difference for this module but we have updated the address format except that we have not yet included the cashaddress format that we have implemented in the very excellent [cashaddress](https://github.com/Ayms/cashaddress) module
 
 Should you want this module to be merged here please post an issue
+
+See also [BCH addresses converter](https://cashaddr.bitcoincash.org/)
+
+As we can see it's unclear if legacy addresses should still be the same than Bitcoin or if they start with a C (for p2pkh), both format work with this module, the default is still Bitcoin like addresses
 
 #### Multisig wallets
 
