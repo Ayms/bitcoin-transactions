@@ -214,6 +214,18 @@ var version_=function(v) {
 		PORT=8333;
 		LASTBLOCK=500000;
 		PROTOCOL=70015;
+	} else if (v==='BPA') {
+		VERSION=2;
+		SIGHASH_FORKID=0x00000020;
+		FORKID_IN_USE=47;
+		MAIN=0xD9C4BEA9;
+		VERSION_='BPA';
+		p2pk=new Buffer('37','hex');
+		p2sh=new Buffer('50','hex');
+		BIP143=true;
+		PORT=8888;
+		LASTBLOCK=500000;
+		PROTOCOL=70018;
 	} else {
 		throw "You forgot to mention the network version";
 	};

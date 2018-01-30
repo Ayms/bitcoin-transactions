@@ -41,6 +41,8 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 ### Forked coins
 
+Bitcoin Pizza "BPA" - 89.38.97.62 or 46.28.204.17 - see [To come as soon as there is an explorer](https://github.com/Ayms/bitcoin-transactions/blob/master/bpa.js)
+
 SegwitB2X "B2X" - node1.b2x-segwit.io (or node2/3) - see [b2x.js](https://github.com/Ayms/bitcoin-transactions/blob/master/b2x.js)
 
 United Bitcoin "UB" - ip.ub.com - see [ub.js](https://github.com/Ayms/bitcoin-transactions/blob/master/ub.js)
