@@ -41,7 +41,7 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 ### Forked coins
 
-United Bitcoin "UB" - ip.ub.com - [ub.js](https://github.com/Ayms/bitcoin-transactions/blob/master/ub.js)
+United Bitcoin "UB" - ip.ub.com - see [ub.js](https://github.com/Ayms/bitcoin-transactions/blob/master/ub.js)
 
 Bitcoin Gold "BTG" - btg.suprnova.cc  - see below and https://github.com/Ayms/bitcoin-transactions/issues/5
 
