@@ -191,7 +191,7 @@ var version_=function(v) {
 		PROTOCOL=70004;
 	} else if (v==='UB') {
 		VERSION=2;
-		SIGHASH_FORKID=0x00000000;
+		SIGHASH_FORKID=0x00000008;
 		//FORKID_IN_USE=0;
 		MAIN=0xD9B4BEF9;
 		VERSION_='UB';
@@ -202,6 +202,18 @@ var version_=function(v) {
 		LASTBLOCK=500000;
 		PROTOCOL=770015;
 		FORK_STRING=new Buffer('027562','hex');
+	} else if (v==='B2X') {
+		VERSION=2;
+		SIGHASH_FORKID=0x00000020;
+		//FORKID_IN_USE=0;
+		MAIN=0xD8B5B2F4;
+		VERSION_='B2X';
+		p2pk=new Buffer('00','hex');
+		p2sh=new Buffer('05','hex');
+		BIP143=false;
+		PORT=8333;
+		LASTBLOCK=500000;
+		PROTOCOL=70015;
 	} else {
 		throw "You forgot to mention the network version";
 	};

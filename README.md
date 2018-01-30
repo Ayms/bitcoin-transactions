@@ -41,6 +41,8 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 ### Forked coins
 
+SegwitB2X "B2X" - node1.b2x-segwit.io (or node2/3) - see [b2x.js](https://github.com/Ayms/bitcoin-transactions/blob/master/b2x.js)
+
 United Bitcoin "UB" - ip.ub.com - see [ub.js](https://github.com/Ayms/bitcoin-transactions/blob/master/ub.js)
 
 Bitcoin Gold "BTG" - btg.suprnova.cc  - see below and https://github.com/Ayms/bitcoin-transactions/issues/5
