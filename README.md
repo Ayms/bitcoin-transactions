@@ -41,6 +41,8 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 ### Forked coins
 
+United Bitcoin "UB" - ip.ub.com - [ub.js](https://github.com/Ayms/bitcoin-transactions/blob/master/ub.js)
+
 Bitcoin Gold "BTG" - btg.suprnova.cc  - see below and https://github.com/Ayms/bitcoin-transactions/issues/5
 
 Bitcoin Cash "BCH" - bch.suprnova.cc - see https://github.com/Ayms/bitcoin-transactions/issues/4 and [example-4.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-4.js) and [Specific case of BCH](https://github.com/Ayms/bitcoin-transactions#specific-case-of-bch) for the new address format
