@@ -41,7 +41,7 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 ### Forked coins
 
-<b>Bitcoin Cash Plus</b> "BCP" - seed.bitcoincashplus.org - see [To come as soon as there is a mainnet explorer](https://github.com/Ayms/bitcoin-transactions/blob/master/bcp.js)
+<b>Bitcoin Cash Plus (Warning: this fork does not implement any replay protection with BCH, it's not recommended to use it)</b> "BCP" - seed.bitcoincashplus.org - see [To come as soon as there is a mainnet explorer](https://github.com/Ayms/bitcoin-transactions/blob/master/bcp.js)
 
 <b>Bitcoin Private</b> "BTCP" (under development so subject to change) - BTCP node (to come) - see [To come as soon as it is live](https://github.com/Ayms/bitcoin-transactions/blob/master/btcp.js)
 
