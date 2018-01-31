@@ -41,11 +41,13 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 ### Forked coins
 
+<b>Bitcoin Private</b> "BTCP" (under development so subject to change) - BTCP node (to come) - see [To come as soon as it is live](https://github.com/Ayms/bitcoin-transactions/blob/master/btcp.js)
+
 <b>Bitcoin Pizza</b> "BPA" - 89.38.97.62 or 46.28.204.17 - see [To come as soon as there is an explorer](https://github.com/Ayms/bitcoin-transactions/blob/master/bpa.js)
 
 <b>SegwitB2X</b> "B2X" - node1.b2x-segwit.io (or node2/3) - see [b2x.js](https://github.com/Ayms/bitcoin-transactions/blob/master/b2x.js)
 
-<b>United Bitcoin</b> "UB" - ip.ub.com - see [ub.js](https://github.com/Ayms/bitcoin-transactions/blob/master/ub.js)
+<b>United Bitcoin</b> "UBTC" - ip.ub.com - see [ubtc.js](https://github.com/Ayms/bitcoin-transactions/blob/master/ubtc.js)
 
 <b>Bitcoin Gold</b> "BTG" - btg.suprnova.cc  - see below and https://github.com/Ayms/bitcoin-transactions/issues/5
 
