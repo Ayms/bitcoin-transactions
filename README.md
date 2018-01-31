@@ -41,6 +41,8 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 ### Forked coins
 
+<b>Bitcoin Cash Plus</b> "BCP" - seed.bitcoincashplus.org - see [To come as soon as there is a mainnet explorer](https://github.com/Ayms/bitcoin-transactions/blob/master/bcp.js)
+
 <b>Bitcoin Private</b> "BTCP" (under development so subject to change) - BTCP node (to come) - see [To come as soon as it is live](https://github.com/Ayms/bitcoin-transactions/blob/master/btcp.js)
 
 <b>Bitcoin Pizza</b> "BPA" - 89.38.97.62 or 46.28.204.17 - see [To come as soon as there is an explorer](https://github.com/Ayms/bitcoin-transactions/blob/master/bpa.js)
