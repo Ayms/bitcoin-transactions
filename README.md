@@ -61,7 +61,7 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 <b>Bitcore</b> "BTX" - btx.suprnova.cc
 
-More to come ("candidates" list as soon as they put their full node code on github (see the [issues](https://github.com/Ayms/bitcoin-transactions/issues)): Bitcoin Interest, Bitcoin Atom, Lightning Bitcoin, Bitcoin God, Bitcoin X (strange), Bitcoin Platinium (dubious), Bitcoin Uranium (dubious), Bitcoin Silver (dubious), Bitcoin Zobi (my own fork!! See [how to do my bitcoin fork in 5mn](https://bitcointalk.org/index.php?topic=2515675.1980) Joking...), etc)
+More to come ("candidates" list as soon as they put their full node code on github (see the [issues](https://github.com/Ayms/bitcoin-transactions/issues)): Bitcoin Interest, Bitcoin Atom, Lightning Bitcoin, Bitcoin God, Bitcoin X (strange), Bitcoin Platinium (dubious), Bitcoin Uranium (dubious), Bitcoin Silver (dubious), Bitcoin Zobi (my own fork!! Joking but See [how to do my bitcoin fork in 5mn](https://bitcointalk.org/index.php?topic=2515675.1980)), etc)
 
 ### Legacy coins
 
