@@ -41,7 +41,7 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 ### Forked coins
 
-<b>Bitcoin Cash Plus (Warning: this fork does not implement any replay protection with BCH, it's not recommended to use it unless you really know what you are doing and you owe the destination addresses where you send your coins)</b> "BCP" - seed.bitcoincashplus.org - see [To come as soon as there is a mainnet explorer](https://github.com/Ayms/bitcoin-transactions/blob/master/bcp.js)
+<b>Bitcoin Cash Plus (Warning: this fork does not implement any replay protection with BCH, don't use it, see below</b> "BCP" - seed.bitcoincashplus.org - see [To come as soon as there is a mainnet explorer](https://github.com/Ayms/bitcoin-transactions/blob/master/bcp.js)
 
 <b>Bitcoin Private</b> "BTCP" (under development so subject to change) - BTCP node (to come) - see [To come as soon as it is live](https://github.com/Ayms/bitcoin-transactions/blob/master/btcp.js)
 
@@ -61,7 +61,11 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 <b>Bitcore</b> "BTX" - btx.suprnova.cc
 
-More to come ("candidates" list as soon as they put their full node code on github (see the [issues](https://github.com/Ayms/bitcoin-transactions/issues)): Bitcoin Interest, Bitcoin Atom, Lightning Bitcoin, Bitcoin God, Bitcoin X (strange), Bitcoin Platinium (dubious), Bitcoin Uranium (dubious), Bitcoin Silver (dubious), Bitcoin Zobi (my own fork!! Joking but See [how to do my bitcoin fork in 5mn](https://bitcointalk.org/index.php?topic=2515675.1980)), etc)
+For now we keep Bitcoin Diamond and Bitcoin Cash Plus in the tool but there are quite dubious aspects for those forks, see [BCP - No replay protection possible consequences](https://bitcointalk.org/index.php?topic=2827163.msg29326000#msg29326000) and [BCD - We do strange and misleading things but don't care clarifying what it is](https://github.com/eveybcd/BitcoinDiamond/issues/2#issuecomment-360161344)
+
+Most likely we will never integrate the following forks that looks to be complete scams  (see the [issues](https://github.com/Ayms/bitcoin-transactions/issues)): Bitcoin Interest, Bitcoin Atom, Lightning Bitcoin, Bitcoin God, Bitcoin X, Bitcoin Platinium , Bitcoin Uranium, Bitcoin Silver, Bitcoin Zobi (my own fork!! Joking but See [how to do my bitcoin fork in 5mn](https://bitcointalk.org/index.php?topic=2515675.1980)
+
+Two easy factors of detection of a scammy fork are: no code provided, no serious answers to technical questions, they all fulfill both criteria
 
 ### Legacy coins
 
