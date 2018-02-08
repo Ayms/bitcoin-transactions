@@ -63,7 +63,9 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 For now we keep Bitcoin Diamond and Bitcoin Cash Plus in the tool but <b>there are quite dubious aspects for those forks</b>, see [BCP - No replay protection possible consequences](https://bitcointalk.org/index.php?topic=2827163.msg29326000#msg29326000) and [BCD - We do strange and misleading things but don't care clarifying what it is](https://github.com/eveybcd/BitcoinDiamond/issues/2#issuecomment-360161344)
 
-Most likely we will never integrate the following forks <b>that looks to be complete scams</b> (see the [issues](https://github.com/Ayms/bitcoin-transactions/issues)): Bitcoin Interest, Bitcoin Atom, Lightning Bitcoin, Bitcoin God, Bitcoin X, Bitcoin Platinium , Bitcoin Uranium, Bitcoin Silver, Bitcoin Zobi (my own fork!! Joking but See [how to do my bitcoin fork in 5mn](https://bitcointalk.org/index.php?topic=2515675.1980)
+Most likely we will never integrate the following forks <b>that looks to be complete scams</b> (see the [issues](https://github.com/Ayms/bitcoin-transactions/issues)): Bitcoin Interest, Bitcoin Atom, Lightning Bitcoin, Bitcoin God, Bitcoin Candy, Bitcoin X, Bitcoin Platinium , Bitcoin Uranium, Bitcoin Silver, Bitcoin Tartuffe (my own fork!! Joking but See [how to do my bitcoin fork in 5mn](https://www.linkedin.com/pulse/user-guide-how-create-your-bitcoin-fork-5mn-fool-everybody-vitte))
+
+This does not mean that the other forks are serious either
 
 Two easy factors of detection of a scammy fork are: no code provided, no serious answers to technical questions, they all fulfill both criteria, <b>don't take any risk, if there is a little suspicion about a fork, don't use it</b>
 
