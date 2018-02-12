@@ -2,7 +2,7 @@
 
 https://blockchair.com/bitcoin-cash/transaction/7b092655e0502549d068782288d340e5b7b35335b16925cd88ac3c2ee9a64864
 
-//multiply prevamoun, amount and fees by 1000
+//multiply prevamount, amount and fees by 1000
 
 node tx.js CDY create prevtx=7b092655e0502549d068782288d340e5b7b35335b16925cd88ac3c2ee9a64864 prevaddr=1KA3qcZk7SLyiD4Lnk4LvALN3zRRPPGC7j prevamount=9856.27021 previndex=0 privkey=<privkey> addr=1GcTA2j3Ni7dDMPG6NvqY8knCkjapeeY1E fees=0.00195
 
