@@ -11,7 +11,7 @@ This is a nightmare for quite a lot of people since syncing a full node can take
 
 And this does not help the network since even if you succeed to sync from home most likely you will run a non efficient full node
 
-<b>In addition many people lost everything by using malware wallets trying to get their 'free' coins, and apparently there are some common misunderstanding with the addresses format, please see the [Claiming your coins (BCH, BTG, BCD,CDY) - Adresses and getting "free" coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdcdy---addresses-and-getting-free-coins)</b>
+<b>In addition many people lost everything by using malware wallets trying to get their 'free' coins, and apparently there are some common misunderstanding with the addresses format, please see the [Claiming your coins (BCH, BTG, BCD,CDY) - Adresses and getting "free" coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdsbtccdy---addresses-and-getting-free-coins)</b>
 
 And finally, if you succeeded to sync you can prune after but you still need to run constantly the bitcoin software
 
@@ -259,7 +259,7 @@ This is just a marketing representation and does not change anything else, pleas
 
 You can claim your coins using a BTC explorer and standard BTC addresses (starting with a 1 or 3)
 
-Read also [Claiming your coins (BCH, BTG, BCD,CDY) - Adresses and getting "free" coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdcdy---addresses-and-getting-free-coins)
+Read also [Claiming your coins (BCH, BTG, BCD,CDY) - Adresses and getting "free" coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdsbtccdy---addresses-and-getting-free-coins)
 
 
 #### Specific case of BCH
@@ -280,7 +280,7 @@ This is just a marketing representation and does not change anything else, pleas
 
 You can claim your coins using a BCH explorer and standard BCH addresses (starting with a 1 or 3), you will see in the output of the create command that they are converted to the CDY format (addresses are the same in fact, only the representation changes between both networks)
 
-Read also [Claiming your coins (BCH, BTG, BCD,CDY) - Adresses and getting "free" coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdcdy---addresses-and-getting-free-coins)
+Read also [Claiming your coins (BCH, BTG, BCD,CDY) - Adresses and getting "free" coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdsbtccdy---addresses-and-getting-free-coins)
 
 #### Multisig wallets
 
