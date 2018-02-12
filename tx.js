@@ -251,6 +251,20 @@ var version_=function(v) {
 		PORT=8337;
 		LASTBLOCK=500000;
 		PROTOCOL=70016;
+	} else if (v==='CDY') {
+		VERSION=2;
+		SIGHASH_FORKID=0x00000040;
+		FORKID_IN_USE=0x6f;
+		MAIN=0xD9C4C3E3;
+		VERSION_='CDY';
+		p2pk=new Buffer('1c','hex');
+		p2sh=new Buffer('58','hex');
+		BIP143=true;
+		PORT=8367;
+		LASTBLOCK=500000;
+		PROTOCOL=70016;
+		SATO=100000;
+		D=5;
 	} else {
 		throw "You forgot to mention the network version";
 	};

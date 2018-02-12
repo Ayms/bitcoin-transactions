@@ -11,7 +11,7 @@ This is a nightmare for quite a lot of people since syncing a full node can take
 
 And this does not help the network since even if you succeed to sync from home most likely you will run a non efficient full node
 
-<b>In addition many people lost everything by using malware wallets trying to get their 'free' coins, and apparently there are some common misunderstanding with the addresses format, please see the [Claiming your coins (BCH, BTG, BCD) - Adresses and getting "free" coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcd---addresses-and-getting-free-coins)</b>
+<b>In addition many people lost everything by using malware wallets trying to get their 'free' coins, and apparently there are some common misunderstanding with the addresses format, please see the [Claiming your coins (BCH, BTG, BCD,CDY) - Adresses and getting "free" coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdcdy---addresses-and-getting-free-coins)</b>
 
 And finally, if you succeeded to sync you can prune after but you still need to run constantly the bitcoin software
 
@@ -41,6 +41,8 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 ### Forked coins
 
+<b>Bitcoin Candy</b> "CDY" - seed.bitcoincandy.one or seed.cdy.one - please read [Specific case of CDY](https://github.com/Ayms/bitcoin-transactions#specific-case-of-cdy) and see [cdy.js](https://github.com/Ayms/bitcoin-transactions/blob/master/cdy.js)
+
 <b>Bitcoin Cash Plus (Warning: this fork does not implement any replay protection with BCH, don't use it, see below</b>) "BCP" - seed.bitcoincashplus.org - see [To come as soon as there is a mainnet explorer](https://github.com/Ayms/bitcoin-transactions/blob/master/bcp.js)
 
 <b>Bitcoin Private</b> "BTCP" (under development so subject to change) - BTCP node (to come) - see [To come as soon as it is live](https://github.com/Ayms/bitcoin-transactions/blob/master/btcp.js)
@@ -63,7 +65,7 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 For now we keep Bitcoin Diamond and Bitcoin Cash Plus in the tool but <b>there are quite dubious aspects for those forks</b>, see [BCP - No replay protection possible consequences](https://bitcointalk.org/index.php?topic=2827163.msg29326000#msg29326000) and [BCD - We do strange and misleading things but don't care clarifying what it is](https://github.com/eveybcd/BitcoinDiamond/issues/2#issuecomment-360161344)
 
-Most likely we will never integrate the following forks <b>that looks to be complete scams</b> (see the [issues](https://github.com/Ayms/bitcoin-transactions/issues)): Bitcoin Interest, Bitcoin Atom, Lightning Bitcoin, Bitcoin God, Bitcoin Candy, Bitcoin X, Bitcoin Platinium , Bitcoin Uranium, Bitcoin Silver, Bitcoin Tartuffe (my own fork!! Joking but See [how to do my bitcoin fork in 5mn](https://www.linkedin.com/pulse/user-guide-how-create-your-bitcoin-fork-5mn-fool-everybody-vitte))
+Most likely we will never integrate the following forks <b>that looks to be complete scams</b> (see the [issues](https://github.com/Ayms/bitcoin-transactions/issues)): Bitcoin Interest, Bitcoin Atom, Lightning Bitcoin, Bitcoin God, Bitcoin X, Bitcoin Platinium , Bitcoin Uranium, Bitcoin Silver, Bitcoin Tartuffe (my own fork!! Joking but See [how to do my bitcoin fork in 5mn](https://www.linkedin.com/pulse/user-guide-how-create-your-bitcoin-fork-5mn-fool-everybody-vitte))
 
 This does not mean that the other forks are serious either
 
@@ -255,6 +257,11 @@ One BTC will become 10 BCDs, it just means that amount, prevamount and fees are 
 
 This is just a marketing representation and does not change anything else, please see [example-6.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-6.js) that you can compare with [example-2.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-2.js)
 
+You can claim your coins using a BTC explorer and standard BTC addresses (starting with a 1 or 3)
+
+Read also [Claiming your coins (BCH, BTG, BCD,CDY) - Adresses and getting "free" coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdcdy---addresses-and-getting-free-coins)
+
+
 #### Specific case of BCH
 
 The BCH address format did change recently, this does not really make any difference for this module but we have updated the address format except that we have not yet included the cashaddress format that we have implemented in the very excellent [cashaddress](https://github.com/Ayms/cashaddress) module
@@ -264,6 +271,16 @@ Should you want this module to be merged here please post an issue
 See also [BCH addresses converter](https://cashaddr.bitcoincash.org/)
 
 As we can see it's unclear if legacy addresses should still be the same than Bitcoin or if they start with a C (for p2pkh), both format work with this module, the default is still Bitcoin like addresses
+
+#### Specific case of CDY
+
+One BCH will become 1000 CDYs, it just means that amount, prevamount and fees are multiplied by 1000, then they have now 5 decimals instead of 8 (so amount, prevamount or fees of 0.00001234 become 0.01234 in the create command)
+
+This is just a marketing representation and does not change anything else, please see [cdy.js](https://github.com/Ayms/bitcoin-transactions/blob/master/cdy.js)
+
+You can claim your coins using a BCH explorer and standard BCH addresses (starting with a 1 or 3), you will see in the output of the create command that they are converted to the CDY format (addresses are the same in fact, only the representation changes between both networks)
+
+Read also [Claiming your coins (BCH, BTG, BCD,CDY) - Adresses and getting "free" coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdcdy---addresses-and-getting-free-coins)
 
 #### Multisig wallets
 
@@ -307,7 +324,7 @@ Before sending your transaction it's a good idea too to check the network by doi
 	
 A more easy way if available for your network is to copy and paste the ``body of the transaction`` (and not the ``complete transaction``) to a blockchain explorer that will broadcast it, there are no risks of doing this except that you don't know if the explorer will do its job, the explorer can't modify the transaction
 
-## Claiming your coins (BCH,BTG,BCD,SBTC) - Addresses and getting 'free' coins
+## Claiming your coins (BCH,BTG,BCD,SBTC,CDY) - Addresses and getting 'free' coins
 
 The addresses between the different networks are the same, it always ends up with the hash of your public key and is encoded in a specficic way for each network, but they still are the same
 
