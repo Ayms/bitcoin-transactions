@@ -43,7 +43,7 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 <b>Bitcoin Atom</b> "BCA" - seed.bitcoinatom.io or seed.bitcoin-atom.org or seed.bitcoinatom.net - same use as the others
 
-<b>Bitcoin Candy</b> "CDY" - seed.bitcoincandy.one or seed.cdy.one - please read [Specific case of CDY](https://github.com/Ayms/bitcoin-transactions#specific-case-of-cdy) and see [cdy.js](https://github.com/Ayms/bitcoin-transactions/blob/master/cdy.js)
+<b>Bitcoin Candy</b> "CDY" - seed.bitcoincandy.one or seed.cdy.one - please note that this a Bitcoin Cash fork and read [Specific case of CDY](https://github.com/Ayms/bitcoin-transactions#specific-case-of-cdy) and see [cdy.js](https://github.com/Ayms/bitcoin-transactions/blob/master/cdy.js)
 
 <b>Bitcoin Cash Plus (Warning: this fork does not implement any replay protection with BCH, don't use it, see below</b>) "BCP" - seed.bitcoincashplus.org - see [To come as soon as there is a mainnet explorer](https://github.com/Ayms/bitcoin-transactions/blob/master/bcp.js)
 
@@ -252,6 +252,11 @@ Once the numbers are correct you can create your transaction:
 	fees are the network fees that you have decided to pay
 
 You can get all those information simply from a blockchain explorer, in case of a transaction with many outputs, to get the index of your output just copy/paste from the site and look at the line number for your output (<b>don't forget that it starts from 0, the first output index is 0 not 1</b>)
+
+If you don't know very well how to retrieve those parameters from an explorer, please see:
+
+![tuto1](https://raw.github.com/Ayms/bitcoin-transactions/master/tuto1.png)
+![tuto2](https://raw.github.com/Ayms/bitcoin-transactions/master/tuto2.png)
 
 #### Specific case of BCD
 
