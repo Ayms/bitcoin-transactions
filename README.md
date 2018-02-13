@@ -11,7 +11,7 @@ This is a nightmare for quite a lot of people since syncing a full node can take
 
 And this does not help the network since even if you succeed to sync from home most likely you will run a non efficient full node
 
-<b>In addition many people lost everything by using malware wallets trying to get their 'free' coins, and apparently there are some common misunderstanding with the addresses format, please see the [Claiming your coins (BCH, BTG, BCD,CDY) - Adresses and getting "free" coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdsbtccdy---addresses-and-getting-free-coins)</b>
+<b>In addition many people lost everything by using malware wallets trying to get their 'free' coins, and apparently there are some common misunderstanding with the addresses format, please see the [Claiming your coins (BCH, BTG, BCD,CDY,etc) - Adresses and getting "free" coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdsbtccdyetc---addresses-and-getting-free-coins)</b>
 
 And finally, if you succeeded to sync you can prune after but you still need to run constantly the bitcoin software
 
@@ -41,6 +41,8 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 ### Forked coins
 
+<b>Bitcoin Atom</b> "BCA" - seed.bitcoinatom.io or seed.bitcoin-atom.org or seed.bitcoinatom.net - same use as the others
+
 <b>Bitcoin Candy</b> "CDY" - seed.bitcoincandy.one or seed.cdy.one - please read [Specific case of CDY](https://github.com/Ayms/bitcoin-transactions#specific-case-of-cdy) and see [cdy.js](https://github.com/Ayms/bitcoin-transactions/blob/master/cdy.js)
 
 <b>Bitcoin Cash Plus (Warning: this fork does not implement any replay protection with BCH, don't use it, see below</b>) "BCP" - seed.bitcoincashplus.org - see [To come as soon as there is a mainnet explorer](https://github.com/Ayms/bitcoin-transactions/blob/master/bcp.js)
@@ -65,7 +67,7 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 For now we keep Bitcoin Diamond and Bitcoin Cash Plus in the tool but <b>there are quite dubious aspects for those forks</b>, see [BCP - No replay protection possible consequences](https://bitcointalk.org/index.php?topic=2827163.msg29326000#msg29326000) and [BCD - We do strange and misleading things but don't care clarifying what it is](https://github.com/eveybcd/BitcoinDiamond/issues/2#issuecomment-360161344)
 
-Most likely we will never integrate the following forks <b>that looks to be complete scams</b> (see the [issues](https://github.com/Ayms/bitcoin-transactions/issues)): Bitcoin Interest, Bitcoin Atom, Lightning Bitcoin, Bitcoin God, Bitcoin X, Bitcoin Platinium , Bitcoin Uranium, Bitcoin Silver, Bitcoin Tartuffe (my own fork!! Joking but See [how to do my bitcoin fork in 5mn](https://www.linkedin.com/pulse/user-guide-how-create-your-bitcoin-fork-5mn-fool-everybody-vitte))
+Most likely we will never integrate the following forks <b>that looks to be complete scams</b> (see the [issues](https://github.com/Ayms/bitcoin-transactions/issues)): Bitcoin Interest, Lightning Bitcoin, Bitcoin God, Bitcoin X, Bitcoin Platinium , Bitcoin Uranium, Bitcoin Silver, Bitcoin Tartuffe (my own fork!! Joking but See [how to do my bitcoin fork in 5mn](https://www.linkedin.com/pulse/user-guide-how-create-your-bitcoin-fork-5mn-fool-everybody-vitte))
 
 This does not mean that the other forks are serious either
 
@@ -244,7 +246,7 @@ Once the numbers are correct you can create your transaction:
 	prevaddr is the address where was sent the output that you want to spend (then one of yours)
 	prevamount is the amount of the output that you want to spend
 	previndex is the index of the output in the transaction
-	privkey is your private key as you can see it in your wallet.dat dump
+	privkey is the private key of prevaddr as you can see it in your wallet.dat dump
 	addr is the address where to spend the output
 	amount is the amount the address will receive
 	fees are the network fees that you have decided to pay
@@ -259,7 +261,7 @@ This is just a marketing representation and does not change anything else, pleas
 
 You can claim your coins using a BTC explorer and standard BTC addresses (starting with a 1 or 3)
 
-Read also [Claiming your coins (BCH, BTG, BCD,CDY) - Adresses and getting "free" coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdsbtccdy---addresses-and-getting-free-coins)
+Read also [Claiming your coins (BCH, BTG, BCD,CDY,etc) - Adresses and getting "free" coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdsbtccdyetc---addresses-and-getting-free-coins)
 
 
 #### Specific case of BCH
@@ -280,7 +282,7 @@ This is just a marketing representation and does not change anything else, pleas
 
 You can claim your coins using a BCH explorer and standard BCH addresses (starting with a 1 or 3), you will see in the output of the create command that they are converted to the CDY format (addresses are the same in fact, only the representation changes between both networks)
 
-Read also [Claiming your coins (BCH, BTG, BCD,CDY) - Adresses and getting "free" coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdsbtccdy---addresses-and-getting-free-coins)
+Read also [Claiming your coins (BCH, BTG, BCD,CDY,etc) - Adresses and getting "free" coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdsbtccdyetc---addresses-and-getting-free-coins)
 
 #### Multisig wallets
 
@@ -324,7 +326,7 @@ Before sending your transaction it's a good idea too to check the network by doi
 	
 A more easy way if available for your network is to copy and paste the ``body of the transaction`` (and not the ``complete transaction``) to a blockchain explorer that will broadcast it, there are no risks of doing this except that you don't know if the explorer will do its job, the explorer can't modify the transaction
 
-## Claiming your coins (BCH,BTG,BCD,SBTC,CDY) - Addresses and getting 'free' coins
+## Claiming your coins (BCH,BTG,BCD,SBTC,CDY,etc) - Addresses and getting 'free' coins
 
 The addresses between the different networks are the same, it always ends up with the hash of your public key and is encoded in a specficic way for each network, but they still are the same
 

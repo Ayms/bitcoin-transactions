@@ -265,6 +265,19 @@ var version_=function(v) {
 		PROTOCOL=70016;
 		SATO=100000;
 		D=5;
+	} else if (v==='BCA') {
+		VERSION=2;
+		SIGHASH_FORKID=0x00000040;
+		FORKID_IN_USE=93;
+		MAIN=0xE81DC14F;
+		VERSION_='BCA';
+		p2pk=new Buffer('17','hex');
+		p2sh=new Buffer('0a','hex');
+		BIP143=true;
+		PORT=7333;
+		LASTBLOCK=500000;
+		PROTOCOL=70020;
+		NOSEGWIT.push('A');
 	} else {
 		throw "You forgot to mention the network version";
 	};
