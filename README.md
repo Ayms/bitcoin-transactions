@@ -41,15 +41,37 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 ### Forked coins
 
-<b>Bitcoin Atom</b> "BCA" - seed.bitcoinatom.io or seed.bitcoin-atom.org or seed.bitcoinatom.net - same use as the others
+<b>Bitcoin Community</b> "BTSQ" - seed1.aliyinke.com (or seed2/seed3) - Same as BCD except that you must multiply the numbers by 1000
+
+<b>Bitcoin King</b> "BCK" - 47.52.28.49 - same use than the others
+
+<b>Bitcoin Pay</b> "BTP" - Unknown - Same as BCD except that you must multiply the numbers by 1000
+
+<b>Bitcoin Top</b> "BTT" - dnsseed.bitcointop.org - same use than the others
+
+<b>Bitcoin Vote</b> "BTV" - seed1.bitvote.one - same use than the others
+
+<b>Bitcoin Hot</b> "BTH" - seed-us.bitcoinhot.co - same use than the others
+
+<b>Bitcoin New</b> "BTN" - dnsseed.bitcoin-new.org - same use than the others
+
+<b>Bitcoin X</b> "BCX" - 192.169.227.48 - Same as BCD except that you must multiply the numbers by 10000
+
+<b>Bitcoin Faith</b> "BTF" - a.btf.hjy.cc - same use than the others
+
+<b>Bitcoin World</b> "BTW" - dnsseed.btw.one - Same as BCD except that you must multiply the numbers by 10000
+
+<b>World Bitcoin</b> "WBTC" - dnsseed.wbtcteam.org - same use than the others
+
+<b>Bitcoin Atom</b> "BCA" - seed.bitcoinatom.io or seed.bitcoin-atom.org or seed.bitcoinatom.net - same use than the others
 
 <b>Bitcoin Candy</b> "CDY" - seed.bitcoincandy.one or seed.cdy.one - please note that this a Bitcoin Cash fork and read [Specific case of CDY](https://github.com/Ayms/bitcoin-transactions#specific-case-of-cdy) and see [cdy.js](https://github.com/Ayms/bitcoin-transactions/blob/master/cdy.js)
 
 <b>Bitcoin Cash Plus (Warning: this fork does not implement any replay protection with BCH, don't use it, see below</b>) "BCP" - seed.bitcoincashplus.org - see [To come as soon as there is a mainnet explorer](https://github.com/Ayms/bitcoin-transactions/blob/master/bcp.js)
 
-<b>Bitcoin Private</b> "BTCP" (under development so subject to change) - BTCP node (to come) - see [To come as soon as it is live](https://github.com/Ayms/bitcoin-transactions/blob/master/btcp.js)
+<b>Bitcoin Private</b> "BTCP" (under development so subject to change) - BTCP node (to come) - please note that this a BTC and Zcash Classic (ZCL) fork see [To come as soon as it is live](https://github.com/Ayms/bitcoin-transactions/blob/master/btcp.js)
 
-<b>Bitcoin Pizza</b> "BPA" - 89.38.97.62 or 46.28.204.17 - see [To come as soon as there is an explorer](https://github.com/Ayms/bitcoin-transactions/blob/master/bpa.js)
+<b>Bitcoin Pizza</b> "BPA" - 89.38.97.62 or 46.28.204.17 - same use than the others
 
 <b>SegwitB2X</b> "B2X" - node1.b2x-segwit.io (or node2/3) - see [b2x.js](https://github.com/Ayms/bitcoin-transactions/blob/master/b2x.js)
 
@@ -67,11 +89,9 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 For now we keep Bitcoin Diamond and Bitcoin Cash Plus in the tool but <b>there are quite dubious aspects for those forks</b>, see [BCP - No replay protection possible consequences](https://bitcointalk.org/index.php?topic=2827163.msg29326000#msg29326000) and [BCD - We do strange and misleading things but don't care clarifying what it is](https://github.com/eveybcd/BitcoinDiamond/issues/2#issuecomment-360161344)
 
-Most likely we will never integrate the following forks <b>that looks to be complete scams</b> (see the [issues](https://github.com/Ayms/bitcoin-transactions/issues)): Bitcoin Interest, Lightning Bitcoin, Bitcoin God, Bitcoin X, Bitcoin Platinium , Bitcoin Uranium, Bitcoin Silver, Bitcoin Tartuffe (my own fork!! Joking but See [how to do my bitcoin fork in 5mn](https://www.linkedin.com/pulse/user-guide-how-create-your-bitcoin-fork-5mn-fool-everybody-vitte))
+Possible other forks: Bitcoin Interest, Lightning Bitcoin, Bitcoin God, Bitcoin Platinium , Bitcoin Uranium, Bitcoin Silver, Bitcoin Tartuffe (my own fork!! Joking but See [how to do my bitcoin fork in 5mn](https://www.linkedin.com/pulse/user-guide-how-create-your-bitcoin-fork-5mn-fool-everybody-vitte))
 
-This does not mean that the other forks are serious either
-
-Two easy factors of detection of a scammy fork are: no code provided, no serious answers to technical questions, they all fulfill both criteria, <b>don't take any risk, if there is a little suspicion about a fork, don't use it</b>
+Keep in mind that most of those forks are probably scams, so in any case never use their wallets
 
 ### Legacy coins
 
