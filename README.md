@@ -70,7 +70,7 @@ node tx.js BTG send ``complete transaction`` btg.suprnova.cc
 
 or
 
-paste the body in https://btgexplorer.com/tx/send
+paste the ``body`` in https://btgexplorer.com/tx/send
 
 ### Amounts and fees
 	
