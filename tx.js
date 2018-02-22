@@ -210,7 +210,7 @@ var version_=function(v) {
 		FORK_STRING=new Buffer('027562','hex');
 	} else if (v==='B2X') {
 		VERSION=2;
-		SIGHASH_FORKID=0x00000020;
+		SIGHASH_FORKID=(0x00000020|0x10)<<1; //new stupid invention 0x62
 		//FORKID_IN_USE=0;
 		MAIN=0xD8B5B2F4;
 		VERSION_='B2X';
@@ -435,6 +435,22 @@ var version_=function(v) {
 		SATO=100000;
 		D=5;
 		NOSEGWIT.push('S');
+	} else if (v==='LCC') {
+		VERSION=2;
+		SIGHASH_FORKID=0x00000040;
+		//FORKID_IN_USE=0;
+		MAIN=0xF8BAE4C7;
+		VERSION_='LCC';
+		p2pk=new Buffer('1c','hex');
+		p2sh=new Buffer('05','hex');
+		PRIV=new Buffer('b0','hex');
+		BIP143=false;
+		PORT=62458;
+		LASTBLOCK=1371111;
+		PROTOCOL=70015;
+		SATO=10000000;
+		D=7;
+		NOSEGWIT.push('C');
 	} else {
 		throw "You forgot to mention the network version";
 	};
