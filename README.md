@@ -1,7 +1,66 @@
 bitcoin-transactions
 ===
 
-Claim your coins and manage them by yourself: Bitcoin transactions made simple for standard or multisig wallets, create and send by your own your Bitcoin, Bitcoin Cash, Bitcoin Gold, Bitcoin Diamond, Super Bitcoin, Bitcore, Zcash, Litecoin, DOGE, Dash transactions, manage your keys and do not disclose them to dubious wallets software
+Claim your coins and move/manage them by yourself: Bitcoin transactions made simple for standard or multisig wallets, segwit is supported, create and send by your own your Bitcoin, Bitcoin Cash, Bitcoin Gold, Bitcoin Diamond, Super Bitcoin, Bitcore, Zcash, Litecoin, DOGE, Dash, tec transactions, manage your keys and do not disclose them to dubious wallets software
+
+## Quick starting guide
+
+If you don't want to read all what follows, start [installing](https://github.com/Ayms/bitcoin-transactions#installation) bitcoin-transactions and look at the [supported coins](https://github.com/Ayms/bitcoin-transactions#supported-coins)
+
+### Getting your parameters
+
+![tuto1](https://raw.github.com/Ayms/bitcoin-transactions/master/tuto1.png)
+![tuto2](https://raw.github.com/Ayms/bitcoin-transactions/master/tuto2.png)
+
+### Standard wallets
+
+	node tx.js acronym create prevtx= prevaddr=addr prevamount= previndex= privkey= addr= fees=0.00000300
+	
+### Multisig wallets
+
+	node tx.js acronym create prevtx= prevaddr=addr prevamount= previndex= privkey=priv1-priv2-redeem-2of2 or 2of3 or 2of4 addr= fee=0.00000500
+	
+### Segwit
+
+If you coins are on a segwit address you must add the ``segwit`` information in prevaddr:
+
+#### P2WPKH
+
+	node tx.js acronym create prevtx= prevaddr=addr-segwit prevamount= previndex= privkey= addr= fees=0.00000300
+	
+#### P2WSH (multisig)
+
+	node tx.js acronym create prevtx= prevaddr=addr-segwit prevamount= previndex= privkey=priv1-priv2-redeem-2of2 or 2of3 or 2of4 addr= fee=0.00000500
+	
+### Multiple inputs
+
+	Same as above depending on the type of address with a ``:`` separator, please see [Multiple inputs](https://github.com/Ayms/bitcoin-transactions#multiple-inputs) section below
+	
+### Sending your transaction
+
+	node tx.js acronym send ``complete transaction`` ``advised full node as shown in [supported coins](https://github.com/Ayms/bitcoin-transactions#supported-coins) section``
+	
+	or
+	
+	paste the body in an explorer (example: https://btgexplorer.com/tx/send)
+	
+### Example
+
+`node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo prevamount=0.00998277 previndex=31 privkey=privkey addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00001001 amount=0.005 `
+
+`node tx.js BTG send ``complete transaction`` btg.suprnova.cc
+
+or
+
+paste the body in https://btgexplorer.com/tx/send
+
+### Amounts and fees
+	
+The module will calculate the amount to be spent according to the fees and advise if the numbers are not coherent:
+
+	amount+dev fees+network fees=prevamount
+	
+You can adjust the fees if you like according to the size of the transaction instead of using 0.00000300 or 0.00000500
 
 ## Rationale
 
@@ -37,59 +96,57 @@ This module is secure, it does not send anything outside (except the transaction
 
 ## Supported coins
 
-Please see below the supported coins and acronym to be used, as well as full nodes where to send your transactions, and use/tests cases
+Please see below the supported coins and acronym to be used, as well as full nodes where to send your transactions, use/tests cases and the fork height
 
 ### Forked coins
 
-<b>Bitcoin Community</b> "BTSQ" - seed1.aliyinke.com (or seed2/seed3) - Same as BCD except that you must multiply the numbers by 1000
+<b>Bitcoin Community</b> "BTSQ" - seed1.aliyinke.com (or seed2/seed3) - Same as BCD except that you must multiply the numbers by 1000 - Height: 506066
 
-<b>Bitcoin King</b> "BCK" - 47.52.28.49 - same use than the others
+<b>Bitcoin King</b> "BCK" - 47.52.28.49 - same use than the others - Height 499999
 
-<b>Bitcoin Pay</b> "BTP" - Unknown - Same as BCD except that you must multiply the numbers by 1000
+<b>Bitcoin Pay</b> "BTP" - Unknown - Same as BCD except that you must multiply the numbers by 1000 - Height: 499345
 
-<b>Bitcoin Top</b> "BTT" - dnsseed.bitcointop.org - same use than the others
+<b>Bitcoin Top</b> "BTT" - dnsseed.bitcointop.org - same use than the others - Height: 501118
 
-<b>Bitcoin Vote</b> "BTV" - seed1.bitvote.one - same use than the others
+<b>Bitcoin Vote</b> "BTV" - seed1.bitvote.one - same use than the others - Height: 505050
 
-<b>Bitcoin Hot</b> "BTH" - seed-us.bitcoinhot.co - same use than the others
+<b>Bitcoin Hot</b> "BTH" - seed-us.bitcoinhot.co - same use than the others - Height: 498848
 
-<b>Bitcoin New</b> "BTN" - dnsseed.bitcoin-new.org - same use than the others
+<b>Bitcoin New</b> "BTN" - dnsseed.bitcoin-new.org - same use than the others - Height: 501000
 
-<b>Bitcoin X</b> "BCX" - 192.169.227.48 - Same as BCD except that you must multiply the numbers by 10000
+<b>Bitcoin X</b> "BCX" - 192.169.227.48 - Same as BCD except that you must multiply the numbers by 10000 - Height: 498888
 
-<b>Bitcoin Faith</b> "BTF" - a.btf.hjy.cc - same use than the others
+<b>Bitcoin Faith</b> "BTF" - a.btf.hjy.cc - same use than the others - Height: 500000
 
-<b>Bitcoin World</b> "BTW" - dnsseed.btw.one - Same as BCD except that you must multiply the numbers by 10000
+<b>Bitcoin World</b> "BTW" - dnsseed.btw.one - Same as BCD except that you must multiply the numbers by 10000 - Height: 499777
 
-<b>World Bitcoin</b> "WBTC" - dnsseed.wbtcteam.org - same use than the others
+<b>World Bitcoin</b> "WBTC" - dnsseed.wbtcteam.org - same use than the others - Height: 503888
 
-<b>Bitcoin Atom</b> "BCA" - seed.bitcoinatom.io or seed.bitcoin-atom.org or seed.bitcoinatom.net - same use than the others
+<b>Bitcoin Atom</b> "BCA" - seed.bitcoinatom.io or seed.bitcoin-atom.org or seed.bitcoinatom.net - same use than the others - Height: 505888
 
-<b>Bitcoin Candy</b> "CDY" - seed.bitcoincandy.one or seed.cdy.one - please note that this a Bitcoin Cash fork and read [Specific case of CDY](https://github.com/Ayms/bitcoin-transactions#specific-case-of-cdy) and see [cdy.js](https://github.com/Ayms/bitcoin-transactions/blob/master/cdy.js)
+<b>Bitcoin Candy</b> "CDY" - seed.bitcoincandy.one or seed.cdy.one - please note that this a Bitcoin Cash fork and read [Specific case of CDY](https://github.com/Ayms/bitcoin-transactions#specific-case-of-cdy) and see [cdy.js](https://github.com/Ayms/bitcoin-transactions/blob/master/cdy.js) - Height: 512666
 
-<b>Bitcoin Cash Plus (Warning: this fork does not implement any replay protection with BCH, don't use it, see below</b>) "BCP" - seed.bitcoincashplus.org - see [To come as soon as there is a mainnet explorer](https://github.com/Ayms/bitcoin-transactions/blob/master/bcp.js)
+<b>Bitcoin Cash Plus (Warning: this fork does not implement any replay protection with BCH</b>) "BCP" - seed.bitcoincashplus.org - same use than the others - Height: 501407
 
-<b>Bitcoin Private</b> "BTCP" (under development so subject to change) - BTCP node (to come) - please note that this a BTC and Zcash Classic (ZCL) fork see [To come as soon as it is live](https://github.com/Ayms/bitcoin-transactions/blob/master/btcp.js)
+<b>Bitcoin Private</b> "BTCP" (under development so subject to change) - BTCP node (to come) - please note that this a BTC and Zcash Classic (ZCL) fork, same use than the others - Height: 28 Feb 2018 
 
-<b>Bitcoin Pizza</b> "BPA" - 89.38.97.62 or 46.28.204.17 - same use than the others
+<b>Bitcoin Pizza</b> "BPA" - 89.38.97.62 or 46.28.204.17 - same use than the others - Height: 501888
 
-<b>SegwitB2X</b> "B2X" - node1.b2x-segwit.io (or node2/3) - see [b2x.js](https://github.com/Ayms/bitcoin-transactions/blob/master/b2x.js)
+<b>SegwitB2X</b> "B2X" - node1.b2x-segwit.io (or node2/3) - see [b2x.js](https://github.com/Ayms/bitcoin-transactions/blob/master/b2x.js) - Height: 501451
 
-<b>United Bitcoin</b> "UBTC" - ip.ub.com - see [ubtc.js](https://github.com/Ayms/bitcoin-transactions/blob/master/ubtc.js)
+<b>United Bitcoin</b> "UBTC" - ip.ub.com - see [ubtc.js](https://github.com/Ayms/bitcoin-transactions/blob/master/ubtc.js) - Height: 498777
 
-<b>Bitcoin Gold</b> "BTG" - btg.suprnova.cc  - see below and https://github.com/Ayms/bitcoin-transactions/issues/5
+<b>Bitcoin Gold</b> "BTG" - btg.suprnova.cc  - see below and https://github.com/Ayms/bitcoin-transactions/issues/5 - Height: 491407
 
-<b>Bitcoin Cash</b> "BCH" - bch.suprnova.cc - see https://github.com/Ayms/bitcoin-transactions/issues/4 and [example-4.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-4.js) and [Specific case of BCH](https://github.com/Ayms/bitcoin-transactions#specific-case-of-bch) for the new address format
+<b>Bitcoin Cash</b> "BCH" - bch.suprnova.cc - see https://github.com/Ayms/bitcoin-transactions/issues/4 and [example-4.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-4.js) and [Specific case of BCH](https://github.com/Ayms/bitcoin-transactions#specific-case-of-bch) for the new address format - Height: 478559
 
-<b>Bitcoin Diamond</b> "BCD" - seed1.dns.btcd.io or 139.198.190.221 or 121.201.13.117 - please read [Specific case of BCD](https://github.com/Ayms/bitcoin-transactions#specific-case-of-bcd) and see [bcd.js](https://github.com/Ayms/bitcoin-transactions/blob/master/bcd.js)
+<b>Bitcoin Diamond</b> "BCD" - seed1.dns.btcd.io or 139.198.190.221 or 121.201.13.117 - please read [Specific case of BCD](https://github.com/Ayms/bitcoin-transactions#specific-case-of-bcd) and see [bcd.js](https://github.com/Ayms/bitcoin-transactions/blob/master/bcd.js) - Height: 495866 
 
-<b>Super Bitcoin</b> "SBTC" - seed.superbtca.com
+<b>Super Bitcoin</b> "SBTC" - seed.superbtca.com - Height: 498888
 
-<b>Bitcore</b> "BTX" - btx.suprnova.cc
+<b>Bitcore</b> "BTX" - btx.suprnova.cc - Height: 492820
 
-For now we keep Bitcoin Diamond and Bitcoin Cash Plus in the tool but <b>there are quite dubious aspects for those forks</b>, see [BCP - No replay protection possible consequences](https://bitcointalk.org/index.php?topic=2827163.msg29326000#msg29326000) and [BCD - We do strange and misleading things but don't care clarifying what it is](https://github.com/eveybcd/BitcoinDiamond/issues/2#issuecomment-360161344)
-
-Possible other forks: Bitcoin Interest, Lightning Bitcoin, Bitcoin God, Bitcoin Platinium , Bitcoin Uranium, Bitcoin Silver, Bitcoin Tartuffe (my own fork!! Joking but See [how to do my bitcoin fork in 5mn](https://www.linkedin.com/pulse/user-guide-how-create-your-bitcoin-fork-5mn-fool-everybody-vitte))
+Possible other forks (if/when their release their code): Bitcoin Interest, Lightning Bitcoin (height 499999), Bitcoin God, Bitcoin Platinium , Bitcoin Uranium, Bitcoin Silver
 
 Keep in mind that most of those forks are probably scams, so in any case never use their wallets
 
@@ -138,42 +195,6 @@ Or just unzip [bitcoin-transactions.zip](http://www.peersm.com/bitcoin-transacti
 	cd /Users/Me/bitcoin-transactions
 	
 	Now you can enter the commands (please see below): node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey= addr= fees= amount=
-	
-## The easy way
-
-Once you know this module (if not please read what follows), most likely you will do:
-
-### Standard wallets
-
-	node tx.js <acronym> create prevtx= prevaddr= prevamount= previndex= privkey= addr= fees=0.00000300
-	
-	node tx.js <acronym> send <complete transaction> <advised full node above>
-	
-	or
-	
-	paste the <body> in an explorer (example: https://btgexplorer.com/tx/send)
-	
-### Multisig wallets
-
-	node tx.js <acronym> create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3 or 2of4> addr= fee=0.00000500
-	
-	node tx.js <acronym> send <complete transaction> <advised full node above>
-	
-	or
-	
-	paste the <body> in an explorer (example: https://btgexplorer.com/tx/send)
-	
-The module will calculate the amount to be spent according to the fees and advise if the numbers are not coherent:
-
-	amount+dev fees+network fees=prevamount
-	
-You can adjust the fees if you like according to the size of the transaction instead of using 0.00000300 or 0.00000500
-
-## "Advanced use" - Multiple inputs
-
-The previous method requires to perform one transaction per output to be spent, this can be a kind of painful and you are paying more network fees (this does not change anything for the dev fees), you might want to merge different outputs to a single destination address in one transaction (so you can spend it later with only one transaction too)
-
-See the [Multiple inputs](https://github.com/Ayms/bitcoin-transactions#multiple-inputs) section below
 
 ## Use
 
@@ -193,13 +214,13 @@ See [example-3.js](https://github.com/Ayms/bitcoin-transactions/blob/master/exam
 
 And see [example-4.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-4.js) for a "Two of four" example
 
-Multisig transactions/wallets (and why it's a very bad idea to use them) is explained [here(TODO)]() 
+Multisig transactions/wallets (and why it's a very bad idea to use them) is explained [here(TODO)]()
+
+#### Segwit
+
+Please see above
 
 ### Important Warning
-
-<b>Many wallets provide by default P2SH segwit/BIP141 addresses</b>
-
-<b>Do not use them with this module for now, use standard P2PKH addresses (starting with a 1 for Bitcoin and Bitcoin Cash, by a G for Bitcoin gold and by t1 for Zcash) or standard P2SH addresses (starting with a 3 for Bitcoin and Bitcoin Cash, by a A for Bitcoin gold and by t3 for Zcash) for multisig wallets (note that it is not possible to differentiate a segwit address from a normal P2SH one, so, again, make sure that your are not using segwit addresses)</b>
 
 While using this module if you make a mistake with the parameters the transaction might look valid but will just be rejected by the network, so there is no impact, <b>except if you make a mistake with the destination address, nobody can check this, then make sure that the destination address is one that you master</b>
 
@@ -378,8 +399,6 @@ and addr can be a bitcoin address too that will be converted into a BCH, BTG or 
 You can convert before if you like the prevaddr and addr from a bitcoin core one to a bitcoin gold one but this is of no use, the create command will work with the original bitcoin addresses
 
 If this explanation is unclear, please see the example given [here](https://github.com/BTCGPU/BTCGPU/issues/213#issuecomment-350449253)
-
-<b>Again, if you do this, never use Segwit/BIP141 addresses for the destination and the origin</b>
 
 ## Double check again
 
