@@ -5,7 +5,7 @@ Claim your coins and move/manage them by yourself: Bitcoin transactions made sim
 
 ## Quick starting guide
 
-If you don't want to read all what follows, start [installing](https://github.com/Ayms/bitcoin-transactions#installation) bitcoin-transactions and look at the [supported coins](https://github.com/Ayms/bitcoin-transactions#supported-coins)
+If you don't want to read all what follows, start [installing](https://github.com/Ayms/bitcoin-transactions#installation) bitcoin-transactions and look at the [supported coins](https://github.com/Ayms/bitcoin-transactions#supported-coins) section (and specific cases)
 
 ### Getting your parameters
 
