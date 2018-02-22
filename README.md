@@ -48,6 +48,10 @@ If you coins are on a segwit address you must add the ``segwit`` information in 
 
 `node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo prevamount=0.00998277 previndex=31 privkey=privkey addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00001001`
 
+`node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=AMjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo prevamount=0.00998277 previndex=31 privkey=privkey1-privkey2-redeem-2of3 addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00001001`
+
+`node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=ASjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo-segwit prevamount=0.00998277 previndex=31 privkey=privkey addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00001001`
+
 `node tx.js BTG send ``complete transaction`` btg.suprnova.cc`
 
 or
