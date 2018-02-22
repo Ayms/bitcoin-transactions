@@ -40,7 +40,7 @@ Same as above depending on the type of address with a ``:`` separator, please se
 	
 ### Sending your transaction
 
-node tx.js acronym send ``complete transaction`` ``advised full node (as shown in [supported coins](https://github.com/Ayms/bitcoin-transactions#supported-coins) section)
+node tx.js acronym send ``complete transaction`` ``advised full node`` (as shown in [supported coins](https://github.com/Ayms/bitcoin-transactions#supported-coins) section)
 	
 or
 	
