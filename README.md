@@ -18,6 +18,8 @@ If you know what you are doing and don't want to read all what follows, start [i
 	
 ### Multisig wallets
 
+If you don't know how to retrieve the redeem script corresponding to your address, please see [Retrieving the redeem script](https://github.com/Ayms/bitcoin-transactions#multisig-wallets-2) or email us (if you spent this address on another network we can retrieve the redeem script from the corresponding transactions)
+
 	node tx.js acronym create prevtx= prevaddr=addr prevamount= previndex= privkey=priv1-priv2-redeem-2of2 or 2of3 or 2of4 addr= fee=0.00000500
 	
 ### Segwit
@@ -34,7 +36,7 @@ If you coins are on a segwit address you must add the ``segwit`` information in 
 	
 ### Multiple inputs
 
-Same as above depending on the type of address with a ``:`` separator, please see [Multiple inputs](https://github.com/Ayms/bitcoin-transactions#multiple-inputs) section below
+Same as above depending on the type of address with a ``:`` separator, please see [Multiple inputs](https://github.com/Ayms/bitcoin-transactions#multiple-inputs-1) section below
 	
 ### Sending your transaction
 
