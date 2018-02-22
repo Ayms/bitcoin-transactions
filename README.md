@@ -3,9 +3,9 @@ bitcoin-transactions
 
 Claim your coins and move/manage them by yourself: Bitcoin transactions made simple for standard or multisig wallets, segwit is supported, create and send by your own your Bitcoin, Bitcoin Cash, Bitcoin Gold, Bitcoin Diamond, Super Bitcoin, Bitcore, Zcash, Litecoin, DOGE, Dash, tec transactions, manage your keys and do not disclose them to dubious wallets software
 
-## Quick starting guide
+## Quick Start guide
 
-If you don't want to read all what follows, start [installing](https://github.com/Ayms/bitcoin-transactions#installation) bitcoin-transactions and look at the [supported coins](https://github.com/Ayms/bitcoin-transactions#supported-coins) section (and specific cases)
+If you know what you are doing and don't want to read all what follows, start [installing](https://github.com/Ayms/bitcoin-transactions#installation) bitcoin-transactions and look at the [supported coins](https://github.com/Ayms/bitcoin-transactions#supported-coins) section (and specific cases)
 
 ### Getting your parameters
 
@@ -34,25 +34,37 @@ If you coins are on a segwit address you must add the ``segwit`` information in 
 	
 ### Multiple inputs
 
-	Same as above depending on the type of address with a ``:`` separator, please see [Multiple inputs](https://github.com/Ayms/bitcoin-transactions#multiple-inputs) section below
+Same as above depending on the type of address with a ``:`` separator, please see [Multiple inputs](https://github.com/Ayms/bitcoin-transactions#multiple-inputs) section below
 	
 ### Sending your transaction
 
-	node tx.js acronym send ``complete transaction`` ``advised full node as shown in [supported coins](https://github.com/Ayms/bitcoin-transactions#supported-coins) section``
+node tx.js acronym send ``complete transaction`` ``advised full node (as shown in [supported coins](https://github.com/Ayms/bitcoin-transactions#supported-coins) section)
 	
-	or
+or
 	
-	paste the body in an explorer (example: https://btgexplorer.com/tx/send)
+paste the ``body`` in an explorer (example: https://btgexplorer.com/tx/send)
 	
-### Example
+### Examples
+
+#### Standard
 
 `node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo prevamount=0.00998277 previndex=31 privkey=privkey addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00001001`
 
+#### Multisig
+
 `node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=AMjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo prevamount=0.00998277 previndex=31 privkey=privkey1-privkey2-redeem-2of3 addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00001001`
+
+#### Segwit P2WPKH (standard)
 
 `node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=ASjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo-segwit prevamount=0.00998277 previndex=31 privkey=privkey addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00001001`
 
-`node tx.js BTG send ``complete transaction`` btg.suprnova.cc`
+#### Segwit P2WSH (multisig)
+
+`node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=ATjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo-segwit prevamount=0.00998277 previndex=31 privkey=privkey1-privkey2-redeem-2of3 addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00001001
+
+#### Sending
+
+node tx.js BTG send ``complete transaction`` btg.suprnova.cc
 
 or
 
