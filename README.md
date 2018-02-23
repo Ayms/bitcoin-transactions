@@ -24,7 +24,7 @@ If you don't know how to retrieve the redeem script corresponding to your addres
 	
 ### Segwit
 
-If you coins are on a segwit address you must add the ``segwit`` information in prevaddr:
+If you coins are on a segwit address you must add the ``-segwit`` string in prevaddr:
 
 #### P2WPKH
 
