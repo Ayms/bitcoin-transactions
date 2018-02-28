@@ -182,6 +182,8 @@ Keep in mind that most of those forks are probably scams, so in any case never u
 
 <b>Dash</b> "DASH" - dash.suprnova.cc
 
+<b>ZClassic</b> "ZCL" - eu1.zclassic.org
+
 ## Fees
 
 Unlike bitcoin-cli this modules allows you to manage your fees too, do not go below ~1 satoshi per byte for the network fees or your transaction will not be accepted by the network

@@ -460,6 +460,16 @@ var version_=function(v) {
 		SATO=10000000;
 		D=7;
 		NOSEGWIT.push('C');
+	} else if (v==='ZCL') {
+		VERSION=1;
+		MAIN=0x6427E924;
+		VERSION_='ZCL';
+		p2pk=new Buffer('1cb8','hex');
+		p2sh=new Buffer('1cbd','hex');
+		BIP143=false;
+		PORT=8033;
+		LASTBLOCK=250000;
+		PROTOCOL=170002;
 	} else {
 		throw "You forgot to mention the network version";
 	};
@@ -515,14 +525,14 @@ var btc_decode=function(bs,version) {
 
 var bech_convert=function(bech) {
 	bech=bech.split(':')[1]||bech;
-	if (BECH32.indexOf(bech.substr(0,1))!==-1) {
+	if (BECH32.indexOf(bech.substr(0,1))!==-1) { //if bech address
 		console.log('Bech32 address '+bech);
-		bech=decode_b(bech);
+		bech=decode_b(bech); //{hash:'76a04053bda0a88bda5177b86a15c3b29f559873',type:'p2pkh'}
 		bech=btc_encode(new Buffer(bech.hash,'hex'),(bech.type==='p2sh')?p2sh:p2pk);
 		console.log('Transformed in '+bech);
 		return bech;
 	};
-	if ((VERSION_==='ZEC')||(VERSION_==='BTCP')) {
+	if ((VERSION_==='ZEC')||(VERSION_==='BTCP')||(VERSION_==='ZCL')) { //2B in p2pk and p2sh
 		var type,addr,outaddress;
 		if (bech.substr(0,1)==='1') {
 			addr=btc_decode(bech,new Buffer('00','hex'));
@@ -532,9 +542,11 @@ var bech_convert=function(bech) {
 			addr=btc_decode(bech,new Buffer('05','hex'));
 			type=p2sh;
 		};
-		outaddress=btc_encode(addr,type);
-		console.log('Address '+bech+' converted to '+outaddress);
-		return outaddress;
+		if (type) {
+			outaddress=btc_encode(addr,type);
+			console.log('Address '+bech+' converted to '+outaddress);
+			return outaddress;
+		};
 	};
 };
 
