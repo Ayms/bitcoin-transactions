@@ -515,12 +515,26 @@ var btc_decode=function(bs,version) {
 
 var bech_convert=function(bech) {
 	bech=bech.split(':')[1]||bech;
-	if (BECH32.indexOf(bech.substr(0,1))!==-1) { //if bech address
+	if (BECH32.indexOf(bech.substr(0,1))!==-1) {
 		console.log('Bech32 address '+bech);
-		bech=decode_b(bech); //{hash:'76a04053bda0a88bda5177b86a15c3b29f559873',type:'p2pkh'}
+		bech=decode_b(bech);
 		bech=btc_encode(new Buffer(bech.hash,'hex'),(bech.type==='p2sh')?p2sh:p2pk);
 		console.log('Transformed in '+bech);
 		return bech;
+	};
+	if ((VERSION_==='ZEC')||(VERSION_==='BTCP')) {
+		var type,addr,outaddress;
+		if (bech.substr(0,1)==='1') {
+			addr=btc_decode(bech,new Buffer('00','hex'));
+			type=p2pk;
+		};
+		if (bech.substr(0,1)==='3') {
+			addr=btc_decode(bech,new Buffer('05','hex'));
+			type=p2sh;
+		};
+		outaddress=btc_encode(addr,type);
+		console.log('Address '+bech+' converted to '+outaddress);
+		return outaddress;
 	};
 };
 
