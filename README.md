@@ -36,7 +36,7 @@ If you coins are on a segwit address you must add the ``-segwit`` string in prev
 	
 ### Multiple inputs
 
-Same as above depending on the type of address with a ``:`` separator, please see [Multiple inputs](https://github.com/Ayms/bitcoin-transactions#multiple-inputs-1) section below
+Same as above depending on the type of address with a ``_`` separator, please see [Multiple inputs](https://github.com/Ayms/bitcoin-transactions#multiple-inputs-1) section below
 	
 ### Sending your transaction
 
@@ -148,7 +148,7 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 <b>Bitcoin Cash Plus (Warning: this fork does not implement any replay protection with BCH</b>) "BCP" - seed.bitcoincashplus.org - same use than the others - Height: 501407
 
-<b>Bitcoin Private</b> "BTCP" (under development so subject to change) - BTCP node (to come) - please note that this a BTC and Zcash Classic (ZCL) fork, same use than the others - Height: 28 Feb 2018 
+<b>Bitcoin Private</b> "BTCP" - dnsseed.btcprivate.org - please note that this a BTC and Zcash Classic (ZCL) fork, same use than the others - Height: 28 Feb 2018 
 
 <b>Bitcoin Pizza</b> "BPA" - 89.38.97.62 or 46.28.204.17 - same use than the others - Height: 501888
 
@@ -332,13 +332,11 @@ Read also [Claiming your coins (BCH, BTG, BCD,CDY,etc) - Adresses and getting "f
 
 #### Specific case of BCH
 
-The BCH address format did change recently, this does not really make any difference for this module but we have updated the address format except that we have not yet included the cashaddress format that we have implemented in the very excellent [cashaddress](https://github.com/Ayms/cashaddress) module
+The BCH address format did change recently, this does not really make any difference for this module but we have updated the address format with the very excellent [cashaddress](https://github.com/Ayms/cashaddress) module
 
-Should you want this module to be merged here please post an issue
+Then legacy and new format can be used
 
 See also [BCH addresses converter](https://cashaddr.bitcoincash.org/)
-
-As we can see it's unclear if legacy addresses should still be the same than Bitcoin or if they start with a C (for p2pkh), both format work with this module, the default is still Bitcoin like addresses
 
 #### Specific case of CDY
 
@@ -432,21 +430,21 @@ The most complicate part is to generate correct signatures for the transactions,
 
 ## Multiple inputs
 
-`node tx.js BTG create prevtx=tx1:tx2:...:txn prevaddr=addr1:addr2:...:addrn prevamount=amount1:amount2:...:amountn previndex=index1:index2:...:indexn privkey=privkey1:privkey2:...:privkeyn addr=<destination address> fees=0.00000600`
+`node tx.js BTG create prevtx=tx1_tx2_..._txn prevaddr=addr1_addr2_..._addrn prevamount=amount1_amount2_..._amountn previndex=index1_index2_..._indexn privkey=privkey1_privkey2_..._privkeyn addr=<destination address> fees=0.00000600`
 
 You can put the ``amount=`` parameter (but we believe that it's quite stupid even if included in our examples), then the delta will be refunded to addr1
 
 To simplify, if prevaddr and/or index are always the same (and why not amount), you can do:
 
-`node tx.js BTG create prevtx=tx1:tx2:...:txn prevaddr=addr1 prevamount=amount1:amount2:...:amountn previndex=index1 privkey=privkey1 addr=<destination address> fees=0.00000600`
+`node tx.js BTG create prevtx=tx1_tx2_..._txn prevaddr=addr1 prevamount=amount1_amount2_..._amountn previndex=index1 privkey=privkey1 addr=<destination address> fees=0.00000600`
 
 or
 
-`node tx.js BTG create prevtx=tx1:tx2:...:txn prevaddr=addr1 prevamount=amount1 previndex=index1 privkey=privkey1 addr=<destination address> fees=0.00000600`
+`node tx.js BTG create prevtx=tx1_tx2_..._txn prevaddr=addr1 prevamount=amount1 previndex=index1 privkey=privkey1 addr=<destination address> fees=0.00000600`
 
 ### Multisig wallets
 
-This works the same `privkey=privkey1:privkey2:...:privkeyn` where each privkeyi is priv1-priv2-redeem-<2of2 or 2of3 or 2of4>
+This works the same `privkey=privkey1_privkey2_..._privkeyn` where each privkeyi is priv1-priv2-redeem-<2of2 or 2of3 or 2of4>
 
 You can mix standard inputs and multisig ones, see all the examples in [multiinputs.js](https://github.com/Ayms/bitcoin-transactions/blob/master/multiinputs.js)
 
