@@ -12,6 +12,10 @@ If you know what you are doing and don't want to read all what follows, start [i
 ![tuto1](https://raw.github.com/Ayms/bitcoin-transactions/master/tuto1.png)
 ![tuto2](https://raw.github.com/Ayms/bitcoin-transactions/master/tuto2.png)
 
+To quickly move/claim coins to an exchange for example, you can look [Claiming your coins (BCH,BTG,BCD,SBTC,CDY,etc) - Addresses and getting 'free' coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdsbtccdyetc---addresses-and-getting-free-coins) or [Tool to claim coins for all Bitcoin forks without using wallets or running nodes](https://bitcointalk.org/index.php?topic=2827163.msg31273044#msg31273044)
+
+If something does not look correct when using the tool, please email us or post an issue (always without your private keys)
+
 ### Standard wallets
 
 	node tx.js acronym create prevtx= prevaddr=addr prevamount= previndex= privkey= addr= fees=0.00000300
@@ -183,6 +187,12 @@ Keep in mind that most of those forks are probably scams, so in any case never u
 <b>Dash</b> "DASH" - dash.suprnova.cc
 
 <b>ZClassic</b> "ZCL" - eu1.zclassic.org
+
+### How to find my coins?
+
+It's not rare that the explorer of the forks are not working well, so you can use the legacy explorers to find your coins as explained [here](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdsbtccdyetc---addresses-and-getting-free-coins) or [here](https://bitcointalk.org/index.php?topic=2827163.msg31273044#msg31273044)
+
+You can also use [Find My Coins .ninja](http://www.findmycoins.ninja/) to get an overview of spendable coins (experimental and beta version for now)
 
 ## Fees
 
@@ -398,13 +408,15 @@ The addresses between the different networks are the same, it always ends up wit
 
 There are some tools existing to convert addresses, you might consider using the very excellent [Ayms/bitcoin-wallets](https://github.com/Ayms/bitcoin-wallets) module to create your wallet and/or convert addresses
 	
-This module is not intended to push you to get your 'free' coins from bitcoin core
+This module is not intended to push you to get your 'free' coins from bitcoin core (or other legacy network)
 	
 Because, unlike many people think, you have them already so there is no need to rush to 'convert' them, many people did not get their 'free' coins and just lost all what they had by using malware wallets
 
-That's why, even if there are zero technical reason for doing this, some people advise to transfer first their bitcoins to another wallet before proceeding with such module
+That's why, even if there are zero technical reason for doing this, it is highly advised to transfer first your bitcoins (or legacy coins) to another wallet before moving/claiming forked coins
+
+Another advantage of doing so is that it becomes easier to get your parameters to claim your coins (like the redeem script in case of multisig address)
 	
-However, if you want to move your bitcoins "from bitcoin core to BCH, BTG, BCD or SBTC" (which as explained above means nothing) or from "bitcoin core to a bitcoin X exchange", you can just use the ``create`` command:
+If you want to move your bitcoins "from bitcoin core to BCH, BTG, BCD or SBTC" or from "bitcoin core to a bitcoin X exchange", you can just use the ``create`` command:
 	
 `node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=privkey addr= fees= amount=(optional)`
 
@@ -412,13 +424,13 @@ or
 
 `node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3 or 2of4> addr= fee= amount=(optional)`
 
-where prev[tx,addr,amount,index] refers very exactly to the same that you can see in a bitcoin core explorer like https://blockchain.info before block 491407 (<b>same transaction id, same address, same amount, same index</b>) and privkey is the private key corresponding to your bitcoin core address or priv1-priv2-redeem corresponds to your multisig bitcoin address
+<b>where prev[tx,addr,amount,index] refers very exactly to the same that you can see in a bitcoin core explorer (or the legacy explorer of the network being forked) like https://blockchain.info before the block forking height (same transaction id, same address, same amount, same index</b>) and privkey is the private key corresponding to your bitcoin core address or priv1-priv2-redeem corresponds to your multisig bitcoin address
 	
 and addr can be a bitcoin address too that will be converted into a BCH, BTG or BCD address as you will see in the output of the command
 	
 You can convert before if you like the prevaddr and addr from a bitcoin core one to a bitcoin gold one but this is of no use, the create command will work with the original bitcoin addresses
 
-If this explanation is unclear, please see the example given [here](https://github.com/BTCGPU/BTCGPU/issues/213#issuecomment-350449253)
+If this explanation is unclear, please see the example given [here](https://github.com/BTCGPU/BTCGPU/issues/213#issuecomment-350449253) or [here](https://bitcointalk.org/index.php?topic=2827163.msg31273044#msg31273044)
 
 ## Double check again
 
