@@ -410,13 +410,13 @@ There are some tools existing to convert addresses, you might consider using the
 	
 This module is not intended to push you to get your 'free' coins from bitcoin core (or other legacy network)
 	
-Because, unlike many people think, you have them already so there is no need to rush to 'convert' them, many people did not get their 'free' coins and just lost all what they had by using malware wallets
+Because, unlike many people think, you have them already so there is no need to rush to 'convert' them (unless you want to send them quickly to an exchange to sell them), many people did not get their 'free' coins and just lost all what they had by using malware wallets
 
 That's why, even if there are zero technical reason for doing this, it is highly advised to transfer first your bitcoins (or legacy coins) to another wallet before moving/claiming forked coins
 
-Another advantage of doing so is that it becomes easier to get your parameters to claim your coins (like the redeem script in case of multisig address)
+Another advantage of doing so is that it becomes easier to get your parameters to claim your coins (like the redeem script in case of multisig address, or the address corresponding to your segwit address), indeed we can see them on the transactions made on the legacy network to move your coins
 	
-If you want to move your bitcoins "from bitcoin core to BCH, BTG, BCD or SBTC" or from "bitcoin core to a bitcoin X exchange", you can just use the ``create`` command:
+If you want to move your bitcoins "from bitcoin core to BCH, BTG, BCD or SBTC, etc" or from "bitcoin core to a bitcoin X exchange", you can just use the ``create`` command:
 	
 `node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=privkey addr= fees= amount=(optional)`
 
@@ -424,13 +424,13 @@ or
 
 `node tx.js BTG create prevtx= prevaddr= prevamount= previndex= privkey=priv1-priv2-redeem-<2of2 or 2of3 or 2of4> addr= fee= amount=(optional)`
 
-<b>where prev[tx,addr,amount,index] refers very exactly to the same that you can see in a bitcoin core explorer (or the legacy explorer of the network being forked) like https://blockchain.info before the block forking height (same transaction id, same address, same amount, same index</b>) and privkey is the private key corresponding to your bitcoin core address or priv1-priv2-redeem corresponds to your multisig bitcoin address
+<b>where prev[tx,addr,amount,index] refers very exactly to the same that you can see in a bitcoin core explorer (or the legacy explorer of the network being forked) like https://blockchain.info before the block forking height (same transaction id, same address, same amount, same index) and privkey is the private key corresponding to your bitcoin core address or priv1-priv2-redeem corresponds to your multisig bitcoin address</b>
 	
-and addr can be a bitcoin address too that will be converted into a BCH, BTG or BCD address as you will see in the output of the command
+and <b>addr can be a bitcoin address too that will be converted into a BCH, BTG or BCD address as you will see in the output of the command, as well as prevaddr, so you don't need tc convert the addresses, the tool will do it for you</b>
 	
 You can convert before if you like the prevaddr and addr from a bitcoin core one to a bitcoin gold one but this is of no use, the create command will work with the original bitcoin addresses
 
-If this explanation is unclear, please see the example given [here](https://github.com/BTCGPU/BTCGPU/issues/213#issuecomment-350449253) or [here](https://bitcointalk.org/index.php?topic=2827163.msg31273044#msg31273044)
+If this explanation is unclear, please see the examples given [here](https://github.com/BTCGPU/BTCGPU/issues/213#issuecomment-350449253) or [here](https://bitcointalk.org/index.php?topic=2827163.msg31273044#msg31273044)
 
 ## Double check again
 
