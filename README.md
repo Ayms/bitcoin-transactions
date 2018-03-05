@@ -426,7 +426,7 @@ or
 
 <b>where prev[tx,addr,amount,index] refers very exactly to the same that you can see in a bitcoin core explorer (or the legacy explorer of the network being forked) like https://blockchain.info before the block forking height (same transaction id, same address, same amount, same index) and privkey is the private key corresponding to your bitcoin core address or priv1-priv2-redeem corresponds to your multisig bitcoin address</b>
 	
-and <b>addr can be a bitcoin address too that will be converted into a BCH, BTG, BCD, etc address as you will see in the output of the command (even if most likely you will use a destination address corrsponding to the fork, which of course works also), as well as prevaddr, so you don't need tc convert the addresses, the tool will do it for you</b>
+and <b>addr can be a bitcoin address too that will be converted into a BCH, BTG, BCD, etc address as you will see in the output of the command (even if most likely you will use a destination address corresponding to the fork, which of course works also), as well as prevaddr, so you don't need to convert the addresses, the tool will do it for you</b>
 	
 You can convert before if you like the prevaddr and addr from a bitcoin core one to a bitcoin gold one but this is of no use, the create command will work with the original bitcoin addresses
 
