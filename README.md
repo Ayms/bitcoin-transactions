@@ -122,6 +122,8 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 ### Forked coins
 
+<b>BitClassic Coin</b> "BICC" - 47.104.59.46 or 47.104.59.9 - same use than the others - Height: 499888
+
 <b>Litecoin Cash</b> "LCC" - seeds.litecoinca.sh - Litecoin fork, you must multiply the numbers by 10 - Height: 1371111
 
 <b>Bitcoin Community</b> "BTSQ" - seed1.aliyinke.com (or seed2/seed3) - Same as BCD except that you must multiply the numbers by 1000 - Height: 506066
