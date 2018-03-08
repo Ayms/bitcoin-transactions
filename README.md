@@ -72,11 +72,11 @@ paste the <b>``body`` (and not the ``complete transaction``)</b> in an explorer 
 
 #### Sending
 
-node tx.js BTG send ``complete transaction`` btg.suprnova.cc
+node tx.js BTG send <b>``complete transaction``</b> btg.suprnova.cc
 
 or
 
-paste the ``body`` in https://btgexplorer.com/tx/send
+paste the <b>``body``</b> in https://btgexplorer.com/tx/send or https://explorer.btcprivate.org/tx/send
 
 ### Amounts and fees
 	
