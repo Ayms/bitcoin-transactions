@@ -44,11 +44,13 @@ Same as above depending on the type of address with a ``_`` separator, please se
 	
 ### Sending your transaction
 
+The difference between ``complete transaction`` and ``body`` in the output of the ``create`` command is just that ``complete transaction`` includes the ``body`` with the network headers:
+
 node tx.js acronym send ``complete transaction`` ``advised full node`` (as shown in [supported coins](https://github.com/Ayms/bitcoin-transactions#supported-coins) section)
 	
 or
 	
-paste the ``body`` in an explorer (example: https://btgexplorer.com/tx/send)
+paste the <b>``body`` (and not the ``complete transaction``)</b> in an explorer (example: https://btgexplorer.com/tx/send or https://explorer.btcprivate.org/tx/send)
 	
 ### Examples
 
@@ -154,7 +156,7 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 <b>Bitcoin Cash Plus (Warning: this fork does not implement any replay protection with BCH</b>) "BCP" - seed.bitcoincashplus.org - same use than the others - Height: 501407
 
-<b>Bitcoin Private</b> "BTCP" - dnsseed.btcprivate.org or btcp.suprnova.cc - please note that this a BTC and Zcash Classic (ZCL) fork, same use than the others - Height: 511346 BTC - 272991 ZCL
+<b>Bitcoin Private</b> "BTCP" - dnsseed.btcprivate.org or btcp.suprnova.cc or https://explorer.btcprivate.org/tx/send - please note that this a BTC and Zcash Classic (ZCL) fork, same use than the others - Height: 511346 BTC - 272991 ZCL
 
 <b>Bitcoin Pizza</b> "BPA" - 89.38.97.62 or 46.28.204.17 - same use than the others - Height: 501888
 
