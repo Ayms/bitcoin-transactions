@@ -241,7 +241,7 @@ var version_=function(v) {
 		PROTOCOL=70018;
 		NOSEGWIT.push('P');
 	} else if (v==='BTCP') {
-		VERSION=2; //or 1
+		VERSION=1; //or 1
 		SIGHASH_FORKID=0x00000040;
 		FORKID_IN_USE=42;
 		MAIN=0xCDA2EAA8;
