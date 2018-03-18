@@ -124,6 +124,8 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 ### Forked coins
 
+<b>Lightning Bitcoin</b> "LBTC" - seed7.lbtc.io or seed8/9/10.lbtc.io - same use than the others - Height: 499888
+
 <b>BitClassic Coin</b> "BICC" - 47.104.59.46 or 47.104.59.9 - same use than the others - Height: 499888
 
 <b>Litecoin Cash</b> "LCC" - seeds.litecoinca.sh - Litecoin fork, you must multiply the numbers by 10 - Height: 1371111
@@ -174,7 +176,7 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 <b>Bitcore</b> "BTX" - btx.suprnova.cc - Height: 492820
 
-Possible other forks (if/when their release their code): Bitcoin Interest, Lightning Bitcoin (height 499999), Bitcoin God, Bitcoin Platinium , Bitcoin Uranium, Bitcoin Silver
+Possible other forks (if/when their release their code): Bitcoin Interest, Bitcoin God, Bitcoin Platinium , Bitcoin Uranium, Bitcoin Silver
 
 Keep in mind that most of those forks are probably scams, so in any case never use their wallets
 

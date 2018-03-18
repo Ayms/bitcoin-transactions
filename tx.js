@@ -485,6 +485,18 @@ var version_=function(v) {
 		LASTBLOCK=499888;
 		PROTOCOL=770015;
 		FORK_STRING=new Buffer('111','utf8');
+	}	else if (v==='LBTC') {
+		VERSION=0xff01;
+		SIGHASH_FORKID=0x00000000;
+		//FORKID_IN_USE=0;
+		MAIN=0xD7B4BEF9;
+		VERSION_='LBTC';
+		p2pk=new Buffer('00','hex');
+		p2sh=new Buffer('05','hex');
+		BIP143=false;
+		PORT=9333;
+		LASTBLOCK=499999;
+		PROTOCOL=70015;
 	} else {
 		throw "You forgot to mention the network version";
 	};
