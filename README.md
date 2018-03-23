@@ -124,6 +124,8 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 ### Forked coins
 
+<b>Bitcoin Interest (Warning this fork does not implement any replay protection with BTG)</b> "BCI" - seeder1.bci-server.com or seeder2/3.bci-server.com or 216.250.117.221- 74.208.166.57 - 50.27.27.80 - 66.85.74.54 - 69.195.159.106 - 69.195.157.106 - 74.208.235.89 - same use than the others - Height: 505083
+
 <b>Lightning Bitcoin</b> "LBTC" - seed7.lbtc.io or seed8/9/10.lbtc.io - same use than the others - Height: 499888
 
 <b>BitClassic Coin</b> "BICC" - 47.104.59.46 or 47.104.59.9 - same use than the others - Height: 499888

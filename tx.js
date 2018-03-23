@@ -498,6 +498,19 @@ var version_=function(v) {
 		PORT=9333;
 		LASTBLOCK=499999;
 		PROTOCOL=70015;
+	} else if (v==='BCI') {
+		VERSION=2;
+		SIGHASH_FORKID=0x00000040;
+		FORKID_IN_USE=79;
+		MAIN=0x26FEE4ED;
+		VERSION_='BCI';
+		p2pk=new Buffer('66','hex');
+		p2sh=new Buffer('17','hex');
+		BIP143=true;
+		PORT=8331;
+		LASTBLOCK=505083;
+		PROTOCOL=70016;
+		NOSEGWIT.push('i');
 	} else {
 		throw "You forgot to mention the network version";
 	};
