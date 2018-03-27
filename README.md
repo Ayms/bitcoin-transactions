@@ -86,6 +86,10 @@ The module will calculate the amount to be spent according to the fees and advis
 	
 You can adjust the fees if you like according to the size of the transaction instead of using 0.00000300 or 0.00000500
 
+### Support
+
+In case of problems or issues please email us at contact at peersm.com
+
 ## Rationale
 
 This module is equivalent to bitcoin-cli for some features but much more simple to use. To use bitcoin-cli you need to run the full bitcoin software, sync with the network and then sync your wallet.

@@ -151,7 +151,7 @@ var version_=function(v) {
 		PROTOCOL=70015;
 		NOSEGWIT.push('L');
 	} else if (v==='SBTC') {
-		VERSION=2;
+		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
 		//FORKID_IN_USE=0;
 		MAIN=0xD9B4BEF9;
@@ -164,7 +164,7 @@ var version_=function(v) {
 		PROTOCOL=70016;
 		FORK_STRING=new Buffer('0473627463','hex');
 	} else if (v==='BTX') {
-		VERSION=2;
+		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000000;
 		//FORKID_IN_USE=0;
 		MAIN=0xD9B4BEF9;
@@ -217,7 +217,7 @@ var version_=function(v) {
 		PROTOCOL=770015;
 		FORK_STRING=new Buffer('027562','hex');
 	} else if (v==='B2X') {
-		VERSION=2;
+		VERSION=1; //or 2
 		SIGHASH_FORKID=(0x00000001|0x00000020|0x10)<<1; //new stupid invention 0x62
 		//FORKID_IN_USE=0;
 		MAIN=0xD8B5B2F4;
@@ -229,7 +229,7 @@ var version_=function(v) {
 		LASTBLOCK=500000;
 		PROTOCOL=70015;
 	} else if (v==='BPA') {
-		VERSION=2;
+		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000020;
 		FORKID_IN_USE=47;
 		MAIN=0xD9C4BEA9;
@@ -259,7 +259,7 @@ var version_=function(v) {
 		FORK_STRING=new Buffer(0);
 		NOSEGWIT2.push('b1');
 	} else if (v==='BCP') {
-		VERSION=2;
+		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
 		//FORKID_IN_USE=0;
 		MAIN=0xE1476D44;
@@ -287,7 +287,7 @@ var version_=function(v) {
 		D=5;
 		NOSEGWIT.push('C');
 	} else if (v==='BCA') {
-		VERSION=2;
+		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
 		FORKID_IN_USE=93;
 		MAIN=0xE81DC14F;
@@ -300,7 +300,7 @@ var version_=function(v) {
 		PROTOCOL=70020;
 		NOSEGWIT.push('A');
 	} else if (v==='WBTC') {
-		VERSION=2;
+		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
 		//FORKID_IN_USE=0;
 		MAIN=0xD9B4BEF9;
@@ -313,7 +313,7 @@ var version_=function(v) {
 		PROTOCOL=70016;
 		FORK_STRING=new Buffer('0477627463','hex');
 	} else if (v==='BTW') {
-		VERSION=2;
+		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
 		FORKID_IN_USE=87;
 		MAIN=0x777462F8;
@@ -328,7 +328,7 @@ var version_=function(v) {
 		D=4;
 		NOSEGWIT.push('W');
 	} else if (v==='BTF') {
-		VERSION=2;
+		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
 		FORKID_IN_USE=70;
 		MAIN=0xE6D4E2FA;
@@ -341,7 +341,7 @@ var version_=function(v) {
 		PROTOCOL=70015;
 		NOSEGWIT.push('F');
 	} else if (v==='BCX') {
-		VERSION=2;
+		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000010;
 		FORKID_IN_USE=0;
 		MAIN=0xF9BC0511;
@@ -356,7 +356,7 @@ var version_=function(v) {
 		D=4;
 		NOSEGWIT.push('X');
 	} else if (v==='BTN') {
-		VERSION=2;
+		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
 		FORKID_IN_USE=88;
 		MAIN=0x344D37A1;
@@ -368,7 +368,7 @@ var version_=function(v) {
 		LASTBLOCK=500000;
 		PROTOCOL=70016;
 	} else if (v==='BTH') {
-		VERSION=2;
+		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
 		FORKID_IN_USE=53;
 		MAIN=0x04AD77D1;
@@ -381,7 +381,7 @@ var version_=function(v) {
 		PROTOCOL=70016;
 		NOSEGWIT.push('H');
 	} else if (v==='BTV') {
-		VERSION=2;
+		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000064;
 		FORKID_IN_USE=0;
 		MAIN=0xD9B4BEF9;
@@ -406,7 +406,7 @@ var version_=function(v) {
 		PROTOCOL=70015;
 		FORK_STRING=new Buffer('Thanks Ayms this module is great','utf8');
 	} else if (v==='BTP') {
-		VERSION=2;
+		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
 		FORKID_IN_USE=80;
 		MAIN=0xD9B4BEF9;
@@ -421,7 +421,7 @@ var version_=function(v) {
 		D=7;
 		NOSEGWIT.push('P');
 	} else if (v==='BCK') {
-		VERSION=2;
+		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
 		FORKID_IN_USE=143;
 		MAIN=0x161632AF;
@@ -433,7 +433,7 @@ var version_=function(v) {
 		LASTBLOCK=500000;
 		PROTOCOL=70015;
 	} else if (v==='BTSQ') {
-		VERSION=2;
+		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000010;
 		FORKID_IN_USE=31;
 		MAIN=0xD9C4CEB9;
@@ -474,7 +474,7 @@ var version_=function(v) {
 		LASTBLOCK=250000;
 		PROTOCOL=170002;
 	} else if (v==='BICC') {
-		VERSION=2;
+		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000010;
 		//FORKID_IN_USE=0;
 		MAIN=0xD9B4BEF9;
@@ -499,7 +499,7 @@ var version_=function(v) {
 		LASTBLOCK=499999;
 		PROTOCOL=70015;
 	} else if (v==='BCI') {
-		VERSION=2;
+		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
 		FORKID_IN_USE=79;
 		MAIN=0x26FEE4ED;
