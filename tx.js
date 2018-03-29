@@ -511,6 +511,18 @@ var version_=function(v) {
 		LASTBLOCK=505083;
 		PROTOCOL=70016;
 		NOSEGWIT.push('i');
+	} else if (v==='BCBC') {
+		VERSION=1; //or 2
+		SIGHASH_FORKID=0x00000000;
+		//FORKID_IN_USE=0;
+		MAIN=0xD9B4BEF9
+		VERSION_='BCBC';
+		p2pk=new Buffer('00','hex');
+		p2sh=new Buffer('05','hex');
+		BIP143=false;
+		PORT=8341;
+		LASTBLOCK=498754;
+		PROTOCOL=70015;
 	} else {
 		throw "You forgot to mention the network version";
 	};
