@@ -487,17 +487,19 @@ var version_=function(v) {
 		PROTOCOL=770015;
 		FORK_STRING=new Buffer('111','utf8');
 	}	else if (v==='LBTC') {
-		VERSION=0xff01;
+		VERSION=0xff02;
 		SIGHASH_FORKID=0x00000000;
 		//FORKID_IN_USE=0;
+		//MAIN=0xD7B4BEF9;
 		MAIN=0xD7B4BEF9;
 		VERSION_='LBTC';
 		p2pk=new Buffer('00','hex');
 		p2sh=new Buffer('05','hex');
 		BIP143=false;
 		PORT=9333;
-		LASTBLOCK=499999;
-		PROTOCOL=70015;
+		//LASTBLOCK=499999;
+		LASTBLOCK=1334370;
+		PROTOCOL=70013;
 	} else if (v==='BCI') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
@@ -1227,6 +1229,7 @@ Tx.prototype.finalize=function(tx) {
 	var boo=tx;
 	magic.writeUInt32LE(this.testnet?TESTNET:MAIN);
 	tx=tx?(new Buffer(tx,'hex')):this.serialize();
+	var checksum=double_hash256(tx).slice(0,4);
 	if (SEGWIT) {
 		this.hash=this.hash_w;
 	} else {
@@ -1235,7 +1238,6 @@ Tx.prototype.finalize=function(tx) {
 	};
 	var length=new Buffer(4);
 	length.writeUInt32LE(tx.length);
-	var checksum=this.hash.slice(0,4);
 	this.tx=Buffer.concat([magic,TX_COMMAND,length,checksum,tx]);
 	console.log('----- Transaction hash: '+this.hash.toString('hex'));
 	if (!boo) {
@@ -1348,7 +1350,7 @@ var Send=function(data,ip,port) {
 			console.log('Sent version to '+addr);
 		});
 		client.on('data',function(d) {
-			console.log('------ Answer receiced from '+addr);
+			console.log('------ Answer received from '+addr);
 			decode_simple(d);
 			console.log(d.toString('hex'));
 			if (d.toString('hex').indexOf(TX_VERACK.toString('hex'))!==-1) {
