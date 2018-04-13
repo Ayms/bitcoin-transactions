@@ -525,6 +525,20 @@ var version_=function(v) {
 		PORT=8341;
 		LASTBLOCK=498754;
 		PROTOCOL=70015;
+	} else if (v==='BTCH') {
+		VERSION=1; //or 2
+		SIGHASH_FORKID=0x00000000;
+		//FORKID_IN_USE=0;
+		MAIN=0x8DE4EEF9;
+		VERSION_='BTCH';
+		p2pk=new Buffer('3c','hex');
+		p2sh=new Buffer('55','hex');
+		PRIV=new Buffer('bc','hex');
+		BIP143=false;
+		PORT=7770;
+		LASTBLOCK=507089;
+		PROTOCOL=170002;
+		NOSEGWIT.push('R');
 	} else {
 		throw "You forgot to mention the network version";
 	};
