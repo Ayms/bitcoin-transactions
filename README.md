@@ -168,7 +168,7 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 <b>Bitcoin Cash Plus (Warning: this fork does not implement any replay protection with BCH</b>) "BCP" - seed.bitcoincashplus.org - same use than the others - Height: 501407
 
-<b>Bitcoin Private</b> "BTCP" - dnsseed.btcprivate.org or btcp.suprnova.cc or https://explorer.btcprivate.org/tx/send - please note that this a BTC and Zcash Classic (ZCL) fork, please look [here](https://bitcointalk.org/index.php?topic=2827163.msg31911075#msg31911075) to move/claim ZCL and BTC on BTCP - Height: 511346 BTC - 272991 ZCL
+<b>Bitcoin Private</b> "BTCP" - btcp.suprnova.cc or https://explorer.btcprivate.org/tx/send - please note that this a BTC and Zcash Classic (ZCL) fork, please look [here](https://bitcointalk.org/index.php?topic=2827163.msg31911075#msg31911075) to move/claim ZCL and BTC on BTCP - Height: 511346 BTC - 272991 ZCL
 
 <b>Bitcoin Pizza</b> "BPA" - 89.38.97.62 or 46.28.204.17 - same use than the others - Height: 501888
 
