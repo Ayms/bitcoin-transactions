@@ -128,6 +128,8 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 ### Forked coins
 
+<b>Bitcoin God</b> "GOD" - s.bitcoingod.org - same use than the others - Height: 501226
+
 <b>Bitcoin Hush</b> "BTCH" - seeds.komodoplatform.com - same use than the others - Height: 507089
 
 <b>Bitcoin@CBC</b> "BCBC" - btcseed.cleanblockchain.io or btcseed.cleanblockchain.org - same use than the others - Height: 498754
@@ -186,7 +188,7 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 <b>Bitcore</b> "BTX" - btx.suprnova.cc - Height: 492820
 
-Possible other forks (if/when their release their code): Bitcoin Interest, Bitcoin God, Bitcoin Platinium , Bitcoin Uranium, Bitcoin Silver
+Possible other forks (if/when their release their code): Bitcoin Platinium , Bitcoin Uranium, Bitcoin Silver
 
 Keep in mind that most of those forks are probably scams, so in any case never use their wallets
 

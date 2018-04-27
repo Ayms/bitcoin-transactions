@@ -487,7 +487,8 @@ var version_=function(v) {
 		PROTOCOL=770015;
 		FORK_STRING=new Buffer('111','utf8');
 	}	else if (v==='LBTC') {
-		VERSION=0xff02;
+		VERSION=0xff01;
+		//VERSION=0xff02;
 		SIGHASH_FORKID=0x00000000;
 		//FORKID_IN_USE=0;
 		//MAIN=0xD7B4BEF9;
@@ -539,6 +540,19 @@ var version_=function(v) {
 		LASTBLOCK=507089;
 		PROTOCOL=170002;
 		NOSEGWIT.push('R');
+	} else if (v==='GOD') {
+		VERSION=2;
+		SIGHASH_FORKID=0x00000008;
+		FORKID_IN_USE=107;
+		MAIN=0xD9B4BEF9;
+		VERSION_='GOD';
+		p2pk=new Buffer('61','hex');
+		p2sh=new Buffer('17','hex');
+		BIP143=true;
+		PORT=8885;
+		LASTBLOCK=501226;
+		PROTOCOL=70015;
+		NOSEGWIT.push('g');
 	} else {
 		throw "You forgot to mention the network version";
 	};
