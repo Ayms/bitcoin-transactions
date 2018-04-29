@@ -5,7 +5,7 @@ Claim your coins and move/manage them by yourself: Bitcoin transactions made sim
 
 ## Support
 
-If you experience some issues with this module, please email at the github address or contact peersm com, or post an issue
+If you experience some issues with this module, please email at the github address or email contact peersm com, or post an issue
 
 ## Quick Start guide
 
