@@ -3,6 +3,10 @@ bitcoin-transactions
 
 Claim your coins and move/manage them by yourself: Bitcoin transactions made simple for standard or multisig wallets, segwit is supported, create and send by your own your Bitcoin, Bitcoin Cash, Bitcoin Gold, Bitcoin Diamond, Super Bitcoin, Bitcore, Zcash, Litecoin, DOGE, Dash, tec transactions, manage your keys and do not disclose them to dubious wallets software
 
+## Support
+
+If you experience some issues with this module, please email at the github address or contact peersm com, or post an issue
+
 ## Quick Start guide
 
 If you know what you are doing and don't want to read all what follows, start [installing](https://github.com/Ayms/bitcoin-transactions#installation) bitcoin-transactions and look at the [supported coins](https://github.com/Ayms/bitcoin-transactions#supported-coins) section (and specific cases, for BTCP please look here also https://bitcointalk.org/index.php?topic=2827163.msg31911075#msg31911075 , a special fix has been implemented for BTCP and segwit addresses, please see https://www.reddit.com/r/BitcoinPrivate/comments/828chv/claim_btcp_from_btc_segwit_address/dw7hg0x/)
