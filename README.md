@@ -5,7 +5,7 @@ Claim your coins and move/manage them by yourself: Bitcoin transactions made sim
 
 ## Support
 
-If you experience some issues with this module, please email at the github address or email contact peersm com, or post an issue
+If you experience some issues with this module or don't feel comfortable to use it by yourself, or just don't know how to use it, please email at our github address or email contact peersm com, or post an issue
 
 ## Quick Start guide
 
@@ -131,6 +131,12 @@ This module is secure, it does not send anything outside (except the transaction
 Please see below the supported coins and acronym to be used, as well as full nodes where to send your transactions, use/tests cases and the fork height
 
 ### Forked coins
+
+<b>Bitcoin Clean (Warning this fork does not implement any replay protection with BTC)</b> "BCL" - seed.bitcoinclean.org - same use than the others - Height: 518800
+
+<b>New Bitcoin</b> "NBTC" - 1.newbitcoin.org or 2/3/4 1.manghao.com or 2/3/4 - same use than the others but you are supposed to multiply the amounts by 2, don't do it with this tool, keep the original numbers and this will work the same (ie you will get the double on NBTC) - Height: 501225
+
+<b>Big Bitcoin</b> "BBC" - seed.bigbitcoins.org - same use than the others but you must multiply the amounts by 10 - Height: 508888
 
 <b>Bitcoin God</b> "GOD" - s.bitcoingod.org - same use than the others - Height: 501226
 
