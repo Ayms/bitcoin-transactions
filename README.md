@@ -32,9 +32,9 @@ You will get this:
 
 <b>Which even give you the commands to use with the tool</b>, if you have several addresses and are an advanced user you can run this for each address and group the inputs as explained in [Multiple inputs](https://github.com/Ayms/bitcoin-transactions#multiple-inputs-1)
 
-Still you can doublecheck that the parameters are correct at the end of the full report:
+Still you can doublecheck that the parameters are correct at the end of the full report :
 
-![tuto5](https://raw.github.com/Ayms/bitcoin-transactions/master/tuto5.png)
+![tuto6](https://raw.github.com/Ayms/bitcoin-transactions/master/tuto6.png)
 
 If something does not look correct when using the tool, please email us or post an issue (always without your private keys)
 
