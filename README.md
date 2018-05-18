@@ -92,7 +92,7 @@ You can adjust the fees if you like according to the size of the transaction ins
 
 ## Supported coins
 
-Please see below the supported coins and acronym to be used, as well as full nodes where to send your transactions, use/tests cases and the fork height
+Please see below the supported coins and acronym to be used, as well as explorer link to send your transactions or full nodes, use/tests cases, fork height and explorer
 
 ### Forked coins
 
@@ -120,7 +120,7 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 <b>Bitcoin King</b> "BCK" - 47.52.28.49 - same use than the others - Height 499999
 
-<b>Bitcoin Pay</b> "BTP" - Unknown - Same as BCD except that you must multiply the numbers by 1000 - Height: 499345
+<b>Bitcoin Pay</b> "BTP" - http://exp.btceasypay.com/insight/tx/send - Same as BCD except that you must multiply the numbers by 1000 - Height: 499345 - Explorer: http://exp.btceasypay.com/insight/
 
 <b>Bitcoin Top</b> "BTT" - dnsseed.bitcointop.org - same use than the others - Height: 501118
 
@@ -140,9 +140,9 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 <b>Bitcoin Atom</b> "BCA" - https://explorer.bitcoinatom.io/rpc-terminal (sendrawtransaction ``body``) or seed.bitcoinatom.io or seed.bitcoin-atom.org or seed.bitcoinatom.net - same use than the others - Height: 505888 - Explorer: https://explorer.bitcoinatom.io
 
-<b>Bitcoin Candy</b> "CDY" - seed.bitcoincandy.one or seed.cdy.one - please note that this a Bitcoin Cash fork and read [Specific case of CDY](https://github.com/Ayms/bitcoin-transactions#specific-case-of-cdy) and see [cdy.js](https://github.com/Ayms/bitcoin-transactions/blob/master/cdy.js) - Height: 512666
+<b>Bitcoin Candy</b> "CDY" - http://block.cdy.one/tx/send or seed.bitcoincandy.one or seed.cdy.one - please note that this a Bitcoin Cash fork and read [Specific case of CDY](https://github.com/Ayms/bitcoin-transactions#specific-case-of-cdy) and see [cdy.js](https://github.com/Ayms/bitcoin-transactions/blob/master/cdy.js) - Height: 512666 - Explorer: http://block.cdy.one/
 
-<b>Bitcoin Cash Plus (Warning: this fork does not implement any replay protection with BCH</b>) "BCP" - seed.bitcoincashplus.org - same use than the others - Height: 501407
+<b>Bitcoin Cash Plus (Warning: this fork does not implement any replay protection with BCH</b>) "BCP" - http://bcpexp.org/tx/send or seed.bitcoincashplus.org - same use than the others - Height: 501407 - Explorer: http://bcpexp.org/
 
 <b>Bitcoin Private</b> "BTCP" - https://explorer.btcprivate.org/tx/send  or btcp.suprnova.cc - please note that this a BTC and Zcash Classic (ZCL) fork, please look [here](https://bitcointalk.org/index.php?topic=2827163.msg31911075#msg31911075) to move/claim ZCL and BTC on BTCP - Height: 511346 BTC - 272991 ZCL - Explorer: https://explorer.btcprivate.org
 
@@ -160,7 +160,7 @@ Please see below the supported coins and acronym to be used, as well as full nod
 
 <b>Super Bitcoin</b> "SBTC" - http://block.superbtc.org/tx/send or seed.superbtca.com - Height: 498888 - Explorer: http://block.superbtc.org/
 
-<b>Bitcore</b> "BTX" - btx.suprnova.cc - Height: 492820 - Explorer: https://explorer.bitcore.cc
+<b>Bitcore</b> "BTX" - btx.suprnova.cc - Height: 492820 - Explorer: https://chainz.cryptoid.info/btx
 
 Keep in mind that most of those forks are probably scams, so in any case never use their wallets
 
