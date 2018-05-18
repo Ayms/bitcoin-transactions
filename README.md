@@ -30,7 +30,7 @@ You will get this:
 
 ![tuto4](https://raw.github.com/Ayms/bitcoin-transactions/master/tuto4.png)
 
-Which even give you the command to use with the tool, if you have several addresses and are an advanced user you can run this for each address and group the inputs as explained in [Multiple inputs](https://github.com/Ayms/bitcoin-transactions#multiple-inputs-1)
+<b>Which even give you the commands to use with the tool</b>, if you have several addresses and are an advanced user you can run this for each address and group the inputs as explained in [Multiple inputs](https://github.com/Ayms/bitcoin-transactions#multiple-inputs-1)
 
 Still you can doublecheck that the parameters are correct at the end of the full report:
 
