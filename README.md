@@ -13,10 +13,28 @@ If you know what you are doing and don't want to read all what follows, start [i
 
 ### Getting your parameters
 
+## If you know how to use an explorer and identify where were your coins before the fork:
+
 ![tuto1](https://raw.github.com/Ayms/bitcoin-transactions/master/tuto1.png)
 ![tuto2](https://raw.github.com/Ayms/bitcoin-transactions/master/tuto2.png)
 
 To quickly move/claim coins to an exchange for example, you can look [Claiming your coins (BCH,BTG,BCD,SBTC,CDY,etc) - Addresses and getting 'free' coins](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdsbtccdyetc---addresses-and-getting-free-coins) or [Tool to claim coins for all Bitcoin forks without using wallets or running nodes](https://bitcointalk.org/index.php?topic=2827163.msg31273044#msg31273044)
+
+## If you don't know how to use an explorer to identify where were your coins before the fork:
+
+You can use [Find My Coins .ninja](http://www.findmycoins.ninja/), enter one of your addresses and copy the full report:
+
+![tuto3](https://raw.github.com/Ayms/bitcoin-transactions/master/tuto3.png)
+
+You will get this:
+
+![tuto4](https://raw.github.com/Ayms/bitcoin-transactions/master/tuto4.png)
+
+Which even give you the command to use with the tool, if you have several addresses and are an advanced user you can run this for each address and group the inputs as explained in [Multiple inputs](https://github.com/Ayms/bitcoin-transactions#multiple-inputs-1)
+
+Still you can doublecheck that the parameters are correct at the end of the full report:
+
+![tuto5](https://raw.github.com/Ayms/bitcoin-transactions/master/tuto5.png)
 
 If something does not look correct when using the tool, please email us or post an issue (always without your private keys)
 
@@ -214,7 +232,7 @@ This module is secure, it does not send anything outside (except the transaction
 
 It's not rare that the explorer of the forks are not working well, so you can use the legacy explorers to find your coins as explained [here](https://github.com/Ayms/bitcoin-transactions#claiming-your-coins-bchbtgbcdsbtccdyetc---addresses-and-getting-free-coins) or [here](https://bitcointalk.org/index.php?topic=2827163.msg31273044#msg31273044)
 
-You can also use [Find My Coins .ninja](http://www.findmycoins.ninja/) to get an overview of spendable coins (experimental and beta version for now)
+You can also use [Find My Coins .ninja](http://www.findmycoins.ninja/) to get an overview of spendable coins
 
 ## Fees
 
