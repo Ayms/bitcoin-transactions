@@ -90,9 +90,93 @@ The module will calculate the amount to be spent according to the fees and advis
 	
 You can adjust the fees if you like according to the size of the transaction instead of using 0.00000300 or 0.00000500
 
-### Support
+## Supported coins
 
-In case of problems or issues please email us at contact at peersm.com
+Please see below the supported coins and acronym to be used, as well as full nodes where to send your transactions, use/tests cases and the fork height
+
+### Forked coins
+
+<b>Bitcoin Clean (Warning this fork does not implement any replay protection with BTC)</b> "BCL" - seed.bitcoinclean.org - same use than the others - Height: 518800
+
+<b>New Bitcoin</b> "NBTC" - 1.newbitcoin.org or 2/3/4 1.manghao.com or 2/3/4 - same use than the others but you are supposed to multiply the amounts by 2, don't do it with this tool, keep the original numbers and this will work the same (ie you will get the double on NBTC) - Height: 501225
+
+<b>Big Bitcoin</b> "BBC" - seed.bigbitcoins.org - same use than the others but you must multiply the amounts by 10 - Height: 508888
+
+<b>Bitcoin God</b> "GOD" - s.bitcoingod.org - same use than the others - Height: 501226 - Explorer: http://explorer.bitcoingod.org
+
+<b>Bitcoin Hush</b> "BTCH" - https://explorer.btchush.org/tx/send or seeds.komodoplatform.com - same use than the others - Height: 507089 - Explorer: https://explorer.btchush.org/
+
+<b>Bitcoin@CBC</b> "BCBC" - btcseed.cleanblockchain.io or btcseed.cleanblockchain.org - same use than the others - Height: 498754 - Explorer: http://be.cleanblockchain.org/
+
+<b>Bitcoin Interest (Warning this fork does not implement any replay protection with BTG)</b> "BCI" -  https://explorer.bitcoininterest.io/tx/send or seeder1.bci-server.com or seeder2/3.bci-server.com or 216.250.117.221- 74.208.166.57 - 50.27.27.80 - 66.85.74.54 - 69.195.159.106 - 69.195.157.106 - 74.208.235.89 - same use than the others - Height: 505083 - Explorer: https://explorer.bitcoininterest.io/
+
+<b>Lightning Bitcoin</b> "LBTC" - seed10.lbtc.io - same use than the others - Height: 499888 - Explorer: http://explorer.lbtc.io
+
+<b>BitClassic Coin</b> "BICC" - 47.104.59.46 or 47.104.59.9 - same use than the others - Height: 499888 - Explorer: http://info.bicc.io
+
+<b>Litecoin Cash</b> "LCC" - seeds.litecoinca.sh - Litecoin fork, you must multiply the numbers by 10 - Height: 1371111 - Explorer: https://explorer.litecoinca.sh
+
+<b>Bitcoin Community</b> "BTSQ" - seed1.aliyinke.com (or seed2/seed3) - Same as BCD except that you must multiply the numbers by 1000 - Height: 506066
+
+<b>Bitcoin King</b> "BCK" - 47.52.28.49 - same use than the others - Height 499999
+
+<b>Bitcoin Pay</b> "BTP" - Unknown - Same as BCD except that you must multiply the numbers by 1000 - Height: 499345
+
+<b>Bitcoin Top</b> "BTT" - dnsseed.bitcointop.org - same use than the others - Height: 501118
+
+<b>Bitcoin Vote</b> "BTV" - https://block.bitvote.one/address/tx/send or seed1.bitvote.one - same use than the others - Height: 505050 - Explorer: https://block.bitvote.one/address
+
+<b>Bitcoin Hot</b> "BTH" - seed-us.bitcoinhot.co - same use than the others - Height: 498848 - Explorer: block.bithot.org
+
+<b>Bitcoin New</b> "BTN" - dnsseed.bitcoin-new.org - same use than the others - Height: 501000 - Explorer: http://bitcoin-new.org/
+
+<b>Bitcoin X</b> "BCX" - https://bcx.info/tx/send or 192.169.227.48 - Same as BCD except that you must multiply the numbers by 10000 - Height: 498888 - Explorer: https://bcx.info
+
+<b>Bitcoin Faith</b> "BTF" - a.btf.hjy.cc - same use than the others - Height: 500000
+
+<b>Bitcoin World</b> "BTW" - dnsseed.btw.one - Same as BCD except that you must multiply the numbers by 10000 - Height: 499777
+
+<b>World Bitcoin</b> "WBTC" - dnsseed.wbtcteam.org - same use than the others - Height: 503888 - Explorer: http://142.44.242.32:3001/
+
+<b>Bitcoin Atom</b> "BCA" - https://explorer.bitcoinatom.io/rpc-terminal (sendrawtransaction ``body``) or seed.bitcoinatom.io or seed.bitcoin-atom.org or seed.bitcoinatom.net - same use than the others - Height: 505888 - Explorer: https://explorer.bitcoinatom.io
+
+<b>Bitcoin Candy</b> "CDY" - seed.bitcoincandy.one or seed.cdy.one - please note that this a Bitcoin Cash fork and read [Specific case of CDY](https://github.com/Ayms/bitcoin-transactions#specific-case-of-cdy) and see [cdy.js](https://github.com/Ayms/bitcoin-transactions/blob/master/cdy.js) - Height: 512666
+
+<b>Bitcoin Cash Plus (Warning: this fork does not implement any replay protection with BCH</b>) "BCP" - seed.bitcoincashplus.org - same use than the others - Height: 501407
+
+<b>Bitcoin Private</b> "BTCP" - https://explorer.btcprivate.org/tx/send  or btcp.suprnova.cc - please note that this a BTC and Zcash Classic (ZCL) fork, please look [here](https://bitcointalk.org/index.php?topic=2827163.msg31911075#msg31911075) to move/claim ZCL and BTC on BTCP - Height: 511346 BTC - 272991 ZCL - Explorer: https://explorer.btcprivate.org
+
+<b>Bitcoin Pizza</b> "BPA" - 89.38.97.62 or 46.28.204.17 - same use than the others - Height: 501888 - Explorer: http://47.100.55.227/info/
+
+<b>SegwitB2X</b> "B2X" - https://explorer.b2x-segwit.io/tx/send or node1.b2x-segwit.io (or node2/3) - see [b2x.js](https://github.com/Ayms/bitcoin-transactions/blob/master/b2x.js) - Height: 501451 - Explorer: https://explorer.b2x-segwit.io/tx/send
+
+<b>United Bitcoin</b> "UBTC" - ip.ub.com - see [ubtc.js](https://github.com/Ayms/bitcoin-transactions/blob/master/ubtc.js) - Height: 498777 - Explorer: https://www.ub.com/explorer/
+
+<b>Bitcoin Gold</b> "BTG" -  https://btgexplorer.com/tx/send or btg.suprnova.cc  - see below and https://github.com/Ayms/bitcoin-transactions/issues/5 - Height: 491407 - Explorer:  https://explorer.bitcoingold.org/
+
+<b>Bitcoin Cash</b> "BCH" - https://blockdozer.com/tx/send or bch.suprnova.cc - see https://github.com/Ayms/bitcoin-transactions/issues/4 and [example-4.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-4.js) and [Specific case of BCH](https://github.com/Ayms/bitcoin-transactions#specific-case-of-bch) for the new address format - Height: 478559 - Explorer: https://blockdozer.com/tx/send
+
+<b>Bitcoin Diamond</b> "BCD" - seed1.dns.btcd.io or 139.198.190.221 or 121.201.13.117 - please read [Specific case of BCD](https://github.com/Ayms/bitcoin-transactions#specific-case-of-bcd) and see [bcd.js](https://github.com/Ayms/bitcoin-transactions/blob/master/bcd.js) - Height: 495866 - Explorer: http://explorer.btcd.io
+
+<b>Super Bitcoin</b> "SBTC" - http://block.superbtc.org/tx/send or seed.superbtca.com - Height: 498888 - Explorer: http://block.superbtc.org/
+
+<b>Bitcore</b> "BTX" - btx.suprnova.cc - Height: 492820 - Explorer: https://explorer.bitcore.cc
+
+Keep in mind that most of those forks are probably scams, so in any case never use their wallets
+
+### Legacy coins
+
+<b>Bitcoin Core</b> "BTC" - https://blockexplorer.com/tx/send or bitcoin.sipa.be - see https://github.com/Ayms/bitcoin-transactions/blob/master/verify.txt - Explorer: https://blockchain.info/
+
+<b>Zcash</b> "ZEC" - https://explorer.zcashfr.io/insight/tx/send or mainnet.z.cash - see https://github.com/Ayms/bitcoin-transactions/blob/master/verify.txt - Explorer: https://explorer.zcashfr.io/insight/
+
+<b>Litecoin</b> "LTC" - ltc.suprnova.cc - see https://github.com/Ayms/bitcoin-transactions/blob/master/verify.txt - Explorer: https://live.blockcypher.com/ltc
+
+<b>Dogecoin</b> "DOGE" - 5.135.158.86 - Explorer: https://dogechain.info/
+
+<b>Dash</b> "DASH" - dash.suprnova.cc - Explorer: https://chainz.cryptoid.info/dash/
+
+<b>ZClassic</b> "ZCL" - eu1.zclassic.org - Explorer: 
 
 ## Rationale
 
@@ -125,96 +209,6 @@ The code is provided in clear so you can check it but please read the specific c
 This module was started a year ago, the intent was at that time to make non trivial transactions, then was stopped, the basic intent now is to allow you to make simply your transactions (for example to send your mined coins to an exchange or to send your BTx to BTy)
 
 This module is secure, it does not send anything outside (except the transactions when you request it) and does not get anything from the outside, therefore your keys are just managed by you locally
-
-## Supported coins
-
-Please see below the supported coins and acronym to be used, as well as full nodes where to send your transactions, use/tests cases and the fork height
-
-### Forked coins
-
-<b>Bitcoin Clean (Warning this fork does not implement any replay protection with BTC)</b> "BCL" - seed.bitcoinclean.org - same use than the others - Height: 518800
-
-<b>New Bitcoin</b> "NBTC" - 1.newbitcoin.org or 2/3/4 1.manghao.com or 2/3/4 - same use than the others but you are supposed to multiply the amounts by 2, don't do it with this tool, keep the original numbers and this will work the same (ie you will get the double on NBTC) - Height: 501225
-
-<b>Big Bitcoin</b> "BBC" - seed.bigbitcoins.org - same use than the others but you must multiply the amounts by 10 - Height: 508888
-
-<b>Bitcoin God</b> "GOD" - s.bitcoingod.org - same use than the others - Height: 501226
-
-<b>Bitcoin Hush</b> "BTCH" - seeds.komodoplatform.com - same use than the others - Height: 507089
-
-<b>Bitcoin@CBC</b> "BCBC" - btcseed.cleanblockchain.io or btcseed.cleanblockchain.org - same use than the others - Height: 498754
-
-<b>Bitcoin Interest (Warning this fork does not implement any replay protection with BTG)</b> "BCI" - seeder1.bci-server.com or seeder2/3.bci-server.com or 216.250.117.221- 74.208.166.57 - 50.27.27.80 - 66.85.74.54 - 69.195.159.106 - 69.195.157.106 - 74.208.235.89 - same use than the others - Height: 505083
-
-<b>Lightning Bitcoin</b> "LBTC" - seed10.lbtc.io - same use than the others - Height: 499888
-
-<b>BitClassic Coin</b> "BICC" - 47.104.59.46 or 47.104.59.9 - same use than the others - Height: 499888
-
-<b>Litecoin Cash</b> "LCC" - seeds.litecoinca.sh - Litecoin fork, you must multiply the numbers by 10 - Height: 1371111
-
-<b>Bitcoin Community</b> "BTSQ" - seed1.aliyinke.com (or seed2/seed3) - Same as BCD except that you must multiply the numbers by 1000 - Height: 506066
-
-<b>Bitcoin King</b> "BCK" - 47.52.28.49 - same use than the others - Height 499999
-
-<b>Bitcoin Pay</b> "BTP" - Unknown - Same as BCD except that you must multiply the numbers by 1000 - Height: 499345
-
-<b>Bitcoin Top</b> "BTT" - dnsseed.bitcointop.org - same use than the others - Height: 501118
-
-<b>Bitcoin Vote</b> "BTV" - seed1.bitvote.one - same use than the others - Height: 505050
-
-<b>Bitcoin Hot</b> "BTH" - seed-us.bitcoinhot.co - same use than the others - Height: 498848
-
-<b>Bitcoin New</b> "BTN" - dnsseed.bitcoin-new.org - same use than the others - Height: 501000
-
-<b>Bitcoin X</b> "BCX" - 192.169.227.48 - Same as BCD except that you must multiply the numbers by 10000 - Height: 498888
-
-<b>Bitcoin Faith</b> "BTF" - a.btf.hjy.cc - same use than the others - Height: 500000
-
-<b>Bitcoin World</b> "BTW" - dnsseed.btw.one - Same as BCD except that you must multiply the numbers by 10000 - Height: 499777
-
-<b>World Bitcoin</b> "WBTC" - dnsseed.wbtcteam.org - same use than the others - Height: 503888
-
-<b>Bitcoin Atom</b> "BCA" - seed.bitcoinatom.io or seed.bitcoin-atom.org or seed.bitcoinatom.net - same use than the others - Height: 505888
-
-<b>Bitcoin Candy</b> "CDY" - seed.bitcoincandy.one or seed.cdy.one - please note that this a Bitcoin Cash fork and read [Specific case of CDY](https://github.com/Ayms/bitcoin-transactions#specific-case-of-cdy) and see [cdy.js](https://github.com/Ayms/bitcoin-transactions/blob/master/cdy.js) - Height: 512666
-
-<b>Bitcoin Cash Plus (Warning: this fork does not implement any replay protection with BCH</b>) "BCP" - seed.bitcoincashplus.org - same use than the others - Height: 501407
-
-<b>Bitcoin Private</b> "BTCP" - btcp.suprnova.cc or https://explorer.btcprivate.org/tx/send - please note that this a BTC and Zcash Classic (ZCL) fork, please look [here](https://bitcointalk.org/index.php?topic=2827163.msg31911075#msg31911075) to move/claim ZCL and BTC on BTCP - Height: 511346 BTC - 272991 ZCL
-
-<b>Bitcoin Pizza</b> "BPA" - 89.38.97.62 or 46.28.204.17 - same use than the others - Height: 501888
-
-<b>SegwitB2X</b> "B2X" - node1.b2x-segwit.io (or node2/3) - see [b2x.js](https://github.com/Ayms/bitcoin-transactions/blob/master/b2x.js) - Height: 501451
-
-<b>United Bitcoin</b> "UBTC" - ip.ub.com - see [ubtc.js](https://github.com/Ayms/bitcoin-transactions/blob/master/ubtc.js) - Height: 498777
-
-<b>Bitcoin Gold</b> "BTG" - btg.suprnova.cc  - see below and https://github.com/Ayms/bitcoin-transactions/issues/5 - Height: 491407
-
-<b>Bitcoin Cash</b> "BCH" - bch.suprnova.cc - see https://github.com/Ayms/bitcoin-transactions/issues/4 and [example-4.js](https://github.com/Ayms/bitcoin-transactions/blob/master/example-4.js) and [Specific case of BCH](https://github.com/Ayms/bitcoin-transactions#specific-case-of-bch) for the new address format - Height: 478559
-
-<b>Bitcoin Diamond</b> "BCD" - seed1.dns.btcd.io or 139.198.190.221 or 121.201.13.117 - please read [Specific case of BCD](https://github.com/Ayms/bitcoin-transactions#specific-case-of-bcd) and see [bcd.js](https://github.com/Ayms/bitcoin-transactions/blob/master/bcd.js) - Height: 495866 
-
-<b>Super Bitcoin</b> "SBTC" - seed.superbtca.com - Height: 498888
-
-<b>Bitcore</b> "BTX" - btx.suprnova.cc - Height: 492820
-
-Possible other forks (if/when their release their code): Bitcoin Platinium , Bitcoin Uranium, Bitcoin Silver
-
-Keep in mind that most of those forks are probably scams, so in any case never use their wallets
-
-### Legacy coins
-
-<b>Bitcoin Core</b> "BTC" - bitcoin.sipa.be - see https://github.com/Ayms/bitcoin-transactions/blob/master/verify.txt
-
-<b>Zcash</b> "ZEC" - mainnet.z.cash - see https://github.com/Ayms/bitcoin-transactions/blob/master/verify.txt
-
-<b>Litecoin</b> "LTC" - ltc.suprnova.cc - see https://github.com/Ayms/bitcoin-transactions/blob/master/verify.txt
-
-<b>Dogecoin</b> "DOGE" - 5.135.158.86
-
-<b>Dash</b> "DASH" - dash.suprnova.cc
-
-<b>ZClassic</b> "ZCL" - eu1.zclassic.org
 
 ### How to find my coins?
 
