@@ -35,11 +35,23 @@ node tx.js BTCP send ``complete transaction`` ``advised full node`` (as shown in
 
 ## Convert addresses
 
-You can use the legacy addresses, the tool will convert them automatically, however you might need sometimes to convert addresses to find your coins, example for BTCP:
+You can use the legacy or bech32 addresses, the tool will convert them automatically, however you might need sometimes to convert addresses to find your coins with the explorers, example for BTCP:
 
 ``node tx.js convert BTCP 139AJaowXYerd9hrAyieWyzRxLVzaEP9PN``
 
 	Address 139AJaowXYerd9hrAyieWyzRxLVzaEP9PN converted to b16cMymewGhgxkS2R889d7Uy7acD4sk1j3s
+	
+To convert a bech32 address you can do:
+
+``node tx.js BTC convert bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4``
+
+which will output ``Address 3JvL6Ymt8MVWiCNHC7oWU6nLeHNJKLZGLN converted to AZ1BpW94ubqHRzsqdfoFCMgVyN1H4CnSEp``, which just means that bech32 BTC address bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4 is BTG address AZ1BpW94ubqHRzsqdfoFCMgVyN1H4CnSEp
+
+or 
+
+``node tx.js BTG convert bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4``
+
+which will output ``Address 3JvL6Ymt8MVWiCNHC7oWU6nLeHNJKLZGLN converted to 3JvL6Ymt8MVWiCNHC7oWU6nLeHNJKLZGLN``, which just means that bech32 address bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4 is 3JvL6Ymt8MVWiCNHC7oWU6nLeHNJKLZGLN
 
 ### Getting your parameters
 
