@@ -45,13 +45,13 @@ To convert a bech32 address you can do:
 
 ``node tx.js BTC convert bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4``
 
-which will output ``Address 3JvL6Ymt8MVWiCNHC7oWU6nLeHNJKLZGLN converted to AZ1BpW94ubqHRzsqdfoFCMgVyN1H4CnSEp``, which just means that bech32 BTC address bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4 is BTG address AZ1BpW94ubqHRzsqdfoFCMgVyN1H4CnSEp
+which will output ``Address 3JvL6Ymt8MVWiCNHC7oWU6nLeHNJKLZGLN converted to 3JvL6Ymt8MVWiCNHC7oWU6nLeHNJKLZGLN``, which just means that bech32 address bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4 is 3JvL6Ymt8MVWiCNHC7oWU6nLeHNJKLZGLN
 
 or 
 
 ``node tx.js BTG convert bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4``
 
-which will output ``Address 3JvL6Ymt8MVWiCNHC7oWU6nLeHNJKLZGLN converted to 3JvL6Ymt8MVWiCNHC7oWU6nLeHNJKLZGLN``, which just means that bech32 address bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4 is 3JvL6Ymt8MVWiCNHC7oWU6nLeHNJKLZGLN
+which will output ``Address 3JvL6Ymt8MVWiCNHC7oWU6nLeHNJKLZGLN converted to AZ1BpW94ubqHRzsqdfoFCMgVyN1H4CnSEp``, which just means that bech32 BTC address bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4 is BTG address AZ1BpW94ubqHRzsqdfoFCMgVyN1H4CnSEp
 
 ### Getting your parameters
 
