@@ -13,7 +13,7 @@ If you don't know very well where to start here and don't want to read what foll
 
 1- start [installing](https://github.com/Ayms/bitcoin-transactions#installation) and see how to use the command line mode if you are not used to it, this is easy
 
-2- run the createauto command that will find your coins automatically and output the transaction to be sent:
+2- run the ``createauto`` command that will find your coins automatically and output the transaction to be sent:
 
 Standard: ``node tx.js BTCP createauto addr1_addr2_..._addrn privkey1_privkey2_..._privkeyn destination_address``
 
