@@ -9,7 +9,37 @@ If you experience some issues with this module or don't feel comfortable to use 
 
 ## Quick Start guide
 
-If you know what you are doing and don't want to read all what follows, start [installing](https://github.com/Ayms/bitcoin-transactions#installation) bitcoin-transactions and look at the [supported coins](https://github.com/Ayms/bitcoin-transactions#supported-coins) section (and specific cases, for BTCP please look here also https://bitcointalk.org/index.php?topic=2827163.msg31911075#msg31911075 , a special fix has been implemented for BTCP and segwit addresses, please see https://www.reddit.com/r/BitcoinPrivate/comments/828chv/claim_btcp_from_btc_segwit_address/dw7hg0x/)
+If you don't know very well where to start here and don't want to read what follows, then please use the easy way:
+
+1- start [installing](https://github.com/Ayms/bitcoin-transactions#installation) and see how to use the command line mode if you are not used to it, this is easy
+
+2- run the createauto command that will find your coins automatically and output the transaction to be sent:
+
+Standard: ``node tx.js BTCP createauto addr1_addr2_..._addrn privkey1_privkey2_..._privkeyn destination_address``
+
+Multisig: ``node tx.js BTCP createauto addr1_addr2_..._addrn <priv1 addr1-priv2 addr1-redeem-2of2 or 2of3 or 2of4>_..._<priv1 addrn-priv2 addrn-redeem-2of2 or 2of3 or 2of4> destination_address``
+
+Segwit standard: ``node tx.js BTCP createauto addr1-segwit_addr2-segwit_..._addrn-segwit privkey1_privkey2_..._privkeyn destination_address``
+
+Segwit multisig: ``node tx.js BTCP createauto addr1-segwit_addr2-segwit_..._addrn-segwit <priv1 addr1-priv2 addr1-redeem-2of2 or 2of3 or 2of4>_..._<priv1 addrn-priv2 addrn-redeem-2of2 or 2of3 or 2of4> destination_address``
+
+3- you will get an impressive bunch of logs but understandable, check carefully that the transaction is correct
+
+4- send the transaction to the network:
+
+paste the <b>``body`` (and not the ``complete transaction``)</b> in an explorer (example: https://explorer.btcprivate.org/tx/send as shown in [supported coins](https://github.com/Ayms/bitcoin-transactions#supported-coins) section), this is the easiest method
+
+or
+
+node tx.js BTCP send ``complete transaction`` ``advised full node`` (as shown in [supported coins](https://github.com/Ayms/bitcoin-transactions#supported-coins) section)
+
+## Convert addresses
+
+You can use the legacy addresses, the tool will convert them automatically, however you might need sometimes to convert addresses to find your coins, example for BTCP:
+
+``node tx.js convert BTCP 139AJaowXYerd9hrAyieWyzRxLVzaEP9PN``
+
+	Address 139AJaowXYerd9hrAyieWyzRxLVzaEP9PN converted to b16cMymewGhgxkS2R889d7Uy7acD4sk1j3s
 
 ### Getting your parameters
 
@@ -138,13 +168,13 @@ Please see below the supported coins and acronym to be used, as well as explorer
 
 <b>Bitcoin King</b> "BCK" - 47.52.28.49 - same use than the others - Height 499999
 
-<b>Bitcoin Pay</b> "BTP" - http://exp.btceasypay.com/insight/tx/send - Same as BCD except that you must multiply the numbers by 1000 - Height: 499345 - Explorer: http://exp.btceasypay.com/insight/
+<b>Bitcoin Pay</b> "BTP" - http://exp.btceasypay.com/insight/tx/send - Same as BCD except that you must multiply the numbers by 10 - Height: 499345 - Explorer: http://exp.btceasypay.com/insight/
 
 <b>Bitcoin Top</b> "BTT" - dnsseed.bitcointop.org - same use than the others - Height: 501118
 
 <b>Bitcoin Vote</b> "BTV" - https://block.bitvote.one/address/tx/send or seed1.bitvote.one - same use than the others - Height: 505050 - Explorer: https://block.bitvote.one/address
 
-<b>Bitcoin Hot</b> "BTH" - seed-us.bitcoinhot.co - same use than the others - Height: 498848 - Explorer: block.bithot.org
+<b>Bitcoin Hot</b> "BTH" - seed-us.bitcoinhot.co - Same as BCD except that you must multiply the numbers by 100 - Height: 498848 - Explorer: block.bithot.org
 
 <b>Bitcoin New</b> "BTN" - dnsseed.bitcoin-new.org - same use than the others - Height: 501000 - Explorer: http://bitcoin-new.org/
 
@@ -222,11 +252,7 @@ This is not coming from nowhere, neither a scam, you can read https://github.com
 
 This module is using [elliptic](https://github.com/indutny/elliptic) and [bs58](https://github.com/cryptocoinjs/bs58)
 
-The code is provided in clear so you can check it but please read the specific conditions of the license
-
-This module was started a year ago, the intent was at that time to make non trivial transactions, then was stopped, the basic intent now is to allow you to make simply your transactions (for example to send your mined coins to an exchange or to send your BTx to BTy)
-
-This module is secure, it does not send anything outside (except the transactions when you request it) and does not get anything from the outside, therefore your keys are just managed by you locally
+Please read the specific conditions of the license, the code is now unfortunately minified, the rationale for this is that people are constantly trying to cheat with the dev fees and this gives us additional work for each modification when using the code in clear, if you don't like the fees, don't use this module, and modifying anything can be quite dangerous
 
 ### How to find my coins?
 
@@ -238,13 +264,13 @@ You can also use [Find My Coins .ninja](http://www.findmycoins.ninja/) to get an
 
 Unlike bitcoin-cli this modules allows you to manage your fees too, do not go below ~1 satoshi per byte for the network fees or your transaction will not be accepted by the network
 
-There are development fees of ~1.5% (with a minimum of 0.00017000) that are added to each transaction that you broadcast, of course the fees apply only when your broadcasted transaction to the network is included in a block, no fees apply to create/test your transactions
+There are development fees of ~6.25% (with a minimum of 0.00017000 and 12.5% for BTCP segwit) that are added to each transaction that you broadcast, of course the fees apply only when your broadcasted transaction to the network is included in a block, no fees apply to create/test your transactions
 
 If you don't like the dev fees then please do not use this module but please realize that you can adjust the network fees to compensate
 
 This module is not trivial at all, the bitcoin protocol and formats do not make things easy, it is not recommended (neither authorized by the license) to try to modify anything, if you send wrong transactions to the network at best you will be immediately banned by the nodes for one day and at worse you could send transactions that could spend your funds at a wrong place
 
-<b>Please note that due to rounding issues there is always a satoshi floating around that will go to the network, this is a minor issue that we will not correct in order not to change all of our test vectors</b>
+<b>Please note that due to rounding issues there is always a satoshi floating around that will go to the network, this is normal</b>
 
 Should this project be funded we will remove the dev fees and put it fully open source
 
@@ -475,12 +501,6 @@ If this explanation is unclear, please see the examples given [here](https://git
 ## Double check again
 
 If for any reason you don't trust this project then it's easy to use bitcoin-cli to check that the transactions are correct, especially ``decoderawtransaction`` and ``signrawtransaction`` using the body of the transaction to compare the output and the signatures
-
-## Signatures
-
-The most complicate part is to generate correct signatures for the transactions, this is the only part of the code that is slightly minified which does not impact anything in terms of security
-
-<b>The rationale for this is that we have noticed that some people are trying to cheat with the dev fees, if you don't like them, don't use this module, and modifying anything can be quite dangerous, should this continue we might consider a much higher rate for the dev fees and replace the code in clear by an obscure obfuscated one</b>
 
 ## Multiple inputs
 
