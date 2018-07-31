@@ -7,6 +7,10 @@ Claim your coins and move/manage them by yourself: Bitcoin transactions made sim
 
 If you experience some issues with this module or don't feel comfortable to use it by yourself, or just don't know how to use it, please email at our github address or email contact peersm com, or post an issue
 
+## Web interface
+
+If you don't want/know how to use the command line stuff you can use the tool from your browser [here](https://peersm.com/wallet)
+
 ## Quick Start guide
 
 If you don't know very well where to start here and don't want to read what follows, then please use the easy way:
