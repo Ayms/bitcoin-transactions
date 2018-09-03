@@ -160,6 +160,8 @@ Please see below the supported coins and acronym to be used, as well as explorer
 
 ### Forked coins
 
+<b>Bitcoin SV (Warning this fork does not implement any replay protection with BCH and BCP)</b> "BSV" - seed unknown - same use than the others - Height: unknown
+
 <b>Bitcoin Clean (Warning this fork does not implement any replay protection with BTC)</b> "BCL" - seed.bitcoinclean.org - same use than the others - Height: 518800
 
 <b>New Bitcoin</b> "NBTC" - 1.newbitcoin.org or 2/3/4 1.manghao.com or 2/3/4 - same use than the others but you are supposed to multiply the amounts by 2, don't do it with this tool, keep the original numbers and this will work the same (ie you will get the double on NBTC) - Height: 501225
