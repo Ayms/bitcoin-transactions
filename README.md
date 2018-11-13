@@ -164,7 +164,7 @@ Please see below the supported coins and acronym to be used, as well as explorer
 
 ### Forked coins
 
-<b>Bitcoin SV (Warning this fork does not implement any replay protection with BCH and BCP)</b> "BSV" - seed unknown - please note that this is a Bitcoin cash forkn same use than the others - Height: unknown
+<b>Bitcoin SV (Warning this fork does not implement any replay protection with BCH and BCP)</b> "BSV" - bitcoinsv.io or seed.bitcoinsv.io - please note that this is a Bitcoin cash fork, same use than the others - Height: 15th November 2018
 
 <b>Bitcoin Clean (Warning this fork does not implement any replay protection with BTC)</b> "BCL" - seed.bitcoinclean.org - same use than the others - Height: 518800
 
