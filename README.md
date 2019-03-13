@@ -1,11 +1,21 @@
 bitcoin-transactions
 ===
 
-Claim your coins and move/manage them by yourself: Bitcoin transactions made simple for standard or multisig wallets, segwit is supported, create and send by your own your Bitcoin, Bitcoin Cash, Bitcoin Gold, Bitcoin Diamond, Super Bitcoin, Bitcore, Zcash, Litecoin, DOGE, Dash, tec transactions, manage your keys and do not disclose them to dubious wallets software
+Javascript implementation of the Bitcoin protocol for any Bitcoin based coins, on server and inside browsers, discover and move/manage your coins by yourself: Bitcoin transactions made simple for standard or multisig wallets, segwit and bech32 are supported, create and send by your own your Bitcoin, Bitcoin Cash, Zcash, Litecoin, DOGE, Dash, etc transactions, manage your keys and do not disclose them to dubious wallets software
 
 ## Support
 
 If you experience some issues with this module or don't feel comfortable to use it by yourself, or just don't know how to use it, please email at our github address or email contact peersm com, or post an issue
+
+## Goal
+
+While the wording in this presentation is marketed to "claim" coins this is not the global intent, which is to allow people to discover and manage their coins by themselves without needing to sync nodes or use wallets
+
+It will be merged with [Ayms/bitcoin-wallets](https://github.com/Ayms/bitcoin-wallets) and provide all necessary tools to manage any Bitcoin based coins from the browser or from the command line on server side
+
+Should this project be funded we will remove the dev fees and put it fully open source
+
+It is envisioned also to add smart contracts for lightning for example and to support stablecoins or other techno based on bitcoin-like blockchains
 
 ## Standalone and offline tool inside browsers
 
