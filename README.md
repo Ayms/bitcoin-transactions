@@ -54,7 +54,7 @@ See the test vectors in [wallet.txt](https://github.com/Ayms/bitcoin-transaction
 
 ``<coin>`` is the type of coin, ``<secret>`` is a BIP32 seed (32 bytes) or a xprv derived seed, ``nb`` is the number of addresses to be generated, ``path`` is the derivation path (it defaults to the standard path or [BIP44 path](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki) ), the ``'`` stands for hardened addresses
 
-You can also use ``create_wallet(<secret>)`` where secret is an already generated hd object to iterate on it
+You can also use ``create_wallet(<secret>)`` where ``<secret>`` is an already generated hd object to iterate on it
 
 We kept our implementation for z-addresses since we did implement it before Zcash team, now please note that this is probably not following the BIP32 Zcash implementation
 
@@ -139,7 +139,7 @@ The tool double checks many times many things, now if you make a mistake with th
 
 The tool can detect mistakes made with the amounts also but not always, be carefull for example not to send everything as network fees
 
-Check carefully the output of the create command, you will see the details of the transaction, you <b>MUST</b> at the end get "Transaction verified" AND "serialize/deserialize OK", if you don't get this then something is wrong with your parameters
+Check carefully the output of the create command, you will see the details of the transaction, you <b>MUST</b> at the end get "Transaction verified" <b>AND</b> "serialize/deserialize OK", if you don't get this then something is wrong with your parameters
 
 ## Decode transactions
 
