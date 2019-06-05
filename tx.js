@@ -204,7 +204,7 @@ var version_=function(v) {
 		LASTBLOCK=500000;
 		PROTOCOL=70016;
 		NOP2SH.push('G');
-		DEFAULT_PATH=="m/44'/156'/0'/0/0";
+		DEFAULT_PATH="m/44'/156'/0'/0/0";
 	} else if (v==='BCH') {
 		VERSION=2;
 		SIGHASH_FORKID=0x00000040;
@@ -235,7 +235,7 @@ var version_=function(v) {
 		SATO=10000000;
 		D=7;
 		FORK_STRING=new Buffer('Thanks Ayms this module is great','utf8');
-		DEFAULT_PATH=="m/44'/999'/0'/0/0";
+		DEFAULT_PATH="m/44'/999'/0'/0/0";
 	} else if (v==='LTC') {
 		VERSION=2;
 		SIGHASH_FORKID=0x00000000;
@@ -249,7 +249,7 @@ var version_=function(v) {
 		LASTBLOCK=1340000;
 		PROTOCOL=70015;
 		NOP2SH.push('L');
-		DEFAULT_PATH=="m/2'/156'/0'/0/0";
+		DEFAULT_PATH="m/2'/156'/0'/0/0";
 	} else if (v==='SBTC') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
@@ -262,7 +262,7 @@ var version_=function(v) {
 		LASTBLOCK=500000;
 		PROTOCOL=70016;
 		FORK_STRING=new Buffer('0473627463','hex');
-		DEFAULT_PATH=="m/44'/8888'/0'/0/0";
+		DEFAULT_PATH="m/44'/8888'/0'/0/0";
 	} else if (v==='BTX') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000000;
@@ -274,7 +274,7 @@ var version_=function(v) {
 		PORT=8555;
 		LASTBLOCK=120000;
 		PROTOCOL=70015;
-		DEFAULT_PATH=="m/44'/165'/0'/0/0";
+		DEFAULT_PATH="m/44'/165'/0'/0/0";
 	} else if (v==='DASH') {
 		VERSION=1;
 		SIGHASH_FORKID=0x00000000;
@@ -288,7 +288,7 @@ var version_=function(v) {
 		LASTBLOCK=800000;
 		PROTOCOL=70208;
 		NOP2SH.push('X');
-		DEFAULT_PATH=="m/44'/5'/0'/0/0";
+		DEFAULT_PATH="m/44'/5'/0'/0/0";
 	} else if (v==='DOGE') {
 		VERSION=1;
 		SIGHASH_FORKID=0x00000000;
@@ -302,7 +302,7 @@ var version_=function(v) {
 		LASTBLOCK=2000000;
 		PROTOCOL=70004;
 		NOP2SH.push('D');
-		DEFAULT_PATH=="m/44'/3'/0'/0/0";
+		DEFAULT_PATH="m/44'/3'/0'/0/0";
 	} else if (v==='UBTC') {
 		VERSION=2;
 		SIGHASH_FORKID=0x00000008;
@@ -340,7 +340,7 @@ var version_=function(v) {
 		LASTBLOCK=500000;
 		PROTOCOL=70018;
 		NOP2SH.push('P');
-		DEFAULT_PATH=="m/44'/6666'/0'/0/0";
+		DEFAULT_PATH="m/44'/6666'/0'/0/0";
 	} else if (v==='BTCP') {
 		VERSION=1; //or 1
 		SIGHASH_FORKID=0x00000040;
@@ -355,7 +355,7 @@ var version_=function(v) {
 		PROTOCOL=180003;
 		FORK_STRING=new Buffer(0);
 		NOP2SH2.push('b1');
-		DEFAULT_PATH=="m/44'/183'/0'/0/0";
+		DEFAULT_PATH="m/44'/183'/0'/0/0";
 	} else if (v==='BCP') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
@@ -383,7 +383,7 @@ var version_=function(v) {
 		SATO=100000;
 		D=5;
 		NOP2SH.push('C');
-		DEFAULT_PATH=="m/44'/1145'/0'/0/0";
+		DEFAULT_PATH="m/44'/1145'/0'/0/0";
 	} else if (v==='BCA') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
@@ -397,7 +397,7 @@ var version_=function(v) {
 		LASTBLOCK=500000;
 		PROTOCOL=70020;
 		NOP2SH.push('A');
-		DEFAULT_PATH=="m/44'/185'/0'/0/0";
+		DEFAULT_PATH="m/44'/185'/0'/0/0";
 	} else if (v==='WBTC') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
@@ -410,7 +410,7 @@ var version_=function(v) {
 		LASTBLOCK=500000;
 		PROTOCOL=70016;
 		FORK_STRING=new Buffer('0477627463','hex');
-		DEFAULT_PATH=="m/44'/188'/0'/0/0";
+		DEFAULT_PATH="m/44'/188'/0'/0/0";
 	} else if (v==='BTW') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
@@ -426,7 +426,7 @@ var version_=function(v) {
 		SATO=10000;
 		D=4;
 		NOP2SH.push('W');
-		DEFAULT_PATH=="m/44'/777'/0'/0/0";
+		DEFAULT_PATH="m/44'/777'/0'/0/0";
 	} else if (v==='BTF') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
@@ -440,7 +440,7 @@ var version_=function(v) {
 		LASTBLOCK=500000;
 		PROTOCOL=70015;
 		NOP2SH.push('F');
-		DEFAULT_PATH=="m/44'/9888'/0'/0/0";
+		DEFAULT_PATH="m/44'/9888'/0'/0/0";
 	} else if (v==='BCX') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000010;
@@ -456,7 +456,7 @@ var version_=function(v) {
 		SATO=10000;
 		D=4;
 		NOP2SH.push('X');
-		DEFAULT_PATH=="m/44'/1688'/0'/0/0";
+		DEFAULT_PATH="m/44'/1688'/0'/0/0";
 	} else if (v==='BTN') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
@@ -469,7 +469,7 @@ var version_=function(v) {
 		PORT=8838;
 		LASTBLOCK=500000;
 		PROTOCOL=70016;
-		DEFAULT_PATH=="m/44'/1000'/0'/0/0";
+		DEFAULT_PATH="m/44'/1000'/0'/0/0";
 	} else if (v==='BTH') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
@@ -497,7 +497,7 @@ var version_=function(v) {
 		PORT=8333;
 		LASTBLOCK=500000;
 		PROTOCOL=70015;
-		DEFAULT_PATH=="m/44'/7777'/0'/0/0";
+		DEFAULT_PATH="m/44'/7777'/0'/0/0";
 	} else if (v==='BTT') {
 		VERSION=13;
 		SIGHASH_FORKID=0x00000000;
@@ -510,7 +510,7 @@ var version_=function(v) {
 		LASTBLOCK=500000;
 		PROTOCOL=70015;
 		FORK_STRING=new Buffer('Thanks Ayms this module is great','utf8');
-		DEFAULT_PATH=="m/44'/34952'/0'/0/0";
+		DEFAULT_PATH="m/44'/34952'/0'/0/0";
 	} else if (v==='BTP') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
@@ -526,7 +526,7 @@ var version_=function(v) {
 		SATO=10000000;
 		D=7;
 		NOP2SH.push('P');
-		DEFAULT_PATH=="m/44'/8999'/0'/0/0";
+		DEFAULT_PATH="m/44'/8999'/0'/0/0";
 	} else if (v==='BCK') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
@@ -570,7 +570,7 @@ var version_=function(v) {
 		SATO=10000000;
 		D=7;
 		NOP2SH.push('C');
-		DEFAULT_PATH=="m/44'/192'/0'/0/0";
+		DEFAULT_PATH="m/44'/192'/0'/0/0";
 	} else if (v==='ZCL') {
 		VERSION=1;
 		MAIN=0x6427E924;
@@ -581,7 +581,7 @@ var version_=function(v) {
 		PORT=8033;
 		LASTBLOCK=250000;
 		PROTOCOL=170002;
-		DEFAULT_PATH=="m/44'/147'/0'/0/0";
+		DEFAULT_PATH="m/44'/147'/0'/0/0";
 	} else if (v==='BICC') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000010;
@@ -605,7 +605,7 @@ var version_=function(v) {
 		PORT=9333;
 		LASTBLOCK=1334370;
 		PROTOCOL=70013;
-		DEFAULT_PATH=="m/44'/998'/0'/0/0";
+		DEFAULT_PATH="m/44'/998'/0'/0/0";
 	} else if (v==='BCI') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
@@ -656,7 +656,7 @@ var version_=function(v) {
 		LASTBLOCK=501226;
 		PROTOCOL=70015;
 		NOP2SH.push('g');
-		DEFAULT_PATH=="m/44'/9999'/0'/0/0";
+		DEFAULT_PATH="m/44'/9999'/0'/0/0";
 	} else if (v==='BBC') {
 		VERSION=1;
 		SIGHASH_FORKID=0x00000040;
@@ -672,7 +672,7 @@ var version_=function(v) {
 		NOP2SH.push('8');
 		SATO=10000000;
 		D=7;
-		DEFAULT_PATH=="m/44'/1111'/0'/0/0";
+		DEFAULT_PATH="m/44'/1111'/0'/0/0";
 	} else if (v==='NBTC') {
 		VERSION=1;
 		SIGHASH_FORKID=0x00000040;
@@ -710,7 +710,7 @@ var version_=function(v) {
 		NOP2SH.push('q');
 		BECH32.push('q');
 		BECH32.push('p');
-		DEFAULT_PATH=="m/44'/236'/0'/0/0";
+		DEFAULT_PATH="m/44'/236'/0'/0/0";
 	} else {
 		throw "You forgot to mention the network version";
 	};
