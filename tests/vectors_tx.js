@@ -2,7 +2,7 @@
 
 //p2pkh
 
-``node tx.js BTC create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=19u1s2qbnQ46z35svfN8S8PWMgFZ1vqpxz prevamount=10.00998277 prevtx=31 privkey=L3X1yLAcnwS7XN8PdnVKL9tfYKtdbpFx1hBGUT2oTb2yKGZ5GEvb addr=139AJaowXYerd9hrAyieWyzRxLVzaEP9PN fees=0.00001001 amount=5.005``
+//node tx.js BTC create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=19u1s2qbnQ46z35svfN8S8PWMgFZ1vqpxz prevamount=10.00998277 prevtx=31 privkey=L3X1yLAcnwS7XN8PdnVKL9tfYKtdbpFx1hBGUT2oTb2yKGZ5GEvb addr=139AJaowXYerd9hrAyieWyzRxLVzaEP9PN fees=0.00001001 amount=5.005
 
 Destination address 139AJaowXYerd9hrAyieWyzRxLVzaEP9PN
 --- Previous amount is: 10.00998277

@@ -11,7 +11,7 @@ Therefore the initial dev fees have been removed and the code is open source and
 
 ## Planning
 
-If you intent to fork this module, maybe you should wait a little bit that everything is implemented, to come:
+If you intend to fork this module, maybe you should wait a little bit that everything is implemented, to come:
 
 - multisig m of n with n>4
 - redeem script decoding and keys discovery
@@ -37,7 +37,7 @@ If you experience some issues with this module or don't feel comfortable to use 
 
 If you don't know very well how to find your transactions, your can refer to the [initial doc](https://github.com/Ayms/bitcoin-transactions/blob/master/README_previous.md)
 
-The list of supported coins is [here](https://github.com/Ayms/bitcoin-transactions/blob/master/README_previous.md#supported-coins), as you can see the tool does support a lot of coins, most of them not being serious, we do not intent to support additional non serious coins 
+The list of supported coins is [here](https://github.com/Ayms/bitcoin-transactions/blob/master/README_previous.md#supported-coins), as you can see the tool does support a lot of coins, most of them not being serious, we do not intend to support additional non serious coins 
 
 ## Create wallet
 
@@ -50,11 +50,11 @@ The list of supported coins is [here](https://github.com/Ayms/bitcoin-transactio
 
 See the test vectors in [wallet.txt](https://github.com/Ayms/bitcoin-transactions/tree/master/tests/wallet.txt)
 
-``<coin>`` is the type of coin, <secret> is a BIP32 seed (32 bytes) or a xprv derived seed, nb is the number of addresses to be generated, path is the derivation path (it defaults to the standard path or BIP44 path), the ``'`` stands for hardened addresses
+``<coin>`` is the type of coin, ``<secret>`` is a BIP32 seed (32 bytes) or a xprv derived seed, ``nb`` is the number of addresses to be generated, ``path`` is the derivation path (it defaults to the standard path or BIP44 path), the ``'`` stands for hardened addresses
 
 You can also use ``create_wallet <coin> <secret>`` where secret is an already generated hd object to iterate on it
 
-Since we did implement it before Zcash team, we kept our implementation for z-addresses, now please note that this is probably not following the BIP32 Zcash implementation
+We kept our implementation for z-addresses since we did implement it before Zcash team, now please note that this is probably not following the BIP32 Zcash implementation
 
 ## Create transactions
 
@@ -153,7 +153,7 @@ Please see [verify](https://github.com/Ayms/bitcoin-transactions/tree/master/tes
 
 	node tx.js <coin target> convert <addr>
 	
-This will convert the address from a BTC format to <coin target> format, this feature will be ameliorated with the features to come (including bech32 format mapping)
+This will convert the address from a BTC format to ``<coin target>`` format, this feature will be improved with the features to come (including bech32 format mapping)
 
 Note that BCH bech32 like addresses are supported and systematically converted into standard addresses (TBD if this has to be changed with the features to come)
 
@@ -167,11 +167,11 @@ To find the keys corresponding to a redeem script, you can run:
 	Public Key: GLbb8AJPnpbwaFxHJAH6UggaB6e4u1CtFQ equivalent to bitcoin address 13kfi2ySoxzeVnezNDcz3vLgFvrDrpL1qW
 	Public Key: GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo equivalent to bitcoin address 19u1s2qbnQ46z35svfN8S8PWMgFZ1vqpxz
 
-This feature will be ameliorated later also
+This feature will be improved later also
 
 ## Notes for the devs
 
-The module is not trivial, any slight change can cause everything not to work any longer and can become difficult to identify at a certain point of time, therefore it is advised to periodically test the latest example in test vectors while making changes (if this one passes it's unlikely that something is wrong). In addition serialize/deserialize is not symetrical then ``true`` must be used when not coming from a Tx constructor transaction, initially this was a mistake due to misreading of segwit specs, we decided to keep it like this because double checking symetrical potential wrong things is just useless, therefore this adds a last serialize/deserialize independant check
+This module is not trivial, any slight change can cause everything not to work any longer and can become difficult to identify at a certain point of time, therefore it is advised to periodically test the latest example in test vectors while making changes (if this one passes it's unlikely that something is wrong). In addition serialize/deserialize is not symetrical then ``true`` must be used when not coming from a Tx constructor transaction, initially this was a mistake due to some misreading of segwit specs, we decided to keep it like this because double checking symetrical potential wrong things is just useless, therefore this adds a last serialize/deserialize independent check
 	
 ## Related projects :
 
