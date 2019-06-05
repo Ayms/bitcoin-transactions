@@ -30,6 +30,8 @@ Install [nodejs for Windows,Mac,Linux](https://nodejs.org/en/download/package-ma
 Create a bitcoin-transactions directory, install elliptic and bs58 with npm in node-modules, copy the other modules and copy tx.js
 
 All of this does of course not apply for the browser version when it will be available
+
+The initial browser version is available [here](https://peersm.com/wallet), the final version (without the dev fees and with an open source code) will be available according to the above planning
 	
 ## Support and supported coins
 
@@ -50,7 +52,7 @@ The list of supported coins is [here](https://github.com/Ayms/bitcoin-transactio
 
 See the test vectors in [wallet.txt](https://github.com/Ayms/bitcoin-transactions/tree/master/tests/wallet.txt)
 
-``<coin>`` is the type of coin, ``<secret>`` is a BIP32 seed (32 bytes) or a xprv derived seed, ``nb`` is the number of addresses to be generated, ``path`` is the derivation path (it defaults to the standard path or BIP44 path), the ``'`` stands for hardened addresses
+``<coin>`` is the type of coin, ``<secret>`` is a BIP32 seed (32 bytes) or a xprv derived seed, ``nb`` is the number of addresses to be generated, ``path`` is the derivation path (it defaults to the standard path or [BIP44 path](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki) ), the ``'`` stands for hardened addresses
 
 You can also use ``create_wallet <coin> <secret>`` where secret is an already generated hd object to iterate on it
 
