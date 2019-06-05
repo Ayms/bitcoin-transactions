@@ -1,7 +1,7 @@
 bitcoin-transactions - Discover and move your coins by yourself
 ===
 
-Javascript implementation of the Bitcoin protocol for any Bitcoin based coins, on server and inside browsers as a standalone offline webapp, this module offers all the tools to manage your addresses and transactions by yourself without the need to sync a full node and/or use a wallet that you don't trust
+Javascript implementation of the Bitcoin protocol for any Bitcoin based coins, on server and inside browsers as a standalone offline webapp, this module offers all the tools to manage your addresses and transactions by yourself as an alternative to check what your wallet is doing (and/or replace it) and without the need to sync a full node
 
 ## Funding and license
 
