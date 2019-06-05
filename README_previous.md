@@ -3,9 +3,9 @@ bitcoin-transactions
 
 Javascript implementation of the Bitcoin protocol for any Bitcoin based coins, on server and inside browsers, discover and move/manage your coins by yourself: Bitcoin transactions made simple for standard or multisig wallets, segwit and bech32 are supported, create and send by your own your Bitcoin, Bitcoin Cash, Zcash, Litecoin, DOGE, Dash, etc transactions, manage your keys and do not disclose them to dubious wallets software
 
-##History
+## History
 
-This is the original README giving more details and examples for non expert people, please note that the dev fees have now been removed and that the whole code is open source in clear under a MIT license
+<b>This is the original README giving more details and examples for non expert people, please note that the dev fees have now been removed and that the whole code is open source in clear under a MIT license</b>
 
 ## Support
 
