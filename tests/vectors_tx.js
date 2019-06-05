@@ -1,0 +1,1544 @@
+------------------------------ Non BIP143
+
+//p2pkh
+
+node tx.js BTC create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=19u1s2qbnQ46z35svfN8S8PWMgFZ1vqpxz prevamount=10.00998277 prevtx=31 privkey=L3X1yLAcnwS7XN8PdnVKL9tfYKtdbpFx1hBGUT2oTb2yKGZ5GEvb addr=139AJaowXYerd9hrAyieWyzRxLVzaEP9PN fees=0.00001001 amount=5.005
+
+Destination address 139AJaowXYerd9hrAyieWyzRxLVzaEP9PN
+--- Previous amount is: 10.00998277
+--- Amount to spend is: 5.00500000
+--- Network fees are: 0.00001001
+--- Refunded amount to spending address is: 5.00497276
+Using standard signing
+Address corresponding to private key is 19u1s2qbnQ46z35svfN8S8PWMgFZ1vqpxz
+Signing 99b15d4868bc33ebf499a312cd42d82ce815396c00c701bee57103dd6c7c4923
+checksum hash d33da616222db2c1af4122ec7e99e9ce1fc7e1865bd51c2ad714520d7847322c
+----- Transaction hash: 2c3247780d5214d72a1cd55b86e1c71fcee9997eec2241afc1b22d2216a63dd3
+Transaction body:
+020000000106e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006a473044022031df07a979c9606eb69f411bb34cf45d0da0bf459519308f021a9e27c558b45d022036d1d8c94e516b09e040ab9063b69ff47abba4b4c292b156a294abecf7ad2c3d0121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff022006d51d000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac7cfbd41d000000001976a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac00000000
+Complete transaction:
+f9beb4d9747800000000000000000000e1000000d33da616020000000106e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006a473044022031df07a979c9606eb69f411bb34cf45d0da0bf459519308f021a9e27c558b45d022036d1d8c94e516b09e040ab9063b69ff47abba4b4c292b156a294abecf7ad2c3d0121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff022006d51d000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac7cfbd41d000000001976a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac00000000
+Size 249 bytes
+Network Fees: 1001 - 4.02 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 1
+   -------
+   tx: d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206
+   n: 31
+   type: p2pkh
+   scriptSigLen: 106
+   scriptSig: 3044022031df07a979c9606eb69f411bb34cf45d0da0bf459519308f021a9e27c558b45d022036d1d8c94e516b09e040ab9063b69ff47abba4b4c292b156a294abecf7ad2c3d01
+   script: 039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918
+   address 19u1s2qbnQ46z35svfN8S8PWMgFZ1vqpxz
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 500500000
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: 139AJaowXYerd9hrAyieWyzRxLVzaEP9PN
+   type: p2pkh
+   -------
+   nValue: 500497276
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac
+   address: 19u1s2qbnQ46z35svfN8S8PWMgFZ1vqpxz
+   type: p2pkh
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using standard signing
+----- Transaction verified
+checksum hash d33da616222db2c1af4122ec7e99e9ce1fc7e1865bd51c2ad714520d7847322c
+----- Transaction hash: 2c3247780d5214d72a1cd55b86e1c71fcee9997eec2241afc1b22d2216a63dd3
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+node tx.js BTC create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=19u1s2qbnQ46z35svfN8S8PWMgFZ1vqpxz prevamount=10.00998277 prevtx=31 privkey=L3X1yLAcnwS7XN8PdnVKL9tfYKtdbpFx1hBGUT2oTb2yKGZ5GEvb addr=139AJaowXYerd9hrAyieWyzRxLVzaEP9PN fees=0.00001001
+
+Destination address 139AJaowXYerd9hrAyieWyzRxLVzaEP9PN
+--- Previous amount is: 10.00998277
+--- Amount to spend is: 10.00997276
+--- Network fees are: 0.00001001
+Using standard signing
+Address corresponding to private key is 19u1s2qbnQ46z35svfN8S8PWMgFZ1vqpxz
+Signing feb87fc28bfd975342953b075d999290c042fe2021b7fe83725586051cbe75f0
+checksum hash b4615a6140db1937a3268b9834ea3da8ea0b8208a64a5789b629a903fc2346b8
+----- Transaction hash: b84623fc03a929b689574aa608820beaa83dea34988b26a33719db40615a61b4
+Transaction body:
+020000000106e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006b483045022100b7f3f4eae694546a15a382cd152b9084dfd83470874df66bea8f8aaceb4c4d56022008cde484f4c468803016390190c224dc216f451b18bfd1b6931b7553d3a5969f0121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff019c01aa3b000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac00000000
+Complete transaction:
+f9beb4d9747800000000000000000000c0000000b4615a61020000000106e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006b483045022100b7f3f4eae694546a15a382cd152b9084dfd83470874df66bea8f8aaceb4c4d56022008cde484f4c468803016390190c224dc216f451b18bfd1b6931b7553d3a5969f0121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff019c01aa3b000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac00000000
+Size 216 bytes
+Network Fees: 1001 - 4.63 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 1
+   -------
+   tx: d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206
+   n: 31
+   type: p2pkh
+   scriptSigLen: 107
+   scriptSig: 3045022100b7f3f4eae694546a15a382cd152b9084dfd83470874df66bea8f8aaceb4c4d56022008cde484f4c468803016390190c224dc216f451b18bfd1b6931b7553d3a5969f01
+   script: 039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918
+   address 19u1s2qbnQ46z35svfN8S8PWMgFZ1vqpxz
+   nSequence: ffffffff
+nb output: 1
+   -------
+   nValue: 1000997276
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: 139AJaowXYerd9hrAyieWyzRxLVzaEP9PN
+   type: p2pkh
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using standard signing
+----- Transaction verified
+checksum hash b4615a6140db1937a3268b9834ea3da8ea0b8208a64a5789b629a903fc2346b8
+----- Transaction hash: b84623fc03a929b689574aa608820beaa83dea34988b26a33719db40615a61b4
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+
+//p2psh
+
+node tx.js BTC create prevtx=a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec prevaddr=APWkFpVPuqSf24m8et1sZvARHXNStB2H8x prevamount=10.00459356 prevtx=0 privkey=L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad-L5AzookySFjw3tV7TvgJUnD8b87J1T7ysofaWuReAPUUoxtvPj6f-5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae-2of3 addr=139AJaowXYerd9hrAyieWyzRxLVzaEP9PN fees=0.00000500 amount=5.002
+
+Destination address 139AJaowXYerd9hrAyieWyzRxLVzaEP9PN
+--- Previous amount is: 10.00459356
+--- Amount to spend is: 5.00200000
+--- Network fees are: 0.00000500
+--- Refunded amount to spending address is: 5.00258856
+Using standard signing
+Redeemer script verified: 39RtXs8D8b6tJGFaDL28qfGFxSjUB73mNw
+Signing 4d4441116c05eaf6b0c78aea1d56bd061ccee9202b9710fa73d78cf403c533ca
+Signing 4d4441116c05eaf6b0c78aea1d56bd061ccee9202b9710fa73d78cf403c533ca
+checksum hash 18c0a91c84a11fe9ebf38bc76f9b4e77106b02d1f9f1c001bcff7bf6bada8993
+----- Transaction hash: 9389dabaf67bffbc01c0f1f9d1026b10774e9b6fc78bf3ebe91fa1841ca9c018
+Transaction body:
+0200000001ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a100000000fdfd00004730440220571063e52d1fabec3cea0478c2c918580a97349a77c342c092146e420f3c1cbc02203a9cbe1770aa706b318b38fe8c72c50d0db43f226c6a51405bcbe95ca61d16ed01483045022100cfde9e5dee2d285f930ca429a670c56f2b0285ba933c0f1d40cf4a2d068ebb370220034284001c5980f0833ffcf361fc9003ec4b3d8eb105bac53ac2446185f5e3cc014c695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853aeffffffff024072d01d000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac2858d11d0000000017a91454e498ddf5e6621ef62c3f1ef39b3994a1e421a48700000000
+Complete transaction:
+f9beb4d97478000000000000000000007401000018c0a91c0200000001ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a100000000fdfd00004730440220571063e52d1fabec3cea0478c2c918580a97349a77c342c092146e420f3c1cbc02203a9cbe1770aa706b318b38fe8c72c50d0db43f226c6a51405bcbe95ca61d16ed01483045022100cfde9e5dee2d285f930ca429a670c56f2b0285ba933c0f1d40cf4a2d068ebb370220034284001c5980f0833ffcf361fc9003ec4b3d8eb105bac53ac2446185f5e3cc014c695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853aeffffffff024072d01d000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac2858d11d0000000017a91454e498ddf5e6621ef62c3f1ef39b3994a1e421a48700000000
+Size 396 bytes
+Network Fees: 500 - 1.26 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 1
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 0
+   type: p2sh
+   scriptSigLen: 253
+   scriptSig: 30440220571063e52d1fabec3cea0478c2c918580a97349a77c342c092146e420f3c1cbc02203a9cbe1770aa706b318b38fe8c72c50d0db43f226c6a51405bcbe95ca61d16ed01,3045022100cfde9e5dee2d285f930ca429a670c56f2b0285ba933c0f1d40cf4a2d068ebb370220034284001c5980f0833ffcf361fc9003ec4b3d8eb105bac53ac2446185f5e3cc01
+   script: 5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae
+   multisig addresses 13d6DX2zNcCAoeZqBSG2i9oww9F2bvd82o,13kfi2ySoxzeVnezNDcz3vLgFvrDrpL1qW,19u1s2qbnQ46z35svfN8S8PWMgFZ1vqpxz
+   address 39RtXs8D8b6tJGFaDL28qfGFxSjUB73mNw
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 500200000
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: 139AJaowXYerd9hrAyieWyzRxLVzaEP9PN
+   type: p2pkh
+   -------
+   nValue: 500258856
+   scriptPubkeyLen: 23
+   scriptPubkey: a91454e498ddf5e6621ef62c3f1ef39b3994a1e421a487
+   address: 39RtXs8D8b6tJGFaDL28qfGFxSjUB73mNw
+   type: p2sh
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using standard signing
+Using standard signing
+Multisig signatures verified
+Redeemer script verified: 39RtXs8D8b6tJGFaDL28qfGFxSjUB73mNw
+Multisig allowed to spend
+----- Transaction verified
+checksum hash 18c0a91c84a11fe9ebf38bc76f9b4e77106b02d1f9f1c001bcff7bf6bada8993
+----- Transaction hash: 9389dabaf67bffbc01c0f1f9d1026b10774e9b6fc78bf3ebe91fa1841ca9c018
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+//multi input
+
+node tx.js BTC create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206_d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=19u1s2qbnQ46z35svfN8S8PWMgFZ1vqpxz_APWkFpVPuqSf24m8et1sZvARHXNStB2H8x prevamount=10.00998277_10.00459356 prevtx=31_32 privkey=L3X1yLAcnwS7XN8PdnVKL9tfYKtdbpFx1hBGUT2oTb2yKGZ5GEvb_L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad-L5AzookySFjw3tV7TvgJUnD8b87J1T7ysofaWuReAPUUoxtvPj6f-5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae-2of3 addr=139AJaowXYerd9hrAyieWyzRxLVzaEP9PN fees=0.00001001 amount=5.005
+
+
+Destination address 139AJaowXYerd9hrAyieWyzRxLVzaEP9PN
+--- Previous amount is: 20.01457633
+--- Amount to spend is: 5.00500000
+--- Network fees are: 0.00001001
+--- Refunded amount to spending address is: 15.00956632
+Using standard signing
+Address corresponding to private key is 19u1s2qbnQ46z35svfN8S8PWMgFZ1vqpxz
+Signing 903a8a0f548e008a863e9261d8ba9aacd51410ad3d43beb87c1d2962900a2b46
+Using standard signing
+Redeemer script verified: 39RtXs8D8b6tJGFaDL28qfGFxSjUB73mNw
+Signing 70b53060f309e5e54e757d81bf63196a49c1632543a66d09bc570045762e58f7
+Signing 70b53060f309e5e54e757d81bf63196a49c1632543a66d09bc570045762e58f7
+checksum hash 1e1d18e5aeb9c056b24f96b898995e3afc89726353b99d6386cfdad35bb9e04c
+----- Transaction hash: 4ce0b95bd3dacf86639db953637289fc3a5e9998b8964fb256c0b9aee5181d1e
+Transaction body:
+020000000206e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006b4830450221009ef8a7395b033faac5976e6112e6b3d0e0182d35f162486d81c17110bc713bb20220307341fadf1158d665bd86bcbfa1e9c434b1fd50b63a49d2802f882792936eb20121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff06e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d520000000fdfd0000483045022100eb7ce517a298e4f52287ab33af227e39037daa4efae6e014b2f40746a3d83398022018c7449681df1d4cbf872469022fe2848030a249919a0553556051a7552e7b2501473044022059b8f53eeade48f2cc1851f6b69c863c7b676a639eb5af81efddb211a0ba8720022016f9f79da027dcd4f3eae6bb29c92e37c36f32807dc68bfa38c372306a842be9014c695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853aeffffffff022006d51d000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88acd8c77659000000001976a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac00000000
+Complete transaction:
+f9beb4d97478000000000000000000000a0200001e1d18e5020000000206e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006b4830450221009ef8a7395b033faac5976e6112e6b3d0e0182d35f162486d81c17110bc713bb20220307341fadf1158d665bd86bcbfa1e9c434b1fd50b63a49d2802f882792936eb20121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff06e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d520000000fdfd0000483045022100eb7ce517a298e4f52287ab33af227e39037daa4efae6e014b2f40746a3d83398022018c7449681df1d4cbf872469022fe2848030a249919a0553556051a7552e7b2501473044022059b8f53eeade48f2cc1851f6b69c863c7b676a639eb5af81efddb211a0ba8720022016f9f79da027dcd4f3eae6bb29c92e37c36f32807dc68bfa38c372306a842be9014c695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853aeffffffff022006d51d000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88acd8c77659000000001976a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac00000000
+Size 546 bytes
+Network Fees: 1001 - 1.83 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 2
+   -------
+   tx: d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206
+   n: 31
+   type: p2pkh
+   scriptSigLen: 107
+   scriptSig: 30450221009ef8a7395b033faac5976e6112e6b3d0e0182d35f162486d81c17110bc713bb20220307341fadf1158d665bd86bcbfa1e9c434b1fd50b63a49d2802f882792936eb201
+   script: 039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918
+   address 19u1s2qbnQ46z35svfN8S8PWMgFZ1vqpxz
+   nSequence: ffffffff
+   -------
+   tx: d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206
+   n: 32
+   type: p2sh
+   scriptSigLen: 253
+   scriptSig: 3045022100eb7ce517a298e4f52287ab33af227e39037daa4efae6e014b2f40746a3d83398022018c7449681df1d4cbf872469022fe2848030a249919a0553556051a7552e7b2501,3044022059b8f53eeade48f2cc1851f6b69c863c7b676a639eb5af81efddb211a0ba8720022016f9f79da027dcd4f3eae6bb29c92e37c36f32807dc68bfa38c372306a842be901
+   script: 5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae
+   multisig addresses 13d6DX2zNcCAoeZqBSG2i9oww9F2bvd82o,13kfi2ySoxzeVnezNDcz3vLgFvrDrpL1qW,19u1s2qbnQ46z35svfN8S8PWMgFZ1vqpxz
+   address 39RtXs8D8b6tJGFaDL28qfGFxSjUB73mNw
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 500500000
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: 139AJaowXYerd9hrAyieWyzRxLVzaEP9PN
+   type: p2pkh
+   -------
+   nValue: 1500956632
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac
+   address: 19u1s2qbnQ46z35svfN8S8PWMgFZ1vqpxz
+   type: p2pkh
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using standard signing
+Using standard signing
+Using standard signing
+Multisig signatures verified
+Redeemer script verified: 39RtXs8D8b6tJGFaDL28qfGFxSjUB73mNw
+Multisig allowed to spend
+----- Transaction verified
+checksum hash 1e1d18e5aeb9c056b24f96b898995e3afc89726353b99d6386cfdad35bb9e04c
+----- Transaction hash: 4ce0b95bd3dacf86639db953637289fc3a5e9998b8964fb256c0b9aee5181d1e
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+------------------------------ BIP143
+
+Standard cases - single input
+
+//p2pkh
+
+node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo prevamount=10.00998277 prevtx=31 privkey=L3X1yLAcnwS7XN8PdnVKL9tfYKtdbpFx1hBGUT2oTb2yKGZ5GEvb addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00001001 amount=5.005
+
+--- Previous amount is: 10.00998277
+--- Amount to spend is: 5.00500000
+--- Network fees are: 0.00001001
+--- Refunded amount to spending address is: 5.00497276
+Using BIP143 signing
+Address corresponding to private key is GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+Signing 8a5002e7c0d0efb53acc78925e1d9c7386cd84af107f898316a38f4717fbf509
+checksum hash 513523971b528887ff2261415b9b5a01823f303b4f69b88022a7cdea7158f93f
+----- Transaction hash: 3ff95871eacda72280b8694f3b303f82015a9b5b416122ff8788521b97233551
+Transaction body:
+020000000106e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006b483045022100f6775274f089ce08e9f1abaccbb48d8c95add1053d08e16347f4f2ace186fe540220417da5afb8b0b92c28a4487c31889c7c88250c07f54ff2cdbb70c412fb34c6b74121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff022006d51d000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac7cfbd41d000000001976a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac00000000
+Complete transaction:
+e1476d44747800000000000000000000e200000051352397020000000106e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006b483045022100f6775274f089ce08e9f1abaccbb48d8c95add1053d08e16347f4f2ace186fe540220417da5afb8b0b92c28a4487c31889c7c88250c07f54ff2cdbb70c412fb34c6b74121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff022006d51d000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac7cfbd41d000000001976a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac00000000
+Size 250 bytes
+Network Fees: 1001 - 4.00 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 1
+   -------
+   tx: d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206
+   n: 31
+   type: p2pkh
+   scriptSigLen: 107
+   scriptSig: 3045022100f6775274f089ce08e9f1abaccbb48d8c95add1053d08e16347f4f2ace186fe540220417da5afb8b0b92c28a4487c31889c7c88250c07f54ff2cdbb70c412fb34c6b741
+   script: 039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918
+   address GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 500500000
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB
+   type: p2pkh
+   -------
+   nValue: 500497276
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac
+   address: GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   type: p2pkh
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using BIP143 signing
+----- Transaction verified
+checksum hash 513523971b528887ff2261415b9b5a01823f303b4f69b88022a7cdea7158f93f
+----- Transaction hash: 3ff95871eacda72280b8694f3b303f82015a9b5b416122ff8788521b97233551
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo prevamount=10.00998277 prevtx=31 privkey=L3X1yLAcnwS7XN8PdnVKL9tfYKtdbpFx1hBGUT2oTb2yKGZ5GEvb addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00001001
+
+--- Previous amount is: 10.00998277
+--- Amount to spend is: 10.00997276
+--- Network fees are: 0.00001001
+[ 1000997276, 0, 0 ]
+Using BIP143 signing
+Address corresponding to private key is GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+Signing c55219b02c1b702431c88808b06c79286efbd79dbe7818e749c8e5b5b799fa95
+checksum hash 6aa391e23ebfc822d7146a1968abff1c6dfd3f9d795ae43c92fe299d6c9dae7e
+----- Transaction hash: 7eae9d6c9d29fe923ce45a799d3ffd6d1cffab68196a14d722c8bf3ee291a36a
+Transaction body:
+020000000106e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006b483045022100e06d48e5a74f7f9787afc8a46aa0c249cbd942f15cb43201088d6fcfa850cc8902203767392a38939898255282ee9642a7b931e9d48de076f8cd8298736201b3512e4121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff019c01aa3b000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac00000000
+Complete transaction:
+e1476d44747800000000000000000000c00000006aa391e2020000000106e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006b483045022100e06d48e5a74f7f9787afc8a46aa0c249cbd942f15cb43201088d6fcfa850cc8902203767392a38939898255282ee9642a7b931e9d48de076f8cd8298736201b3512e4121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff019c01aa3b000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac00000000
+Size 216 bytes
+Network Fees: 1001 - 4.63 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 1
+   -------
+   tx: d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206
+   n: 31
+   type: p2pkh
+   scriptSigLen: 107
+   scriptSig: 3045022100e06d48e5a74f7f9787afc8a46aa0c249cbd942f15cb43201088d6fcfa850cc8902203767392a38939898255282ee9642a7b931e9d48de076f8cd8298736201b3512e41
+   script: 039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918
+   address GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   nSequence: ffffffff
+nb output: 1
+   -------
+   nValue: 1000997276
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB
+   type: p2pkh
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using BIP143 signing
+----- Transaction verified
+checksum hash 6aa391e23ebfc822d7146a1968abff1c6dfd3f9d795ae43c92fe299d6c9dae7e
+----- Transaction hash: 7eae9d6c9d29fe923ce45a799d3ffd6d1cffab68196a14d722c8bf3ee291a36a
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+
+//p2sh multisig
+
+node tx.js BTG create prevtx=a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec prevaddr=APWkFpVPuqSf24m8et1sZvARHXNStB2H8x prevamount=10.00459356 prevtx=0 privkey=L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad-L5AzookySFjw3tV7TvgJUnD8b87J1T7ysofaWuReAPUUoxtvPj6f-5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae-2of3 addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00000500 amount=5.002
+
+--- Previous amount is: 10.00459356
+--- Amount to spend is: 5.00200000
+--- Network fees are: 0.00000500
+--- Refunded amount to spending address is: 5.00258856
+Using BIP143 signing
+Redeemer script verified: APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+Signing 7a0b8d8e4d86383637ba59287b931d4579808ca22ecb7facca388ce00422e8a8
+Signing 7a0b8d8e4d86383637ba59287b931d4579808ca22ecb7facca388ce00422e8a8
+checksum hash 3b9eccaf09157c6de10aa693021f640fe757c33527c5ef37879cac446678b326
+----- Transaction hash: 26b3786644ac9c8737efc52735c357e70f641f0293a60ae16d7c1509afcc9e3b
+Transaction body:
+0200000001ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a100000000fc0047304402200c1743cfdfb8fab437fd17190f81e0cf7facad1ed5ea8582f8e4304a07805af402206dcc511eb4ac70e2d0ea771768169b6f50af406014971cea3962f4f60d9517ca4147304402206238d15d7ac65678b7ec5c4fecb5dccbb61f74505d9efa762b4db284752327f002200462ebf6ed5475e867eee2e8fdfce7e5581579447f80a12412ae9ecc3a5ead56414c695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853aeffffffff024072d01d000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac2858d11d0000000017a91454e498ddf5e6621ef62c3f1ef39b3994a1e421a48700000000
+Complete transaction:
+e1476d44747800000000000000000000710100003b9eccaf0200000001ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a100000000fc0047304402200c1743cfdfb8fab437fd17190f81e0cf7facad1ed5ea8582f8e4304a07805af402206dcc511eb4ac70e2d0ea771768169b6f50af406014971cea3962f4f60d9517ca4147304402206238d15d7ac65678b7ec5c4fecb5dccbb61f74505d9efa762b4db284752327f002200462ebf6ed5475e867eee2e8fdfce7e5581579447f80a12412ae9ecc3a5ead56414c695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853aeffffffff024072d01d000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac2858d11d0000000017a91454e498ddf5e6621ef62c3f1ef39b3994a1e421a48700000000
+Size 393 bytes
+Network Fees: 500 - 1.27 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 1
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 0
+   type: p2sh
+   scriptSigLen: 252
+   scriptSig: 304402200c1743cfdfb8fab437fd17190f81e0cf7facad1ed5ea8582f8e4304a07805af402206dcc511eb4ac70e2d0ea771768169b6f50af406014971cea3962f4f60d9517ca41,304402206238d15d7ac65678b7ec5c4fecb5dccbb61f74505d9efa762b4db284752327f002200462ebf6ed5475e867eee2e8fdfce7e5581579447f80a12412ae9ecc3a5ead5641
+   script: 5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 500200000
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB
+   type: p2pkh
+   -------
+   nValue: 500258856
+   scriptPubkeyLen: 23
+   scriptPubkey: a91454e498ddf5e6621ef62c3f1ef39b3994a1e421a487
+   address: APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+   type: p2sh
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using BIP143 signing
+Using BIP143 signing
+Multisig signatures verified
+Redeemer script verified: APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+Multisig allowed to spend
+----- Transaction verified
+checksum hash 3b9eccaf09157c6de10aa693021f640fe757c33527c5ef37879cac446678b326
+----- Transaction hash: 26b3786644ac9c8737efc52735c357e70f641f0293a60ae16d7c1509afcc9e3b
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+//p2wpkh
+
+node tx.js BTG create prevtx=a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec prevaddr=3KRxMpLqRVsAAhrbfJL4ZPAzYkS8VH6Krw-segwit prevamount=0.00459356 previndex=0 privkey=L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00000500 amount=0.002
+
+!!!!!!!!!! - Some prevaddr are corresponding to segwit addresses, creating a segwit transaction
+--- Previous amount is: 0.00459356
+--- Amount to spend is: 0.00200000
+--- Network fees are: 0.00000500
+--- Refunded amount to spending address is: 0.00258856
+Using BIP143 signing
+Address corresponding to private key is GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k
+Signing 38bcd683975dbfc1c20da53cd8ee12cbe17e525fa4fbec75c465ea65b9aecbad
+checksum hash e62892314c2839a87576d8bf70309fcf6414b97d982c21c76c0519e3af0d57db
+----- Transaction hash: eb8802f6911ee2dc0d47cae85755dda96edd911a368338ce8b464fbe99ab67ca
+Transaction body:
+02000000000101ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a100000000171600141cc394844336ac00287ddc0b7e1f91c565785881ffffffff02400d0300000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac28f303000000000017a914c2990ca4f8c95fa46ab837a542e38ad50159d3be8702483045022100e0a2fcbb5c185d14b0b84f3662eddeb2d2f8265b5f9593ff914b3fce0e894762022051d6977f91abd3ea03ccb91abf0d66b828e1d57c4f2986f9b1b44f4537a66da74121021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba574800000000
+Complete transaction:
+e1476d44747800000000000000000000fa000000e628923102000000000101ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a100000000171600141cc394844336ac00287ddc0b7e1f91c565785881ffffffff02400d0300000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac28f303000000000017a914c2990ca4f8c95fa46ab837a542e38ad50159d3be8702483045022100e0a2fcbb5c185d14b0b84f3662eddeb2d2f8265b5f9593ff914b3fce0e894762022051d6977f91abd3ea03ccb91abf0d66b828e1d57c4f2986f9b1b44f4537a66da74121021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba574800000000
+Size 274 bytes
+Network Fees: 500 - 1.82 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 1
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 0
+   type: p2wpkh
+   script: 00141cc394844336ac00287ddc0b7e1f91c565785881
+   nb witness: 2
+   witness sigs: 3045022100e0a2fcbb5c185d14b0b84f3662eddeb2d2f8265b5f9593ff914b3fce0e894762022051d6977f91abd3ea03ccb91abf0d66b828e1d57c4f2986f9b1b44f4537a66da741
+   witness script(s): 021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba5748
+   address segwit AZWp5mi2CkCvtWNA6rKoHe59sq57JZz3ei
+   hash 1cc394844336ac00287ddc0b7e1f91c565785881
+   address GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 200000
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB
+   type: p2pkh
+   -------
+   nValue: 258856
+   scriptPubkeyLen: 23
+   scriptPubkey: a914c2990ca4f8c95fa46ab837a542e38ad50159d3be87
+   address: AZWp5mi2CkCvtWNA6rKoHe59sq57JZz3ei
+   type: p2sh
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using BIP143 signing
+----- Transaction verified
+checksum hash e62892314c2839a87576d8bf70309fcf6414b97d982c21c76c0519e3af0d57db
+----- Transaction hash: eb8802f6911ee2dc0d47cae85755dda96edd911a368338ce8b464fbe99ab67ca
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+//p2wpkh2 not nested (same addresses as above)
+
+node tx.js BTG create prevtx=a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec prevaddr=bc1qrnpefpzrx6kqq2rams9hu8u3c4jhskyph33g3d-segwit prevamount=0.00459356 previndex=0 privkey=L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad addr=bc1qzaa4sk65qxkjrdst0zcm8jgejme9q2tdemvqe0 fees=0.00000500 amount=0.002
+
+!!!!!!!!!! - Some prevaddr are corresponding to segwit addresses, creating a segwit transaction
+--- Previous amount is: 0.00459356
+--- Amount to spend is: 0.00200000
+--- Network fees are: 0.00000500
+--- Refunded amount to spending address is: 0.00258856
+Using BIP143 signing
+Signing 8c47caaa9bc7713db1ae44361276b120427a03d7ae2ec6c8c13b357e708faf56
+checksum hash fdee43b2073a13ffc468f2e310bdff460780cafee9a90883e709e720ce927dbf
+----- Transaction hash: aa19134af0ea353baa5ed6f1df38c8a0e1044758c4e90928b88575e4ff251804
+Transaction body:
+02000000000101ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10000000000ffffffff02400d030000000000160014177b585b5401ad21b60b78b1b3c91996f250296d28f30300000000001600141cc394844336ac00287ddc0b7e1f91c56578588102483045022100d93577d4a7185645e1666ef0fd4b7b504343d2162a178f8a1344fe85f94ae88802204d9d82e54fe17ece2910a42a3d4591a33c0a1a1db3eb2a6e25a1a85924a3fc944221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba574800000000
+Complete transaction:
+e1476d44747800000000000000000000df000000fdee43b202000000000101ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10000000000ffffffff02400d030000000000160014177b585b5401ad21b60b78b1b3c91996f250296d28f30300000000001600141cc394844336ac00287ddc0b7e1f91c56578588102483045022100d93577d4a7185645e1666ef0fd4b7b504343d2162a178f8a1344fe85f94ae88802204d9d82e54fe17ece2910a42a3d4591a33c0a1a1db3eb2a6e25a1a85924a3fc944221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba574800000000
+Size 247 bytes
+Network Fees: 500 - 2.02 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 1
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 0
+   type: p2wpkh2
+   script: 00
+   nb witness: 2
+   witness sigs: 3045022100d93577d4a7185645e1666ef0fd4b7b504343d2162a178f8a1344fe85f94ae88802204d9d82e54fe17ece2910a42a3d4591a33c0a1a1db3eb2a6e25a1a85924a3fc9442
+   script(s) witness: 021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba5748
+   hash 1cc394844336ac00287ddc0b7e1f91c565785881
+   address pubkey GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k
+   address segwit bc1qrnpefpzrx6kqq2rams9hu8u3c4jhskyph33g3d - AZWp5mi2CkCvtWNA6rKoHe59sq57JZz3ei
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 200000
+   scriptPubkeyLen: 22
+   scriptPubkey: 0014177b585b5401ad21b60b78b1b3c91996f250296d
+   address: bc1qzaa4sk65qxkjrdst0zcm8jgejme9q2tdemvqe0 - AHv2x5fZrhK1S7uqjdNyfsFXRwRgxvCw5Q
+   type: p2wpkh2
+   -------
+   nValue: 258856
+   scriptPubkeyLen: 22
+   scriptPubkey: 00141cc394844336ac00287ddc0b7e1f91c565785881
+   address: bc1qrnpefpzrx6kqq2rams9hu8u3c4jhskyph33g3d - AJPxs1tchkrKccmpk5vMs353QkAiy845g6
+   type: p2wpkh2
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using BIP143 signing
+----- Transaction verified
+checksum hash fdee43b2073a13ffc468f2e310bdff460780cafee9a90883e709e720ce927dbf
+----- Transaction hash: aa19134af0ea353baa5ed6f1df38c8a0e1044758c4e90928b88575e4ff251804
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+//p2wpkh2
+
+node tx.js BTG create prevtx=a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec prevaddr=bc1qrnpefpzrx6kqq2rams9hu8u3c4jhskyph33g3d-segwit prevamount=0.00459356 previndex=0 privkey=L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00000500 amount=0.002
+
+!!!!!!!!!! - Some prevaddr are corresponding to segwit addresses, creating a segwit transaction
+--- Previous amount is: 0.00459356
+--- Amount to spend is: 0.00200000
+--- Network fees are: 0.00000500
+--- Refunded amount to spending address is: 0.00258856
+Using BIP143 signing
+Signing ec110c23a021b11b3084d6cb6388677863affdfefb732447002d575d385f540b
+checksum hash 4ebacc6310378f9968cb3aa29fcfbf939cfcc004090ec6042f0bfdbf88f54cc3
+----- Transaction hash: 1469aa45abcfac22d8f49285e0365400d76a69bbc8b9a1c27fa0c31ff0c7886f
+Transaction body:
+02000000000101ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10000000000ffffffff02400d0300000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac28f30300000000001600141cc394844336ac00287ddc0b7e1f91c56578588102483045022100a0c7a2b145c48ae549b18d1d052b46f8c83de8d328e3e95c4ec4f315982244690220660c4cb0627823f5cbf882e83c3aed7ffb809614112b7a7015a05562895bb5f44121021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba574800000000
+Complete transaction:
+e1476d44747800000000000000000000e20000004ebacc6302000000000101ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10000000000ffffffff02400d0300000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac28f30300000000001600141cc394844336ac00287ddc0b7e1f91c56578588102483045022100a0c7a2b145c48ae549b18d1d052b46f8c83de8d328e3e95c4ec4f315982244690220660c4cb0627823f5cbf882e83c3aed7ffb809614112b7a7015a05562895bb5f44121021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba574800000000
+Size 250 bytes
+Network Fees: 500 - 2.00 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 1
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 0
+   type: p2wpkh2
+   script: 00
+   nb witness: 2
+   witness sigs: 3045022100a0c7a2b145c48ae549b18d1d052b46f8c83de8d328e3e95c4ec4f315982244690220660c4cb0627823f5cbf882e83c3aed7ffb809614112b7a7015a05562895bb5f441
+   script(s) witness: 021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba5748
+   hash 1cc394844336ac00287ddc0b7e1f91c565785881
+   address pubkey GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k
+   address segwit bc1qrnpefpzrx6kqq2rams9hu8u3c4jhskyph33g3d - AZWp5mi2CkCvtWNA6rKoHe59sq57JZz3ei
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 200000
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB
+   type: p2pkh
+   -------
+   nValue: 258856
+   scriptPubkeyLen: 22
+   scriptPubkey: 00141cc394844336ac00287ddc0b7e1f91c565785881
+   address: bc1qrnpefpzrx6kqq2rams9hu8u3c4jhskyph33g3d - AJPxs1tchkrKccmpk5vMs353QkAiy845g6
+   type: p2wpkh2
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using BIP143 signing
+----- Transaction verified
+checksum hash 4ebacc6310378f9968cb3aa29fcfbf939cfcc004090ec6042f0bfdbf88f54cc3
+----- Transaction hash: 1469aa45abcfac22d8f49285e0365400d76a69bbc8b9a1c27fa0c31ff0c7886f
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+node tx.js BTG create prevtx=a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec prevaddr=3KRxMpLqRVsAAhrbfJL4ZPAzYkS8VH6Krw-segwit prevamount=0.00459356 previndex=0 privkey=L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad addr=bc1qzaa4sk65qxkjrdst0zcm8jgejme9q2tdemvqe0 fees=0.00000500 amount=0.002
+
+!!!!!!!!!! - Some prevaddr are corresponding to segwit addresses, creating a segwit transaction
+--- Previous amount is: 0.00459356
+--- Amount to spend is: 0.00200000
+--- Network fees are: 0.00000500
+--- Refunded amount to spending address is: 0.00258856
+Using BIP143 signing
+Signing ec110c23a021b11b3084d6cb6388677863affdfefb732447002d575d385f540b
+checksum hash 4ebacc6310378f9968cb3aa29fcfbf939cfcc004090ec6042f0bfdbf88f54cc3
+----- Transaction hash: 1469aa45abcfac22d8f49285e0365400d76a69bbc8b9a1c27fa0c31ff0c7886f
+Transaction body:
+02000000000101ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10000000000ffffffff02400d0300000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac28f30300000000001600141cc394844336ac00287ddc0b7e1f91c56578588102483045022100a0c7a2b145c48ae549b18d1d052b46f8c83de8d328e3e95c4ec4f315982244690220660c4cb0627823f5cbf882e83c3aed7ffb809614112b7a7015a05562895bb5f44121021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba574800000000
+Complete transaction:
+e1476d44747800000000000000000000e20000004ebacc6302000000000101ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10000000000ffffffff02400d0300000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac28f30300000000001600141cc394844336ac00287ddc0b7e1f91c56578588102483045022100a0c7a2b145c48ae549b18d1d052b46f8c83de8d328e3e95c4ec4f315982244690220660c4cb0627823f5cbf882e83c3aed7ffb809614112b7a7015a05562895bb5f44121021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba574800000000
+Size 250 bytes
+Network Fees: 500 - 2.00 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 1
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 0
+   type: p2wpkh2
+   script: 00
+   nb witness: 2
+   witness sigs: 3045022100a0c7a2b145c48ae549b18d1d052b46f8c83de8d328e3e95c4ec4f315982244690220660c4cb0627823f5cbf882e83c3aed7ffb809614112b7a7015a05562895bb5f441
+   script(s) witness: 021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba5748
+   hash 1cc394844336ac00287ddc0b7e1f91c565785881
+   address pubkey GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k
+   address segwit bc1qrnpefpzrx6kqq2rams9hu8u3c4jhskyph33g3d - AZWp5mi2CkCvtWNA6rKoHe59sq57JZz3ei
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 200000
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB
+   type: p2pkh
+   -------
+   nValue: 258856
+   scriptPubkeyLen: 22
+   scriptPubkey: 00141cc394844336ac00287ddc0b7e1f91c565785881
+   address: bc1qrnpefpzrx6kqq2rams9hu8u3c4jhskyph33g3d - AJPxs1tchkrKccmpk5vMs353QkAiy845g6
+   type: p2wpkh2
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using BIP143 signing
+----- Transaction verified
+checksum hash 4ebacc6310378f9968cb3aa29fcfbf939cfcc004090ec6042f0bfdbf88f54cc3
+----- Transaction hash: 1469aa45abcfac22d8f49285e0365400d76a69bbc8b9a1c27fa0c31ff0c7886f
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+//p2wsh
+node tx.js BTG create prevtx=a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec prevaddr=33gmnLSLEioBQzWjif4RTGjP2Tz1YQHWvg-segwit prevamount=0.00459356 previndex=0 privkey=L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad-L5AzookySFjw3tV7TvgJUnD8b87J1T7ysofaWuReAPUUoxtvPj6f-5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae-2of3 addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00000500 amount=0.002
+
+Version BTG
+!!!!!!!!!! - Some prevaddr are corresponding to segwit addresses, creating a segwit transaction
+--- Previous amount is: 0.00459356
+--- Amount to spend is: 0.00200000
+--- Network fees are: 0.00000500
+--- Refunded amount to spending address is: 0.00258856
+Using BIP143 signing
+Signing 79e79fa9c4a650669a421eb4b8534c94425b4a518712c2dccb369f57fa8bda75
+Signing 79e79fa9c4a650669a421eb4b8534c94425b4a518712c2dccb369f57fa8bda75
+checksum hash 9fee2ed73acce644452e332b8793316350956d09a7249ae1afe8087bc4a601f5
+----- Transaction hash: df9a838e9530acac8bac2390d718fee52cd8a72b772b9a916dc6ffab89de844e
+Transaction body:
+02000000000101ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10000000023220020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969ffffffff02400d0300000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac28f303000000000017a91415e4726330bde49d3361fff18cc508ea5ec01c5c870400483045022100b5fb3b0567fbe8eda0f1a715db4ec43d1a0373aabf9cf75db8874a3b1ec8a12f022054b2724d544ea08f3c75f69f43269919add1a12280f44c5ba04ac753d9a8348541483045022100bc5dddd3a29cc330204a4e7fdc5e55da93bce7f79108fab8227c1c214a23d96e02204396417c280cf1ca1e5bc123fc5af9af4b6293d27481add4cecc2305e125e88341695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae00000000
+Complete transaction:
+e1476d44747800000000000000000000980100009fee2ed702000000000101ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10000000023220020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969ffffffff02400d0300000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac28f303000000000017a91415e4726330bde49d3361fff18cc508ea5ec01c5c870400483045022100b5fb3b0567fbe8eda0f1a715db4ec43d1a0373aabf9cf75db8874a3b1ec8a12f022054b2724d544ea08f3c75f69f43269919add1a12280f44c5ba04ac753d9a8348541483045022100bc5dddd3a29cc330204a4e7fdc5e55da93bce7f79108fab8227c1c214a23d96e02204396417c280cf1ca1e5bc123fc5af9af4b6293d27481add4cecc2305e125e88341695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae00000000
+Size 432 bytes
+Network Fees: 500 - 1.16 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 1
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 0
+   type: p2wsh
+   script: 0020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   nb witness: 4
+   witness sigs: 3045022100b5fb3b0567fbe8eda0f1a715db4ec43d1a0373aabf9cf75db8874a3b1ec8a12f022054b2724d544ea08f3c75f69f43269919add1a12280f44c5ba04ac753d9a8348541,3045022100bc5dddd3a29cc330204a4e7fdc5e55da93bce7f79108fab8227c1c214a23d96e02204396417c280cf1ca1e5bc123fc5af9af4b6293d27481add4cecc2305e125e88341
+   witness script(s): 5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae
+   address segwit AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+   multisig addresses GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k,GLbb8AJPnpbwaFxHJAH6UggaB6e4u1CtFQ,GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   address APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+   hash 270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 200000
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB
+   type: p2pkh
+   -------
+   nValue: 258856
+   scriptPubkeyLen: 23
+   scriptPubkey: a91415e4726330bde49d3361fff18cc508ea5ec01c5c87
+   address: AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+   type: p2sh
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using BIP143 signing
+Using BIP143 signing
+Multisig signatures verified
+Redeemer script verified: AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+Multisig allowed to spend
+----- Transaction verified
+checksum hash 9fee2ed73acce644452e332b8793316350956d09a7249ae1afe8087bc4a601f5
+----- Transaction hash: df9a838e9530acac8bac2390d718fee52cd8a72b772b9a916dc6ffab89de844e
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+//p2wsh2 not nested (same adresses/scripts as above)
+
+node tx.js BTG create prevtx=a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec prevaddr=bc1qyu9s3ea0wf25z9qces4hk75fj3uctzqmgk0erwdefqm08d8yh95sfy6xlw-segwit prevamount=0.00459356 previndex=0 privkey=L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad-L5AzookySFjw3tV7TvgJUnD8b87J1T7ysofaWuReAPUUoxtvPj6f-5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae-2of3 addr=bc1qzaa4sk65qxkjrdst0zcm8jgejme9q2tdemvqe0 fees=0.00000500 amount=0.002
+
+Destination address bc1qzaa4sk65qxkjrdst0zcm8jgejme9q2tdemvqe0
+!!!!!!!!!! - Some prevaddr are corresponding to segwit addresses, creating a segwit transaction
+--- Previous amount is: 0.00459356
+--- Amount to spend is: 0.00200000
+--- Network fees are: 0.00000500
+--- Refunded amount to spending address is: 0.00258856
+Using BIP143 signing
+Signing 12a692deb539811d3ad35ff5a6e55d86d6ddb1782eced4682b975a619312a44a
+Signing 12a692deb539811d3ad35ff5a6e55d86d6ddb1782eced4682b975a619312a44a
+checksum hash a23556040e095b4cfe889210691021d21d2901e997e93505957eef1765f5866f
+----- Transaction hash: 7a128eb9a6e3a6aa055d811e7b927026dce7d3c4b5f162ed4cf61429cb230f36
+Transaction body:
+02000000000101ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10000000000ffffffff02400d030000000000160014177b585b5401ad21b60b78b1b3c91996f250296d28f3030000000000220020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b9690400483045022100efafc85b793e6254a2f341cd66b56e25befb32ae5ba434d99e450dee1fd3d31a022025b4a085f0ec46df2984bdbc49e6670ac52e148bc44fb9f385ed62c60ac1815f42483045022100fc82b5380a9522bd195df134863045bfe9792f0d5faba9c7532ee115de998f8602200143eda59b6fbfef02ae692d21d934f99bc6fa1259b2c7891c533dac6737a6f242695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae00000000
+Complete transaction:
+e1476d447478000000000000000000007d010000a235560402000000000101ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10000000000ffffffff02400d030000000000160014177b585b5401ad21b60b78b1b3c91996f250296d28f3030000000000220020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b9690400483045022100efafc85b793e6254a2f341cd66b56e25befb32ae5ba434d99e450dee1fd3d31a022025b4a085f0ec46df2984bdbc49e6670ac52e148bc44fb9f385ed62c60ac1815f42483045022100fc82b5380a9522bd195df134863045bfe9792f0d5faba9c7532ee115de998f8602200143eda59b6fbfef02ae692d21d934f99bc6fa1259b2c7891c533dac6737a6f242695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae00000000
+Size 405 bytes
+Network Fees: 500 - 1.23 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 1
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 0
+   type: p2wsh2
+   script: 00
+   nb witness: 4
+   witness sigs: 3045022100efafc85b793e6254a2f341cd66b56e25befb32ae5ba434d99e450dee1fd3d31a022025b4a085f0ec46df2984bdbc49e6670ac52e148bc44fb9f385ed62c60ac1815f42,3045022100fc82b5380a9522bd195df134863045bfe9792f0d5faba9c7532ee115de998f8602200143eda59b6fbfef02ae692d21d934f99bc6fa1259b2c7891c533dac6737a6f242
+   script(s) witness: 5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae
+   multisig addresses GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k,GLbb8AJPnpbwaFxHJAH6UggaB6e4u1CtFQ,GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   hash 270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   address segwit bc1qyu9s3ea0wf25z9qces4hk75fj3uctzqmgk0erwdefqm08d8yh95sfy6xlw
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 200000
+   scriptPubkeyLen: 22
+   scriptPubkey: 0014177b585b5401ad21b60b78b1b3c91996f250296d
+   address: bc1qzaa4sk65qxkjrdst0zcm8jgejme9q2tdemvqe0 - AHv2x5fZrhK1S7uqjdNyfsFXRwRgxvCw5Q
+   type: p2wpkh2
+   -------
+   nValue: 258856
+   scriptPubkeyLen: 34
+   scriptPubkey: 0020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   address: bc1qyu9s3ea0wf25z9qces4hk75fj3uctzqmgk0erwdefqm08d8yh95sfy6xlw - n1KMwzVe8Sf4SuR1QcPyb1Sf6Z5Bx34SnFqmdh2ZbsgQX2wrMm
+   type: p2wsh2
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using BIP143 signing
+Using BIP143 signing
+Multisig signatures verified
+Multisig allowed to spend
+----- Transaction verified
+checksum hash a23556040e095b4cfe889210691021d21d2901e997e93505957eef1765f5866f
+----- Transaction hash: 7a128eb9a6e3a6aa055d811e7b927026dce7d3c4b5f162ed4cf61429cb230f36
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+//p2wsh2 not nested (same adresses/scripts as above)
+
+node tx.js BTG create prevtx=a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec prevaddr=bc1qyu9s3ea0wf25z9qces4hk75fj3uctzqmgk0erwdefqm08d8yh95sfy6xlw-segwit prevamount=0.00459356 previndex=0 privkey=L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad-L5AzookySFjw3tV7TvgJUnD8b87J1T7ysofaWuReAPUUoxtvPj6f-5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae-2of3 addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00000500 amount=0.002
+
+!!!!!!!!!! - Some prevaddr are corresponding to segwit addresses, creating a segwit transaction
+--- Previous amount is: 0.00459356
+--- Amount to spend is: 0.00200000
+--- Network fees are: 0.00000500
+--- Refunded amount to spending address is: 0.00258856
+Using BIP143 signing
+Signing 23905fd7c3b0bc9e95634e8a72060796471b77201590b8543e2a6dc170213d6d
+Signing 23905fd7c3b0bc9e95634e8a72060796471b77201590b8543e2a6dc170213d6d
+checksum hash bd664ae670bcc39b412afc0f18aab2109ea53794f6eb80daeecb85437bfc72d3
+----- Transaction hash: e30178e9ef2f7bb0f9c63740b707a401f4b20784c43e7e17034326bc422738e4
+Transaction body:
+02000000000101ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10000000000ffffffff02400d0300000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac28f3030000000000220020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b96904004830450221009d6992b77658322c78d9c52325ab19da3e7f8769515d8389024851debf9f10ce02205e0b7360a4dbc001e88a27472ae6dbd94b3ddd73f23ceaf36f041d1dedffeb44414830450221009fba5582c8c8102a7606dac238ad08ec63a0a164d78e7f486b8159928192464f0220716a9bcf977069e7d8668eb1cf7531b69c66923462f3115a665f4527f659cab341695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae00000000
+Complete transaction:
+e1476d4474780000000000000000000080010000bd664ae602000000000101ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10000000000ffffffff02400d0300000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac28f3030000000000220020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b96904004830450221009d6992b77658322c78d9c52325ab19da3e7f8769515d8389024851debf9f10ce02205e0b7360a4dbc001e88a27472ae6dbd94b3ddd73f23ceaf36f041d1dedffeb44414830450221009fba5582c8c8102a7606dac238ad08ec63a0a164d78e7f486b8159928192464f0220716a9bcf977069e7d8668eb1cf7531b69c66923462f3115a665f4527f659cab341695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae00000000
+Size 408 bytes
+Network Fees: 500 - 1.23 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 1
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 0
+   type: p2wsh2
+   script: 00
+   nb witness: 4
+   witness sigs: 30450221009d6992b77658322c78d9c52325ab19da3e7f8769515d8389024851debf9f10ce02205e0b7360a4dbc001e88a27472ae6dbd94b3ddd73f23ceaf36f041d1dedffeb4441,30450221009fba5582c8c8102a7606dac238ad08ec63a0a164d78e7f486b8159928192464f0220716a9bcf977069e7d8668eb1cf7531b69c66923462f3115a665f4527f659cab341
+   script(s) witness: 5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae
+   multisig addresses GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k,GLbb8AJPnpbwaFxHJAH6UggaB6e4u1CtFQ,GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   hash 270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   address segwit bc1qyu9s3ea0wf25z9qces4hk75fj3uctzqmgk0erwdefqm08d8yh95sfy6xlw
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 200000
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB
+   type: p2pkh
+   -------
+   nValue: 258856
+   scriptPubkeyLen: 34
+   scriptPubkey: 0020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   address: bc1qyu9s3ea0wf25z9qces4hk75fj3uctzqmgk0erwdefqm08d8yh95sfy6xlw - n1KMwzVe8Sf4SuR1QcPyb1Sf6Z5Bx34SnFqmdh2ZbsgQX2wrMm
+   type: p2wsh2
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using BIP143 signing
+Using BIP143 signing
+Multisig signatures verified
+Multisig allowed to spend
+----- Transaction verified
+checksum hash bd664ae670bcc39b412afc0f18aab2109ea53794f6eb80daeecb85437bfc72d3
+----- Transaction hash: e30178e9ef2f7bb0f9c63740b707a401f4b20784c43e7e17034326bc422738e4
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+//p2wsh2 not nested (same adresses/scripts as above)
+
+node tx.js BTG create prevtx=a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec prevaddr=33gmnLSLEioBQzWjif4RTGjP2Tz1YQHWvg-segwit prevamount=0.00459356 previndex=0 privkey=L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad-L5AzookySFjw3tV7TvgJUnD8b87J1T7ysofaWuReAPUUoxtvPj6f-5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae-2of3 addr=bc1qzaa4sk65qxkjrdst0zcm8jgejme9q2tdemvqe0 fees=0.00000500 amount=0.002
+
+!!!!!!!!!! - Some prevaddr are corresponding to segwit addresses, creating a segwit transaction
+--- Previous amount is: 0.00459356
+--- Amount to spend is: 0.00200000
+--- Network fees are: 0.00000500
+--- Refunded amount to spending address is: 0.00258856
+Using BIP143 signing
+Signing 025ffdf8d37ac34e61d08aad75da255a4d5e827357cb9f3d3f282aaeb636353d
+Signing 025ffdf8d37ac34e61d08aad75da255a4d5e827357cb9f3d3f282aaeb636353d
+checksum hash 4b65d232cdb00ec79cec45f66e564fda06438f8bac2f25bf8c42427e1ba06cdb
+----- Transaction hash: 341df6ccfe63e61026ee2c2f1bb2ac40afde94f5924cec64d76bad8540bdf5b6
+Transaction body:
+02000000000101ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10000000023220020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969ffffffff02400d030000000000160014177b585b5401ad21b60b78b1b3c91996f250296d28f303000000000017a91415e4726330bde49d3361fff18cc508ea5ec01c5c8704004830450221008873bb6e6e9a87c10be35b12da812d24ec77a0cf8ac3630de111400176db63d402204f688b3aa49f5bcc2ace08f1dce179d27593fca2551b2effa1286842d179f6bb4147304402206425faa19a1cafd5726434f0ca92cf859d6e386ddb275025fb20c75f3d56b10002206f9c6e1aedf0a83bfdbe441e3d1c61c93b5a400743baf222cc56b72faac7bc8141695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae00000000
+Complete transaction:
+e1476d44747800000000000000000000940100004b65d23202000000000101ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10000000023220020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969ffffffff02400d030000000000160014177b585b5401ad21b60b78b1b3c91996f250296d28f303000000000017a91415e4726330bde49d3361fff18cc508ea5ec01c5c8704004830450221008873bb6e6e9a87c10be35b12da812d24ec77a0cf8ac3630de111400176db63d402204f688b3aa49f5bcc2ace08f1dce179d27593fca2551b2effa1286842d179f6bb4147304402206425faa19a1cafd5726434f0ca92cf859d6e386ddb275025fb20c75f3d56b10002206f9c6e1aedf0a83bfdbe441e3d1c61c93b5a400743baf222cc56b72faac7bc8141695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae00000000
+Size 428 bytes
+Network Fees: 500 - 1.17 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 1
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 0
+   type: p2wsh
+   script: 0020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   nb witness: 4
+   witness sigs: 30450221008873bb6e6e9a87c10be35b12da812d24ec77a0cf8ac3630de111400176db63d402204f688b3aa49f5bcc2ace08f1dce179d27593fca2551b2effa1286842d179f6bb41,304402206425faa19a1cafd5726434f0ca92cf859d6e386ddb275025fb20c75f3d56b10002206f9c6e1aedf0a83bfdbe441e3d1c61c93b5a400743baf222cc56b72faac7bc8141
+   script(s) witness: 5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae
+   multisig addresses GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k,GLbb8AJPnpbwaFxHJAH6UggaB6e4u1CtFQ,GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   hash 270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   address segwit AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 200000
+   scriptPubkeyLen: 22
+   scriptPubkey: 0014177b585b5401ad21b60b78b1b3c91996f250296d
+   address: bc1qzaa4sk65qxkjrdst0zcm8jgejme9q2tdemvqe0 - AHv2x5fZrhK1S7uqjdNyfsFXRwRgxvCw5Q
+   type: p2wpkh2
+   -------
+   nValue: 258856
+   scriptPubkeyLen: 23
+   scriptPubkey: a91415e4726330bde49d3361fff18cc508ea5ec01c5c87
+   address: AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+   type: p2sh
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using BIP143 signing
+Using BIP143 signing
+Multisig signatures verified
+Redeemer script verified: AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+Multisig allowed to spend
+----- Transaction verified
+checksum hash 4b65d232cdb00ec79cec45f66e564fda06438f8bac2f25bf8c42427e1ba06cdb
+----- Transaction hash: 341df6ccfe63e61026ee2c2f1bb2ac40afde94f5924cec64d76bad8540bdf5b6
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+
+Multiple inputs
+
+//p2pkh
+
+node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206_a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec prevaddr=GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo_GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo prevamount=10.00998277_5.001 prevtx=31_61 privkey=L3X1yLAcnwS7XN8PdnVKL9tfYKtdbpFx1hBGUT2oTb2yKGZ5GEvb_L3X1yLAcnwS7XN8PdnVKL9tfYKtdbpFx1hBGUT2oTb2yKGZ5GEvb addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00001001 amount=5.005
+
+--- Previous amount is: 15.01098277
+--- Amount to spend is: 5.00500000
+--- Network fees are: 0.00001001
+--- Refunded amount to spending address is: 10.00597276
+Using BIP143 signing
+Address corresponding to private key is GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+Signing 28002ae26a7ad566ad3cb3d95df8dfc19d6150324a81cae45a52b1f93ffdabe4
+Using BIP143 signing
+Address corresponding to private key is GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+Signing feca1b0f217cbe07e9bef4c0b22ddcf88219531bb5a859b61067aff09673e4d0
+checksum hash 07b097af64136827de2bc2c1501baeab60ec934e03853ae2c443690f4306d141
+----- Transaction hash: 41d106430f6943c4e23a85034e93ec60abae1b50c1c22bde27681364af97b007
+Transaction body:
+020000000206e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006a473044022048e911a48a460a9ba147cf25d03b3ad862d29040b6a9d1c7af76cb09c3c0d6f80220678db15687b34dacf09311ed1adb5af552f3bac3378ce40bfb675c6ce0ba5d894121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a13d0000006b483045022100b0026b1ac664b265131676d62cc4068a57fe72f72ae05607ba89b36649e151ff0220233e9f2c33a3d2219bcba3f1fc5c4e45bd3a6b6ac2d4408087632e3b71df47ac4121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff022006d51d000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac1ce7a33b000000001976a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac00000000
+Complete transaction:
+e1476d447478000000000000000000007501000007b097af020000000206e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006a473044022048e911a48a460a9ba147cf25d03b3ad862d29040b6a9d1c7af76cb09c3c0d6f80220678db15687b34dacf09311ed1adb5af552f3bac3378ce40bfb675c6ce0ba5d894121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a13d0000006b483045022100b0026b1ac664b265131676d62cc4068a57fe72f72ae05607ba89b36649e151ff0220233e9f2c33a3d2219bcba3f1fc5c4e45bd3a6b6ac2d4408087632e3b71df47ac4121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff022006d51d000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac1ce7a33b000000001976a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac00000000
+Size 397 bytes
+Network Fees: 1001 - 2.52 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 2
+   -------
+   tx: d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206
+   n: 31
+   type: p2pkh
+   scriptSigLen: 106
+   scriptSig: 3044022048e911a48a460a9ba147cf25d03b3ad862d29040b6a9d1c7af76cb09c3c0d6f80220678db15687b34dacf09311ed1adb5af552f3bac3378ce40bfb675c6ce0ba5d8941
+   script: 039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918
+   address GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   nSequence: ffffffff
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 61
+   type: p2pkh
+   scriptSigLen: 107
+   scriptSig: 3045022100b0026b1ac664b265131676d62cc4068a57fe72f72ae05607ba89b36649e151ff0220233e9f2c33a3d2219bcba3f1fc5c4e45bd3a6b6ac2d4408087632e3b71df47ac41
+   script: 039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918
+   address GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 500500000
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB
+   type: p2pkh
+   -------
+   nValue: 1000597276
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac
+   address: GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   type: p2pkh
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using BIP143 signing
+Using BIP143 signing
+----- Transaction verified
+checksum hash 07b097af64136827de2bc2c1501baeab60ec934e03853ae2c443690f4306d141
+----- Transaction hash: 41d106430f6943c4e23a85034e93ec60abae1b50c1c22bde27681364af97b007
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206_a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec prevaddr=GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo_GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo prevamount=10.00998277_5.001 previndex=31_61 privkey=L3X1yLAcnwS7XN8PdnVKL9tfYKtdbpFx1hBGUT2oTb2yKGZ5GEvb_L3X1yLAcnwS7XN8PdnVKL9tfYKtdbpFx1hBGUT2oTb2yKGZ5GEvb addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00001001
+
+--- Previous amount is: 15.01098277
+--- Amount to spend is: 15.01097276
+--- Network fees are: 0.00001001
+Using BIP143 signing
+Address corresponding to private key is GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+Signing 3a26ac506ade9aa3c431d7d3557932079054ca63d8c7ea95463a8a5d4dd99dc7
+Using BIP143 signing
+Address corresponding to private key is GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+Signing a3336944347a70c79f945beb6e6352733bec3967760295dac5e90be160bc77c4
+checksum hash 882bff49c5f5bcd50daca2ee5b3edddd0642756a1154fef32ae7888577e77e76
+----- Transaction hash: 767ee7778588e72af3fe54116a754206dddd3e5beea2ac0dd5bcf5c549ff2b88
+Transaction body:
+020000000206e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006a4730440220764864651031cc5e1fa189ed4641ba54b73932ff6829657e18d6a581bb73ebab022049a73674f17d0f67df05526507b872a411499b51b5ebf9897328719fc81d28144121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a13d0000006a47304402205bf8a45004da61e6e5325af7a37e27ee9578e2b4d7b238f93c6a1faf0ac2c26c02201b9e93df962b407220b7502985c2132015c9794f246482f7fc3953413f440bab4121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff013ced7859000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac00000000
+Complete transaction:
+e1476d4474780000000000000000000052010000882bff49020000000206e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006a4730440220764864651031cc5e1fa189ed4641ba54b73932ff6829657e18d6a581bb73ebab022049a73674f17d0f67df05526507b872a411499b51b5ebf9897328719fc81d28144121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a13d0000006a47304402205bf8a45004da61e6e5325af7a37e27ee9578e2b4d7b238f93c6a1faf0ac2c26c02201b9e93df962b407220b7502985c2132015c9794f246482f7fc3953413f440bab4121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffff013ced7859000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac00000000
+Size 362 bytes
+Network Fees: 1001 - 2.77 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 2
+   -------
+   tx: d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206
+   n: 31
+   type: p2pkh
+   scriptSigLen: 106
+   scriptSig: 30440220764864651031cc5e1fa189ed4641ba54b73932ff6829657e18d6a581bb73ebab022049a73674f17d0f67df05526507b872a411499b51b5ebf9897328719fc81d281441
+   script: 039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918
+   address GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   nSequence: ffffffff
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 61
+   type: p2pkh
+   scriptSigLen: 106
+   scriptSig: 304402205bf8a45004da61e6e5325af7a37e27ee9578e2b4d7b238f93c6a1faf0ac2c26c02201b9e93df962b407220b7502985c2132015c9794f246482f7fc3953413f440bab41
+   script: 039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918
+   address GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   nSequence: ffffffff
+nb output: 1
+   -------
+   nValue: 1501097276
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB
+   type: p2pkh
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using BIP143 signing
+Using BIP143 signing
+----- Transaction verified
+checksum hash 882bff49c5f5bcd50daca2ee5b3edddd0642756a1154fef32ae7888577e77e76
+----- Transaction hash: 767ee7778588e72af3fe54116a754206dddd3e5beea2ac0dd5bcf5c549ff2b88
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+//p2sh multisig
+
+node tx.js BTG create prevtx=a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec_d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=APWkFpVPuqSf24m8et1sZvARHXNStB2H8x_APWkFpVPuqSf24m8et1sZvARHXNStB2H8x prevamount=10.00459356_5.001 previndex=0_10 privkey=L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad-L5AzookySFjw3tV7TvgJUnD8b87J1T7ysofaWuReAPUUoxtvPj6f-5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae-2of3_L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad-L5AzookySFjw3tV7TvgJUnD8b87J1T7ysofaWuReAPUUoxtvPj6f-5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae-2of3 addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00000500 amount=5.002
+
+Destination address GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB
+--- Previous amount is: 15.00559356
+--- Amount to spend is: 5.00200000
+--- Network fees are: 0.00000500
+--- Refunded amount to spending address is: 10.00358856
+Using BIP143 signing
+Redeemer script verified: APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+Signing 36d4e4c369aab62120b0dbff9d0deeb2d596c7a87d2d6bb5373da0418e2aa922
+Signing 36d4e4c369aab62120b0dbff9d0deeb2d596c7a87d2d6bb5373da0418e2aa922
+Using BIP143 signing
+Redeemer script verified: APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+Signing 9c9419a7fcd6d5669fc993ec75a9ab5bd0e1f9f321e2b3e754829f958aca62aa
+Signing 9c9419a7fcd6d5669fc993ec75a9ab5bd0e1f9f321e2b3e754829f958aca62aa
+checksum hash a8fe2f1b58a9805f4ea6cbcb398b4a16224d334f3191ffc29390a2d47277703f
+----- Transaction hash: 3f707772d4a29093c2ff91314f334d22164a8b39cbcba64e5f80a9581b2ffea8
+Transaction body:
+0200000002ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a100000000fc00473044022042cfd5d0b3a6e253ddb1f0657adc8859603df909315ed94daf2ce7dd44411ea802207812a25818c1a0c2a322cc02b77c987a05623759cd560ecc0d410d4db782724e4147304402203ca750d8ad55067cc15633698cea5b551626d0cf278e2b6e4714c3771cecedec02201c816fdd46b3cfa65469236ed1c1a1080eebc1ee22bc800f1dac433ef4c017fd414c695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853aeffffffff06e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d50a000000fdfe0000483045022100f02eefd26a20bfa10be7b273bee94b251494a5b2cc8bc9a38102040720728d7302202527a1551d5d9429378df56f251f90e0813357fe639dd42e5a6b4cff7a02559f41483045022100f216bf883413cbb78c606c1570ca7d684f6d1169cd5e28f9c475538185a8082a022047cb09ed3d76a20ae8eb78703f5c0de6a5486c91409c784515368be05dd3b7ca414c695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853aeffffffff024072d01d000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88acc843a03b0000000017a91454e498ddf5e6621ef62c3f1ef39b3994a1e421a48700000000
+Complete transaction:
+e1476d447478000000000000000000009a020000a8fe2f1b0200000002ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a100000000fc00473044022042cfd5d0b3a6e253ddb1f0657adc8859603df909315ed94daf2ce7dd44411ea802207812a25818c1a0c2a322cc02b77c987a05623759cd560ecc0d410d4db782724e4147304402203ca750d8ad55067cc15633698cea5b551626d0cf278e2b6e4714c3771cecedec02201c816fdd46b3cfa65469236ed1c1a1080eebc1ee22bc800f1dac433ef4c017fd414c695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853aeffffffff06e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d50a000000fdfe0000483045022100f02eefd26a20bfa10be7b273bee94b251494a5b2cc8bc9a38102040720728d7302202527a1551d5d9429378df56f251f90e0813357fe639dd42e5a6b4cff7a02559f41483045022100f216bf883413cbb78c606c1570ca7d684f6d1169cd5e28f9c475538185a8082a022047cb09ed3d76a20ae8eb78703f5c0de6a5486c91409c784515368be05dd3b7ca414c695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853aeffffffff024072d01d000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88acc843a03b0000000017a91454e498ddf5e6621ef62c3f1ef39b3994a1e421a48700000000
+Size 690 bytes
+Network Fees: 500 - 0.72 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 2
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 0
+   type: p2sh
+   scriptSigLen: 252
+   scriptSig: 3044022042cfd5d0b3a6e253ddb1f0657adc8859603df909315ed94daf2ce7dd44411ea802207812a25818c1a0c2a322cc02b77c987a05623759cd560ecc0d410d4db782724e41,304402203ca750d8ad55067cc15633698cea5b551626d0cf278e2b6e4714c3771cecedec02201c816fdd46b3cfa65469236ed1c1a1080eebc1ee22bc800f1dac433ef4c017fd41
+   script: 5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae
+   multisig addresses GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k,GLbb8AJPnpbwaFxHJAH6UggaB6e4u1CtFQ,GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   address APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+   nSequence: ffffffff
+   -------
+   tx: d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206
+   n: 10
+   type: p2sh
+   scriptSigLen: 254
+   scriptSig: 3045022100f02eefd26a20bfa10be7b273bee94b251494a5b2cc8bc9a38102040720728d7302202527a1551d5d9429378df56f251f90e0813357fe639dd42e5a6b4cff7a02559f41,3045022100f216bf883413cbb78c606c1570ca7d684f6d1169cd5e28f9c475538185a8082a022047cb09ed3d76a20ae8eb78703f5c0de6a5486c91409c784515368be05dd3b7ca41
+   script: 5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae
+   multisig addresses GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k,GLbb8AJPnpbwaFxHJAH6UggaB6e4u1CtFQ,GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   address APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 500200000
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB
+   type: p2pkh
+   -------
+   nValue: 1000358856
+   scriptPubkeyLen: 23
+   scriptPubkey: a91454e498ddf5e6621ef62c3f1ef39b3994a1e421a487
+   address: APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+   type: p2sh
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using BIP143 signing
+Using BIP143 signing
+Multisig signatures verified
+Redeemer script verified: APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+Multisig allowed to spend
+Using BIP143 signing
+Using BIP143 signing
+Multisig signatures verified
+Redeemer script verified: APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+Multisig allowed to spend
+----- Transaction verified
+checksum hash a8fe2f1b58a9805f4ea6cbcb398b4a16224d334f3191ffc29390a2d47277703f
+----- Transaction hash: 3f707772d4a29093c2ff91314f334d22164a8b39cbcba64e5f80a9581b2ffea8
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+
+//p2wpkh
+
+node tx.js BTG create prevtx=a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec_d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=3KRxMpLqRVsAAhrbfJL4ZPAzYkS8VH6Krw-segwit_3KRxMpLqRVsAAhrbfJL4ZPAzYkS8VH6Krw-segwit prevamount=0.00459356 previndex=0_5 privkey=L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad_L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00000500 amount=0.002
+
+!!!!!!!!!! - Some prevaddr are corresponding to segwit addresses, creating a segwit transaction
+--- Previous amount is: 0.00918712
+--- Amount to spend is: 0.00200000
+--- Network fees are: 0.00000500
+--- Refunded amount to spending address is: 0.00718212
+Using BIP143 signing
+Address corresponding to private key is GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k
+Signing 8032247b1ebd6c05c267b0c1cf06b50655da1ed678762fec36b3cc3964d61f3a
+Using BIP143 signing
+Address corresponding to private key is GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k
+Signing f1215636e68d54fee19836798f61aab81f33b12441b193af9827dbeac81adfff
+checksum hash 8743a672b145f76dfe0ed4c76806e86bccf087b3917a7cec7aa1ed981a268ff3
+----- Transaction hash: 71b23e9605e49fe2d49fd5d500c16b55fb35fdc3e3d9b00cdb26429189f4eb2c
+Transaction body:
+02000000000102ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a100000000171600141cc394844336ac00287ddc0b7e1f91c565785881ffffffff06e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d505000000171600141cc394844336ac00287ddc0b7e1f91c565785881ffffffff02400d0300000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac84f50a000000000017a914c2990ca4f8c95fa46ab837a542e38ad50159d3be87024730440220057abb75214b479a36c30caf5dacce9b587152c750c2b91860d2ffb987f4e6a902204db9b5d7bee98ea194739d760d474c98688eeb7fd543303c897ac4294c3babb64121021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba5748024730440220221ff87e3a9f71f46446dfb71aaa1857f3217016c3db893d8c22f5254efa8b8602200a09feaa12fc4ddc7aa187ab4cd8d35b58de43aed8d81dc232fd9d3cbc24be504121021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba574800000000
+Complete transaction:
+e1476d44747800000000000000000000a40100008743a67202000000000102ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a100000000171600141cc394844336ac00287ddc0b7e1f91c565785881ffffffff06e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d505000000171600141cc394844336ac00287ddc0b7e1f91c565785881ffffffff02400d0300000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac84f50a000000000017a914c2990ca4f8c95fa46ab837a542e38ad50159d3be87024730440220057abb75214b479a36c30caf5dacce9b587152c750c2b91860d2ffb987f4e6a902204db9b5d7bee98ea194739d760d474c98688eeb7fd543303c897ac4294c3babb64121021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba5748024730440220221ff87e3a9f71f46446dfb71aaa1857f3217016c3db893d8c22f5254efa8b8602200a09feaa12fc4ddc7aa187ab4cd8d35b58de43aed8d81dc232fd9d3cbc24be504121021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba574800000000
+Size 444 bytes
+Network Fees: 500 - 1.13 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 2
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 0
+   type: p2wpkh
+   script: 00141cc394844336ac00287ddc0b7e1f91c565785881
+   nb witness: 2
+   witness sigs: 30440220057abb75214b479a36c30caf5dacce9b587152c750c2b91860d2ffb987f4e6a902204db9b5d7bee98ea194739d760d474c98688eeb7fd543303c897ac4294c3babb641
+   witness script(s): 021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba5748
+   address segwit AZWp5mi2CkCvtWNA6rKoHe59sq57JZz3ei
+   hash 1cc394844336ac00287ddc0b7e1f91c565785881
+   address GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k
+   nSequence: ffffffff
+   -------
+   tx: d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206
+   n: 5
+   type: p2wpkh
+   script: 00141cc394844336ac00287ddc0b7e1f91c565785881
+   nb witness: 2
+   witness sigs: 30440220221ff87e3a9f71f46446dfb71aaa1857f3217016c3db893d8c22f5254efa8b8602200a09feaa12fc4ddc7aa187ab4cd8d35b58de43aed8d81dc232fd9d3cbc24be5041
+   witness script(s): 021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba5748
+   address segwit AZWp5mi2CkCvtWNA6rKoHe59sq57JZz3ei
+   hash 1cc394844336ac00287ddc0b7e1f91c565785881
+   address GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 200000
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB
+   type: p2pkh
+   -------
+   nValue: 718212
+   scriptPubkeyLen: 23
+   scriptPubkey: a914c2990ca4f8c95fa46ab837a542e38ad50159d3be87
+   address: AZWp5mi2CkCvtWNA6rKoHe59sq57JZz3ei
+   type: p2sh
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using BIP143 signing
+Using BIP143 signing
+----- Transaction verified
+checksum hash 8743a672b145f76dfe0ed4c76806e86bccf087b3917a7cec7aa1ed981a268ff3
+----- Transaction hash: 71b23e9605e49fe2d49fd5d500c16b55fb35fdc3e3d9b00cdb26429189f4eb2c
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+//p2wsh
+node tx.js BTG create prevtx=a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec_d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206 prevaddr=33gmnLSLEioBQzWjif4RTGjP2Tz1YQHWvg-segwit_33gmnLSLEioBQzWjif4RTGjP2Tz1YQHWvg-segwit prevamount=0.00459356_0.003 previndex=0_2 privkey=L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad-L5AzookySFjw3tV7TvgJUnD8b87J1T7ysofaWuReAPUUoxtvPj6f-5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae-2of3_L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad-L5AzookySFjw3tV7TvgJUnD8b87J1T7ysofaWuReAPUUoxtvPj6f-5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae-2of3 addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00000500 amount=0.002
+
+Address 33gmnLSLEioBQzWjif4RTGjP2Tz1YQHWvg converted to AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+Address 33gmnLSLEioBQzWjif4RTGjP2Tz1YQHWvg converted to AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+!!!!!!!!!! - Some prevaddr are corresponding to segwit addresses, creating a segwit transaction
+--- Previous amount is: 0.00759356
+--- Amount to spend is: 0.00200000
+--- Network fees are: 0.00000500
+--- Refunded amount to spending address is: 0.00558856
+Using BIP143 signing
+Signing 146aca42aa808b2c851d659e003ec037650ffbd5a8ffb56adca1f1741854841c
+Signing 146aca42aa808b2c851d659e003ec037650ffbd5a8ffb56adca1f1741854841c
+Using BIP143 signing
+Signing 07b1ed3e92ae0768b03e540a3e6729210342395196d47bfead05ea4f1ad63304
+Signing 07b1ed3e92ae0768b03e540a3e6729210342395196d47bfead05ea4f1ad63304
+checksum hash a1803a875bdda86aeb24b4f87650795a5c39d903d1464e2755dbccd07d043db3
+----- Transaction hash: 5a0ffee978ab60af405afe26d761e9d9109ca2d8a346097e840ae7b3bfb30311
+Transaction body:
+02000000000102ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10000000023220020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969ffffffff06e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d50200000023220020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969ffffffff02400d0300000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac088708000000000017a91415e4726330bde49d3361fff18cc508ea5ec01c5c870400483045022100d185848af1c1a686802cb4181fa9add84663562c7556c431710d0c8da8aebd2102202375081834b952a1e30616fdf3e5b1ca4bd9e2aade24c4b6af63a3e84a2354e941483045022100bc1206f6f8c2a0a2141e761591b02615bb48831a0b00952be9d11b590f79b2d0022005ffa7456f475e9f8b8c192ca6ef789807d7f986a64a5b8132cf706ac4fcb0c341695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae0400473044022037e88bce1665267732d737a9b737a3a5053085e977f654e8075227904cb2c7e002201aafc1538fd0b05855fcd95ad5e4aeedfbf2cff7a1173544d686dc190b353b7a41483045022100c64d1103194e9436131e46713b690053b288292f85f9e5345eba8669e3746f2902203980cf4a840622db6f0c87999a5b85eee8ee81eea98bdfe28e552c7d4dfcb58141695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae00000000
+Complete transaction:
+e1476d44747800000000000000000000e1020000a1803a8702000000000102ecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10000000023220020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969ffffffff06e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d50200000023220020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969ffffffff02400d0300000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac088708000000000017a91415e4726330bde49d3361fff18cc508ea5ec01c5c870400483045022100d185848af1c1a686802cb4181fa9add84663562c7556c431710d0c8da8aebd2102202375081834b952a1e30616fdf3e5b1ca4bd9e2aade24c4b6af63a3e84a2354e941483045022100bc1206f6f8c2a0a2141e761591b02615bb48831a0b00952be9d11b590f79b2d0022005ffa7456f475e9f8b8c192ca6ef789807d7f986a64a5b8132cf706ac4fcb0c341695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae0400473044022037e88bce1665267732d737a9b737a3a5053085e977f654e8075227904cb2c7e002201aafc1538fd0b05855fcd95ad5e4aeedfbf2cff7a1173544d686dc190b353b7a41483045022100c64d1103194e9436131e46713b690053b288292f85f9e5345eba8669e3746f2902203980cf4a840622db6f0c87999a5b85eee8ee81eea98bdfe28e552c7d4dfcb58141695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae00000000
+Size 761 bytes
+Network Fees: 500 - 0.66 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 2
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 0
+   type: p2wsh
+   script: 0020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   nb witness: 4
+   witness sigs: 3045022100d185848af1c1a686802cb4181fa9add84663562c7556c431710d0c8da8aebd2102202375081834b952a1e30616fdf3e5b1ca4bd9e2aade24c4b6af63a3e84a2354e941,3045022100bc1206f6f8c2a0a2141e761591b02615bb48831a0b00952be9d11b590f79b2d0022005ffa7456f475e9f8b8c192ca6ef789807d7f986a64a5b8132cf706ac4fcb0c341
+   witness script(s): 5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae
+   address segwit AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+   multisig addresses GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k,GLbb8AJPnpbwaFxHJAH6UggaB6e4u1CtFQ,GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   address APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+   hash 270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   nSequence: ffffffff
+   -------
+   tx: d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206
+   n: 2
+   type: p2wsh
+   script: 0020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   nb witness: 4
+   witness sigs: 3044022037e88bce1665267732d737a9b737a3a5053085e977f654e8075227904cb2c7e002201aafc1538fd0b05855fcd95ad5e4aeedfbf2cff7a1173544d686dc190b353b7a41,3045022100c64d1103194e9436131e46713b690053b288292f85f9e5345eba8669e3746f2902203980cf4a840622db6f0c87999a5b85eee8ee81eea98bdfe28e552c7d4dfcb58141
+   witness script(s): 5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae
+   address segwit AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+   multisig addresses GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k,GLbb8AJPnpbwaFxHJAH6UggaB6e4u1CtFQ,GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   address APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+   hash 270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 200000
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB
+   type: p2pkh
+   -------
+   nValue: 558856
+   scriptPubkeyLen: 23
+   scriptPubkey: a91415e4726330bde49d3361fff18cc508ea5ec01c5c87
+   address: AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+   type: p2sh
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using BIP143 signing
+Using BIP143 signing
+Multisig signatures verified
+Redeemer script verified: AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+Multisig allowed to spend
+Using BIP143 signing
+Using BIP143 signing
+Multisig signatures verified
+Redeemer script verified: AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+Multisig allowed to spend
+----- Transaction verified
+checksum hash a1803a875bdda86aeb24b4f87650795a5c39d903d1464e2755dbccd07d043db3
+----- Transaction hash: 5a0ffee978ab60af405afe26d761e9d9109ca2d8a346097e840ae7b3bfb30311
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+//mixed content
+
+node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206_a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec_a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec_a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec prevaddr=GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo_3KRxMpLqRVsAAhrbfJL4ZPAzYkS8VH6Krw-segwit_APWkFpVPuqSf24m8et1sZvARHXNStB2H8x_33gmnLSLEioBQzWjif4RTGjP2Tz1YQHWvg-segwit prevamount=10.00998277_0.00459356_10.00459356_0.00459356 previndex=31_0_1_2 privkey=L3X1yLAcnwS7XN8PdnVKL9tfYKtdbpFx1hBGUT2oTb2yKGZ5GEvb_L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad_L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad-L5AzookySFjw3tV7TvgJUnD8b87J1T7ysofaWuReAPUUoxtvPj6f-5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae-2of3_L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad-L5AzookySFjw3tV7TvgJUnD8b87J1T7ysofaWuReAPUUoxtvPj6f-5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae-2of3 addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00001001 amount=15.005
+
+Address 3KRxMpLqRVsAAhrbfJL4ZPAzYkS8VH6Krw converted to AZWp5mi2CkCvtWNA6rKoHe59sq57JZz3ei
+Address 33gmnLSLEioBQzWjif4RTGjP2Tz1YQHWvg converted to AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+!!!!!!!!!! - Some prevaddr are corresponding to segwit addresses, creating a segwit transaction
+--- Previous amount is: 20.02376345
+--- Amount to spend is: 15.00500000
+--- Network fees are: 0.00001001
+--- Refunded amount to spending address is: 5.01875344
+Using BIP143 signing
+Address corresponding to private key is GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+Signing 2d778cfb587442806a1903c9f839f4af20b07d3378e56eb6babf31d4a11a73a2
+Using BIP143 signing
+Address corresponding to private key is GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k
+Signing a499837519110d6916ed4a77184ec3423656c48c32f5ed0087b6e608191765e4
+Using BIP143 signing
+Redeemer script verified: APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+Signing de1b16a3e89022a6b61fdbc003ff90689c08b84e8b151a455eedc8eacce2c8d5
+Signing de1b16a3e89022a6b61fdbc003ff90689c08b84e8b151a455eedc8eacce2c8d5
+Using BIP143 signing
+Signing 851608dc065862dd82c21fb41936dc2a44c1c80b17106a294b528872f4e1fe08
+Signing 851608dc065862dd82c21fb41936dc2a44c1c80b17106a294b528872f4e1fe08
+checksum hash 3314cefec0608cadd7363e975ce025f94f237861da4df049d39a54e304abe0b9
+----- Transaction hash: 638614bb691bf9cfc7a00904af9ade5ae4dba3dbb3a8133157c89f19139afb0b
+Transaction body:
+0200000000010406e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006a47304402203de83525bb7690d61eb878edaafd890c046eebab58bce6d38235af21926a696b022034ac43fc121948ec1e9626a99eb6668bd953aff83b8582dccf073dbbccedcb474121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a100000000171600141cc394844336ac00287ddc0b7e1f91c565785881ffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a101000000fc0047304402201b7cf6b11dc510305702d69eaa8ec3e3df61f1077c93d5a0d2a2f672c6813a52022040526ea7ca2e521f08598b6afe65561c373186a613c1024d60c33817417ab3014147304402202eb67258e211e9eed45b93a7b86cbccde5e7d4846aad9b3dec6039da9b0eeb9d0220715593b6df790bfa068971c33c86e488eba2cd6352922290daaca826fd6a5d3b414c695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853aeffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10200000023220020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969ffffffff0220d06f59000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac9002ea1d000000001976a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac0002483045022100df645552755aeb87221ddc706ec3669f2be969649e84744b33715f19d1c7c85a02202740ed0cefcdf24e6bdd76409c0a226b987029e71cdbeda99b668be7ee9425c24121021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57480004004830450221009a57341132d23df1a956504cd14327ec0a9113679dce16b90977113d166f9b9102202c6f0ded708ec97490573977ca04d9bf3807cbee3cd719067472e6ef4b4361d6414830450221009c5e7b7b6a7b91a8bd3a7b4cbd1086960818fa51e83c4beecc35e5f82b51e682022064ad8b3761d70b88362cb0d38766c0a53838cf16c09047574d2004d795961f8d41695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae00000000
+Complete transaction:
+e1476d44747800000000000000000000000400003314cefe0200000000010406e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006a47304402203de83525bb7690d61eb878edaafd890c046eebab58bce6d38235af21926a696b022034ac43fc121948ec1e9626a99eb6668bd953aff83b8582dccf073dbbccedcb474121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a100000000171600141cc394844336ac00287ddc0b7e1f91c565785881ffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a101000000fc0047304402201b7cf6b11dc510305702d69eaa8ec3e3df61f1077c93d5a0d2a2f672c6813a52022040526ea7ca2e521f08598b6afe65561c373186a613c1024d60c33817417ab3014147304402202eb67258e211e9eed45b93a7b86cbccde5e7d4846aad9b3dec6039da9b0eeb9d0220715593b6df790bfa068971c33c86e488eba2cd6352922290daaca826fd6a5d3b414c695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853aeffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10200000023220020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969ffffffff0220d06f59000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ac9002ea1d000000001976a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac0002483045022100df645552755aeb87221ddc706ec3669f2be969649e84744b33715f19d1c7c85a02202740ed0cefcdf24e6bdd76409c0a226b987029e71cdbeda99b668be7ee9425c24121021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57480004004830450221009a57341132d23df1a956504cd14327ec0a9113679dce16b90977113d166f9b9102202c6f0ded708ec97490573977ca04d9bf3807cbee3cd719067472e6ef4b4361d6414830450221009c5e7b7b6a7b91a8bd3a7b4cbd1086960818fa51e83c4beecc35e5f82b51e682022064ad8b3761d70b88362cb0d38766c0a53838cf16c09047574d2004d795961f8d41695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae00000000
+Size 1048 bytes
+Network Fees: 1001 - 0.96 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 4
+   -------
+   tx: d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206
+   n: 31
+   type: p2pkh
+   scriptSigLen: 106
+   scriptSig: 304402203de83525bb7690d61eb878edaafd890c046eebab58bce6d38235af21926a696b022034ac43fc121948ec1e9626a99eb6668bd953aff83b8582dccf073dbbccedcb4741
+   script: 039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918
+   address GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   nSequence: ffffffff
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 0
+   type: p2wpkh
+   script: 00141cc394844336ac00287ddc0b7e1f91c565785881
+   nb witness: 2
+   witness sigs: 3045022100df645552755aeb87221ddc706ec3669f2be969649e84744b33715f19d1c7c85a02202740ed0cefcdf24e6bdd76409c0a226b987029e71cdbeda99b668be7ee9425c241
+   witness script(s): 021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba5748
+   address segwit AZWp5mi2CkCvtWNA6rKoHe59sq57JZz3ei
+   hash 1cc394844336ac00287ddc0b7e1f91c565785881
+   address GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k
+   nSequence: ffffffff
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 1
+   type: p2sh
+   scriptSigLen: 252
+   scriptSig: 304402201b7cf6b11dc510305702d69eaa8ec3e3df61f1077c93d5a0d2a2f672c6813a52022040526ea7ca2e521f08598b6afe65561c373186a613c1024d60c33817417ab30141,304402202eb67258e211e9eed45b93a7b86cbccde5e7d4846aad9b3dec6039da9b0eeb9d0220715593b6df790bfa068971c33c86e488eba2cd6352922290daaca826fd6a5d3b41
+   script: 5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae
+   multisig addresses GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k,GLbb8AJPnpbwaFxHJAH6UggaB6e4u1CtFQ,GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   address APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+   nSequence: ffffffff
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 2
+   type: p2wsh
+   script: 0020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   nb witness: 4
+   witness sigs: 30450221009a57341132d23df1a956504cd14327ec0a9113679dce16b90977113d166f9b9102202c6f0ded708ec97490573977ca04d9bf3807cbee3cd719067472e6ef4b4361d641,30450221009c5e7b7b6a7b91a8bd3a7b4cbd1086960818fa51e83c4beecc35e5f82b51e682022064ad8b3761d70b88362cb0d38766c0a53838cf16c09047574d2004d795961f8d41
+   witness script(s): 5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae
+   address segwit AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+   multisig addresses GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k,GLbb8AJPnpbwaFxHJAH6UggaB6e4u1CtFQ,GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   address APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+   hash 270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 1500500000
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB
+   type: p2pkh
+   -------
+   nValue: 501875344
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac
+   address: GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   type: p2pkh
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using BIP143 signing
+Using BIP143 signing
+Using BIP143 signing
+Using BIP143 signing
+Multisig signatures verified
+Redeemer script verified: APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+Multisig allowed to spend
+Using BIP143 signing
+Using BIP143 signing
+Multisig signatures verified
+Redeemer script verified: AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+Multisig allowed to spend
+----- Transaction verified
+checksum hash 3314cefec0608cadd7363e975ce025f94f237861da4df049d39a54e304abe0b9
+----- Transaction hash: 638614bb691bf9cfc7a00904af9ade5ae4dba3dbb3a8133157c89f19139afb0b
+------------- End Check - verify
+------------- OK - serialize/deserialize
+
+
+//All together, if this one passes, then all good
+
+node tx.js BTG create prevtx=d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206_a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec_a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec_a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec_d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206_a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec_d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206_a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec prevaddr=GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo_3KRxMpLqRVsAAhrbfJL4ZPAzYkS8VH6Krw-segwit_APWkFpVPuqSf24m8et1sZvARHXNStB2H8x_33gmnLSLEioBQzWjif4RTGjP2Tz1YQHWvg-segwit_bc1qrnpefpzrx6kqq2rams9hu8u3c4jhskyph33g3d-segwit_3KRxMpLqRVsAAhrbfJL4ZPAzYkS8VH6Krw-segwit_bc1qyu9s3ea0wf25z9qces4hk75fj3uctzqmgk0erwdefqm08d8yh95sfy6xlw-segwit_33gmnLSLEioBQzWjif4RTGjP2Tz1YQHWvg-segwit prevamount=10.00998277_0.00459356_10.00459356_0.00459356_0.001_0.002_0.003_0.004 previndex=31_0_1_2_1_2_3_4 privkey=L3X1yLAcnwS7XN8PdnVKL9tfYKtdbpFx1hBGUT2oTb2yKGZ5GEvb_L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad_L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad-L5AzookySFjw3tV7TvgJUnD8b87J1T7ysofaWuReAPUUoxtvPj6f-5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae-2of3_L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad-L5AzookySFjw3tV7TvgJUnD8b87J1T7ysofaWuReAPUUoxtvPj6f-5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae-2of3_L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad_L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad_L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad-L5AzookySFjw3tV7TvgJUnD8b87J1T7ysofaWuReAPUUoxtvPj6f-5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae-2of3_L48C2yk4HoW6ScKgNnCyHMC5fCQzxpoeCrXBGuXjLu4i1fXmM4ad-L5AzookySFjw3tV7TvgJUnD8b87J1T7ysofaWuReAPUUoxtvPj6f-5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae-2of3 addr=GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB fees=0.00002001 amount=15.005
+
+Destination address GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB
+Address 3KRxMpLqRVsAAhrbfJL4ZPAzYkS8VH6Krw converted to AZWp5mi2CkCvtWNA6rKoHe59sq57JZz3ei
+Address 33gmnLSLEioBQzWjif4RTGjP2Tz1YQHWvg converted to AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+Address 3KRxMpLqRVsAAhrbfJL4ZPAzYkS8VH6Krw converted to AZWp5mi2CkCvtWNA6rKoHe59sq57JZz3ei
+Address 33gmnLSLEioBQzWjif4RTGjP2Tz1YQHWvg converted to AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+!!!!!!!!!! - Some prevaddr are corresponding to segwit addresses, creating a segwit transaction
+--- Previous amount is: 20.03376345
+--- Amount to spend is: 15.00500000
+--- Network fees are: 0.00002001
+--- Refunded amount to spending address is: 5.02874344
+Using BIP143 signing
+Address corresponding to private key is GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+Signing 6f865b23a6e5d081cfe08371c0df2ee8dd4cc2f77f9219918bb2fb83f8036ad7
+Using BIP143 signing
+Address corresponding to private key is GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k
+Signing a2968a04ff4a70d20a14c4d87f56b857f75bdb6b873f7427fe3d4a54f5c973c3
+Using BIP143 signing
+Redeemer script verified: APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+Signing a13519885e0be91b5a42ac5eec481ca411374ad364990ba21df3a4896400d248
+Signing a13519885e0be91b5a42ac5eec481ca411374ad364990ba21df3a4896400d248
+Using BIP143 signing
+Signing e96bc71dcdfc9e338c84a0829f36a5954a7c82eb7358237915afcd2f713f873d
+Signing e96bc71dcdfc9e338c84a0829f36a5954a7c82eb7358237915afcd2f713f873d
+Using BIP143 signing
+Signing 8d74815ef5ed1043d6cb533dd4cbc6f7f4e4d503475514c2413945554d87a693
+Using BIP143 signing
+Address corresponding to private key is GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k
+Signing 7878c8df64000d2b8625de594a2811ad58260a3fc4a0598498f62948682d009d
+Using BIP143 signing
+Signing e0e4f1ab21f9988df23f158920dfba1f2a5f637081ad00d89e5f67752323ae3c
+Signing e0e4f1ab21f9988df23f158920dfba1f2a5f637081ad00d89e5f67752323ae3c
+Using BIP143 signing
+Signing 932c411d22b02d018fbaff244fcfad4ae7feb9e5155ac57bef5c23c151c3a423
+Signing 932c411d22b02d018fbaff244fcfad4ae7feb9e5155ac57bef5c23c151c3a423
+checksum hash 74f65def2cabc4baeb4f8454489b05e66d786dc89a62fc5f001d9758b1497ef7
+----- Transaction hash: df5dc55cbc28505aae21251ac414d880e52507edbe2fe90ff4e6fff1c6a24876
+Transaction body:
+0200000000010806e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006b483045022100e531f8c92ea48db8fab91019cf2e28a15d6a30b5d7b1aa19f535b08407f8779402202f6f0ab8568ad07b699eca2c4e663a40bf7abc415fe8ef68f440deed93ac46834121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a100000000171600141cc394844336ac00287ddc0b7e1f91c565785881ffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a101000000fc0047304402205d0b0c62bba5f4ec688e4df01e230c0d0e70a60e0ef427663a7124539e71b5ee02203cdc1739949ebbf22915d9bdf7b05de3109d774699ce5c8466bba136c690bc8b41473044022001a163a9b55e3b44feb82b80acb793427511beac9e6e419f43ad970864334fec0220155919f1b4f765f211d1ac6021654e751dc7df725ccdd190b19632c0bb84413a414c695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853aeffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10200000023220020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969ffffffff06e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d50100000000ffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a102000000171600141cc394844336ac00287ddc0b7e1f91c565785881ffffffff06e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d50300000000ffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10400000023220020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969ffffffff0220d06f59000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ace840f91d000000001976a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac0002483045022100b6fb824b06f2d40405b2ed612add9136b7776f82280760884ba94ee6693c7c1202203d7189398c5ee02c1a6f2e24907806eb30792ab2d64b74aed5da2680876b55684121021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba5748000400473044022064dfa5a15f29fb48fa90ca19d9dd57b834bebe1fc2cf8e191fffec60ab33bfbe022066d1ad18bce6e999f54c1de14ff54cd31059df828207991990eb4361f69507b541483045022100ed890f4167c352ab7fff6c2dc85542358ea06c77c37feed53bd02dbf3b6832b8022025904b08b465be8515db17c87752033dcb9f9f769ab6c5be3496478f4f38fe8c41695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae02483045022100b4afa37613c0d41a65fb54dfd00905ddde698c33bed0eccf2399fb1d1c0d0ee8022044db11553b352a89e056514f0363c7c8ae1a1ba0bcec6e0f57f789fd487d52574121021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba574802483045022100b97563bc8340b2c3b451b917801974db1268463088844226d64b6dfb13111036022059f67b4ad49fb315fbf62854647190a439e9ec925dc5adf7cb0963fb452f17464121021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba5748040047304402200594ef13d8ac1435753ac740033e2e8fef813f63887b656bae172c061501aa7e02204b30de43e857f6d061c05285995555e008d20f61e36c95cd5ec64156a199ae5341483045022100eaa97385ee064f2fc8ecd8218757c1ce7745eba0a80db7277bfb60aab2b95ced0220679b3889a202e3680ceeb2ec3e097d6b6b1df4fe20473f7726df8d3927e8647b41695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae040047304402207905e9cdd071fc1f2dc5ca25b66935c3c45f3c1526f05e6c65524a50e41fb9c402203ecd03ae2c03f2e21faac58648bf058784eda36832c207702261bc19627d64b04147304402203e14541a8ac342f590ad27e621ab0f7b7b129f72efc643da9ee89cacdcc555930220581ff938fbfa25c3d8f6f5ecb5cfa2e0b886c32a0581cd61817a1f16c7ec37a241695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae00000000
+Complete transaction:
+e1476d44747800000000000000000000af07000074f65def0200000000010806e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d51f0000006b483045022100e531f8c92ea48db8fab91019cf2e28a15d6a30b5d7b1aa19f535b08407f8779402202f6f0ab8568ad07b699eca2c4e663a40bf7abc415fe8ef68f440deed93ac46834121039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918ffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a100000000171600141cc394844336ac00287ddc0b7e1f91c565785881ffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a101000000fc0047304402205d0b0c62bba5f4ec688e4df01e230c0d0e70a60e0ef427663a7124539e71b5ee02203cdc1739949ebbf22915d9bdf7b05de3109d774699ce5c8466bba136c690bc8b41473044022001a163a9b55e3b44feb82b80acb793427511beac9e6e419f43ad970864334fec0220155919f1b4f765f211d1ac6021654e751dc7df725ccdd190b19632c0bb84413a414c695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853aeffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10200000023220020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969ffffffff06e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d50100000000ffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a102000000171600141cc394844336ac00287ddc0b7e1f91c565785881ffffffff06e26486719d6e490862b121f182ad2b1513bc2838dd17067966596e210ba8d50300000000ffffffffecd690f1d6b03a5e5a6c2431f64c7bb11810f05ed7e5d5a0c88d81029f3193a10400000023220020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969ffffffff0220d06f59000000001976a914177b585b5401ad21b60b78b1b3c91996f250296d88ace840f91d000000001976a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac0002483045022100b6fb824b06f2d40405b2ed612add9136b7776f82280760884ba94ee6693c7c1202203d7189398c5ee02c1a6f2e24907806eb30792ab2d64b74aed5da2680876b55684121021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba5748000400473044022064dfa5a15f29fb48fa90ca19d9dd57b834bebe1fc2cf8e191fffec60ab33bfbe022066d1ad18bce6e999f54c1de14ff54cd31059df828207991990eb4361f69507b541483045022100ed890f4167c352ab7fff6c2dc85542358ea06c77c37feed53bd02dbf3b6832b8022025904b08b465be8515db17c87752033dcb9f9f769ab6c5be3496478f4f38fe8c41695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae02483045022100b4afa37613c0d41a65fb54dfd00905ddde698c33bed0eccf2399fb1d1c0d0ee8022044db11553b352a89e056514f0363c7c8ae1a1ba0bcec6e0f57f789fd487d52574121021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba574802483045022100b97563bc8340b2c3b451b917801974db1268463088844226d64b6dfb13111036022059f67b4ad49fb315fbf62854647190a439e9ec925dc5adf7cb0963fb452f17464121021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba5748040047304402200594ef13d8ac1435753ac740033e2e8fef813f63887b656bae172c061501aa7e02204b30de43e857f6d061c05285995555e008d20f61e36c95cd5ec64156a199ae5341483045022100eaa97385ee064f2fc8ecd8218757c1ce7745eba0a80db7277bfb60aab2b95ced0220679b3889a202e3680ceeb2ec3e097d6b6b1df4fe20473f7726df8d3927e8647b41695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae040047304402207905e9cdd071fc1f2dc5ca25b66935c3c45f3c1526f05e6c65524a50e41fb9c402203ecd03ae2c03f2e21faac58648bf058784eda36832c207702261bc19627d64b04147304402203e14541a8ac342f590ad27e621ab0f7b7b129f72efc643da9ee89cacdcc555930220581ff938fbfa25c3d8f6f5ecb5cfa2e0b886c32a0581cd61817a1f16c7ec37a241695221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae00000000
+Size 1991 bytes
+Network Fees: 2001 - 1.01 satoshis/byte
+------------- Check - deserialize
+nVersion 02000000
+nb input: 8
+   -------
+   tx: d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206
+   n: 31
+   type: p2pkh
+   scriptSigLen: 107
+   scriptSig: 3045022100e531f8c92ea48db8fab91019cf2e28a15d6a30b5d7b1aa19f535b08407f8779402202f6f0ab8568ad07b699eca2c4e663a40bf7abc415fe8ef68f440deed93ac468341
+   script: 039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf918
+   address GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   nSequence: ffffffff
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 0
+   type: p2wpkh
+   script: 00141cc394844336ac00287ddc0b7e1f91c565785881
+   nb witness: 2
+   witness sigs: 3045022100b6fb824b06f2d40405b2ed612add9136b7776f82280760884ba94ee6693c7c1202203d7189398c5ee02c1a6f2e24907806eb30792ab2d64b74aed5da2680876b556841
+   script(s) witness: 021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba5748
+   hash 1cc394844336ac00287ddc0b7e1f91c565785881
+   address pubkey GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k
+   address segwit AZWp5mi2CkCvtWNA6rKoHe59sq57JZz3ei
+   nSequence: ffffffff
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 1
+   type: p2sh
+   scriptSigLen: 252
+   scriptSig: 304402205d0b0c62bba5f4ec688e4df01e230c0d0e70a60e0ef427663a7124539e71b5ee02203cdc1739949ebbf22915d9bdf7b05de3109d774699ce5c8466bba136c690bc8b41,3044022001a163a9b55e3b44feb82b80acb793427511beac9e6e419f43ad970864334fec0220155919f1b4f765f211d1ac6021654e751dc7df725ccdd190b19632c0bb84413a41
+   script: 5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae
+   multisig addresses GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k,GLbb8AJPnpbwaFxHJAH6UggaB6e4u1CtFQ,GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   address APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+   nSequence: ffffffff
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 2
+   type: p2wsh
+   script: 0020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   nb witness: 4
+   witness sigs: 3044022064dfa5a15f29fb48fa90ca19d9dd57b834bebe1fc2cf8e191fffec60ab33bfbe022066d1ad18bce6e999f54c1de14ff54cd31059df828207991990eb4361f69507b541,3045022100ed890f4167c352ab7fff6c2dc85542358ea06c77c37feed53bd02dbf3b6832b8022025904b08b465be8515db17c87752033dcb9f9f769ab6c5be3496478f4f38fe8c41
+   script(s) witness: 5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae
+   multisig addresses GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k,GLbb8AJPnpbwaFxHJAH6UggaB6e4u1CtFQ,GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   hash 270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   address segwit AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+   nSequence: ffffffff
+   -------
+   tx: d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206
+   n: 1
+   type: p2wpkh2
+   script: 00
+   nb witness: 2
+   witness sigs: 3045022100b4afa37613c0d41a65fb54dfd00905ddde698c33bed0eccf2399fb1d1c0d0ee8022044db11553b352a89e056514f0363c7c8ae1a1ba0bcec6e0f57f789fd487d525741
+   script(s) witness: 021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba5748
+   hash 1cc394844336ac00287ddc0b7e1f91c565785881
+   address pubkey GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k
+   address segwit bc1qrnpefpzrx6kqq2rams9hu8u3c4jhskyph33g3d - AZWp5mi2CkCvtWNA6rKoHe59sq57JZz3ei
+   nSequence: ffffffff
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 2
+   type: p2wpkh
+   script: 00141cc394844336ac00287ddc0b7e1f91c565785881
+   nb witness: 2
+   witness sigs: 3045022100b97563bc8340b2c3b451b917801974db1268463088844226d64b6dfb13111036022059f67b4ad49fb315fbf62854647190a439e9ec925dc5adf7cb0963fb452f174641
+   script(s) witness: 021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba5748
+   hash 1cc394844336ac00287ddc0b7e1f91c565785881
+   address pubkey GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k
+   address segwit AZWp5mi2CkCvtWNA6rKoHe59sq57JZz3ei
+   nSequence: ffffffff
+   -------
+   tx: d5a80b216e5966790617dd3828bc13152bad82f121b16208496e9d718664e206
+   n: 3
+   type: p2wsh2
+   script: 00
+   nb witness: 4
+   witness sigs: 304402200594ef13d8ac1435753ac740033e2e8fef813f63887b656bae172c061501aa7e02204b30de43e857f6d061c05285995555e008d20f61e36c95cd5ec64156a199ae5341,3045022100eaa97385ee064f2fc8ecd8218757c1ce7745eba0a80db7277bfb60aab2b95ced0220679b3889a202e3680ceeb2ec3e097d6b6b1df4fe20473f7726df8d3927e8647b41
+   script(s) witness: 5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae
+   multisig addresses GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k,GLbb8AJPnpbwaFxHJAH6UggaB6e4u1CtFQ,GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   hash 270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   address segwit bc1qyu9s3ea0wf25z9qces4hk75fj3uctzqmgk0erwdefqm08d8yh95sfy6xlw
+   nSequence: ffffffff
+   -------
+   tx: a193319f02818dc8a0d5e5d75ef01018b17b4cf631246c5a5e3ab0d6f190d6ec
+   n: 4
+   type: p2wsh
+   script: 0020270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   nb witness: 4
+   witness sigs: 304402207905e9cdd071fc1f2dc5ca25b66935c3c45f3c1526f05e6c65524a50e41fb9c402203ecd03ae2c03f2e21faac58648bf058784eda36832c207702261bc19627d64b041,304402203e14541a8ac342f590ad27e621ab0f7b7b129f72efc643da9ee89cacdcc555930220581ff938fbfa25c3d8f6f5ecb5cfa2e0b886c32a0581cd61817a1f16c7ec37a241
+   script(s) witness: 5221021254e3173d3351fa283d10c82042686f43e739933ab19860b479316ffbba57482102267d15316f752c73f80dac185a872463563f0c16457062de1be4d1e513442e8321039f1e160a02079a6d6b7be0334cc4d76a125cd13a6f8d7131b11c263bc20bf91853ae
+   multisig addresses GLU1deMwMToTt7s87Nv98v9qrK2sbZML5k,GLbb8AJPnpbwaFxHJAH6UggaB6e4u1CtFQ,GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   hash 270b08e7af7255411418cc2b7b7a89947985881b459f91b9b94836f3b4e4b969
+   address segwit AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+   nSequence: ffffffff
+nb output: 2
+   -------
+   nValue: 1500500000
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a914177b585b5401ad21b60b78b1b3c91996f250296d88ac
+   address: GKz5ii8tWQG9hd196vNkwkLKsWHqaeKSoB
+   type: p2pkh
+   -------
+   nValue: 502874344
+   scriptPubkeyLen: 25
+   scriptPubkey: 76a91461975b3a4b9d5059e3db3e301e394d6d13275b3688ac
+   address: GSjwHAAYmFfQ4WPArc2ErtjQGr3Q2nkjvo
+   type: p2pkh
+nLockTime 00000000
+------------- End Check - deserialize
+------------- Check - verify
+Using BIP143 signing
+Using BIP143 signing
+Using BIP143 signing
+Using BIP143 signing
+Multisig signatures verified
+Redeemer script verified: APWkFpVPuqSf24m8et1sZvARHXNStB2H8x
+Multisig allowed to spend
+Using BIP143 signing
+Using BIP143 signing
+Multisig signatures verified
+Redeemer script verified: AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+Multisig allowed to spend
+Using BIP143 signing
+Using BIP143 signing
+Using BIP143 signing
+Using BIP143 signing
+Multisig signatures verified
+Multisig allowed to spend
+Using BIP143 signing
+Using BIP143 signing
+Multisig signatures verified
+Redeemer script verified: AHmdWHoX1y8x8o2JAD4ABXdYMYczNtmb6Z
+Multisig allowed to spend
+----- Transaction verified
+checksum hash 74f65def2cabc4baeb4f8454489b05e66d786dc89a62fc5f001d9758b1497ef7
+----- Transaction hash: df5dc55cbc28505aae21251ac414d880e52507edbe2fe90ff4e6fff1c6a24876
+------------- End Check - verify
+------------- OK - serialize/deserialize
