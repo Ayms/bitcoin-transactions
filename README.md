@@ -179,7 +179,7 @@ Please see [general](https://github.com/Ayms/bitcoin-transactions/blob/master/te
 	
 ## Notes for the devs
 
-The module is not trivial, any slight change can cause everything not to work any longer and can become difficult to identify at a certain point of time, therefore it is advised to periodically test the latest example in the multisig test vectors while making changes (if this one passes it's unlikely that something is wrong). In addition serialize/deserialize is not symetrical then ``true`` must be used when not coming from a Tx constructor transaction, initially this was a mistake due to misreading of segwit specs, we decided to keep it like this because double checking symetrical potential wrong things is just useless, therefore this adds a last serialize/deserialize independant check
+The module is not trivial, any slight change can cause everything not to work any longer and can become difficult to identify at a certain point of time, therefore it is advised to periodically test the latest example in the multisig test vectors while making changes (if this one passes it's unlikely that something is wrong). In addition [serialize/deserialize](https://github.com/Ayms/bitcoin-transactions/blob/master/tests/serialize-deserialize.js) is not symetrical then ``true`` must be used when not coming from a Tx constructor transaction, initially this was a mistake due to misreading of segwit specs, we decided to keep it like this because double checking symetrical potential wrong things is just useless, therefore this adds a last serialize/deserialize independant check
 	
 ## Related projects :
 
