@@ -77,7 +77,7 @@ In that case, if prevaddr is not a bech32 address it will create a segwit "neste
 
 Same thing applies if the destination address is a bech32 one or not
 
-The best is to refer to all the examples in [test vectors](https://github.com/Ayms/bitcoin-transactions/blob/tests/vectors_tx.js) and in examples files
+The best is to refer to all the examples in [test vectors](https://github.com/Ayms/bitcoin-transactions/blob/tests/vectors_tx.js) , and [test vectors phase2 mofn and all together](https://github.com/Ayms/bitcoin-transactions/blob/master/tests/multisig.js) and in examples files
 
 The calculation for the fees is:
 
@@ -137,6 +137,8 @@ Check carefully the output of the create command, you will see the details of th
 
 	node tx.js <coin> decode <body of the transaction>
 	
+Please see [verify](https://github.com/Ayms/bitcoin-transactions/blob/tests/general.js)
+	
 ## Verify transactions
 
 	node tx.js <coin> verify <body of the transaction> 'outpoint1,nValue1' 'outpoint2,nValue2' ...
@@ -150,6 +152,8 @@ Please see [verify](https://github.com/Ayms/bitcoin-transactions/blob/tests/veri
 This will convert the address from a BTC format to <coin target> format, this feature will be ameliorated with the features to come (including bech32 format mapping)
 
 Note that BCH bech32 like addresses are supported and systematically converted into standard addresses (TBD if this has to be changed with the features to come)
+
+Please see [verify](https://github.com/Ayms/bitcoin-transactions/blob/tests/general.js)
 
 ## Decode redeem scripts
 
@@ -171,6 +175,8 @@ To find the keys corresponding to a m of n redeem script, you can run:
 	P2WSH (nested) address AWGBg1UmRQAekSFMZFkBeLDFbR7Z63S8ey equivalent to bitcoin address 3GBKx47ae9pt2djo7hkSv5K6GLUaL6Vwvm
 	P2WSH address bc1qfun6tu3xkgqe0h7gcyjt036ew8n27p2nhl5ymuakcrjx0cu7a4nqqueq7n
 
+Please see [verify](https://github.com/Ayms/bitcoin-transactions/blob/tests/general.js)
+	
 ## Notes for the devs
 
 The module is not trivial, any slight change can cause everything not to work any longer and can become difficult to identify at a certain point of time, therefore it is advised to periodically test the latest example in the multisig test vectors while making changes (if this one passes it's unlikely that something is wrong). In addition serialize/deserialize is not symetrical then ``true`` must be used when not coming from a Tx constructor transaction, initially this was a mistake due to misreading of segwit specs, we decided to keep it like this because double checking symetrical potential wrong things is just useless, therefore this adds a last serialize/deserialize independant check
