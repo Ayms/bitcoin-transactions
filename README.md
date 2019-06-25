@@ -137,13 +137,13 @@ Check carefully the output of the create command, you will see the details of th
 
 	node tx.js <coin> decode <body of the transaction>
 	
-Please see [general](https://github.com/Ayms/bitcoin-transactions/blob/tests/general.js)
+Please see [general](https://github.com/Ayms/bitcoin-transactions/blob/master/tests/general.js)
 	
 ## Verify transactions
 
 	node tx.js <coin> verify <body of the transaction> 'outpoint1,nValue1' 'outpoint2,nValue2' ...
 	
-Please see [verify](https://github.com/Ayms/bitcoin-transactions/blob/tests/verify.js)
+Please see [verify](https://github.com/Ayms/bitcoin-transactions/blob/master/tests/verify.js)
 	
 ## Convert addresses
 
@@ -153,7 +153,7 @@ This will convert the address from a BTC format to <coin target> format, this fe
 
 Note that BCH bech32 like addresses are supported and systematically converted into standard addresses (TBD if this has to be changed with the features to come)
 
-Please see [general](https://github.com/Ayms/bitcoin-transactions/blob/tests/general.js)
+Please see [general](https://github.com/Ayms/bitcoin-transactions/blob/master/tests/general.js)
 
 ## Decode redeem scripts
 
@@ -175,7 +175,7 @@ To find the keys corresponding to a m of n redeem script, you can run:
 	P2WSH (nested) address AWGBg1UmRQAekSFMZFkBeLDFbR7Z63S8ey equivalent to bitcoin address 3GBKx47ae9pt2djo7hkSv5K6GLUaL6Vwvm
 	P2WSH address bc1qfun6tu3xkgqe0h7gcyjt036ew8n27p2nhl5ymuakcrjx0cu7a4nqqueq7n
 
-Please see [general](https://github.com/Ayms/bitcoin-transactions/blob/tests/general.js)
+Please see [general](https://github.com/Ayms/bitcoin-transactions/blob/master/tests/general.js)
 	
 ## Notes for the devs
 
