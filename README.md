@@ -13,7 +13,7 @@ Therefore the initial dev fees have been removed and the code is open source and
 
 If you intend to fork this module, maybe you should wait a little bit that everything is implemented, to come:
 
-### phase3 (begining of August 2019):
+#### phase3 (begining of August 2019):
 - public keys discovery from private keys
 - segwit addresses derivation and related public keys discovery
 - BIP39, 44, 49, 84 and 141
@@ -21,7 +21,7 @@ If you intend to fork this module, maybe you should wait a little bit that every
 - seed generation, discovery and recovery
 - signatures generation and verification (including segwit and bech32)
 
-### phase4 (end of August 2019):
+#### phase4 (end of August 2019):
 - browserification of everything into a secure standalone offline javascript application inside browsers
 
 ## Installation
