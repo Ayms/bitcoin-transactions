@@ -11,14 +11,17 @@ Therefore the initial dev fees have been removed and the code is open source and
 
 ## Planning
 
-If you intent to fork this module, maybe you should wait a little bit that everything is implemented, to come:
+If you intend to fork this module, maybe you should wait a little bit that everything is implemented, to come:
 
+### phase3 (begining of August 2019):
 - public keys discovery from private keys
 - segwit addresses derivation and related public keys discovery
 - BIP39, 44, 49, 84 and 141
 - missing word or last checksum word discovery
 - seed generation, discovery and recovery
 - signatures generation and verification (including segwit and bech32)
+
+### phase4 (end of August 2019):
 - browserification of everything into a secure standalone offline javascript application inside browsers
 
 ## Installation
@@ -35,7 +38,7 @@ If you experience some issues with this module or don't feel comfortable to use 
 
 If you don't know very well how to find your transactions, your can refer to the [initial doc](https://github.com/Ayms/bitcoin-transactions/blob/README_previous.md)
 
-The list of supported coins is [here](https://github.com/Ayms/bitcoin-transactions/blob/README_previous.md#supported-coins), as you can see the tool does support a lot of coins, most of them not being serious, we do not intent to support additional non serious coins 
+The list of supported coins is [here](https://github.com/Ayms/bitcoin-transactions/blob/README_previous.md#supported-coins), as you can see the tool does support a lot of coins, most of them not being serious, we do not intend to support additional non serious coins 
 
 ## Create wallet
 
@@ -48,7 +51,7 @@ The list of supported coins is [here](https://github.com/Ayms/bitcoin-transactio
 
 See the test vectors in https://github.com/Ayms/bitcoin-transactions/blob/tests/wallet.txt
 
-``<coin>`` is the type of coin, ``<secret>`` is a BIP32 seed (32 bytes) or a xprv derived seed, nb is the number of addresses to be generated, path is the derivation path (it defaults to the standard path or BIP44 path), the "'" stands for hardened addresses
+<coin> is the type of coin, <secret> is a BIP32 seed (32 bytes) or a xprv derived seed, nb is the number of addresses to be generated, path is the derivation path (it defaults to the standard path or BIP44 path), the "'" stands for hardened addresses
 
 You can also use ``create_wallet <coin> <secret>`` where secret is an already generated hd object to iterate on it
 
@@ -137,13 +140,13 @@ Check carefully the output of the create command, you will see the details of th
 
 	node tx.js <coin> decode <body of the transaction>
 	
-Please see [general](https://github.com/Ayms/bitcoin-transactions/blob/master/tests/general.js)
+Please see [verify](https://github.com/Ayms/bitcoin-transactions/blob/tests/general.js)
 	
 ## Verify transactions
 
 	node tx.js <coin> verify <body of the transaction> 'outpoint1,nValue1' 'outpoint2,nValue2' ...
 	
-Please see [verify](https://github.com/Ayms/bitcoin-transactions/blob/master/tests/verify.js)
+Please see [verify](https://github.com/Ayms/bitcoin-transactions/blob/tests/verify.js)
 	
 ## Convert addresses
 
@@ -153,7 +156,7 @@ This will convert the address from a BTC format to <coin target> format, this fe
 
 Note that BCH bech32 like addresses are supported and systematically converted into standard addresses (TBD if this has to be changed with the features to come)
 
-Please see [general](https://github.com/Ayms/bitcoin-transactions/blob/master/tests/general.js)
+Please see [verify](https://github.com/Ayms/bitcoin-transactions/blob/tests/general.js)
 
 ## Decode redeem scripts
 
@@ -175,11 +178,11 @@ To find the keys corresponding to a m of n redeem script, you can run:
 	P2WSH (nested) address AWGBg1UmRQAekSFMZFkBeLDFbR7Z63S8ey equivalent to bitcoin address 3GBKx47ae9pt2djo7hkSv5K6GLUaL6Vwvm
 	P2WSH address bc1qfun6tu3xkgqe0h7gcyjt036ew8n27p2nhl5ymuakcrjx0cu7a4nqqueq7n
 
-Please see [general](https://github.com/Ayms/bitcoin-transactions/blob/master/tests/general.js)
+Please see [verify](https://github.com/Ayms/bitcoin-transactions/blob/tests/general.js)
 	
 ## Notes for the devs
 
-The module is not trivial, any slight change can cause everything not to work any longer and can become difficult to identify at a certain point of time, therefore it is advised to periodically test the latest example in the multisig test vectors while making changes (if this one passes it's unlikely that something is wrong). In addition [serialize/deserialize](https://github.com/Ayms/bitcoin-transactions/blob/master/tests/serialize-deserialize.js) is not symetrical then ``true`` must be used when not coming from a Tx constructor transaction, initially this was a mistake due to misreading of segwit specs, we decided to keep it like this because double checking symetrical potential wrong things is just useless, therefore this adds a last serialize/deserialize independant check
+The module is not trivial, any slight change can cause everything not to work any longer and can become difficult to identify at a certain point of time, therefore it is advised to periodically test the latest example in the multisig test vectors while making changes (if this one passes it's unlikely that something is wrong). In addition serialize/deserialize is not symetrical then ``true`` must be used when not coming from a Tx constructor transaction, initially this was a mistake due to misreading of segwit specs, we decided to keep it like this because double checking symetrical potential wrong things is just useless, therefore this adds a last serialize/deserialize independant check
 	
 ## Related projects :
 
