@@ -98,7 +98,7 @@ You must choose the fees according to the rules of the coin used, do not go belo
 	
 ### Segwit
 
-If you coins are on a segwit address you must add the ``-segwit`` flag in prevaddr:
+If your coins are on a segwit address you must add the ``-segwit`` flag in prevaddr:
 
 #### P2WPKH
 
