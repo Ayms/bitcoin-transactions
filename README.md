@@ -61,9 +61,9 @@ The general syntax is:
 - amount are the amounts of the outputs to be spent
 - previndex are the indexes of the outputs to be spent (warning: it starts with zero)
 - privkey are the private keys or redeem scripts corresponding to prevaddr
-- addr is the destination address
+- addr are the destination addresses
 - fees are the network fees
-- amount are the amounts to be sent, the delta will be refunded to the first prevaddr address, if omitted the total of prevamounts minus the network fees will go to the destination address, if there is several destination addresses, there must be the same number of amounts
+- amount are the amounts to be sent, the delta will be refunded to the first prevaddr address, if omitted the total of prevamounts minus the network fees will go to the destination address, if there is several destination addresses, there must be the same number of amounts, same as before in that case if there is a delta for the sum of amounts + fees compared to the total of prevamounts, it will be refunded to the first prevaddr
 
 If prevaddr corresponds to a segwit address, you must use prevaddr=prevaddr1-segwit_prevaddr2-segwit_...
 
