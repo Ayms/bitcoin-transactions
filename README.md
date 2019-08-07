@@ -27,9 +27,9 @@ All of this does of course not apply for the browser version when it will be ava
 
 If you experience some issues with this module or don't feel comfortable to use it by yourself, or just don't know how to use it, please email at our github address or email contact peersm com, or post an issue
 
-If you don't know very well how to find your transactions, your can refer to the [initial doc](https://github.com/Ayms/bitcoin-transactions/blob/README_previous.md)
+If you don't know very well how to find your transactions, your can refer to the [initial doc](https://github.com/Ayms/bitcoin-transactions/blob/master/README_previous.md)
 
-The list of supported coins is [here](https://github.com/Ayms/bitcoin-transactions/blob/README_previous.md#supported-coins), as you can see the tool does support a lot of coins, most of them not being serious, we do not intend to support additional non serious coins 
+The list of supported coins is [here](https://github.com/Ayms/bitcoin-transactions/blob/master/README_previous.md#supported-coins), as you can see the tool does support a lot of coins, most of them not being serious, we do not intend to support additional non serious coins 
 
 ## Create wallet
 
@@ -40,7 +40,7 @@ The list of supported coins is [here](https://github.com/Ayms/bitcoin-transactio
 	node tx.js BTC createwallet 4ecf2e71d567072fe2f9cda40873afcaae4224e3f249018621a90dd43e88f8de 100 "m/44'/0'/0'/0/500"
 
 
-See the test vectors in https://github.com/Ayms/bitcoin-transactions/blob/tests/wallet.txt
+See the test vectors in https://github.com/Ayms/bitcoin-transactions/blob/master/tests/wallet.txt
 
 <coin> is the type of coin, <secret> is a BIP32 seed (32 bytes) or a xprv derived seed, nb is the number of addresses to be generated, path is the derivation path (it defaults to the standard path or BIP44 path), the "'" stands for hardened addresses
 
@@ -71,7 +71,7 @@ In that case, if prevaddr is not a bech32 address it will create a segwit "neste
 
 Same thing applies if a destination address is a bech32 one or not
 
-The best is to refer to all the examples in [test vectors](https://github.com/Ayms/bitcoin-transactions/blob/tests/vectors_tx.js) and [test vectors multiple addresses](https://github.com/Ayms/bitcoin-transactions/blob/tests/vectors_tx_multi_dest.js)
+The best is to refer to all the examples in [test vectors](https://github.com/Ayms/bitcoin-transactions/blob/master/tests/vectors_tx.js) and [test vectors multiple addresses](https://github.com/Ayms/bitcoin-transactions/blob/master/tests/vectors_tx_multi_dest.js)
 
 The calculation for the fees is:
 
@@ -105,13 +105,13 @@ Same as above with a ``_`` separator for all fields, if the data is the same (fo
 
 ### Mixed inputs
 
-You can mix all kind of transactions using the ``_`` separator, please see the last example in [test vectors](https://github.com/Ayms/bitcoin-transactions/blob/tests/vectors_tx.js)
+You can mix all kind of transactions using the ``_`` separator, please see the last example in [test vectors](https://github.com/Ayms/bitcoin-transactions/blob/master/tests/vectors_tx.js)
 	
 ### Sending your transaction
 
 The difference between ``complete transaction`` and ``body`` in the output of the ``create`` command is just that ``complete transaction`` includes the ``body`` with the network headers:
 
-node tx.js <coin> send ``complete transaction`` ``advised full node`` (as shown in [here](https://github.com/Ayms/bitcoin-transactions/blob/README_previous.md#supported-coins) section)
+node tx.js <coin> send ``complete transaction`` ``advised full node`` (as shown in [here](https://github.com/Ayms/bitcoin-transactions/blob/master/README_previous.md#supported-coins) section)
 	
 or
 	
@@ -139,7 +139,7 @@ See Sign/Verify messages below also
 
 	node tx.js <coin> verify <body of the transaction> 'outpoint1,nValue1' 'outpoint2,nValue2' ...
 	
-Please see [verify](https://github.com/Ayms/bitcoin-transactions/blob/tests/verify.js)
+Please see [verify](https://github.com/Ayms/bitcoin-transactions/blob/master/tests/verify.js)
 	
 ## Convert addresses
 
@@ -289,7 +289,7 @@ Short summary:
 
 The legacy derivation path `m/0'/0'/0'` defined by bitcoin core is used by default for BIP32 and BIP141, use the 'bip44' tag to change it to bip44 path
 
-See the test vectors in [BIPs]([verify](https://github.com/Ayms/bitcoin-transactions/blob/tests/test_bip39.js)
+See the test vectors in [BIPs](https://github.com/Ayms/bitcoin-transactions/blob/master/tests/test_bip39.js)
 
 ### BIP39 seed
 
