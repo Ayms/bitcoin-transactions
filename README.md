@@ -253,7 +253,9 @@ To find the keys corresponding to a m of n redeem script, you can run:
 	Segwit (nested): 3GBKx47ae9pt2djo7hkSv5K6GLUaL6Vwvm
 	Segwit (bech32): bc1qfun6tu3xkgqe0h7gcyjt036ew8n27p2nhl5ymuakcrjx0cu7a4nqqueq7n
 	BCH bech: bitcoincash:pqajhuctcwsmjugrlnv2tn6w7sn2fug7uqvzsme2g0
-	
+
+Probably of no use except for testing purposes:	
+
 	node tx.js <coin> createredeem <m> priv1-priv2-priv3...
 	
 	node tx.js BTG createredeem 5 Kyib9iMhJxL6Zh1srtz3caTAqXhP5gsETuUBiQZEmFBrU3KAkiAg-L5Wn7mijns7mmH7GHfy2qRY9dwHDhTZ7MVW1HfpWMQxtKLseFEu2-L3EqabcHM2Fmp9odX7NSj8sKfZp4C9f1FNCkywMWK7FoPApuyfZF-KxNnFgNR5JVxZmiLrBCCEzB9g3cZU4Jx9PuYn1hLUtbm22PBNvtM-L3zqniBtFP9y41Pd8LbST99QpwWokdZd5J5aVfamnPKAfBqAta8y-L4m4szR86cinah7ttR62FTLFK2sfAgehiYGXzHbFYmxhmNBY9oJw-L4m4szR86cinah7ttR62FTLFK2sfAgehiYGXzHbFYmxhmNBY9oJw
