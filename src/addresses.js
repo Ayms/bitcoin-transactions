@@ -1,9 +1,13 @@
 const crypto=require('crypto');
 const bs58=require('bs58');
-const decode_b=require('../node_modules/cashaddress/cashaddress.js').decode_b;
+const {decode_b,encode_b}=require('../node_modules/cashaddress/cashaddress.js');
 const decode_bech32=require('../node_modules/bech32/segwit.js').decode;
 const encode_bech32=require('../node_modules/bech32/segwit.js').encode;
-const {is_bech,deserialize_scriptSig,check_mOfn}=require('./utils');
+const {is_bech,deserialize_scriptSig,check_mOfn}=require('./utils.js');
+
+if (window===undefined) {
+	var window=false;
+};
 
 const btc_encode=function(buf,version) {
 	let checksum;
@@ -116,6 +120,50 @@ const convert_=function(add,coin) {
 	return add;
 };
 
+const convert2=function(addr,coin1,coin2) {
+	let res={};
+	let type='p2pkh';;
+	let hash;
+	let bech=is_bech(addr);
+	if (bech) {
+		hash=new Buffer(decode_bech32('bc',addr).program);
+		type=(hash.length===20)?'p2pkh':'p2sh';
+	} else if (coin1.BECH32.indexOf(addr.substr(0,1))!==-1) { //BTC like
+		hash=decode_b(addr);
+		type=hash.type;
+		hash=new Buffer(hash.hash,'hex');
+	} else {
+		if (!((coin1.NOP2SH.indexOf(addr.substr(0,1))!==-1)||(coin1.NOP2SH2.indexOf(addr.substr(0,2))!==-1))) {
+			type='p2sh';
+		};
+		hash=btc_decode(addr,(type==='p2pkh')?coin1.p2pk:coin1.p2sh);
+	};
+	res['Type']=type;
+	if (type==='p2pkh') {
+		res['Address']=btc_encode(hash,(type==='p2pkh')?coin2.p2pk:coin2.p2sh);
+		res['Segwit(nested)']=segwit_nested_p2pk(hash,coin2);
+		res['Segwit(bech)']=segwit_bech_p2pk(hash,coin2);	
+	} else {
+		if (bech) {
+			res['Segwit(nested)']=segwit_nested_p2sh(hash,coin2);
+			res['Segwit(bech)']=addr;
+		} else {
+			res['Address']=btc_encode(hash,(type==='p2pkh')?coin2.p2pk:coin2.p2sh);
+		};
+	};
+	if (coin2.bch) {
+		if (!((bech)&&(type==='p2sh'))) {
+			res['BCH bech']=encode_b(hash,type,'bitcoincash');
+		};
+	};
+	if (!window) {
+		Object.keys(res).forEach(function(val) {
+			console.log(val+': '+res[val]);
+		});
+	};
+	return res;
+};
+
 const bech_convert=function(bech,coin) {
 	bech=bech.split(':')[1]||bech;
 	if (coin.BECH32.indexOf(bech.substr(0,1))!==-1) { //if BCH bech address
@@ -185,4 +233,30 @@ const redeem_addr=function(coin,script,type='p2sh',version=coin.p2sh) {
 	return addr;
 };
 
-module.exports={btc_encode,btc_decode,hash_160,rhmac,baddress,decode_redeem,hash_256,double_hash256,getKeyfromExtended,check_p2sh,convert,convert_,bech_convert,privatekeyFromWIF,format_privKey,check_addr,decode_bech32,encode_bech32,redeem_addr};
+const segwit_nested_p2pk=function(pub,coin) {
+	if (pub.length!==20) {
+		pub=hash_160(pub);
+	} else {
+		pub=new Buffer(pub,'hex');
+	};
+	return baddress(Buffer.concat([new Buffer([coin.SEGWIT_VERSION]),new Buffer([pub.length]),pub]),coin.p2sh);
+};
+
+const segwit_nested_p2sh=function(hash,coin) {
+	return baddress(Buffer.concat([new Buffer([coin.SEGWIT_VERSION]),new Buffer([hash.length]),hash]),coin.p2sh);
+};
+
+const segwit_bech_p2pk=function(pub,coin) {
+	if (pub.length!==20) {
+		pub=hash_160(pub);
+	} else {
+		pub=new Buffer(pub,'hex');
+	};
+	return encode_bech32('bc',coin.SEGWIT_VERSION,pub);
+};
+
+const segwit_bech_p2sh=function(hash,coin) {
+	return encode_bech32('bc',coin.SEGWIT_VERSION,hash);
+};
+
+module.exports={btc_encode,btc_decode,hash_160,rhmac,baddress,decode_redeem,hash_256,double_hash256,getKeyfromExtended,check_p2sh,convert,convert_,convert2,bech_convert,privatekeyFromWIF,format_privKey,check_addr,decode_bech32,encode_bech32,redeem_addr,segwit_nested_p2pk,segwit_bech_p2pk,segwit_bech_p2sh,segwit_nested_p2sh};

@@ -9,18 +9,41 @@ const create=function(args,coin) {
 	let tx_=[];
 	let prevamount=0;
 	let fees=parseFloat(args[6]);
-	let amount=parseFloat(args[7])||null;
-	let dtype='p2pkh';
-	let daddr=args[5];
+	let tamount=0;
+	let amounts;
+	let daddrs=args[5].split('_');
 	let saddr;
-	daddr=bech_convert(daddr,coin)||daddr; //bech convert for BCH only
-	console.log('Destination address '+daddr);
-	if  (is_bech(daddr)) {
-		dtype='p2w'; //not nested will become p2wpkh2 or p2wsh2 later
-	} else if (!((coin.NOP2SH.indexOf(daddr.substr(0,1))!==-1)||(coin.NOP2SH2.indexOf(daddr.substr(0,2))!==-1))) {
-		console.log("Warning !!!! You are sending the funds to a P2SH address, make sure that you control it, especially if it's a BIP141 segwit address");
-		dtype='p2sh';
+	let dest=[];
+	if (args[7]) {
+		amounts=args[7].split('_');
 	};
+	if (amounts) {
+		if (amounts.length!==daddrs.length) {
+			throw 'Number of destination addresses does not correspond to number of amounts';
+		};
+		amounts.forEach(function(amount,i) {
+			amount=parseFloat(amount);
+			dest[i]=[,amount,];
+			tamount+=amount;
+		});
+	};
+	daddrs.forEach(function(daddr,i) {
+		let dtype='p2pkh';
+		daddr=bech_convert(daddr,coin)||daddr; //bech convert for BCH only
+		console.log('Destination address '+daddr);
+		if  (is_bech(daddr)) {
+			dtype='p2w'; //not nested will become p2wpkh2 or p2wsh2 later
+		} else if (!((coin.NOP2SH.indexOf(daddr.substr(0,1))!==-1)||(coin.NOP2SH2.indexOf(daddr.substr(0,2))!==-1))) {
+			console.log("Warning !!!! You are sending the funds to a P2SH address, make sure that you control it, especially if it's a BIP141 segwit address");
+			dtype='p2sh';
+		};
+		if (dest[i]) {
+			dest[i][0]=daddr;
+			dest[i][2]=dtype;
+		} else {
+			dest[i]=[daddr,,dtype];
+		};
+	});
 	//console.log(args);
 	let inputs=args[0].split('_');
 	//console.log(inputs);
@@ -56,10 +79,13 @@ const create=function(args,coin) {
 	prevamount_.forEach(function(val) {
 		prevamount+=parseFloat(val);
 	});
-	let res=testamount([prevamount,fees,amount],coin);
+	let res=testamount([prevamount,fees,tamount],coin);
 	if (!res[0]) {
 		console.log('Something is wrong with your numbers, please check them with the testamount command');
 	} else {
+		if (tamount===0) {
+			dest[0][1]=big_satoshis(res[0],coin)
+		};
 		privkey_.forEach(function(privs,i) {
 			let script='p2pkh';
 			let prev=prevaddr_[i].split('-')[0];
@@ -147,10 +173,9 @@ const create=function(args,coin) {
 			//type p2pkh, p2sh, p2wpkh, p2wsh
 			//pubkey [pubkey1, pubkey2,...]
 		});
-		amount=amount||big_satoshis(res[0],coin);
 		if (!res[2]) {
-			new Tx(coin,tx_,[[daddr,amount,dtype]],null);
-			//dtype p2pkh, p2sh (for segwit nested)
+			new Tx(coin,tx_,dest,null);
+			//dtype p2pkh, p2sh (for segwit nested) p2w
 		} else {
 			let rtype=tx_[0][0][3]; //type of refunded address
 			if ((rtype==='p2wpkh')||(rtype==='p2wsh')) {
@@ -159,7 +184,8 @@ const create=function(args,coin) {
 			if ((rtype==='p2wpkh2')||(rtype==='p2wsh2')) {
 				rtype='p2w';//refunded segwit address
 			};
-			new Tx(coin,tx_,[[daddr,amount,dtype],[tx_[0][0][1],big_satoshis(res[2],coin),rtype]],null); //refund to the first address
+			dest.push([tx_[0][0][1],big_satoshis(res[2],coin),rtype]);
+			new Tx(coin,tx_,dest,null); //refund to the first address
 		};
 	};
 };

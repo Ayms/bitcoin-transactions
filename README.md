@@ -13,22 +13,13 @@ Therefore the initial dev fees have been removed and the code is open source and
 
 If you intend to fork this module, maybe you should wait a little bit that everything is implemented, to come:
 
-#### phase3 (beginning of August 2019):
-- public keys discovery from private keys
-- segwit addresses derivation and related public keys discovery
-- BIP39, 44, 49, 84 and 141
-- missing word or last checksum word discovery
-- seed generation, discovery and recovery
-- signatures generation and verification (including segwit and bech32)
-
-#### phase4 (end of August 2019):
-- browserification of everything into a secure standalone offline javascript application inside browsers
+- phase4: browserification of everything into a secure standalone offline javascript application inside browsers
 
 ## Installation
 
 Install [nodejs for Windows,Mac,Linux](https://nodejs.org/en/download/package-manager/), usually this is easy
 
-Create a bitcoin-transactions directory, download and unzip [master](https://github.com/Ayms/bitcoin-transactions/archive/master.zip)
+Create a bitcoin-transactions directory, install elliptic and bs58 with npm in node-modules, copy the other modules and copy tx.js
 
 All of this does of course not apply for the browser version when it will be available
 	
@@ -59,11 +50,11 @@ Since we did implement it before Zcash team, we kept our implementation for z-ad
 
 ## Create transactions
 
-For a really detailed explaination of how transactions work please refer to the initial documentation above
+For a really detailed explanation of how transactions work please refer to the initial documentation above
 
 The general syntax is:
 
-``node tx.js <coin> create prevtx=tx1_tx2... prevaddr=prevaddr1_prevaddr2_... prevamount=amount1_amount2_... previndex=index1_index2... privkey=privkey1_privKey2 addr=addr fees=fees amount=amount optional``
+``node tx.js <coin> create prevtx=tx1_tx2... prevaddr=prevaddr1_prevaddr2_... prevamount=amount1_amount2_... previndex=index1_index2... privkey=privkey1_privKey2 addr=addr1_addr2... fees=fees amount=amount1_amount2 optional``
 
 - prevtx are the transactions ids of the outputs to be spent
 - prevaddr are the addresses of the outputs to be spent
@@ -72,21 +63,21 @@ The general syntax is:
 - privkey are the private keys or redeem scripts corresponding to prevaddr
 - addr is the destination address
 - fees are the network fees
-- amount is the amount to be spent, the delta will be refunded to the first prevaddr address, if omitted the total of prevamounts minus the network fees will go to the destination address
+- amount are the amounts to be sent, the delta will be refunded to the first prevaddr address, if omitted the total of prevamounts minus the network fees will go to the destination address, if there is several destination addresses, there must be the same number of amounts
 
 If prevaddr corresponds to a segwit address, you must use prevaddr=prevaddr1-segwit_prevaddr2-segwit_...
 
 In that case, if prevaddr is not a bech32 address it will create a segwit "nested into p2sh" transaction, if not it will create a legacy segwit transaction
 
-Same thing applies if the destination address is a bech32 one or not
+Same thing applies if a destination address is a bech32 one or not
 
-The best is to refer to all the examples in [test vectors](https://github.com/Ayms/bitcoin-transactions/blob/tests/vectors_tx.js) , and [test vectors phase2 mofn and all together](https://github.com/Ayms/bitcoin-transactions/blob/master/tests/multisig.js) and in examples files
+The best is to refer to all the examples in [test vectors](https://github.com/Ayms/bitcoin-transactions/blob/tests/vectors_tx.js) and [test vectors multiple addresses](https://github.com/Ayms/bitcoin-transactions/blob/tests/vectors_tx_multi_dest.js)
 
 The calculation for the fees is:
 
-	amount+network fees=Sum of prevamounts
+	Sum of amount+network fees=Sum of prevamounts
 
-You must choose the fees according to the rules of the coin used, do not go below ~1 satoshi per byte or your transaction will not be accepted by the network
+You must choose the fees according to the rules of the coin used, do not go below ~1 satoshi per byte or your transaction will not be accepted by the network, due to rounding issues there can be one satoshi floating around
 	
 ### Standard wallets
 
@@ -98,7 +89,7 @@ You must choose the fees according to the rules of the coin used, do not go belo
 	
 ### Segwit
 
-If your coins are on a segwit address you must add the ``-segwit`` flag in prevaddr:
+If your coins are on a segwit address you must add the ``-segwit`` string in prevaddr:
 
 #### P2WPKH
 
@@ -110,7 +101,7 @@ If your coins are on a segwit address you must add the ``-segwit`` flag in preva
 	
 ### Multiple inputs
 
-Same as above with a ``_`` separator for all fields, if the data is the same (for example all prevaddr corresponding to the same address), then just put it once not using ``_``
+Same as above with a ``_`` separator for all fields, if the data is the same (for example all outputs corresponding to the same address), then just put it once not using ``_``
 
 ### Mixed inputs
 
@@ -139,8 +130,10 @@ Check carefully the output of the create command, you will see the details of th
 ## Decode transactions
 
 	node tx.js <coin> decode <body of the transaction>
-	
-Please see [verify](https://github.com/Ayms/bitcoin-transactions/blob/tests/general.js)
+
+Note: once an output corresponding to an address is spent then the corresponding public key or redeem script becomes public, this feature allows you to see it, this eliminates one check to validate further transactions involving this address, that's why it is not recommended to reuse same addresses
+
+See Sign/Verify messages below also
 	
 ## Verify transactions
 
@@ -150,19 +143,83 @@ Please see [verify](https://github.com/Ayms/bitcoin-transactions/blob/tests/veri
 	
 ## Convert addresses
 
-	node tx.js <coin target> convert <addr>
+	node tx.js <coin1> convert <coin2> <addr>
 	
-This will convert the address from a BTC format to <coin target> format, this feature will be ameliorated with the features to come (including bech32 format mapping)
+This will convert the address from coin1 format to coin2 format
 
-Note that BCH bech32 like addresses are supported and systematically converted into standard addresses (TBD if this has to be changed with the features to come)
+	node tx.js BTC convert BTG 18v29GccczH8nxPVm3zQ1xVaxV5Wh4Yz9v
 
-Please see [verify](https://github.com/Ayms/bitcoin-transactions/blob/tests/general.js)
+	Type: p2pk
+	Address: GRkwZPwZbqtRsRgngzeWSiqUsesMkp6eB9
+	Segwit(nested): AcvpUaCnN7dZBkuf8qy6aZpF5GeBqdfKLg
+	Segwit(bech): bc1q2m87z4h0mwxdqjuetmgf95tdc9wmdqz7tg4540
+	
+	node tx.js BTC convert BTG 375tSX5mD7BbXusGrV5GaGuy4aDH9VR176
+	
+	Type: p2sh
+	Address: AMAkAUSwzMXNFiNqJ351JXp8PerFzPbZmy
+
+	node tx.js BTC convert BTG bc1q2m87z4h0mwxdqjuetmgf95tdc9wmdqz7tg4540
+	
+	Type: p2pk
+	Address: GRkwZPwZbqtRsRgngzeWSiqUsesMkp6eB9
+	Segwit(nested): AcvpUaCnN7dZBkuf8qy6aZpF5GeBqdfKLg
+	Segwit(bech): bc1q2m87z4h0mwxdqjuetmgf95tdc9wmdqz7tg4540
+	
+	node tx.js BTC convert BTG bc1qfun6tu3xkgqe0h7gcyjt036ew8n27p2nhl5ymuakcrjx0cu7a4nqqueq7n
+	
+	Type: p2sh
+	Segwit(nested): AWGBg1UmRQAekSFMZFkBeLDFbR7Z63S8ey
+	Segwit(bech): bc1qfun6tu3xkgqe0h7gcyjt036ew8n27p2nhl5ymuakcrjx0cu7a4nqqueq7n
+
+	node2 tx.js BTC convert BCH bc1q2m87z4h0mwxdqjuetmgf95tdc9wmdqz7tg4540
+
+	Type: p2pkh
+	Address: 18v29GccczH8nxPVm3zQ1xVaxV5Wh4Yz9v
+	Segwit(nested): 3NqxkcqbasHnTxQ6hHyMrJv5kC1D4o3jTC
+	Segwit(bech): bc1q2m87z4h0mwxdqjuetmgf95tdc9wmdqz7tg4540
+	BCH bech: bitcoincash:qptvlc2kaldce5ztn90dpyk3dhq4md5qtc6jk64fjm
+
+	node tx.js BTC convert BCH 18v29GccczH8nxPVm3zQ1xVaxV5Wh4Yz9v
+
+	Type: p2pkh
+	Address: 18v29GccczH8nxPVm3zQ1xVaxV5Wh4Yz9v
+	Segwit(nested): 3NqxkcqbasHnTxQ6hHyMrJv5kC1D4o3jTC
+	Segwit(bech): bc1q2m87z4h0mwxdqjuetmgf95tdc9wmdqz7tg4540
+	BCH bech: bitcoincash:qptvlc2kaldce5ztn90dpyk3dhq4md5qtc6jk64fjm
+
+	node tx.js BTC convert ZEC 18v29GccczH8nxPVm3zQ1xVaxV5Wh4Yz9v
+
+	Type: p2pkh
+	Address: t1Rnd9c2kbK4jPbSPhUoX9mbWD9GbVzrhus
+	Segwit(nested): t3fiZkxFjZC5P4bSzdinUz81zzrCHpbMpx2
+	Segwit(bech): bc1q2m87z4h0mwxdqjuetmgf95tdc9wmdqz7tg4540
+	
+	node tx.js BCH convert BTG bitcoincash:qptvlc2kaldce5ztn90dpyk3dhq4md5qtc6jk64fjm
+	
+	Type: p2pkh
+	Address: GRkwZPwZbqtRsRgngzeWSiqUsesMkp6eB9
+	Segwit(nested): AcvpUaCnN7dZBkuf8qy6aZpF5GeBqdfKLg
+	Segwit(bech): bc1q2m87z4h0mwxdqjuetmgf95tdc9wmdqz7tg4540
+	
+	node tx.js BTC convert BCH 375tSX5mD7BbXusGrV5GaGuy4aDH9VR176
+	
+	Type: p2sh
+	Address: 375tSX5mD7BbXusGrV5GaGuy4aDH9VR176
+	BCH bech: bitcoincash:pqajhuctcwsmjugrlnv2tn6w7sn2fug7uqvzsme2g0
+	
+	node tx.js BCH convert BTG pqajhuctcwsmjugrlnv2tn6w7sn2fug7uqvzsme2g0
+	
+	Type: p2sh
+	Address: AMAkAUSwzMXNFiNqJ351JXp8PerFzPbZmy
 
 ## Decode redeem scripts
 
 To find the keys corresponding to a m of n redeem script, you can run:
 
 	node tx.js <coin> decoderedeem <redeem>
+	
+	node tx.js BTG decoderedeem 5521038c71760a4aac81afd4a314dc989c1a0621d28aac584992a26d1993709bdafddb2102fe49b9e7ad51e1bcd4ab5a76dbf4a03d2205a3dc3051494290368a9aa968dd2d2103e3c30f4d2bfcc8e9f8e5268e6f3d0f6faa539fc57600661a607b6db0daabb28921030f56f89e8c20c4b46c3101d13fd8fe5a47dafbdfbd44dbd49cd91dc5aac5c1782102636f4cf63a1f404d3d3b64084bd61a0c9fff47ee84f950492ff87df209c0a04321031fd4c6eab8efffeae088109fe450b50f5d30476e5a82925be4b7cb624eb5406d21031fd4c6eab8efffeae088109fe450b50f5d30476e5a82925be4b7cb624eb5406d57ae
 	
 	Version BTG
 	multisig 5 of 7
@@ -178,7 +235,236 @@ To find the keys corresponding to a m of n redeem script, you can run:
 	P2WSH (nested) address AWGBg1UmRQAekSFMZFkBeLDFbR7Z63S8ey equivalent to bitcoin address 3GBKx47ae9pt2djo7hkSv5K6GLUaL6Vwvm
 	P2WSH address bc1qfun6tu3xkgqe0h7gcyjt036ew8n27p2nhl5ymuakcrjx0cu7a4nqqueq7n
 
-Please see [verify](https://github.com/Ayms/bitcoin-transactions/blob/tests/general.js)
+## Create redeem scripts
+
+	node tx.js <coin> createredeemfrompub <m> pub1-pub2-pub3...
+	
+	node2 tx.js BTG createredeemfrompub 5 038c71760a4aac81afd4a314dc989c1a0621d28aac584992a26d1993709bdafddb-02fe49b9e7ad51e1bcd4ab5a76dbf4a03d2205a3dc3051494290368a9aa968dd2d-03e3c30f4d2bfcc8e9f8e5268e6f3d0f6faa539fc57600661a607b6db0daabb289-030f56f89e8c20c4b46c3101d13fd8fe5a47dafbdfbd44dbd49cd91dc5aac5c178-02636f4cf63a1f404d3d3b64084bd61a0c9fff47ee84f950492ff87df209c0a043-031fd4c6eab8efffeae088109fe450b50f5d30476e5a82925be4b7cb624eb5406d-031fd4c6eab8efffeae088109fe450b50f5d30476e5a82925be4b7cb624eb5406d
+	
+	Redeem script: 5521038c71760a4aac81afd4a314dc989c1a0621d28aac584992a26d1993709bdafddb2102fe49b9e7ad51e1bcd4ab5a76dbf4a03d2205a3dc3051494290368a9aa968dd2d2103e3c30f4d2bfcc8e9f8e5268e6f3d0f6faa539fc57600661a607b6db0daabb28921030f56f89e8c20c4b46c3101d13fd8fe5a47dafbdfbd44dbd49cd91dc5aac5c1782102636f4cf63a1f404d3d3b64084bd61a0c9fff47ee84f950492ff87df209c0a04321031fd4c6eab8efffeae088109fe450b50f5d30476e5a82925be4b7cb624eb5406d21031fd4c6eab8efffeae088109fe450b50f5d30476e5a82925be4b7cb624eb5406d57ae
+	Address: AMAkAUSwzMXNFiNqJ351JXp8PerFzPbZmy
+	Segwit (nested): AWGBg1UmRQAekSFMZFkBeLDFbR7Z63S8ey
+	Segwit (bech32): bc1qfun6tu3xkgqe0h7gcyjt036ew8n27p2nhl5ymuakcrjx0cu7a4nqqueq7n
+	
+	node tx.js BCH createredeemfrompub 5 038c71760a4aac81afd4a314dc989c1a0621d28aac584992a26d1993709bdafddb-02fe49b9e7ad51e1bcd4ab5a76dbf4a03d2205a3dc3051494290368a9aa968dd2d-03e3c30f4d2bfcc8e9f8e5268e6f3d0f6faa539fc57600661a607b6db0daabb289-030f56f89e8c20c4b46c3101d13fd8fe5a47dafbdfbd44dbd49cd91dc5aac5c178-02636f4cf63a1f404d3d3b64084bd61a0c9fff47ee84f950492ff87df209c0a043-031fd4c6eab8efffeae088109fe450b50f5d30476e5a82925be4b7cb624eb5406d-031fd4c6eab8efffeae088109fe450b50f5d30476e5a82925be4b7cb624eb5406d
+
+	Redeem script: 5521038c71760a4aac81afd4a314dc989c1a0621d28aac584992a26d1993709bdafddb2102fe49b9e7ad51e1bcd4ab5a76dbf4a03d2205a3dc3051494290368a9aa968dd2d2103e3c30f4d2bfcc8e9f8e5268e6f3d0f6faa539fc57600661a607b6db0daabb28921030f56f89e8c20c4b46c3101d13fd8fe5a47dafbdfbd44dbd49cd91dc5aac5c1782102636f4cf63a1f404d3d3b64084bd61a0c9fff47ee84f950492ff87df209c0a04321031fd4c6eab8efffeae088109fe450b50f5d30476e5a82925be4b7cb624eb5406d21031fd4c6eab8efffeae088109fe450b50f5d30476e5a82925be4b7cb624eb5406d57ae
+	Address: 375tSX5mD7BbXusGrV5GaGuy4aDH9VR176
+	Segwit (nested): 3GBKx47ae9pt2djo7hkSv5K6GLUaL6Vwvm
+	Segwit (bech32): bc1qfun6tu3xkgqe0h7gcyjt036ew8n27p2nhl5ymuakcrjx0cu7a4nqqueq7n
+	BCH bech: bitcoincash:pqajhuctcwsmjugrlnv2tn6w7sn2fug7uqvzsme2g0
+	
+	node tx.js <coin> createredeem <m> priv1-priv2-priv3...
+	
+	node tx.js BTG createredeem 5 Kyib9iMhJxL6Zh1srtz3caTAqXhP5gsETuUBiQZEmFBrU3KAkiAg-L5Wn7mijns7mmH7GHfy2qRY9dwHDhTZ7MVW1HfpWMQxtKLseFEu2-L3EqabcHM2Fmp9odX7NSj8sKfZp4C9f1FNCkywMWK7FoPApuyfZF-KxNnFgNR5JVxZmiLrBCCEzB9g3cZU4Jx9PuYn1hLUtbm22PBNvtM-L3zqniBtFP9y41Pd8LbST99QpwWokdZd5J5aVfamnPKAfBqAta8y-L4m4szR86cinah7ttR62FTLFK2sfAgehiYGXzHbFYmxhmNBY9oJw-L4m4szR86cinah7ttR62FTLFK2sfAgehiYGXzHbFYmxhmNBY9oJw
+	
+	Redeem script: 5521038c71760a4aac81afd4a314dc989c1a0621d28aac584992a26d1993709bdafddb2102fe49b9e7ad51e1bcd4ab5a76dbf4a03d2205a3dc3051494290368a9aa968dd2d2103e3c30f4d2bfcc8e9f8e5268e6f3d0f6faa539fc57600661a607b6db0daabb28921030f56f89e8c20c4b46c3101d13fd8fe5a47dafbdfbd44dbd49cd91dc5aac5c1782102636f4cf63a1f404d3d3b64084bd61a0c9fff47ee84f950492ff87df209c0a04321031fd4c6eab8efffeae088109fe450b50f5d30476e5a82925be4b7cb624eb5406d21031fd4c6eab8efffeae088109fe450b50f5d30476e5a82925be4b7cb624eb5406d57ae
+	Address: AMAkAUSwzMXNFiNqJ351JXp8PerFzPbZmy
+	Segwit (nested): AWGBg1UmRQAekSFMZFkBeLDFbR7Z63S8ey
+	Segwit (bech32): bc1qfun6tu3xkgqe0h7gcyjt036ew8n27p2nhl5ymuakcrjx0cu7a4nqqueq7n
+
+	node tx.js BCH createredeem 5 Kyib9iMhJxL6Zh1srtz3caTAqXhP5gsETuUBiQZEmFBrU3KAkiAg-L5Wn7mijns7mmH7GHfy2qRY9dwHDhTZ7MVW1HfpWMQxtKLseFEu2-L3EqabcHM2Fmp9odX7NSj8sKfZp4C9f1FNCkywMWK7FoPApuyfZF-KxNnFgNR5JVxZmiLrBCCEzB9g3cZU4Jx9PuYn1hLUtbm22PBNvtM-L3zqniBtFP9y41Pd8LbST99QpwWokdZd5J5aVfamnPKAfBqAta8y-L4m4szR86cinah7ttR62FTLFK2sfAgehiYGXzHbFYmxhmNBY9oJw-L4m4szR86cinah7ttR62FTLFK2sfAgehiYGXzHbFYmxhmNBY9oJw
+	
+	Redeem script: 5521038c71760a4aac81afd4a314dc989c1a0621d28aac584992a26d1993709bdafddb2102fe49b9e7ad51e1bcd4ab5a76dbf4a03d2205a3dc3051494290368a9aa968dd2d2103e3c30f4d2bfcc8e9f8e5268e6f3d0f6faa539fc57600661a607b6db0daabb28921030f56f89e8c20c4b46c3101d13fd8fe5a47dafbdfbd44dbd49cd91dc5aac5c1782102636f4cf63a1f404d3d3b64084bd61a0c9fff47ee84f950492ff87df209c0a04321031fd4c6eab8efffeae088109fe450b50f5d30476e5a82925be4b7cb624eb5406d21031fd4c6eab8efffeae088109fe450b50f5d30476e5a82925be4b7cb624eb5406d57ae
+	Address: 375tSX5mD7BbXusGrV5GaGuy4aDH9VR176
+	Segwit (nested): 3GBKx47ae9pt2djo7hkSv5K6GLUaL6Vwvm
+	Segwit (bech32): bc1qfun6tu3xkgqe0h7gcyjt036ew8n27p2nhl5ymuakcrjx0cu7a4nqqueq7n
+	BCH bech: bitcoincash:pqajhuctcwsmjugrlnv2tn6w7sn2fug7uqvzsme2g0
+	
+## BIP32,39,44,49,84,141
+
+Short summary:
+
+- BIP32: defines how to derive P2PK keys from a 32 bytes seed according to a path (see createwallet above)
+
+- BIP39: allows you to derive a seed from n words (where n is a multiple of 3) chosen from a list, there is a non mandatory checksum but probably enforced by every wallets, the seed is derived first according to BIP32, then derived from the path chosen
+
+- BIP44: defines the path to derive a BIP39 seed for each coin
+
+- BIP49: defines the path to derive a BIP39 seed to segwit nested addresses for each coin
+
+- BIP84: defines the path to derive a BIP39 seed to bech32 addresses for each coin
+
+- BIP141: segwit specs
+
+The legacy derivation path `m/0'/0'/0'` defined by bitcoin core is used by default for BIP32 and BIP141, use the 'bip44' tag to change it to bip44 path
+
+See the test vectors in [BIPs]([verify](https://github.com/Ayms/bitcoin-transactions/blob/tests/test_bip39.js)
+
+### BIP39 seed
+
+	node tx.js <coin> bip39 <language> <words> <optional (will default to legacy for BTC and bip44 for others):bip44/49/84/141>
+
+	node tx.js BTC bip39 english "evidence ripple can refuse organ original peasant camp bar train similar scatter prepare follow meadow" bip49
+
+	Version BTC
+	Seed: b93f5a19c1701859611f5b23b5d87856386f7e3864bfceb3d2dd8327ea00bfbffad7fc5dfbd9f0a25b0f4778448ae9942dcfe97f113602313e40624b1ce1e423
+	Root key: yprvABrGsX5C9januSgBRoJ6oFWCixUtcLgGagTZK5gARswdD5gCEEioddiUHutTvY6q57bKjPnBVS54R8vbw6HEgqpWW4bMEWyu6a3ega5n37y
+	Valid checksum: Yes
+
+### BIP39 wallets
+
+	node tx.js <coin> createbip39wallet <words or extended private key> <language or null>  <optional (will default to legacy for BTC and bip44 for others):bip44/49/84/141> <optional - number of addresses> <optional - custom path>
+	
+	Examples:
+	
+	node tx.js BTC createbip39wallet "evidence ripple can refuse organ original peasant camp bar train similar scatter prepare follow meadow" english
+
+	Seed: b93f5a19c1701859611f5b23b5d87856386f7e3864bfceb3d2dd8327ea00bfbffad7fc5dfbd9f0a25b0f4778448ae9942dcfe97f113602313e40624b1ce1e423
+	Root key: xprv9s21ZrQH143K49V4bSWUbAQhYzLSfigmfZwLXgnH3sZk9yrxyaZF1a4LGhvsvdSufUUWyvBd2miWXrK3DPsDtc8uditvecAQpqz1Hy2sYwq
+	Valid checksum: Yes
+	# extended private masterkey: xprv9s21ZrQH143K49V4bSWUbAQhYzLSfigmfZwLXgnH3sZk9yrxyaZF1a4LGhvsvdSufUUWyvBd2miWXrK3DPsDtc8uditvecAQpqz1Hy2sYwq
+	L4ANvvMfS7ux4SJGoLPMxFD5Hh5PTE3Zm2gzfA7WDi8Gmmu43bY3 2019-07-13T19:02:51.700Z label= # addr=19NRnfG6CJUxSxkVrwjC2rZi9ruFU3b1C6 hdkeypath=m/0'/0'/0'
+	KxV6EiYtBmgv8kcoL92F1dx36jTGLZmTMGuJ8siEkYXyw1NJehpD 2019-07-13T19:02:51.700Z reserve=1 # addr=1C7eBnr52uHsKZG4etZvbTvYgvRY5qtmVD hdkeypath=m/0'/0'/1'
+	KxMKjtJY3NQzQo1EtGJKMEBg4nmh7zgNayCQZ4itqsPVifCbGCnV 2019-07-13T19:02:51.700Z reserve=1 # addr=1NdJ346ojWupuQMc134CG2MsPzLseQrw97 hdkeypath=m/0'/0'/2'
+	
+	node tx.js BTC createbip39wallet "evidence ripple can refuse organ original peasant camp bar train similar scatter prepare follow meadow" english bip141
+	
+	# extended private masterkey: yprvABrGsX5C9januSgBRoJ6oFWCixUtcLgGagTZK5gARswdD5gCEEioddiUHutTvY6q57bKjPnBVS54R8vbw6HEgqpWW4bMEWyu6a3ega5n37y
+	L4ANvvMfS7ux4SJGoLPMxFD5Hh5PTE3Zm2gzfA7WDi8Gmmu43bY3 2019-07-09T17:41:05.631Z label= # addr=3GYpJFyGCGReBy1uZCuzxrvxWNxFzXhNq9 hdkeypath=m/0'/0'/0'
+	KxV6EiYtBmgv8kcoL92F1dx36jTGLZmTMGuJ8siEkYXyw1NJehpD 2019-07-09T17:41:05.631Z reserve=1 # addr=3QdLvwr2hZLgtDijEi2v52uR6fw6rudwLj hdkeypath=m/0'/0'/1'
+	KxMKjtJY3NQzQo1EtGJKMEBg4nmh7zgNayCQZ4itqsPVifCbGCnV 2019-07-09T17:41:05.631Z reserve=1 # addr=35WC7bMssH6VY7czcYgVPMghqPtm6DcxWv hdkeypath=m/0'/0'/2'
+	
+	node tx.js BTG createbip39wallet xprv9s21ZrQH143K49V4bSWUbAQhYzLSfigmfZwLXgnH3sZk9yrxyaZF1a4LGhvsvdSufUUWyvBd2miWXrK3DPsDtc8uditvecAQpqz1Hy2sYwq null bip49
+
+	# extended private masterkey: yprvABrGsX5C9januSgBRoJ6oFWCixUtcLgGagTZK5gARswdD5gCEEioddiUHutTvY6q57bKjPnBVS54R8vbw6HEgqpWW4bMEWyu6a3ega5n37y
+	L52DFviYti9soWsJC5vfu47fNfBvN1isQETjhYYz2wbaoeQVta4K 2019-07-09T17:45:53.253Z label= # addr=AXepuY6uMUiwndcUfX8aDWKaP9yQ8DMXPF hdkeypath=m/49'/156'/0'/0/0
+	L2dphVFbPGGiGHK4fsfDXUKkVqH54rky6LP6xjDwNcsJyYshfGmV 2019-07-09T17:45:53.253Z reserve=1 # addr=AZs6TgM8F6G8XgnmET6PwPiDo66LWhjDLB hdkeypath=m/49'/156'/0'/0/1
+	L3oBxwnJpWRq16VzxNAyCG4YcZeHqDPTck2U49C1kzHxwPEEYsg8 2019-07-09T17:45:53.253Z reserve=1 # addr=AcZCua2cve6sfBzvbq87zebebavrimqY34 hdkeypath=m/49'/156'/0'/0/2
+	
+	node tx.js BTC createbip39wallet xprv9s21ZrQH143K49V4bSWUbAQhYzLSfigmfZwLXgnH3sZk9yrxyaZF1a4LGhvsvdSufUUWyvBd2miWXrK3DPsDtc8uditvecAQpqz1Hy2sYwq null bip84 50 "m/4800'/1'/2'/500"
+	
+	# extended private masterkey: zprvAWgYBBk7JR8GkjsJGA5j1LbhtvdLYxfmVnyn6Ua3otKWGBVRUttNFhNcK7r3vSkkUki8UsNjx6RcJRYAenhFV5W7NQHmpRoPNJ7J55jxDjE
+	L4RhkBeBBc7Nt5f8cr1GxuaTWZirEUiC9UsmWDWvSj57BdQTSRzD 2019-07-09T21:07:07.764Z label= # addr=bc1qvhtt3ygh00gmm5dcp6q4agk7ygus0ry2f36mf7 hdkeypath=m/4800'/1'/2'/500
+	KyeGs21U4iSwfcpXJWdq6enZ1PMvKianbZUfi7iiCGnrqmXJAd2m 2019-07-09T21:07:07.764Z reserve=1 # addr=bc1q3z2jvq992p8tqye3fhqr5wyrashav3as659suu hdkeypath=m/4800'/1'/2'/501
+	L318UpxtT6suNgbvWeqoRjDUZY2RfdQ3q1JaYVPyReDZz8fzCEJk 2019-07-09T21:07:07.764Z reserve=1 # addr=bc1qww9dn84frhfae99v73cu3trf3429lk58cp4dkv hdkeypath=m/4800'/1'/2'/502
+	
+	node tx.js BTC createbip39wallet zprvAWgYBBk7JR8GkjsJGA5j1LbhtvdLYxfmVnyn6Ua3otKWGBVRUttNFhNcK7r3vSkkUki8UsNjx6RcJRYAenhFV5W7NQHmpRoPNJ7J55jxDjE null bip84 50 "m/4800'/1'/2'/500"
+	
+	# extended private masterkey: zprvAWgYBBk7JR8GkjsJGA5j1LbhtvdLYxfmVnyn6Ua3otKWGBVRUttNFhNcK7r3vSkkUki8UsNjx6RcJRYAenhFV5W7NQHmpRoPNJ7J55jxDjE
+	L4RhkBeBBc7Nt5f8cr1GxuaTWZirEUiC9UsmWDWvSj57BdQTSRzD 2019-07-09T21:15:29.935Z label= # addr=bc1qvhtt3ygh00gmm5dcp6q4agk7ygus0ry2f36mf7 hdkeypath=m/4800'/1'/2'/500
+	KyeGs21U4iSwfcpXJWdq6enZ1PMvKianbZUfi7iiCGnrqmXJAd2m 2019-07-09T21:15:29.935Z reserve=1 # addr=bc1q3z2jvq992p8tqye3fhqr5wyrashav3as659suu hdkeypath=m/4800'/1'/2'/501
+	L318UpxtT6suNgbvWeqoRjDUZY2RfdQ3q1JaYVPyReDZz8fzCEJk 2019-07-09T21:15:29.935Z reserve=1 # addr=bc1qww9dn84frhfae99v73cu3trf3429lk58cp4dkv hdkeypath=m/4800'/1'/2'/502
+	
+### BIP39 words recovery
+
+The tool allows you to recover one or two words in a BIP39 sequence in case you lost them (or to get the right words to have a correct checksum), two words still makes too many possibilities so most likely you should use this feature with only one word
+	
+	node tx.js <coin> recoverbip39 <language> <words> <m> <n optional>
+	
+m is the position of the first missing word, n the one of the second one (if relevant)
+	
+	node tx.js BTC recoverbip39 english "evidence ripple refuse organ original peasant camp bar train similar scatter prepare follow meadow" 3
+	
+	evidence ripple absent refuse organ original peasant camp bar train similar scatter prepare follow meadow
+	evidence ripple adapt refuse organ original peasant camp bar train similar scatter prepare follow meadow
+	evidence ripple answer refuse organ original peasant camp bar train similar scatter prepare follow meadow
+	evidence ripple apology refuse organ original peasant camp bar train similar scatter prepare follow meadow
+	...
+	
+### BIP39 seeds generation
+
+We do not advise to use this feature since javascript prng still can be weak, instead we would recommend to use a BIP32 seed from for example [QRNG](http://qrng.anu.edu.au/) go to Live Numbers-->Live streams-->Hex and copy 64 digits (ie a 32B hex seed)
+
+	node tx.js <coin> generatebip39 <language> <nb>
+	
+nb is the number of words
+	
+	node tx.js BTC generatebip39 english 15
+	
+	wrong history this yard mass agree glove matter notable arrive cabin shell leisure test anger
+
+## Get public key from private
+
+	node tx.js BTC getpubfromprivate <32B private key or WIF string>
+	
+	node tx.js BTC getpubfromprivate 4a87f69e181ee018da08ecdb9eea6ac45841070c1863aba37a60a7e33b95dd6f
+
+	Pubkey: 038c71760a4aac81afd4a314dc989c1a0621d28aac584992a26d1993709bdafddb
+	Address: 18v29GccczH8nxPVm3zQ1xVaxV5Wh4Yz9v
+	Segwit nested: 3NqxkcqbasHnTxQ6hHyMrJv5kC1D4o3jTC
+	Segwit bech32: bc1q2m87z4h0mwxdqjuetmgf95tdc9wmdqz7tg4540
+	Hash160: 56cfe156efdb8cd04b995ed092d16dc15db6805e
+	
+	node tx.js BCH getpubfromprivate Kyib9iMhJxL6Zh1srtz3caTAqXhP5gsETuUBiQZEmFBrU3KAkiAg
+	
+	Pubkey: 038c71760a4aac81afd4a314dc989c1a0621d28aac584992a26d1993709bdafddb
+	Address: 18v29GccczH8nxPVm3zQ1xVaxV5Wh4Yz9v
+	Segwit nested: 3NqxkcqbasHnTxQ6hHyMrJv5kC1D4o3jTC
+	Segwit bech32: bc1q2m87z4h0mwxdqjuetmgf95tdc9wmdqz7tg4540
+	Hash160: 56cfe156efdb8cd04b995ed092d16dc15db6805e
+	BCH bech: bitcoincash:qptvlc2kaldce5ztn90dpyk3dhq4md5qtc6jk64fjm
+
+## Get private from WIF and vice-versa
+
+	node tx.js BTC getprivfromwif Kyib9iMhJxL6Zh1srtz3caTAqXhP5gsETuUBiQZEmFBrU3KAkiAg
+	Priv: 4a87f69e181ee018da08ecdb9eea6ac45841070c1863aba37a60a7e33b95dd6f
+	
+	node tx.js BTC privtowif 4a87f69e181ee018da08ecdb9eea6ac45841070c1863aba37a60a7e33b95dd6f
+	WIF Priv: Kyib9iMhJxL6Zh1srtz3caTAqXhP5gsETuUBiQZEmFBrU3KAkiAg
+
+## Public to addresses and hash
+	
+	node tx.js BTC pubtoaddress 038c71760a4aac81afd4a314dc989c1a0621d28aac584992a26d1993709bdafddb
+	
+	Pubkey: 038c71760a4aac81afd4a314dc989c1a0621d28aac584992a26d1993709bdafddb
+	Address: 18v29GccczH8nxPVm3zQ1xVaxV5Wh4Yz9v
+	Segwit nested: 3NqxkcqbasHnTxQ6hHyMrJv5kC1D4o3jTC
+	Segwit bech32: bc1q2m87z4h0mwxdqjuetmgf95tdc9wmdqz7tg4540
+	Hash160: 56cfe156efdb8cd04b995ed092d16dc15db6805e
+	
+	node tx.js BTC pubtoaddress 18v29GccczH8nxPVm3zQ1xVaxV5Wh4Yz9v
+	
+	Address: 18v29GccczH8nxPVm3zQ1xVaxV5Wh4Yz9v
+	Segwit nested: 3NqxkcqbasHnTxQ6hHyMrJv5kC1D4o3jTC
+	Segwit bech32: bc1q2m87z4h0mwxdqjuetmgf95tdc9wmdqz7tg4540
+	Hash160: 56cfe156efdb8cd04b995ed092d16dc15db6805e
+
+	node tx.js BCH pubtoaddress 18v29GccczH8nxPVm3zQ1xVaxV5Wh4Yz9v
+	
+	Address: 18v29GccczH8nxPVm3zQ1xVaxV5Wh4Yz9v
+	Segwit nested: 3NqxkcqbasHnTxQ6hHyMrJv5kC1D4o3jTC
+	Segwit bech32: bc1q2m87z4h0mwxdqjuetmgf95tdc9wmdqz7tg4540
+	Hash160: 56cfe156efdb8cd04b995ed092d16dc15db6805e
+	BCH bech: bitcoincash:qptvlc2kaldce5ztn90dpyk3dhq4md5qtc6jk64fjm
+
+## Sign/Verify messages
+
+This is used to prove ownership of a given address
+
+Be careful anyway not to over use it, or do it privately, because once you have proven the ownership of a given address, then the corresponding public key becomes public, see decode transactions above
+
+Each coin uses a prefix appended to the message to be signed (generally the string 'Bitcoin signed message:\n'), we have set the correct prefix for the main coins but did not check for all of them
+	
+	node tx.js <coin> signmessage <message> <privatekey> <type>
+	
+	type is: 'n' for compressed key, 's' for segwit, 'b' for bech32
+	
+	type is in fact of no use and not relevant for this module, therefore ignored by verify (but set correctly for signing), but it can be checked by other tools
+	
+	node tx.js BTC signmessage 'Thanks Ayms this module is great!' Kyib9iMhJxL6Zh1srtz3caTAqXhP5gsETuUBiQZEmFBrU3KAkiAg n
+	
+	Signature : Hw/PE+L4GW8C4S+V/6rgDZx9UHHU8hVXe8knNQQIFl73b98EWD8C1/lXA6uMOS5jJTLTXDf2t2a5zUkvOdTEQt4=
+
+	node tx.js BTC verifymessage 'Thanks Ayms this module is great!' 'Hw/PE+L4GW8C4S+V/6rgDZx9UHHU8hVXe8knNQQIFl73b98EWD8C1/lXA6uMOS5jJTLTXDf2t2a5zUkvOdTEQt4=' 18v29GccczH8nxPVm3zQ1xVaxV5Wh4Yz9v
+
+	Signature verified - Public key 038c71760a4aac81afd4a314dc989c1a0621d28aac584992a26d1993709bdafddb
+	
+	node tx.js BTC verifymessage 'Thanks Ayms this module is great!' 'Hw/PE+L4GW8C4S+V/6rgDZx9UHHU8hVXe8knNQQIFl73b98EWD8C1/lXA6uMOS5jJTLTXDf2t2a5zUkvOdTEQt4=' 3NqxkcqbasHnTxQ6hHyMrJv5kC1D4o3jTC
+	
+	Signature verified - Public key 038c71760a4aac81afd4a314dc989c1a0621d28aac584992a26d1993709bdafddb
+	
+	node tx.js BTC verifymessage 'Thanks Ayms this module is great!' 'Hw/PE+L4GW8C4S+V/6rgDZx9UHHU8hVXe8knNQQIFl73b98EWD8C1/lXA6uMOS5jJTLTXDf2t2a5zUkvOdTEQt4=' bc1q2m87z4h0mwxdqjuetmgf95tdc9wmdqz7tg4540
+	
+	Signature verified - Public key 038c71760a4aac81afd4a314dc989c1a0621d28aac584992a26d1993709bdafddb
+	
+	node tx.js BCH verifymessage 'Thanks Ayms this module is great!' 'Hw/PE+L4GW8C4S+V/6rgDZx9UHHU8hVXe8knNQQIFl73b98EWD8C1/lXA6uMOS5jJTLTXDf2t2a5zUkvOdTEQt4=' qptvlc2kaldce5ztn90dpyk3dhq4md5qtc6jk64fjm
+	
+	Signature verified - Public key 038c71760a4aac81afd4a314dc989c1a0621d28aac584992a26d1993709bdafddb
+	
+	node tx.js ZEC verifymessage 'I am a signed Zcash message' 'IO5jX5/RhpIqbo52uOs1d9g0D5+Al4cpzyWyEitZYO24HFZbb6lI94k+X7LwhqmaEi6eorUzpDSG2JPArKTN1EU=' t1LF5Se66f3uRFPFLC86FSRBasbLqTbz86k
+	
+	Signature verified - Public key 0259a77bc3c5621b65e557a6cc83a45a8fc4a9aa5a8908ae8e9664f41cd345842f
 	
 ## Notes for the devs
 

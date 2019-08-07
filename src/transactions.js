@@ -175,7 +175,7 @@ Tx.prototype.display_tx=function() {
 					if (inp.type!=='p2wpkh2') {
 						res.push('   address segwit '+baddress(inp.witness_script,this.coin.p2sh));
 					} else {
-						res.push('   address segwit '+encode_bech32('bc',0,tmp)+' - '+baddress(Buffer.concat([new Buffer([this.coin.SEGWIT_VERSION]),new Buffer([tmp.length]),tmp]),this.coin.p2sh));
+						res.push('   address segwit '+encode_bech32('bc',this.coin.SEGWIT_VERSION,tmp)+' - '+baddress(Buffer.concat([new Buffer([this.coin.SEGWIT_VERSION]),new Buffer([tmp.length]),tmp]),this.coin.p2sh));
 					};
 				} else {
 					try {
@@ -190,7 +190,7 @@ Tx.prototype.display_tx=function() {
 					if (inp.type!=='p2wsh2') {
 						res.push('   address segwit '+baddress(inp.witness_script,this.coin.p2sh));
 					} else {
-						res.push('   address segwit '+encode_bech32('bc',0,tmp));
+						res.push('   address segwit '+encode_bech32('bc',this.coin.SEGWIT_VERSION,tmp));
 					};
 				};
 			} else if (inp.type==='p2sh') {
@@ -588,8 +588,8 @@ Tx.prototype.deserialize=function(data) {
 				case 'p2pkh': address=btc_encode(scriptPubkey.slice(3,23),this.coin.p2pk);break;
 				case 'p2sh': address=btc_encode(scriptPubkey.slice(2,22),this.coin.p2sh);break;
 				case 'op_return': address='';break;
-				case 'p2wpkh2': address=encode_bech32('bc',0,scriptPubkey.slice(2,22))+' - '+btc_encode(hash_160(scriptPubkey.slice(2,22)),this.coin.p2sh);break;
-				case 'p2wsh2': address=encode_bech32('bc',0,scriptPubkey.slice(2,34))+' - '+btc_encode(hash_160(scriptPubkey.slice(2,34)),this.coin.p2sh);break;
+				case 'p2wpkh2': address=encode_bech32('bc',this.coin.SEGWIT_VERSION,scriptPubkey.slice(2,22))+' - '+btc_encode(hash_160(scriptPubkey.slice(2,22)),this.coin.p2sh);break;
+				case 'p2wsh2': address=encode_bech32('bc',this.coin.SEGWIT_VERSION,scriptPubkey.slice(2,34))+' - '+btc_encode(hash_160(scriptPubkey.slice(2,34)),this.coin.p2sh);break;
 				case 'p2pk': address=btc_encode(hash_160(scriptPubkey.slice(1,34)),this.coin.p2pk);break;
 			};
 			this.output.push({nValue:nValue,scriptPubkeyLen:data.slice(0,scriptPubkeyLen[1]),scriptPubkey:scriptPubkey,address:address,type:p2something});
@@ -643,8 +643,8 @@ Tx.prototype.deserialize=function(data) {
 				case 'p2pkh': address=btc_encode(scriptPubkey.slice(3,23),this.coin.p2pk);break;
 				case 'p2sh': address=btc_encode(scriptPubkey.slice(2,22),this.coin.p2sh);break;
 				case 'op_return': address='';break;
-				case 'p2wpkh2': address=encode_bech32('bc',0,scriptPubkey.slice(2,22))+' - '+btc_encode(scriptPubkey.slice(2,22),this.coin.p2sh);break;
-				case 'p2wsh2': address=encode_bech32('bc',0,scriptPubkey.slice(2,34))+' - '+btc_encode(scriptPubkey.slice(2,34),this.coin.p2sh);break;
+				case 'p2wpkh2': address=encode_bech32('bc',this.coin.SEGWIT_VERSION,scriptPubkey.slice(2,22))+' - '+btc_encode(scriptPubkey.slice(2,22),this.coin.p2sh);break;
+				case 'p2wsh2': address=encode_bech32('bc',this.coin.SEGWIT_VERSION,scriptPubkey.slice(2,34))+' - '+btc_encode(scriptPubkey.slice(2,34),this.coin.p2sh);break;
 				case 'p2pk': address=btc_encode(hash_160(scriptPubkey.slice(1,34)),this.coin.p2pk);break;
 			};
 			this.output.push({nValue:nValue,scriptPubkeyLen:data.slice(0,scriptPubkeyLen[1]),scriptPubkey:scriptPubkey,address:address,type:p2something});

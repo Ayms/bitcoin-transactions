@@ -21,7 +21,11 @@ const {create,Tx}=require('./src/create.js');
 const {create_wallet}=require('./src/hd.js');
 const {createauto}=require('./src/getTx.js');
 const {is_bech,resp_xhr,testamount,decimals}=require('./src/utils.js');
-const {decode_redeem,convert_}=require('./src/addresses.js');
+const {decode_redeem,convert2}=require('./src/addresses.js');
+const {encode_redeem}=require('./src/redeem.js');
+const {create_bip39,bip39_wallet,recoverbip39,generatebip39}=require('./src/bip39.js');
+const {getpubfromprivate,getprivfromWIF,privtoWIF,pubtohash,pubtoaddress}=require('./src/pubpriv.js');
+const {signmessage,verifymessage}=require('./src/keys.js');
 let oconsole=console.log.bind(console);
 let coin;
 
@@ -45,7 +49,7 @@ if (process.argv) {
 				case 'testamount':
 					testamount(args,coin);break;
 				case 'convert':
-					convert_(args[0],coin);break;
+					convert2(args[1],coin,version_(args[0]));break;
 				case 'createauto':
 					createauto(args,coin);break;
 				case 'create': 
@@ -54,6 +58,8 @@ if (process.argv) {
 				case 'testconnect': Send(coin,null,args[0]);break;
 				case 'send': Send(coin,args[0],args[1]);break;
 				case 'decoderedeem': decode_redeem(coin,args[0]);break;
+				case 'createredeem': encode_redeem(coin,args.shift(),args[0].split('-'));break;
+				case 'createredeemfrompub': encode_redeem(coin,args.shift(),args[0].split('-'),true);break;
 				case 'verify':
 				//node tx.js BTC verify <tx> '<prevscriptpubKey>,<prevamount>'
 					let arr=[];
@@ -67,6 +73,58 @@ if (process.argv) {
 					new Tx(coin).verify(tx,args);
 					break;
 				case 'createwallet': args.splice(1,0,coin);create_wallet(...args);break;
+				case 'bip39':
+					let type='btc';
+					if (args[2]) {
+						switch (args[2]) {
+							case 'bip44':type='bip44';break;
+							case 'bip49':type='nested';break;
+							case 'bip84':type='bech';break;
+							case 'bip141':type='nested';break;
+						};
+					};
+					create_bip39(coin,args[0],args[1],type);
+					break;
+				case 'createbip39wallet': args.splice(1,0,coin);bip39_wallet(...args);break;
+				case 'recoverbip39':
+					let language=args[0];
+					let test=args[1];
+					args.shift();
+					args.shift();
+					recoverbip39(coin,language,test,args);
+					break;
+				case 'generatebip39':
+					args.unshift(coin);
+					generatebip39(...args);
+					break;
+				case 'getpubfromprivate':
+					args.unshift(coin);
+					getpubfromprivate(...args);
+					break;
+				case 'getprivfromwif':
+					args.unshift(coin);
+					getprivfromWIF(...args);
+					break;
+				case 'privtowif':
+					args.unshift(coin);
+					privtoWIF(...args);
+					break;
+				case 'pubtohash':
+					args.unshift(coin);
+					pubtohash(...args);
+					break;
+				case 'pubtoaddress':
+					args.unshift(coin);
+					pubtoaddress(...args);
+					break;
+				case 'signmessage':
+					args.unshift(coin);
+					signmessage(...args);
+					break;
+				case 'verifymessage':
+					args.unshift(coin);
+					verifymessage(...args);
+					break;
 			};
 		};
 	};

@@ -1,9 +1,13 @@
 const version=function(v) {
 	let MASTER_SECRET=new Buffer('Bitcoin seed');
 	let HARDENED_OFFSET=0x80000000;
-	let BITCOIN_VERSIONS={private:0x0488ADE4,public:0x0488B21E};
+	let BITCOIN_VERSIONS={private:0x0488ADE4,public:0x0488B21E}; //xprv
+	let BITCOIN_VERSIONS_BECH={public: 0x04b24746,private: 0x04b2430c}; //zprv bech
+	let BITCOIN_VERSIONS_NESTED={public: 0x049d7cb2,private: 0x049d7878}; //yprv segwit nested
 	let DEFAULT_WALLET_NB=100;
-	let DEFAULT_PATH="m/0'/0'/0'";
+	let DEFAULT_PATH="m/44'/0'/0'/0/0";
+	let GLEGACY_PATH="m/0'/0'/0'";
+	let LEGACY_PATH;
 	let zcash_z=new Buffer('169a','hex');
 	let zcash_spending_key=new Buffer('ab36','hex');
 	let SUPER_MAGIC=0; //Bug #1893
@@ -45,7 +49,7 @@ const version=function(v) {
 	let BIP143=false;
 	let p2pk=new Buffer('00','hex');
 	let p2sh=new Buffer('05','hex');
-	let prefix='Bitcoin Signed Message:\n';//for future signing implementation https://github.com/bitcoin/bitcoin/blob/master/src/validation.cpp
+	let prefix='Bitcoin Signed Message:\n';//https://github.com/bitcoin/bitcoin/blob/master/src/validation.cpp or main.cpp
 	let PORT=8333;
 	let LASTBLOCK=500000;
 	let PROTOCOL=70015;
@@ -59,7 +63,10 @@ const version=function(v) {
 	let SEG_MARKER=0;
 	let SEG_FLAG=1;
 	let command_xhr=[];
+	let BIP39_nb=15;
+	let bch=false;
 	if (v==='BTC') {
+		LEGACY_PATH="m/0'/0'/0'";
 		//default
 	} else if (v==='ZEC') {
 		VERSION=1;
@@ -74,6 +81,8 @@ const version=function(v) {
 		PROTOCOL=170002;
 		SUPER_MAGIC=1893; //Bug #1893
 		//DEFAULT_PATH='m/'+SUPER_MAGIC+"'/0'/0'";
+		DEFAULT_PATH="m/44'/133'/0'/0/0";
+		prefix="Zcash Signed Message:\n";
 	} else if (v==='BTG') {
 		VERSION=2;
 		SIGHASH_FORKID=0x00000040;
@@ -88,6 +97,7 @@ const version=function(v) {
 		PROTOCOL=70016;
 		NOP2SH.push('G');
 		DEFAULT_PATH="m/44'/156'/0'/0/0";
+		prefix="Bitcoin Gold Signed Message:\n";
 	} else if (v==='BCH') {
 		VERSION=2;
 		SIGHASH_FORKID=0x00000040;
@@ -104,6 +114,8 @@ const version=function(v) {
 		NOP2SH.push('q');
 		BECH32.push('q');
 		BECH32.push('p');
+		bch=true;
+		//same prefix as bitcoin
 	} else if (v==='BCD') {
 		VERSION=12;
 		SIGHASH_FORKID=0x00000000;
@@ -132,7 +144,8 @@ const version=function(v) {
 		LASTBLOCK=1340000;
 		PROTOCOL=70015;
 		NOP2SH.push('L');
-		DEFAULT_PATH="m/2'/156'/0'/0/0";
+		DEFAULT_PATH="m/44'/2'/0'/0/0";
+		prefix="Litecoin Signed Message:\n";
 	} else if (v==='SBTC') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
@@ -172,6 +185,7 @@ const version=function(v) {
 		PROTOCOL=70208;
 		NOP2SH.push('X');
 		DEFAULT_PATH="m/44'/5'/0'/0/0";
+		prefix="DarkCoin Signed Message:\n";
 	} else if (v==='DOGE') {
 		VERSION=1;
 		SIGHASH_FORKID=0x00000000;
@@ -186,6 +200,7 @@ const version=function(v) {
 		PROTOCOL=70004;
 		NOP2SH.push('D');
 		DEFAULT_PATH="m/44'/3'/0'/0/0";
+		prefix="Dogecoin Signed Message:\n"
 	} else if (v==='UBTC') {
 		VERSION=2;
 		SIGHASH_FORKID=0x00000008;
@@ -198,6 +213,7 @@ const version=function(v) {
 		LASTBLOCK=500000;
 		PROTOCOL=770015;
 		FORK_STRING=new Buffer('027562','hex');
+		//same prefix as bitcoin
 	} else if (v==='B2X') {
 		VERSION=1; //or 2
 		FORKID_IN_USE=0;
@@ -239,6 +255,7 @@ const version=function(v) {
 		FORK_STRING=new Buffer(0);
 		NOP2SH2.push('b1');
 		DEFAULT_PATH="m/44'/183'/0'/0/0";
+		prefix="BitcoinPrivate Signed Message:\n";
 	} else if (v==='BCP') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
@@ -251,6 +268,7 @@ const version=function(v) {
 		LASTBLOCK=500000;
 		PROTOCOL=70016;
 		NOP2SH.push('C');
+		bch=true;
 	} else if (v==='CDY') {
 		VERSION=2;
 		SIGHASH_FORKID=0x00000040;
@@ -267,6 +285,7 @@ const version=function(v) {
 		D=5;
 		NOP2SH.push('C');
 		DEFAULT_PATH="m/44'/1145'/0'/0/0";
+		bch=true;
 	} else if (v==='BCA') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
@@ -281,6 +300,7 @@ const version=function(v) {
 		PROTOCOL=70020;
 		NOP2SH.push('A');
 		DEFAULT_PATH="m/44'/185'/0'/0/0";
+		//prefix same as bitcoin
 	} else if (v==='WBTC') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000040;
@@ -465,6 +485,7 @@ const version=function(v) {
 		LASTBLOCK=250000;
 		PROTOCOL=170002;
 		DEFAULT_PATH="m/44'/147'/0'/0/0";
+		prefix="Zcash Signed Message:\n";
 	} else if (v==='BICC') {
 		VERSION=1; //or 2
 		SIGHASH_FORKID=0x00000010;
@@ -594,6 +615,8 @@ const version=function(v) {
 		BECH32.push('q');
 		BECH32.push('p');
 		DEFAULT_PATH="m/44'/236'/0'/0/0";
+		bch=true;
+		//prefix same as bitcoin
 	} else {
 		throw "You forgot to mention the network version";
 	};
@@ -605,8 +628,12 @@ const version=function(v) {
 		MASTER_SECRET,
 		HARDENED_OFFSET,
 		BITCOIN_VERSIONS,
+		BITCOIN_VERSIONS_BECH,
+		BITCOIN_VERSIONS_NESTED,
 		DEFAULT_WALLET_NB,
 		DEFAULT_PATH,
+		LEGACY_PATH,
+		GLEGACY_PATH,
 		zcash_z,
 		zcash_spending_key,
 		SUPER_MAGIC,
@@ -661,7 +688,9 @@ const version=function(v) {
 		SEGWIT_VERSION,
 		SEG_MARKER,
 		SEG_FLAG,
-		command_xhr
+		command_xhr,
+		BIP39_nb,
+		bch
 	};
 };
 

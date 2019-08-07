@@ -65,6 +65,26 @@ const toHex=function(val,len) {
 	return val;
 };
 
+const toHex2=function(a) {
+	let h='';
+	let l=a.length/4;
+	for (let i=0;i<l;i++) {
+		let tmp=a.slice(i*4,i*4+4);
+		//console.log(tmp);
+		tmp=parseInt(tmp,2).toString(16);
+		h+=tmp;
+	};
+	return h;
+};
+
+const toBin=function(a,n) {
+	let tmp=parseInt(a).toString(2);
+	while (tmp.length!==n) {
+		tmp='0'+tmp;
+	};
+	return tmp;
+};
+
 const big_satoshis=function(n,coin) {
 	if (n) {
 		return (n/coin.SATO).toFixed(coin.D);
@@ -280,7 +300,7 @@ const testamount=function(args,coin) {
 	let refunded=0;
 	if (amount) {
 		refunded=prevamount-amount-fees;
-		if (refunded<0) {
+		if (refunded<-1) {
 			throw '--- Your numbers are incorrect, please check them and try again';
 		};
 		write(coin,prevamount,amount,fees,0,refunded);
@@ -292,4 +312,9 @@ const testamount=function(args,coin) {
 	return [amount,0,refunded];
 };
 
-module.exports={reverse,decodevarlen,is_bech,issig,is_segwit,toHex,big_satoshis,decimals,write,resp_xhr,clone_inputs,varlen,decode_script,op_push,op_push2,deserialize_scriptSig,serialize_sig,parse_op_push,count_w,check_mOfn,testamount};
+const mod44_path=function(path,bip) {
+	let regex=/44'/gi;
+	return path.replace(regex,bip.slice(3)+"'");
+};
+
+module.exports={reverse,decodevarlen,is_bech,issig,is_segwit,toHex,toHex2,toBin,big_satoshis,decimals,write,resp_xhr,clone_inputs,varlen,decode_script,op_push,op_push2,deserialize_scriptSig,serialize_sig,parse_op_push,count_w,check_mOfn,testamount,mod44_path};
