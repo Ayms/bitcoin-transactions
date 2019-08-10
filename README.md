@@ -19,7 +19,7 @@ If you intend to fork this module, maybe you should wait a little bit that every
 
 Install [nodejs for Windows,Mac,Linux](https://nodejs.org/en/download/package-manager/), usually this is easy
 
-Create a bitcoin-transactions directory, install elliptic and bs58 with npm in node-modules, copy the other modules and copy tx.js
+Create a bitcoin-transactions directory, download and unzip [master](https://github.com/Ayms/bitcoin-transactions/archive/master.zip)
 
 All of this does of course not apply for the browser version when it will be available
 	
