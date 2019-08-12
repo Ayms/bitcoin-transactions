@@ -42,7 +42,7 @@ The list of supported coins is [here](https://github.com/Ayms/bitcoin-transactio
 
 See the test vectors in https://github.com/Ayms/bitcoin-transactions/blob/master/tests/wallet.txt
 
-<coin> is the type of coin, <secret> is a BIP32 seed (32 bytes) or a xprv derived seed, nb is the number of addresses to be generated, path is the derivation path (it defaults to the standard path or BIP44 path), the "'" stands for hardened addresses
+``<coin>`` is the type of coin, ``<secret>`` is a BIP32 seed (32 bytes) or a xprv derived seed, nb is the number of addresses to be generated, path is the derivation path (it defaults to the standard path or BIP44 path), the "'" stands for hardened addresses
 
 You can also use ``create_wallet <coin> <secret>`` where secret is an already generated hd object to iterate on it
 
