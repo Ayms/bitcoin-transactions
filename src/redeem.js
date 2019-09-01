@@ -2,10 +2,6 @@ const {redeem_addr,hash_160}=require('./addresses.js');
 const {getPublicfromPrivate}=require('./keys.js');
 const {encode_b}=require('../node_modules/cashaddress/cashaddress.js');
 
-if (window===undefined) {
-	var window=false;
-};
-
 const encode_redeem=function(coin,m,keys,boo) {
 	let res=[];
 	let n=keys.length;
@@ -36,15 +32,14 @@ const encode_redeem=function(coin,m,keys,boo) {
 	if (coin.bch) {
 		res.push(encode_b(hash_160(a),'p2sh','bitcoincash'));
 	};
-	if (!window) {
-		console.log('Redeem script: '+res[0].toString('hex'));
-		console.log('Address: '+res[1]);
-		console.log('Segwit (nested): '+res[2]);
-		console.log('Segwit (bech32): '+res[3]);
-		if (res[4]) {
-			console.log('BCH bech: '+res[4]);
-		};
+	console.log('Redeem script: '+res[0].toString('hex'));
+	console.log('Address: '+res[1]);
+	console.log('Segwit (nested): '+res[2]);
+	console.log('Segwit (bech32): '+res[3]);
+	if (res[4]) {
+		console.log('BCH bech: '+res[4]);
 	};
+	res=['Redeem script: '+res[0].toString('hex'),'Address: '+res[1],'Segwit (nested): '+res[2],'Segwit (bech32): '+res[3],res[4]?('BCH bech: '+res[4]):''];
 	return res;
 };
 

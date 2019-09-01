@@ -62,7 +62,6 @@ const version=function(v) {
 	let SEGWIT_VERSION=0;
 	let SEG_MARKER=0;
 	let SEG_FLAG=1;
-	let command_xhr=[];
 	let BIP39_nb=15;
 	let bch=false;
 	if (v==='BTC') {
@@ -688,7 +687,6 @@ const version=function(v) {
 		SEGWIT_VERSION,
 		SEG_MARKER,
 		SEG_FLAG,
-		command_xhr,
 		BIP39_nb,
 		bch
 	};

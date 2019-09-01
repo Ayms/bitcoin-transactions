@@ -1,16 +1,13 @@
-const EC=require('elliptic').ec;
+const elliptic=require('elliptic');
+const EC=elliptic.ec;
 const ec=new EC('secp256k1');
 const ecdh=new EC('curve25519');
 const SHA256Compress=require('../node_modules/sha256-c/SHA256Compress.js');
 const {baddress,double_hash256,privatekeyFromWIF,segwit_nested_p2pk,segwit_bech_p2pk,encode_bech32,hash_160,btc_encode}=require('./addresses.js');
-const BN=require('../node_modules/elliptic/node_modules/bn.js');
+const BN=require('../node_modules/elliptic/node_modules/bn.js'); //BN loaded twice see https://github.com/indutny/bn.js/issues/227
 const {varlen}=require('./utils.js');
 const encode_b=require('../node_modules/cashaddress/cashaddress.js').encode_b;
 const ecparams=ec.curve;
-
-if (window===undefined) {
-	var window=false;
-};
 
 const privateKeyderive=function(privateKey,IL) {
 	let bn=new BN(IL);
@@ -25,7 +22,7 @@ const privateKeyderive=function(privateKey,IL) {
 	if (bn.isZero()) {
 		throw new Error();
 	};
-	return bn.toBuffer('be',32);
+	return bn.toArrayLike(Buffer,'be',32);
 };
 
 const publicKeyderive=function() {};
@@ -147,9 +144,7 @@ const signmessage=function(coin,message,privKey,type="n") {
 		case "b": header=new Buffer([39]);break; //bech32
 	};
 	sign=Buffer.concat([header,sign.r.toArrayLike(Buffer),sign.s.toArrayLike(Buffer)]).toString('base64');
-	if (!window) {
-		console.log('Signature : '+sign);
-	};
+	console.log('Signature : '+sign);
 	return sign;
 };
 
@@ -172,9 +167,8 @@ const verifymessage=function(coin,message,signature,address) {
 			};
 		} catch(ee) {};
 	};
-	if (!window) {
-		console.log(res[0]?('Signature verified - Public key '+res[1].toString('hex')):'Wrong signature');
-	};
+	console.log(res[0]?('Signature verified - Public key '+res[1].toString('hex')):'Wrong signature');
+	res=[res[0]?('Signature verified - Public key '+res[1].toString('hex')):'Wrong signature'];
 	return res;
 };
 

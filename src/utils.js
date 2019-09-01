@@ -7,6 +7,16 @@ const reverse=function(buf) {
 	return rev;
 };
 
+const compute_path=function(path,start) {
+	let tmp2;
+	path=path.split('/'); //useless but...
+	tmp2=path[path.length-1].split("'");
+	tmp2[0]=start;
+	path[path.length-1]=tmp2.join("'");
+	path=path.join('/'); //start at path
+	return path;
+};
+
 const decodevarlen=function(buf) {
 	let tmp=buf.slice(1);
 	switch (buf[0]) {
@@ -113,7 +123,7 @@ const write=function(coin,prevamount,amount,fees,s,refunded) {
 	};
 };
 
-const resp_xhr=function(coin,res=coin.command_xhr) {
+const resp_xhr=function(coin,res=coin.command_xhr) { //not used, keep for future use
 	if (coin.res_xhr) {
 		let head={};
 		head['Server']='Peersm';
@@ -317,4 +327,4 @@ const mod44_path=function(path,bip) {
 	return path.replace(regex,bip.slice(3)+"'");
 };
 
-module.exports={reverse,decodevarlen,is_bech,issig,is_segwit,toHex,toHex2,toBin,big_satoshis,decimals,write,resp_xhr,clone_inputs,varlen,decode_script,op_push,op_push2,deserialize_scriptSig,serialize_sig,parse_op_push,count_w,check_mOfn,testamount,mod44_path};
+module.exports={reverse,compute_path,decodevarlen,is_bech,issig,is_segwit,toHex,toHex2,toBin,big_satoshis,decimals,write,resp_xhr,clone_inputs,varlen,decode_script,op_push,op_push2,deserialize_scriptSig,serialize_sig,parse_op_push,count_w,check_mOfn,testamount,mod44_path};

@@ -2,10 +2,11 @@ const crypto=require('crypto');
 const Tx=require('./transactions.js');
 const {btc_decode,baddress,check_addr,bech_convert,decode_redeem}=require('./addresses.js');
 const {getPublicfromPrivate}=require('./keys.js');
-const {is_bech,resp_xhr,clone_inputs,big_satoshis,testamount,check_mOfn}=require('./utils.js');
+const {is_bech,clone_inputs,big_satoshis,testamount,check_mOfn}=require('./utils.js');
 
 const create=function(args,coin) {
 	//console.log(args);
+	let tx;
 	let tx_=[];
 	let prevamount=0;
 	let fees=parseFloat(args[6]);
@@ -174,7 +175,7 @@ const create=function(args,coin) {
 			//pubkey [pubkey1, pubkey2,...]
 		});
 		if (!res[2]) {
-			new Tx(coin,tx_,dest,null);
+			tx=new Tx(coin,tx_,dest,null);
 			//dtype p2pkh, p2sh (for segwit nested) p2w
 		} else {
 			let rtype=tx_[0][0][3]; //type of refunded address
@@ -185,8 +186,9 @@ const create=function(args,coin) {
 				rtype='p2w';//refunded segwit address
 			};
 			dest.push([tx_[0][0][1],big_satoshis(res[2],coin),rtype]);
-			new Tx(coin,tx_,dest,null); //refund to the first address
+			tx=new Tx(coin,tx_,dest,null); //refund to the first address
 		};
+		return tx.res;
 	};
 };
 

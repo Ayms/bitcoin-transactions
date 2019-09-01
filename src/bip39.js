@@ -1,6 +1,6 @@
 const Mnemonic=require('./mnemonic.js');
 const {decode_xprv,encode_xprv,create_wallet}=require('./hd.js');
-const {mod44_path}=require('./utils.js');
+const {compute_path,mod44_path}=require('./utils.js');
 const crypto=require('crypto');
 
 //unlike other tools the default path for bip32 and bip141 is the legacy bitcoin one m/0'/0'/0'
@@ -11,28 +11,27 @@ const crypto=require('crypto');
 //BIP49 : {public: 0x049d7cb2,private: 0x049d7878} //yprv segwit nested
 //BIP141 : yprv
 
-if (window===undefined) {
-	var window=false;
-};
-
 const create_bip39=function(coin,language,secret,type='btc') { //type btc,nested,bech
 	let res;
 	let mn=new Mnemonic(language);
 	let seed=mn.toSeed(secret); //seed buf
 	res=[seed,encode_xprv(coin,seed,true,type),mn.check(secret.split(' '))];
-	if (!window) {
-		console.log('Seed: '+seed.toString('hex'));
-		console.log('Root key: '+res[1]);
-		console.log('Valid checksum: '+(res[2]?'Yes':'No'));
-	};
+	console.log('Seed: '+seed.toString('hex'));
+	console.log('Root key: '+res[1]);
+	console.log('Valid checksum: '+(res[2]?'Yes':'No'));
 	return res;
 };
 
 const bip39_wallet=function(secret,coin,language,type='btc',nb=coin.DEFAULT_WALLET_NB,path=coin.LEGACY_PATH||coin.DEFAULT_PATH) {
 	//secret: string of words, string xprv or hd
+	let tmp;
 	if (secret.split(' ').length>1) {
 		secret=create_bip39(coin,language,secret,type);
 		secret=secret[1];
+	};
+	if (path.indexOf('m')===-1) { //path integer
+		tmp=parseInt(path);
+		path=((type==='btc')||(type==='bip32'))?coin.LEGACY_PATH:coin.DEFAULT_PATH;
 	};
 	if ((path===coin.DEFAULT_PATH)||(path===coin.LEGACY_PATH)) {
 		switch (type) {
@@ -46,6 +45,9 @@ const bip39_wallet=function(secret,coin,language,type='btc',nb=coin.DEFAULT_WALL
 		case 'bip49':type='nested';break;
 		case 'bip84':type='bech';break;
 		case 'bip141':type='nested';break;
+	};
+	if (tmp) {
+		path=compute_path(path,tmp);
 	};
 	return create_wallet(secret,coin,nb,type,path);
 };
@@ -68,7 +70,7 @@ const recoverbip39=function(coin,language,test,missing,boo) { //missing [m,n] m 
 	};
 	let check=function(words) {
 		if (mn.check(words)) {
-			if ((!window)&&(!boo)) {
+			if (!boo) {
 				console.log(words.join(' '));
 			};
 			res.push(words.slice());
@@ -110,9 +112,7 @@ const generatebip39=function(coin,language,nb=coin.BIP39_nb) {
 	};
 	res=recoverbip39(coin,language,seed.join(' '),[seed.length+1],true);
 	seed=res[parseInt(crypto.randomBytes(2).toString('hex'),16)%(res.length)];
-	if (!window) {
-		console.log(seed.join(' '));
-	};
+	console.log(seed.join(' '));
 	return seed.join(' ');
 };
 

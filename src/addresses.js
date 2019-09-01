@@ -5,10 +5,6 @@ const decode_bech32=require('../node_modules/bech32/segwit.js').decode;
 const encode_bech32=require('../node_modules/bech32/segwit.js').encode;
 const {is_bech,deserialize_scriptSig,check_mOfn}=require('./utils.js');
 
-if (window===undefined) {
-	var window=false;
-};
-
 const btc_encode=function(buf,version) {
 	let checksum;
 	if (version) {
@@ -53,15 +49,24 @@ const decode_redeem=function(coin,script,boo) {
 	tmp=tmp.slice(0,tmp.length-1);//remove OP_N
 	pubKey=deserialize_scriptSig(tmp,coin)[1];
 	if (!boo) {
+		let tmp;
 		tmp=check_mOfn(script,coin);
 		pubKey.forEach(function(key) {
 			arr.push('Public Key: '+baddress(key,coin.p2pk)+' equivalent to bitcoin address '+baddress(key,new Buffer('00','hex')));
 			console.log('Public Key: '+baddress(key,coin.p2pk)+' equivalent to bitcoin address '+baddress(key,new Buffer('00','hex')));
 		});
-		console.log('To use the create command and to spend your multisig transaction you must find at least '+tmp[0]+' private keys associated to those public keys');
-		console.log('P2SH address '+redeem_addr(coin,script,'p2sh')+' equivalent to bitcoin address '+convert(redeem_addr(coin,script,'p2sh'),coin.p2sh,new Buffer('05','hex'),true));
-		console.log('P2WSH (nested) address '+redeem_addr(coin,script,'p2wsh')+' equivalent to bitcoin address '+convert(redeem_addr(coin,script,'p2wsh'),coin.p2sh,new Buffer('05','hex'),true));
-		console.log('P2WSH address '+redeem_addr(coin,script,'p2wsh2'));
+		tmp='To use the create command and to spend your multisig transaction you must find at least '+tmp[0]+' private keys associated to those public keys';
+		console.log(tmp);
+		arr.push(tmp);
+		tmp='P2SH address '+redeem_addr(coin,script,'p2sh')+' equivalent to bitcoin address '+convert(redeem_addr(coin,script,'p2sh'),coin.p2sh,new Buffer('05','hex'),true);
+		console.log(tmp);
+		arr.push(tmp);
+		tmp='P2WSH (nested) address '+redeem_addr(coin,script,'p2wsh')+' equivalent to bitcoin address '+convert(redeem_addr(coin,script,'p2wsh'),coin.p2sh,new Buffer('05','hex'),true);
+		console.log(tmp);
+		arr.push(tmp);
+		tmp='P2WSH address '+redeem_addr(coin,script,'p2wsh2');
+		console.log(tmp);
+		arr.push(tmp);
 		pubKey=arr;
 	};
 	return pubKey;
@@ -156,11 +161,9 @@ const convert2=function(addr,coin1,coin2) {
 			res['BCH bech']=encode_b(hash,type,'bitcoincash');
 		};
 	};
-	if (!window) {
-		Object.keys(res).forEach(function(val) {
-			console.log(val+': '+res[val]);
-		});
-	};
+	Object.keys(res).forEach(function(val) {
+		console.log(val+': '+res[val]);
+	});
 	return res;
 };
 

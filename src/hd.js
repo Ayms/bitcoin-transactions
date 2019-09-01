@@ -1,12 +1,8 @@
 const {btc_encode,btc_decode,hash_160,rhmac,baddress}=require('./addresses.js');
 const {privateKeyderive,FormatPrivate,PRFx,getPublicfromRawPrivate,ecdh_priv,getAddressfromPrivate2}=require('./keys.js');
-const {reverse}=require('./utils.js');
+const {reverse,compute_path,mod44_path}=require('./utils.js');
 const crypto=require('crypto');
 const CRLF='\r\n';
-
-if (window===undefined) {
-	var window=false;
-};
 
 const display=function(hd,coin,type,bool) {
 	let seed='';
@@ -38,14 +34,16 @@ const display_w=function(res,coin,type,boo) {
 	//res: time,xprv,seed,hd,[path,index,not_hardened],priv
 	//zcash
 	//[ask,zaddr];
+	let display=[];
 	let time=res[0];
 	let l=res.length;
 	let tmp=res[4];
 	if (boo) {
-		console.log('# extended private masterkey: '+res[1]);
+		display.push('# Root key: '+res[1]);
 	};
 	if (res[2]) {
-			console.log(btc_encode(res[2],coin.PRIV)+' '+time+' hdseed=1 '+' # addr='+getAddressfromPrivate2(res[2],coin,type)+' hdkeypath=m');
+			//display.push(btc_encode(res[2],coin.PRIV)+' '+time+' hdseed=1 '+' # addr='+getAddressfromPrivate2(res[2],coin,type)+' hdkeypath=m');
+			display.push(btc_encode(res[2],coin.PRIV)+' hdseed=1 '+'addr='+getAddressfromPrivate2(res[2],coin,type)+' path=m');
 	};
 	path=tmp[0];
 	s_=tmp[1];
@@ -53,15 +51,20 @@ const display_w=function(res,coin,type,boo) {
 	nb=tmp[3];
 	for (let i=0;i<nb;i++) {
 		priv=res[i+5];
-		console.log(btc_encode(priv,coin.PRIV)+' '+time+' '+(i?'reserve=1':'label=')+' # addr='+getAddressfromPrivate2(priv,coin,type)+" hdkeypath="+path+'/'+(i+s_)+(not_hardened?"":"'"));
+		//display.push(btc_encode(priv,coin.PRIV)+' '+time+' '+(i?'reserve=1':'label=')+' # addr='+getAddressfromPrivate2(priv,coin,type)+" hdkeypath="+path+'/'+(i+s_)+(not_hardened?"":"'"));
+		display.push(btc_encode(priv,coin.PRIV)+' '+'addr='+getAddressfromPrivate2(priv,coin,type)+" path="+path+'/'+(i+s_)+(not_hardened?"":"'"));
 	};
 	if (res.length>(nb+5)) { //zcash
-		console.log(CRLF+'# Zkeys'+CRLF);
+		display.push(CRLF+'# Zkeys'+CRLF);
 		nb+=6;
 		for (let i=nb;i<l;i++) {
-			console.log('# '+res[i][0]+' '+time+' # zaddr='+res[i][1]+" hdkeypath="+path+'/'+(i+s_-nb)+(not_hardened?"":"'"));
+			display.push('# '+res[i][0]+' '+time+' # zaddr='+res[i][1]+" path="+path+'/'+(i+s_-nb)+(not_hardened?"":"'"));
 		};
 	};
+	display.forEach(function(txt) {
+		console.log(txt);
+	});
+	return display;
 };
 
 const serialize=function(hd,version,coin,type='btc') {
@@ -191,7 +194,7 @@ const encode_xprv=function(coin,seed,master,type='btc') { //master true for BIP3
 	return btc_encode(serialize(hd,'private',coin,type));
 };
 
-const create_wallet=function(secret,coin,nb=coin.DEFAULT_WALLET_NB,type='btc',path=coin.LEGACY_PATH||coin.DEFAULT_PATH) {
+const create_wallet=function(secret,coin,nb=coin.DEFAULT_WALLET_NB,type='btc',path) {
 //secret: buffer, string(hex), string xprv or hd
 //warning: zcash implementation is a personnal one dated before zcash implemented bip32, we will not implement the official one since the zcash team did not deem necessary to mention this implementation, neither to mention us as previous work, the super_magic number refers to a suggestion from a team member as a kind of joke
 	let time=new Date().toISOString();
@@ -202,6 +205,27 @@ const create_wallet=function(secret,coin,nb=coin.DEFAULT_WALLET_NB,type='btc',pa
 	if (type.indexOf('m/')!==-1) {
 		path=type;
 		type='btc';
+	};
+	if (path===undefined) {
+		path=0;
+	};
+	if (type.indexOf('bip')!==-1) {
+		let tmp;
+		let _path=(path.indexOf('m/')!==-1);
+		switch (type) {
+			case 'bip32':tmp=coin.LEGACY_PATH||coin.DEFAULT_PATH;break;
+			case 'bip44':tmp=coin.DEFAULT_PATH;break;
+			case 'bip49':tmp=mod44_path(coin.DEFAULT_PATH,'bip49');type='nested';break;
+			case 'bip84':tmp=mod44_path(coin.DEFAULT_PATH,'bip84');type='bech';break;
+			case 'bip141':tmp=coin.GLEGACY_PATH;type='nested';break;
+		};
+		if (!_path) {
+			path=compute_path(tmp,path);
+		};
+	};
+	if (path.indexOf('m')===-1) { //path integer
+		let tmp=coin.LEGACY_PATH||coin.DEFAULT_PATH
+		path=compute_path(tmp,path);
 	};
 	res.push(time);
 	if (!boo) {
@@ -263,13 +287,7 @@ const create_wallet=function(secret,coin,nb=coin.DEFAULT_WALLET_NB,type='btc',pa
 			res.push([tmp.ask_a,tmp.z_address]);
 		};
 	};
-	if (!window) {
-		//res: time,xprv,seed,hd,[path,index,not_hardened],priv
-		//zcash
-		//[ask,zaddr];
-		display_w(res,coin,type,!boo);
-	};
-	return res;
+	return display_w(res,coin,type,!boo);
 };
 
 module.exports={create_wallet,decode_xprv,encode_xprv};

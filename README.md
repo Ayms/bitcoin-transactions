@@ -9,19 +9,21 @@ This module is funded by [NLnet](https://nlnet.nl/) under the [EU Horizon 2020 N
 
 Therefore the initial dev fees have been removed and the code is open source and provided in clear under a MIT license
 
-## Planning
+## Dependencies
 
-If you intend to fork this module, maybe you should wait a little bit that everything is implemented, to come:
+This module is using the very good [Elliptic](https://github.com/indutny/elliptic), [BS58](https://github.com/cryptocoinjs/bs58), [BECH32](https://github.com/sipa/bech32), [Forge SHA256](https://github.com/digitalbazaar/forge), [Browserify](https://github.com/browserify/browserify), [Terser](https://github.com/terser-js/terser) and other modules from us under a MIT license
 
-- phase4: browserification of everything into a secure standalone offline javascript application inside browsers
+## Browser version
 
-## Installation
+The browser version is [here](https://peersm.com/wallet
+
+In case you don't see how to use it for some parts, please refer to the documentation and examples here
+
+## Installation (nodejs version)
 
 Install [nodejs for Windows,Mac,Linux](https://nodejs.org/en/download/package-manager/), usually this is easy
 
 Create a bitcoin-transactions directory, download and unzip [master](https://github.com/Ayms/bitcoin-transactions/archive/master.zip)
-
-All of this does of course not apply for the browser version when it will be available
 	
 ## Support and supported coins
 
@@ -471,7 +473,22 @@ Each coin uses a prefix appended to the message to be signed (generally the stri
 ## Notes for the devs
 
 The module is not trivial, any slight change can cause everything not to work any longer and can become difficult to identify at a certain point of time, therefore it is advised to periodically test the latest example in the multisig test vectors while making changes (if this one passes it's unlikely that something is wrong). In addition serialize/deserialize is not symetrical then ``true`` must be used when not coming from a Tx constructor transaction, initially this was a mistake due to misreading of segwit specs, we decided to keep it like this because double checking symetrical potential wrong things is just useless, therefore this adds a last serialize/deserialize independant check
-	
+
+## Browserification process and bugs
+
+Please see [Browserification](https://github.com/Ayms/bitcoin-transactions/blob/master/browser/README.html)
+
+The User Interface code and the complete browserified javascript code is [here](https://github.com/Ayms/bitcoin-transactions/blob/master/html)
+
+There are probably some details to fix in the UI, for minor ones please email us, for others please post a bug or email
+
+Before posting or emailing something please open the browser javascript console and send the content to us at the same time if it shows some js errors
+
+### Related external bugs:
+
+https://github.com/indutny/bn.js/issues/227 this causes BN code to be included twice by browserify
+https://github.com/mishoo/UglifyJS2/issues/3443 surprisingly uglify does not support ES6
+
 ## Related projects :
 
 * [Ayms/cashaddress](https://github.com/Ayms/cashaddress)

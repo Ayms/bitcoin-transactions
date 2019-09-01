@@ -1,15 +1,12 @@
-const {reverse,decodevarlen,is_bech,issig,is_segwit,toHex,big_satoshis,decimals,write,resp_xhr,clone_inputs,varlen,decode_script,op_push,op_push2,deserialize_scriptSig,serialize_sig,parse_op_push,count_w,check_mOfn}=require('./utils.js');
+const {reverse,decodevarlen,is_bech,issig,is_segwit,toHex,big_satoshis,decimals,write,clone_inputs,varlen,decode_script,op_push,op_push2,deserialize_scriptSig,serialize_sig,parse_op_push,count_w,check_mOfn}=require('./utils.js');
 const {btc_encode,btc_decode,hash_160,rhmac,baddress,decode_redeem,hash_256,double_hash256,getKeyfromExtended,check_p2sh,convert,convert_,bech_convert,privatekeyFromWIF,format_privKey,check_addr,decode_bech32,encode_bech32}=require('./addresses.js');
 const {privateKeyderive,FormatPrivate,PRFx,getPublicfromRawPrivate,ecdh_priv,getAddressfromPrivate,getPublicfromPrivate,getpubKeyfromPrivate,format_pubKey,getpubkeyfromSignature,recoverPubKey,keyFromPublic,sign}=require('./keys.js');
-
-if (window===undefined) {
-	var window=false;
-};
 
 const Tx=function(coin,input,output,nLockTime) {
 	this.coin=coin;
 	this.input=[];
 	this.output=[];
+	this.res=[];
 	this.fees=0;
 	if (input) {
 		let all=false;
@@ -216,11 +213,9 @@ Tx.prototype.display_tx=function() {
 		res.push('   type: '+out.type);
 	});
 	res.push('nLockTime '+this.nLockTime.toString('hex'));
-	if (!window) {
-		res.forEach(function(txt) {
-			console.log(txt);
-		});
-	};
+	res.forEach(function(txt) {
+		console.log(txt);
+	});
 	return res;
 };
 
@@ -520,8 +515,9 @@ Tx.prototype.sighash_verify=function(prevscriptPubkey) { //prevscriptPubkey [[sc
 							};
 						});
 						console.log(boo?'----- Transaction verified':'********* - Bad transaction');
+						this.res.push(boo?'----- Transaction verified':'********* - Bad transaction');
 						if (!boo) {
-							this.coin.command_xhr={error:'Bad transaction - check your keys and parameters'};
+							throw '********* - Bad transaction';
 						};
 						this.finalize(this.data); //double verify again, here the transaction hash
 					};
@@ -961,18 +957,13 @@ Tx.prototype.finalize=function(tx) {
 		console.log('Complete transaction:\n'+this.tx.toString('hex'));
 		console.log('Size '+this.tx.length+' bytes');
 		console.log('Network Fees: '+fees_+' - '+(fees_/length_).toFixed(2)+' satoshis/byte');
-		try {
-			this.coin.command_xhr.push(tx.toString('hex'));
-			this.coin.command_xhr.push(this.tx.toString('hex'));
-			this.coin.command_xhr.push(this.hash.toString('hex'));
-		} catch(ee) {};
+		this.res.push(tx.toString('hex'));
+		this.res.push(this.tx.toString('hex'));
+		this.res.push(this.hash.toString('hex'));
 		console.log('------------- Check - deserialize ');
 		let tx_check=new Tx(this.coin);
 		tx_check.deserialize(tx);
-		//delete tx_check.fees;
-		//try {
-			this.coin.command_xhr.push(tx_check.display_tx());
-		//} catch(ee) {};
+		this.res.push(tx_check.display_tx());
 		console.log('------------- End Check - deserialize ');
 		console.log('------------- Check - verify ');
 		this.input.forEach(function(inp) {
@@ -987,16 +978,16 @@ Tx.prototype.finalize=function(tx) {
 			console.log('------------- OK - serialize/deserialize ');
 		} else {
 			console.log('------------- NOK - serialize/deserialize ');
+			throw 'serialize/deserialize NOK'
 		};
 		try {
-			this.coin.command_xhr.push(fees_);
+			this.res.push(fees_);
 		} catch(ee) {};
 		if (fees_>this.coin.FEES*length_) {
 			console.log('---- WARNING !!!!!!!!!!!!!!! ----- Network fees look very high, probably you did not choose the correct amount, please make sure that amount+dev fees+network fees=prevamount');
 		} else if (fees_<0) {
 			console.log('---- WARNING !!!!!!!!!!!!!!! ----- Network fees are incorrect, probably you did not choose the correct amount, please make sure that amount+dev fees+network fees=prevamount');
 		};
-		resp_xhr(this.coin);
 	};
 };
 
