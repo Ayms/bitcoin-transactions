@@ -15,7 +15,7 @@ This module is using the very good [Elliptic](https://github.com/indutny/ellipti
 
 ## Browser version
 
-The browser version is [here](https://peersm.com/wallet
+The browser version is [here](https://peersm.com/wallet)
 
 In case you don't see how to use it for some parts, please refer to the documentation and examples here
 
@@ -476,7 +476,7 @@ The module is not trivial, any slight change can cause everything not to work an
 
 ## Browserification process and bugs
 
-Please see [Browserification](https://github.com/Ayms/bitcoin-transactions/blob/master/browser/README.html)
+Please see [Browserification](https://github.com/Ayms/bitcoin-transactions/tree/master/browserify/README.html)
 
 The User Interface code and the complete browserified javascript code is [here](https://github.com/Ayms/bitcoin-transactions/blob/master/html)
 
@@ -486,8 +486,8 @@ Before posting or emailing something please open the browser javascript console 
 
 ### Related external bugs:
 
-https://github.com/indutny/bn.js/issues/227 this causes BN code to be included twice by browserify
-https://github.com/mishoo/UglifyJS2/issues/3443 surprisingly uglify does not support ES6
+- https://github.com/indutny/bn.js/issues/227 this causes BN code to be included twice by browserify
+- https://github.com/mishoo/UglifyJS2/issues/3443 surprisingly uglify does not support ES6
 
 ## Related projects :
 
