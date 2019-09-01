@@ -476,7 +476,7 @@ The module is not trivial, any slight change can cause everything not to work an
 
 ## Browserification process and bugs
 
-Please see [Browserification](https://github.com/Ayms/bitcoin-transactions/tree/master/browserify/README.html)
+Please see [browserification](https://github.com/Ayms/bitcoin-transactions/tree/master/browserify/README.md)
 
 The User Interface code and the complete browserified javascript code is [here](https://github.com/Ayms/bitcoin-transactions/blob/master/html)
 
