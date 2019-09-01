@@ -49129,7 +49129,11 @@ exports.createContext = Script.createContext = function (context) {
 				arr.forEach(function(val) {
 					if ((val.value.indexOf('Enter')!==-1)||(val.value==='')) {
 						if (boo===true) {
-							Myalert(val.parentNode.title);
+							if (val.parentNode.title.length) {
+								Myalert(val.parentNode.title);
+							} else {
+								Myalert(val.title);
+							};
 						};
 						boo=false;
 					};
@@ -49666,7 +49670,7 @@ exports.createContext = Script.createContext = function (context) {
 	<div id="transaction_decode_article" class="container hidden">
 		<div class="wrap2">
 			<p style="font-size:16px">Enter the transaction to decode:</p>
-			<textarea id="input_transaction_decode" class="url" style="margin-top:0px"></textarea>
+			<textarea id="input_transaction_decode" class="url" style="margin-top:0px" title="Enter the transaction to decode"></textarea>
 			<div id="transaction_decode" class="button">Decode transaction</div>
 			<div style="float:left;padding-bottom:50px;font-size:16px;width:100%">
 				<div id="res_transaction_decode" class="details hidden res_" typer="transaction_decode"></div>
@@ -49676,7 +49680,7 @@ exports.createContext = Script.createContext = function (context) {
 	<div id="transaction_verify_article" class="container hidden">
 		<div class="wrap2">
 			<p style="font-size:16px">Enter the transaction to verify:</p>
-			<textarea id="input_transaction_verify" class="url" style="margin-top:0px"></textarea>
+			<textarea id="input_transaction_verify" class="url" style="margin-top:0px" title="Enter the transaction to verify"></textarea>
 			<div class="url em" title="Enter the outpoints (outpoint1,nValue1 outpoint2,nValue2...)">
 				<input id="input_outpoints" class="input" value="Enter the outpoints (outpoint1,nValue1 outpoint2,nValue2...)">
 			</div>
@@ -49785,7 +49789,7 @@ exports.createContext = Script.createContext = function (context) {
 	<div id="redeem_article" class="container hidden">
 		<div class="wrap2">
 			<p style="font-size:16px">Enter the multisig redeem script to decode:</p>
-			<textarea id="input_redeem_decode" class="url" style="margin-top:0px"></textarea>
+			<textarea id="input_redeem_decode" class="url" style="margin-top:0px" title="Enter the multisig redeem script to decode"></textarea>
 			<div style="float:left">&nbsp;</div>
 			<div id="res_redeem_decode" class="res hidden res_" typer="redeem"></div>
 			<div id="redeem_decode" class="button">Decode multisig redeem script</div>
