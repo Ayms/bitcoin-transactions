@@ -49555,6 +49555,7 @@ exports.createContext = Script.createContext = function (context) {
 				if (document.location.href.indexOf('file:///')===-1) {
 					let xhr_object=new XMLHttpRequest(); 
 					if (xhr_object)	{
+						$_('loader').style.display='block';
 						xhr_object.open("GET",'wallettest',true);
 						xhr_object.send(null);
 						xhr_object.onreadystatechange=function() {
@@ -49565,6 +49566,7 @@ exports.createContext = Script.createContext = function (context) {
 									Myalert('You are offline');
 								};
 							};
+							$_('loader').style.display='none';
 						};
 					};
 				} else {
