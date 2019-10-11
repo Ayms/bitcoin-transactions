@@ -30,7 +30,7 @@ let coin;
 
 const start=function(args) {
 	if (args.length) {
-		if (document===undefined) {
+		if (typeof document==='undefined') {
 			console.log(args);
 		};
 		try {
