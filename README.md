@@ -498,7 +498,7 @@ Before posting or emailing something please open the browser javascript console 
 * [Ayms/torrent-live](https://github.com/Ayms/torrent-live)
 * [Ayms/node-Tor](https://github.com/Ayms/node-Tor)
 * [Ayms/iAnonym](https://github.com/Ayms/iAnonym)
-* [Interception Detector](http://www.ianonym.com/intercept.html)
+* [Interception Detector](http://ianonym.peersm.com/intercept.html)
 * [Ayms/abstract-tls](https://github.com/Ayms/abstract-tls)
 * [Ayms/websocket](https://github.com/Ayms/websocket)
 * [Ayms/node-typedarray](https://github.com/Ayms/node-typedarray)
