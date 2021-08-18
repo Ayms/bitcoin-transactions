@@ -1,0 +1,43 @@
+{
+  "nodes": {
+    "bitcoin-transactions-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1599299851,
+        "narHash": "sha256-J8NvvWxHuGW0hqfSjlMUBT2aomlCA0cWh6rWJmK9TVM=",
+        "ref": "master",
+        "rev": "80a0d3d92b71bae04d344d098e0a0fb5deb675b8",
+        "revCount": 183,
+        "type": "git",
+        "url": "https://github.com/Ayms/bitcoin-transactions"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/Ayms/bitcoin-transactions"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1629226339,
+        "narHash": "sha256-szvgmQcUJM3Kv/wNyIn+wtMrrvsks0bk9JOqI2Ij8Ao=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2435ea48c3b295d9cd490535730bb13ab8cfd8a5",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-unstable",
+        "type": "indirect"
+      }
+    },
+    "root": {
+      "inputs": {
+        "bitcoin-transactions-src": "bitcoin-transactions-src",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
