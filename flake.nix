@@ -14,10 +14,6 @@
   outputs = { self, nixpkgs, bitcoin-transactions-src }:
 
     let
-      # Generate a user-friendly version numer.
-      version =
-        builtins.substring 0 8 bitcoin-transactions-src.lastModifiedDate;
-
       # System types to support.
       supportedSystems = [ "x86_64-linux" ];
 
@@ -38,7 +34,7 @@
         bitcoin-transactions =
           let inherit (final) stdenv nodejs lib nodePackages;
           in stdenv.mkDerivation {
-            name = "bitcoin-transactions-${version}";
+            name = "bitcoin-transactions";
 
             src = bitcoin-transactions-src;
 
@@ -74,7 +70,7 @@
               ''
             }/bin/bitcoin-transactions";
         };
-        walletclear = let pkgs = nixpkgsFor.${system};
+        wallet-clear = let pkgs = nixpkgsFor.${system};
         in {
           type = "app";
           program = "${
