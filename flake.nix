@@ -60,6 +60,11 @@
       packages = forAllSystems
         (system: { inherit (nixpkgsFor.${system}) bitcoin-transactions; });
 
+      # These apps load the package as a standalone offline webapp
+      # For these to work the XDG browser variable needs to be set to something that exists
+      # To test run `xdg-settings get default-web-browser` if this fails
+      # prepend the nix run command with your installed browser with
+      # BROWSER=<installed browser> nix run ...
       apps = forAllSystems (system: {
         wallet = let pkgs = nixpkgsFor.${system};
         in {
