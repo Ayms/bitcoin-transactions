@@ -7,9 +7,8 @@
 
   # Upstream source tree(s).
   inputs.bitcoin-transactions-src = {
-    url = "https://github.com/Ayms/bitcoin-transactions";
+    url = "path:./.";
     flake = false;
-    type = "git";
   };
 
   outputs = { self, nixpkgs, bitcoin-transactions-src }:

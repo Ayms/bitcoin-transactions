@@ -3,26 +3,22 @@
     "bitcoin-transactions-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1599299851,
-        "narHash": "sha256-J8NvvWxHuGW0hqfSjlMUBT2aomlCA0cWh6rWJmK9TVM=",
-        "ref": "master",
-        "rev": "80a0d3d92b71bae04d344d098e0a0fb5deb675b8",
-        "revCount": 183,
-        "type": "git",
-        "url": "https://github.com/Ayms/bitcoin-transactions"
+        "narHash": "sha256-BMR2E828R2TIGyxBRE6XczLxeoRjf7G5uOjrnkJQOx4=",
+        "path": "./.",
+        "type": "path"
       },
       "original": {
-        "type": "git",
-        "url": "https://github.com/Ayms/bitcoin-transactions"
+        "path": "./.",
+        "type": "path"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1629226339,
-        "narHash": "sha256-szvgmQcUJM3Kv/wNyIn+wtMrrvsks0bk9JOqI2Ij8Ao=",
+        "lastModified": 1629292755,
+        "narHash": "sha256-5xMo32NVLnloY9DveqwJO/Cab1+PbTMPqU4WMmawX5M=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2435ea48c3b295d9cd490535730bb13ab8cfd8a5",
+        "rev": "253aecf69ed7595aaefabde779aa6449195bebb7",
         "type": "github"
       },
       "original": {
