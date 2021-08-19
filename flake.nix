@@ -70,6 +70,7 @@
               ''
             }/bin/bitcoin-transactions";
         };
+        # This shows the Javascript unminified and readable
         wallet-clear = let pkgs = nixpkgsFor.${system};
         in {
           type = "app";
