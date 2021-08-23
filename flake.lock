@@ -3,7 +3,7 @@
     "bitcoin-transactions-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-BMR2E828R2TIGyxBRE6XczLxeoRjf7G5uOjrnkJQOx4=",
+        "narHash": "sha256-RaJFHjzv/XpSmq/bNi/DiHXkTQ/TWSFLlMFTlEaoB14=",
         "path": "./.",
         "type": "path"
       },
