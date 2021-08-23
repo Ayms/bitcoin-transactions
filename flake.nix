@@ -1,21 +1,22 @@
 {
-  description =
-    "Javascript implementation of the Bitcoin protocol for any Bitcoin based coins";
+  description = "Javascript implementation of the Bitcoin protocol for any Bitcoin based coins";
 
   # Nixpkgs / NixOS version to use.
   inputs.nixpkgs.url = "nixpkgs/nixos-unstable"; # needed for nodePackage.terser
 
-  # Upstream source tree(s).
-  inputs.bitcoin-transactions-src = {
-    url = "path:./.";
-    flake = false;
-  };
-
-  outputs = { self, nixpkgs, bitcoin-transactions-src }:
+  outputs = { self, nixpkgs }:
 
     let
-      # System types to support.
-      supportedSystems = [ "x86_64-linux" ];
+      # Any system that can run a browser.
+      supportedSystems = [
+        "x86_64-linux"
+        "i686-linux"
+        "x86_64-darwin"
+        "aarch64-linux"
+        "armv6l-linux"
+        "armv7l-linux"
+        "aarch64-darwin"
+      ];
 
       # Helper function to generate an attrset '{ x86_64-linux = f "x86_64-linux"; ... }'.
       forAllSystems = f:
@@ -36,7 +37,7 @@
           in stdenv.mkDerivation {
             name = "bitcoin-transactions";
 
-            src = bitcoin-transactions-src;
+            src = lib.cleanSource ./.;
 
             buildInputs = [ nodejs ];
 
@@ -49,8 +50,7 @@
 
             meta = {
               homepage = "https://peersm.com/wallet";
-              description =
-                "Javascript implementation of the Bitcoin protocol for any Bitcoin based coins";
+              description = "Javascript implementation of the Bitcoin protocol for any Bitcoin based coins";
               license = lib.licenses.mit;
             };
           };
@@ -71,17 +71,12 @@
           type = "app";
           program = "${
               pkgs.writeShellScriptBin "bitcoin-transactions" ''
-                ${pkgs.xdg-utils}/bin/xdg-open ${pkgs.bitcoin-transactions}/html/wallet.html
-              ''
-            }/bin/bitcoin-transactions";
-        };
-        # This shows the Javascript unminified and readable
-        wallet-clear = let pkgs = nixpkgsFor.${system};
-        in {
-          type = "app";
-          program = "${
-              pkgs.writeShellScriptBin "bitcoin-transactions" ''
-                ${pkgs.xdg-utils}/bin/xdg-open ${pkgs.bitcoin-transactions}/html/walletclear.html
+                # Clear shows the Javascript unminified and readable
+                if [ "$1" == "clear" ] || [ "$1" == "c" ]; then
+                  ${pkgs.xdg-utils}/bin/xdg-open ${pkgs.bitcoin-transactions}/html/walletclear.html
+                else
+                  ${pkgs.xdg-utils}/bin/xdg-open ${pkgs.bitcoin-transactions}/html/wallet.html
+                fi
               ''
             }/bin/bitcoin-transactions";
         };
@@ -89,6 +84,28 @@
 
       defaultPackage =
         forAllSystems (system: self.packages.${system}.bitcoin-transactions);
+
+      nixosModules.bitcoin-transactions = { pkgs, config, ... }:
+        let
+          systemApp = self.apps.${pkgs.system}.wallet.program;
+          defaultPackage = self.defaultPackage.${pkgs.system};
+        in {
+          environment.systemPackages = [
+            (pkgs.writeTextFile {
+              name = "${defaultPackage.name}.desktop";
+              destination = "/share/applications/${defaultPackage.name}.desktop";
+              text = ''
+                [Desktop Entry]
+                Name=${defaultPackage.name}
+                Comment=${defaultPackage.meta.description}
+                Exec=${systemApp}
+                Icon=${defaultPackage.src}/desktopIcon.png
+                Type=Application
+                Terminal=false
+              '';
+            })
+          ];
+        };
 
       devShell = forAllSystems (system:
         let
@@ -106,7 +123,7 @@
         # Additional tests, if applicable.
         test = with nixpkgsFor.${system};
           stdenv.mkDerivation {
-            name = "bitcoin-transactions-test-${version}";
+            name = "bitcoin-transactions-test";
 
             buildInputs = [ nodejs bitcoin-transactions ];
 
@@ -118,7 +135,7 @@
 
               # Run all general tests apart from the one that checks the network connection
               while read line; do
-                if [[ $line == node* ]] && [[ $line != *suprnova* ]]; then
+                if [[ "$line" == node* ]] && [[ "$line" != *suprnova* ]]; then
                   $line
                 fi
               done < tests/general.js

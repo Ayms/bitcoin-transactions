@@ -1,17 +1,5 @@
 {
   "nodes": {
-    "bitcoin-transactions-src": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-RaJFHjzv/XpSmq/bNi/DiHXkTQ/TWSFLlMFTlEaoB14=",
-        "path": "./.",
-        "type": "path"
-      },
-      "original": {
-        "path": "./.",
-        "type": "path"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1629292755,
@@ -29,7 +17,6 @@
     },
     "root": {
       "inputs": {
-        "bitcoin-transactions-src": "bitcoin-transactions-src",
         "nixpkgs": "nixpkgs"
       }
     }
