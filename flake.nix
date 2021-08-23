@@ -7,6 +7,9 @@
   outputs = { self, nixpkgs }:
 
     let
+      # Project doesnt define versions so defaulting to last commit date
+      version = "05-09-2020";
+
       # Any system that can run a browser.
       supportedSystems = [
         "x86_64-linux"
@@ -35,7 +38,7 @@
         bitcoin-transactions =
           let inherit (final) stdenv nodejs lib nodePackages;
           in stdenv.mkDerivation {
-            name = "bitcoin-transactions";
+            name = "bitcoin-transactions-${version}";
 
             src = lib.cleanSource ./.;
 
@@ -50,7 +53,8 @@
 
             meta = {
               homepage = "https://peersm.com/wallet";
-              description = "Javascript implementation of the Bitcoin protocol for any Bitcoin based coins";
+              description =
+                "Javascript implementation of the Bitcoin protocol for any Bitcoin based coins";
               license = lib.licenses.mit;
             };
           };
@@ -94,7 +98,8 @@
           environment.systemPackages = [
             (pkgs.writeTextFile {
               name = "${defaultPackage.name}.desktop";
-              destination = "/share/applications/${defaultPackage.name}.desktop";
+              destination =
+                "/share/applications/${defaultPackage.name}.desktop";
               text = ''
                 [Desktop Entry]
                 Name=${defaultPackage.name}
@@ -124,7 +129,7 @@
         # Additional tests, if applicable.
         test = with nixpkgsFor.${system};
           stdenv.mkDerivation {
-            name = "bitcoin-transactions-test";
+            name = "bitcoin-transactions-test-${version}";
 
             buildInputs = [ nodejs bitcoin-transactions ];
 
