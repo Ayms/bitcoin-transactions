@@ -73,10 +73,11 @@
               pkgs.writeShellScriptBin "bitcoin-transactions" ''
                 # Clear shows the Javascript unminified and readable
                 if [ "$1" == "clear" ] || [ "$1" == "c" ]; then
-                  ${pkgs.xdg-utils}/bin/xdg-open ${pkgs.bitcoin-transactions}/html/walletclear.html
+                  PAGE=html/walletclear.html
                 else
-                  ${pkgs.xdg-utils}/bin/xdg-open ${pkgs.bitcoin-transactions}/html/wallet.html
+                  PAGE=html/wallet.html
                 fi
+                ${pkgs.xdg-utils}/bin/xdg-open ${pkgs.bitcoin-transactions}/$PAGE
               ''
             }/bin/bitcoin-transactions";
         };
