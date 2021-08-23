@@ -40,7 +40,7 @@
           in stdenv.mkDerivation {
             name = "bitcoin-transactions-${version}";
 
-            src = lib.cleanSource ./.;
+            src = self;
 
             buildInputs = [ nodejs ];
 
