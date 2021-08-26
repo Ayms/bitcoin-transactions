@@ -113,8 +113,7 @@
 
       devShell = forAllSystems (system:
         let
-          pkgs = nixpkgsFor.${system};
-          inherit (pkgs) mkShell nodePackages;
+          inherit (nixpkgsFor.${system}) mkShell nodePackages;
         in mkShell {
           buildInputs = [ nodePackages.browserify nodePackages.terser ];
           inputsFrom = builtins.attrValues self.packages.${system};
