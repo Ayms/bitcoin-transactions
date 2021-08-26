@@ -73,17 +73,15 @@
         wallet = let pkgs = nixpkgsFor.${system};
         in {
           type = "app";
-          program = "${
-              pkgs.writeShellScriptBin "bitcoin-transactions" ''
-                # Clear shows the Javascript unminified and readable
-                if [ "$1" == "clear" ] || [ "$1" == "c" ]; then
-                  PAGE=html/walletclear.html
-                else
-                  PAGE=html/wallet.html
-                fi
-                ${pkgs.xdg-utils}/bin/xdg-open ${pkgs.bitcoin-transactions}/$PAGE
-              ''
-            }/bin/bitcoin-transactions";
+          program = "${pkgs.writeShellScript "bitcoin-transactions" ''
+            # Clear shows the Javascript unminified and readable
+            if [ "$1" == "clear" ] || [ "$1" == "c" ]; then
+              PAGE=html/walletclear.html
+            else
+              PAGE=html/wallet.html
+            fi
+            ${pkgs.xdg-utils}/bin/xdg-open ${pkgs.bitcoin-transactions}/$PAGE
+          ''}";
         };
       });
 
