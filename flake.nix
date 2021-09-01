@@ -136,12 +136,14 @@
               echo 'running some integration tests'
               ln -s ${bitcoin-transactions}/* .
 
-              # Run all general tests apart from the one that checks the network connection
-              while read line; do
-                if [[ "$line" == node* ]] && [[ "$line" != *suprnova* ]]; then
-                  $line
-                fi
-              done < tests/general.js
+              cp tests/general.js integration-tests.js
+
+              # Run all tests apart from the one that checks the network connection
+              sed -i '
+                  /^\(node\)/!d
+                  /suprnova/d' integration-tests.js
+
+              bash integration-tests.js
             '';
 
             installPhase = "mkdir -p $out";
