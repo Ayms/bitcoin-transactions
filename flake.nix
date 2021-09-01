@@ -107,8 +107,7 @@
         };
 
       devShell = forAllSystems (system:
-        let
-          inherit (nixpkgsFor.${system}) mkShell nodePackages;
+        let inherit (nixpkgsFor.${system}) mkShell nodePackages;
         in mkShell {
           buildInputs = [ nodePackages.browserify nodePackages.terser ];
           inputsFrom = builtins.attrValues self.packages.${system};
