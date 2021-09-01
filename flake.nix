@@ -69,8 +69,8 @@
       # To test run `xdg-settings get default-web-browser` if this fails
       # prepend the nix run command with your installed browser with
       # BROWSER=<installed browser> nix run ...
-      apps = forAllSystems (system: {
-        wallet = let pkgs = nixpkgsFor.${system};
+      defaultApp = forAllSystems (system:
+        let pkgs = nixpkgsFor.${system};
         in {
           type = "app";
           program = "${pkgs.writeShellScript "bitcoin-transactions" ''
@@ -82,15 +82,14 @@
             fi
             ${pkgs.xdg-utils}/bin/xdg-open ${pkgs.bitcoin-transactions}/$PAGE
           ''}";
-        };
-      });
+        });
 
       defaultPackage =
         forAllSystems (system: self.packages.${system}.bitcoin-transactions);
 
       nixosModules.bitcoin-transactions = { pkgs, config, ... }:
         let
-          systemApp = self.apps.${pkgs.system}.wallet.program;
+          systemApp = self.defaultApp.${pkgs.system}.program;
           defaultPackage = self.defaultPackage.${pkgs.system};
         in {
           environment.systemPackages = [
