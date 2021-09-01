@@ -87,25 +87,21 @@
       defaultPackage =
         forAllSystems (system: self.packages.${system}.bitcoin-transactions);
 
-      nixosModules.bitcoin-transactions = { pkgs, config, ... }:
+      nixosModules.bitcoin-transactions = { pkgs, lib, ... }:
         let
+          inherit (lib) toUpper substring stringAsChars;
           systemApp = self.defaultApp.${pkgs.system}.program;
           defaultPackage = self.defaultPackage.${pkgs.system};
+          capitalize = str: toUpper (substring 0 1 str) + substring 1 (-1) str;
+          sanitize = str: stringAsChars (x: if x == "-" then " " else x) str;
         in {
           environment.systemPackages = [
-            (pkgs.writeTextFile {
-              name = "${defaultPackage.name}.desktop";
-              destination =
-                "/share/applications/${defaultPackage.name}.desktop";
-              text = ''
-                [Desktop Entry]
-                Name=${defaultPackage.name}
-                Comment=${defaultPackage.meta.description}
-                Exec=${systemApp}
-                Icon=${defaultPackage.src}/desktopIcon.png
-                Type=Application
-                Terminal=false
-              '';
+            (pkgs.makeDesktopItem {
+              name = defaultPackage.name;
+              exec = systemApp;
+              desktopName = capitalize (sanitize defaultPackage.name);
+              comment = defaultPackage.meta.description;
+              icon = "${defaultPackage.src}/desktopIcon.png";
             })
           ];
         };
